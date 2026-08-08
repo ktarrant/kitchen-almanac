@@ -10,7 +10,13 @@ from sqlalchemy.pool import StaticPool
 
 from kitchen_almanac.catalog import DEFAULT_SOURCE, build_catalog
 from kitchen_almanac.database import Base, get_session, make_engine
-from kitchen_almanac.db_models import LocationDatasetVersion, PostalCodeLocation, SourceDocument
+from kitchen_almanac.db_models import (
+    ClimateDatasetVersion,
+    ClimateStationNormal,
+    LocationDatasetVersion,
+    PostalCodeLocation,
+    SourceDocument,
+)
 from kitchen_almanac.main import app
 from kitchen_almanac.services.catalog_repository import load_catalog
 
@@ -54,6 +60,91 @@ def catalog_client() -> Iterator[TestClient]:
                 coordinate_method="census_zcta_representative_point",
                 source_locator="test-zcta.txt:GEOID=20910",
             )
+        )
+        hardiness_source = SourceDocument(
+            id="sha256:c8510c4e04ea32311a5d41e1b4a92543816977424e6b35decf5e80c44a3600a0",
+            title="2023 USDA Plant Hardiness Zone Map CONUS raster",
+            source_path="data/source/usda/phzm-2023/2023ConusNAD83_Clip.tif",
+            source_url="https://ndownloader.figshare.com/files/44868940",
+            publisher="USDA Agricultural Research Service and OSU PRISM Climate Group",
+            sha256="c8510c4e04ea32311a5d41e1b4a92543816977424e6b35decf5e80c44a3600a0",
+            media_type="image/tiff",
+            retrieved_at=datetime(2026, 8, 8, tzinfo=UTC),
+            license="Creative Commons Attribution 4.0 International",
+        )
+        hardiness_dataset = ClimateDatasetVersion(
+            id="usda-phzm-2023-c8510c4e04ea3231",
+            dataset_kind="usda_hardiness_2023",
+            schema_version="1.0.0",
+            parser_version="1.0.0",
+            source_document_id=hardiness_source.id,
+            active=True,
+            loaded_at=datetime(2026, 8, 8, tzinfo=UTC),
+        )
+        session.add_all([hardiness_source, hardiness_dataset])
+        noaa_source = SourceDocument(
+            id="noaa-normals-test-source",
+            title="Test NOAA climate normals",
+            source_path="test-noaa.tar.gz",
+            source_url="https://www.ncei.noaa.gov/test-normals",
+            publisher="NOAA National Centers for Environmental Information",
+            sha256="1" * 64,
+            media_type="application/gzip",
+            retrieved_at=datetime(2026, 8, 8, tzinfo=UTC),
+            license="U.S. Government public data; dataset citation required",
+        )
+        noaa_dataset = ClimateDatasetVersion(
+            id="noaa-normals-test",
+            dataset_kind="noaa_normals_1991_2020",
+            schema_version="1.0.0",
+            parser_version="1.0.0",
+            source_document_id=noaa_source.id,
+            active=True,
+            loaded_at=datetime(2026, 8, 8, tzinfo=UTC),
+        )
+        session.add_all([noaa_source, noaa_dataset])
+        session.flush()
+        session.add_all(
+            [
+                ClimateStationNormal(
+                    climate_dataset_version_id=noaa_dataset.id,
+                    station_id="USW00013743",
+                    name="WASHINGTON REAGAN AP, VA US",
+                    latitude=38.8483,
+                    longitude=-77.0342,
+                    elevation_m=3.0,
+                    annual_mean_f=59.3,
+                    annual_minimum_f=50.8,
+                    annual_maximum_f=67.8,
+                    annual_precipitation_in=41.82,
+                    growing_degree_days_base_50_f=4709.0,
+                    last_spring_frost_50="03/24",
+                    first_fall_frost_50="11/18",
+                    growing_season_days_50=241,
+                    completeness_class="S",
+                    minimum_years=25,
+                    source_locator="USW00013743.csv",
+                ),
+                ClimateStationNormal(
+                    climate_dataset_version_id=noaa_dataset.id,
+                    station_id="TEST00000001",
+                    name="DISTANT TEST STATION",
+                    latitude=40.0,
+                    longitude=-78.0,
+                    elevation_m=100.0,
+                    annual_mean_f=50.0,
+                    annual_minimum_f=40.0,
+                    annual_maximum_f=60.0,
+                    annual_precipitation_in=35.0,
+                    growing_degree_days_base_50_f=3000.0,
+                    last_spring_frost_50="05/01",
+                    first_fall_frost_50="10/01",
+                    growing_season_days_50=153,
+                    completeness_class="S",
+                    minimum_years=30,
+                    source_locator="TEST00000001.csv",
+                ),
+            ]
         )
         session.commit()
 
@@ -142,6 +233,24 @@ def test_garden_profile_captures_location_and_growing_context(
         "source_locator": "test-zcta.txt:GEOID=20910",
         "coordinate_method": "census_zcta_representative_point",
     }
+    assert profile["hardiness"]["zone"] == "7b"
+    assert profile["hardiness"]["mean_annual_extreme_minimum_f"] == 7.37
+    assert profile["hardiness"]["confidence"] == "medium"
+    assert profile["hardiness"]["source"]["dataset_id"] == ("usda-phzm-2023-c8510c4e04ea3231")
+    assert profile["hardiness"]["source"]["source_locator"] == (
+        "2023ConusNAD83_Clip.tif:band=1,row=1312,column=5758;WGS84=39.002860,-77.036646"
+    )
+    normals = profile["climate_normals"]
+    assert normals["station_id"] == "USW00013743"
+    assert normals["station_name"] == "WASHINGTON REAGAN AP, VA US"
+    assert normals["station_distance_km"] == 17.2
+    assert normals["last_spring_frost_50"] == "03/24"
+    assert normals["first_fall_frost_50"] == "11/18"
+    assert normals["growing_season_days_50"] == 241
+    assert normals["frost_probability"] == 0.5
+    assert normals["confidence"] == "high"
+    assert normals["source"]["dataset_id"] == "noaa-normals-test"
+    assert normals["source"]["extraction_method"] == ("nearest_qualifying_station_haversine")
     assert profile["growing_methods"] == ["in_ground", "containers"]
 
     fetched = catalog_client.get(f"/api/garden-profiles/{profile['id']}")
@@ -166,6 +275,9 @@ def test_garden_profile_accepts_coordinates(catalog_client: TestClient) -> None:
     assert profile["location_status"] == "coordinates_provided"
     assert profile["coordinate_method"] == "user_provided"
     assert profile["location_source"] is None
+    assert profile["hardiness"] is not None
+    assert profile["hardiness"]["confidence"] == "high"
+    assert profile["climate_normals"] is not None
 
 
 def test_garden_profile_retains_an_unmapped_postal_code(catalog_client: TestClient) -> None:
@@ -180,6 +292,8 @@ def test_garden_profile_retains_an_unmapped_postal_code(catalog_client: TestClie
     assert profile["latitude"] is None
     assert profile["coordinate_method"] is None
     assert profile["location_source"] is None
+    assert profile["hardiness"] is None
+    assert profile["climate_normals"] is None
 
 
 @pytest.mark.parametrize(

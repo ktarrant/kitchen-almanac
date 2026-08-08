@@ -99,6 +99,49 @@ class LocationSourceResponse(BaseModel):
     coordinate_method: str
 
 
+class EvidenceSourceResponse(BaseModel):
+    dataset_id: str
+    source_document_id: str
+    title: str
+    publisher: str | None
+    source_url: str | None
+    sha256: str
+    retrieved_at: datetime | None
+    license: str | None
+    source_locator: str
+    extraction_method: str
+    extractor_version: str
+
+
+class HardinessResponse(BaseModel):
+    zone: str
+    mean_annual_extreme_minimum_f: float
+    confidence: str
+    source: EvidenceSourceResponse
+
+
+class ClimateNormalsResponse(BaseModel):
+    station_id: str
+    station_name: str
+    station_latitude: float
+    station_longitude: float
+    station_elevation_m: float | None
+    station_distance_km: float
+    annual_mean_f: float
+    annual_minimum_f: float
+    annual_maximum_f: float
+    annual_precipitation_in: float
+    growing_degree_days_base_50_f: float
+    last_spring_frost_50: str
+    first_fall_frost_50: str
+    growing_season_days_50: int
+    frost_probability: float
+    completeness_class: str
+    minimum_years: int
+    confidence: str
+    source: EvidenceSourceResponse
+
+
 class GardenProfileResponse(BaseModel):
     id: str
     name: str
@@ -110,6 +153,8 @@ class GardenProfileResponse(BaseModel):
     location_status: str
     coordinate_method: str | None
     location_source: LocationSourceResponse | None
+    hardiness: HardinessResponse | None
+    climate_normals: ClimateNormalsResponse | None
     target_year: int
     experience_level: ExperienceLevel
     growing_methods: list[GrowingMethod]

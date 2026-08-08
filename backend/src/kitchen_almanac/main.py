@@ -12,10 +12,13 @@ from kitchen_almanac.config import get_settings
 from kitchen_almanac.database import get_session
 from kitchen_almanac.db_models import Crop, DatasetVersion, GardenProfile, Wishlist
 from kitchen_almanac.schemas import (
+    ClimateNormalsResponse,
     CropListResponse,
     CropSummary,
+    EvidenceSourceResponse,
     GardenProfileCreateRequest,
     GardenProfileResponse,
+    HardinessResponse,
     HealthResponse,
     LocationSourceResponse,
     WishlistCandidateResponse,
@@ -119,6 +122,74 @@ def _garden_profile_response(profile: GardenProfile) -> GardenProfileResponse:
             source_locator=profile.coordinate_source_locator,
             coordinate_method=profile.coordinate_method,
         )
+
+    def evidence_source(claim) -> EvidenceSourceResponse:
+        source = claim.source_document
+        return EvidenceSourceResponse(
+            dataset_id=claim.climate_dataset_version_id,
+            source_document_id=source.id,
+            title=source.title,
+            publisher=source.publisher,
+            source_url=source.source_url,
+            sha256=source.sha256,
+            retrieved_at=source.retrieved_at,
+            license=source.license,
+            source_locator=claim.source_locator,
+            extraction_method=claim.extraction_method,
+            extractor_version=claim.extractor_version,
+        )
+
+    hardiness = None
+    hardiness_claim = next(
+        (claim for claim in profile.location_evidence if claim.field_name == "usda_hardiness"),
+        None,
+    )
+    if hardiness_claim is not None:
+        hardiness = HardinessResponse(
+            zone=str(hardiness_claim.normalized_value["zone"]),
+            mean_annual_extreme_minimum_f=float(
+                hardiness_claim.normalized_value["mean_annual_extreme_minimum_f"]
+            ),
+            confidence=hardiness_claim.confidence,
+            source=evidence_source(hardiness_claim),
+        )
+
+    climate_normals = None
+    climate_claim = next(
+        (
+            claim
+            for claim in profile.location_evidence
+            if claim.field_name == "noaa_climate_normals"
+        ),
+        None,
+    )
+    if climate_claim is not None:
+        value = climate_claim.normalized_value
+        climate_normals = ClimateNormalsResponse(
+            station_id=str(value["station_id"]),
+            station_name=str(value["station_name"]),
+            station_latitude=float(value["station_latitude"]),
+            station_longitude=float(value["station_longitude"]),
+            station_elevation_m=(
+                float(value["station_elevation_m"])
+                if value["station_elevation_m"] is not None
+                else None
+            ),
+            station_distance_km=float(value["station_distance_km"]),
+            annual_mean_f=float(value["annual_mean_f"]),
+            annual_minimum_f=float(value["annual_minimum_f"]),
+            annual_maximum_f=float(value["annual_maximum_f"]),
+            annual_precipitation_in=float(value["annual_precipitation_in"]),
+            growing_degree_days_base_50_f=float(value["growing_degree_days_base_50_f"]),
+            last_spring_frost_50=str(value["last_spring_frost_50"]),
+            first_fall_frost_50=str(value["first_fall_frost_50"]),
+            growing_season_days_50=int(value["growing_season_days_50"]),
+            frost_probability=float(value["frost_probability"]),
+            completeness_class=str(value["completeness_class"]),
+            minimum_years=int(value["minimum_years"]),
+            confidence=climate_claim.confidence,
+            source=evidence_source(climate_claim),
+        )
     return GardenProfileResponse(
         id=profile.id,
         name=profile.name,
@@ -130,6 +201,8 @@ def _garden_profile_response(profile: GardenProfile) -> GardenProfileResponse:
         location_status=profile.location_status,
         coordinate_method=profile.coordinate_method,
         location_source=location_source,
+        hardiness=hardiness,
+        climate_normals=climate_normals,
         target_year=profile.target_year,
         experience_level=profile.experience_level,
         growing_methods=profile.growing_methods,

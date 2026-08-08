@@ -8,6 +8,8 @@ from sqlalchemy.orm import Session
 
 from kitchen_almanac.db_models import GardenProfile, LocationDatasetVersion, PostalCodeLocation
 from kitchen_almanac.schemas import GardenProfileCreateRequest
+from kitchen_almanac.services.hardiness_service import enrich_garden_hardiness
+from kitchen_almanac.services.noaa_normals_service import enrich_garden_noaa_normals
 
 
 class GardenProfileNotFoundError(LookupError):
@@ -75,6 +77,9 @@ def create_garden_profile(
         updated_at=now,
     )
     session.add(profile)
+    session.flush()
+    enrich_garden_hardiness(session, profile)
+    enrich_garden_noaa_normals(session, profile)
     session.commit()
     session.refresh(profile)
     return profile

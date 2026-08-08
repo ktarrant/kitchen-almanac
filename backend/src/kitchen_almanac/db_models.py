@@ -137,6 +137,72 @@ class PostalCodeLocation(Base):
     source_locator: Mapped[str] = mapped_column(String(255))
 
 
+class ClimateDatasetVersion(Base):
+    __tablename__ = "climate_dataset_versions"
+
+    id: Mapped[str] = mapped_column(String(80), primary_key=True)
+    dataset_kind: Mapped[str] = mapped_column(String(50), index=True)
+    schema_version: Mapped[str] = mapped_column(String(30))
+    parser_version: Mapped[str] = mapped_column(String(30))
+    source_document_id: Mapped[str] = mapped_column(ForeignKey("source_documents.id"))
+    active: Mapped[bool] = mapped_column(Boolean, default=False)
+    loaded_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    source_document: Mapped[SourceDocument] = relationship()
+
+
+class ClimateStationNormal(Base):
+    __tablename__ = "climate_station_normals"
+    __table_args__ = (UniqueConstraint("climate_dataset_version_id", "station_id"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    climate_dataset_version_id: Mapped[str] = mapped_column(
+        ForeignKey("climate_dataset_versions.id"), index=True
+    )
+    station_id: Mapped[str] = mapped_column(String(20), index=True)
+    name: Mapped[str] = mapped_column(String(255))
+    latitude: Mapped[float] = mapped_column(Float)
+    longitude: Mapped[float] = mapped_column(Float)
+    elevation_m: Mapped[float | None] = mapped_column(Float, nullable=True)
+    annual_mean_f: Mapped[float] = mapped_column(Float)
+    annual_minimum_f: Mapped[float] = mapped_column(Float)
+    annual_maximum_f: Mapped[float] = mapped_column(Float)
+    annual_precipitation_in: Mapped[float] = mapped_column(Float)
+    growing_degree_days_base_50_f: Mapped[float] = mapped_column(Float)
+    last_spring_frost_50: Mapped[str] = mapped_column(String(5))
+    first_fall_frost_50: Mapped[str] = mapped_column(String(5))
+    growing_season_days_50: Mapped[int] = mapped_column(Integer)
+    completeness_class: Mapped[str] = mapped_column(String(1))
+    minimum_years: Mapped[int] = mapped_column(Integer)
+    source_locator: Mapped[str] = mapped_column(String(255))
+
+
+class LocationEvidenceClaim(Base):
+    __tablename__ = "location_evidence_claims"
+    __table_args__ = (
+        UniqueConstraint("garden_profile_id", "climate_dataset_version_id", "field_name"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    garden_profile_id: Mapped[str] = mapped_column(ForeignKey("garden_profiles.id"), index=True)
+    climate_dataset_version_id: Mapped[str] = mapped_column(
+        ForeignKey("climate_dataset_versions.id"), index=True
+    )
+    field_name: Mapped[str] = mapped_column(String(120))
+    normalized_value: Mapped[dict | list | str | int | float | bool] = mapped_column(JSON)
+    unit: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    confidence: Mapped[str] = mapped_column(String(20))
+    source_document_id: Mapped[str] = mapped_column(ForeignKey("source_documents.id"), index=True)
+    source_excerpt: Mapped[str] = mapped_column(Text)
+    source_locator: Mapped[str] = mapped_column(String(500))
+    extraction_method: Mapped[str] = mapped_column(String(80))
+    extractor_version: Mapped[str] = mapped_column(String(80))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    climate_dataset: Mapped[ClimateDatasetVersion] = relationship()
+    source_document: Mapped[SourceDocument] = relationship()
+
+
 class GardenProfile(Base):
     __tablename__ = "garden_profiles"
 
@@ -160,6 +226,10 @@ class GardenProfile(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
     location_dataset: Mapped[LocationDatasetVersion | None] = relationship()
+    location_evidence: Mapped[list[LocationEvidenceClaim]] = relationship(
+        cascade="all, delete-orphan",
+        order_by="LocationEvidenceClaim.field_name",
+    )
     wishlists: Mapped[list[Wishlist]] = relationship(back_populates="garden_profile")
 
 

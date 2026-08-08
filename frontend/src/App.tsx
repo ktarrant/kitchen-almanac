@@ -18,6 +18,31 @@ type GardenProfile = {
     title: string;
     publisher: string | null;
   } | null;
+  hardiness: {
+    zone: string;
+    mean_annual_extreme_minimum_f: number;
+    confidence: string;
+    source: {
+      title: string;
+      publisher: string | null;
+      license: string | null;
+    };
+  } | null;
+  climate_normals: {
+    station_id: string;
+    station_name: string;
+    station_distance_km: number;
+    growing_degree_days_base_50_f: number;
+    last_spring_frost_50: string;
+    first_fall_frost_50: string;
+    growing_season_days_50: number;
+    frost_probability: number;
+    confidence: string;
+    source: {
+      title: string;
+      publisher: string | null;
+    };
+  } | null;
 };
 
 type CropMatch = {
@@ -275,6 +300,19 @@ export default function App() {
                   .
                 </p>
               )}
+              {profile.hardiness && (
+                <p className="source-note">
+                  Hardiness evidence from{" "}
+                  {profile.hardiness.source.publisher ?? profile.hardiness.source.title}.
+                </p>
+              )}
+              {profile.climate_normals && (
+                <p className="source-note">
+                  Climate normals from {profile.climate_normals.station_name} (
+                  {profile.climate_normals.station_distance_km.toFixed(1)} km away), published by{" "}
+                  {profile.climate_normals.source.publisher ?? profile.climate_normals.source.title}.
+                </p>
+              )}
             </div>
             <dl>
               <div>
@@ -284,6 +322,30 @@ export default function App() {
               <div>
                 <dt>Setup</dt>
                 <dd>{profile.growing_methods.map((method) => method.replace("_", " ")).join(", ")}</dd>
+              </div>
+              <div>
+                <dt>USDA zone</dt>
+                <dd>
+                  {profile.hardiness
+                    ? `${profile.hardiness.zone} · ${profile.hardiness.mean_annual_extreme_minimum_f.toFixed(1)}°F`
+                    : "Not available"}
+                </dd>
+              </div>
+              <div>
+                <dt>Typical frost window</dt>
+                <dd>
+                  {profile.climate_normals
+                    ? `${profile.climate_normals.last_spring_frost_50} – ${profile.climate_normals.first_fall_frost_50}`
+                    : "Not available"}
+                </dd>
+              </div>
+              <div>
+                <dt>Growing season</dt>
+                <dd>
+                  {profile.climate_normals
+                    ? `${profile.climate_normals.growing_season_days_50} days · ${profile.climate_normals.growing_degree_days_base_50_f.toFixed(0)} GDD₅₀`
+                    : "Not available"}
+                </dd>
               </div>
             </dl>
           </section>

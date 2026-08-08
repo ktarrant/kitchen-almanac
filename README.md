@@ -33,6 +33,10 @@ uv run --project backend kitchen-almanac db upgrade
 uv run --project backend kitchen-almanac catalog load
 uv run --project backend kitchen-almanac locations validate
 uv run --project backend kitchen-almanac locations load
+uv run --project backend kitchen-almanac climate validate-hardiness
+uv run --project backend kitchen-almanac climate load-hardiness
+uv run --project backend kitchen-almanac climate validate-noaa
+uv run --project backend kitchen-almanac climate load-noaa
 uv run --project backend uvicorn kitchen_almanac.main:app --reload
 ```
 
@@ -60,6 +64,21 @@ each resolved coordinate exposes its source row through the API. A ZIP Code
 Tabulation Area is a Census geography rather than a USPS delivery ZIP; its
 representative point is therefore an approximation, not an address or property
 location. This product is not endorsed or certified by the Census Bureau.
+
+Hardiness evidence comes from the [2023 USDA Plant Hardiness Zone Map mean
+annual extreme-low-temperature
+rasters](https://catalog.data.gov/dataset/2023-usda-plant-hardiness-zone-map-mean-annual-extreme-low-temperature-rasters),
+created by USDA ARS and Oregon State University's PRISM Climate Group and
+licensed under CC BY 4.0. The application retains the original CONUS raster and
+records the exact raster cell and extraction version behind each derived zone.
+
+Freeze dates, growing-season length, growing-degree days, temperature, and
+precipitation come from NOAA NCEI's [U.S. Climate Normals
+1991–2020](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc%3AC01619)
+(version 1.0.1; DOI 10.25921/4ek7-fk11). The pinned national station archive is
+processed locally. Garden profiles use the nearest qualifying station within
+200 km, record its distance and completeness class, and label 32°F freeze dates
+as 50-percent-probability values rather than guarantees.
 
 ## Frontend
 

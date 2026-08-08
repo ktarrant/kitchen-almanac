@@ -134,11 +134,15 @@ Acceptance criteria:
 
 ### Step 3: Garden context and location profile
 
-Status: **In progress**
+Status: **Completed 2026-08-08**
 
-Current progress: garden-context collection, persistence, validation, wishlist
-association, and versioned ZIP-area coordinate resolution are implemented.
-USDA hardiness and NOAA climate enrichment remain next.
+Implemented garden-context collection, persistence, validation, wishlist
+association, and versioned ZIP-area coordinate resolution. The application now
+derives USDA hardiness from the pinned 2023 CONUS raster and selects the nearest
+qualifying station from a pinned NOAA 1991–2020 normals archive for probable
+freeze dates, growing-season length, temperature, precipitation, and GDD50.
+Every derived value carries an immutable dataset ID, source checksum, locator,
+extraction method, extractor version, distance or raster cell, and confidence.
 
 - Collect a US ZIP code or coordinate pair before personalized catalog search.
 - Collect the target growing year, experience level, and expected growing

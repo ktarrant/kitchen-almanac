@@ -13,6 +13,7 @@ dependencies = [
   "fastapi>=0.116,<1",
   "pydantic-settings>=2.10,<3",
   "psycopg[binary]>=3.2,<4",
+  "rasterio>=1.4,<2",
   "sqlalchemy>=2.0,<3",
   "typer>=0.16,<1",
   "uvicorn[standard]>=0.35,<1",
