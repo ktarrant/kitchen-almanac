@@ -339,6 +339,11 @@ class GardenProfile(Base):
     target_year: Mapped[int] = mapped_column(Integer)
     experience_level: Mapped[str] = mapped_column(String(20))
     growing_methods: Mapped[list[str]] = mapped_column(JSON)
+    support_available: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    max_plant_spread_inches: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    max_container_volume_gallons: Mapped[float | None] = mapped_column(Float, nullable=True)
+    intended_uses: Mapped[list[str]] = mapped_column(JSON, default=list)
+    disease_concerns: Mapped[list[str]] = mapped_column(JSON, default=list)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 

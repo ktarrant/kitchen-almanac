@@ -209,9 +209,9 @@ Acceptance criteria:
 
 ### Step 5: Searchable catalog and wishlist builder (Goal A/B)
 
-Status: **In progress**
+Status: **Complete**
 
-Current progress: the primary frontend workflow now searches crops and
+Completed: the primary frontend workflow searches crops and
 cultivars one at a time. A deterministic API ranks canonical names, aliases,
 crop types, approved commercial listing names and identifiers, and spelling
 variations. Results remain suggestions until the user explicitly adds a
@@ -219,8 +219,9 @@ documented cultivar, a crop with its cultivar undecided, a custom cultivar
 linked to a known crop, or a custom crop. The wishlist builder pins both active
 catalog versions, and Quick Import remains available as a secondary workflow.
 Result cards expose concise effective traits, inherited crop baselines, and an
-evidence publisher. Location-specific recommendation groups will be added by
-the Step 6 suitability model rather than implied by text matching alone.
+evidence publisher. The Step 6 model now supplies location-specific result
+groups, suitability reasons, constraints, and evidence gaps rather than
+implying recommendation from text matching alone.
 
 - Make one-at-a-time catalog search the primary wishlist workflow.
 - Search crop names, cultivar names, crop types, aliases, and approved source
@@ -248,25 +249,27 @@ Acceptance criteria:
 
 ### Step 6: Regional cultivar suitability (Goal B)
 
-Status: **In progress**
+Status: **Complete**
 
-Current progress: a versioned deterministic assessment now scores documented
-cultivars against the garden's NOAA 50-percent frost-free window with an
-explicit planning buffer. It treats protected-culture mismatches and maturity
-overruns as constraints; accounts for growing method, beginner-facing growth
-habit complexity, regional recommendation scope, and documented disease
-resistance; and reports assumptions, missing evidence, evidence quality, and a
-fingerprint of every versioned input. Generic crop searches rank and group
-cultivars by this assessment, while cultivar-specific searches continue to
-rank by name relevance. The frontend shows the score, leading reasons,
-constraints, and gaps, and a direct API returns the complete cited assessment.
+Completed: the garden profile now captures protected culture, support
+availability, per-plant width, container volume, intended culinary uses, and
+recurring tomato disease concerns. The versioned deterministic assessment
+evaluates frost-free maturity, temperature/GDD, photoperiod, disease pressure,
+growing method, support, space, container fit, intended use, regional evidence,
+and weighted evidence coverage. Supported comparisons create cited score factors;
+season, support, space, container, and protected-culture conflicts become hard
+constraints. Missing cultivar requirements remain explicit `unknown`
+dimensions and never receive hidden points. Crop-type-to-use mappings are
+declared assumptions rather than silent facts.
 
-This first model intentionally does not yet score cultivar-specific
-temperature/GDD thresholds, photoperiod, local disease pressure, precise
-container/support dimensions, or intended culinary use because the baseline
-catalog does not contain enough comparable evidence for those dimensions.
-Those fields remain the next suitability expansion rather than being inferred
-from a regional commercial listing.
+Generic crop searches rank and group cultivars by the assessment, while
+cultivar-specific searches continue to rank by name relevance. The frontend
+collects the garden constraints, shows leading reasons and constraints, and
+provides an expandable audit of every dimension. A direct endpoint returns the
+complete assessment with algorithm version, catalog/climate provenance,
+evidence quality, and a deterministic fingerprint of all inputs. Temperature,
+GDD, and photoperiod comparisons are wired for future comparable cultivar
+claims; the current baseline truthfully reports those catalog gaps.
 
 - Evaluate cultivar candidates against the garden's frost-free window,
   temperature and growing-degree-day needs, photoperiod, disease pressure,

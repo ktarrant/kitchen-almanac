@@ -173,6 +173,7 @@ def garden_profile(catalog_client: TestClient) -> dict[str, object]:
             "target_year": date.today().year + 1,
             "experience_level": "beginner",
             "growing_methods": ["containers", "raised_bed"],
+            "support_available": True,
         },
     )
     assert response.status_code == 201
@@ -318,7 +319,8 @@ def test_catalog_search_returns_crop_and_related_cultivars(
         "match_method": "exact",
     }
     assert len(results["crop_choices"]) == 1
-    assert [item["cultivar"]["slug"] for item in results["cultivars"]] == [
+    assert results["cultivars"][0]["cultivar"]["slug"] == "mountain-merit"
+    assert {item["cultivar"]["slug"] for item in results["cultivars"]} == {
         "mountain-merit",
         "juliet",
         "sun-gold",
@@ -327,10 +329,10 @@ def test_catalog_search_returns_crop_and_related_cultivars(
         "green-zebra",
         "san-marzano",
         "san-marzano-2",
-    ]
+    }
     assert {item["match_method"] for item in results["cultivars"]} == {"related_crop"}
     assert results["cultivars"][0]["suitability"]["result_group"] == "best_documented_fit"
-    assert results["cultivars"][0]["suitability"]["score"] == 95
+    assert results["cultivars"][0]["suitability"]["score"] == 80
 
 
 def test_catalog_search_ranks_specific_cultivars_without_auto_selecting(
@@ -392,7 +394,8 @@ def test_catalog_search_matches_misspelled_crop_and_commercial_identifier(
     assert crop_results["crop_choices"][0]["crop"]["slug"] == "tomatoes"
     assert crop_results["crop_choices"][0]["match_method"] == "fuzzy"
     assert len(crop_results["crop_choices"]) == 1
-    assert [item["cultivar"]["slug"] for item in crop_results["cultivars"]] == [
+    assert crop_results["cultivars"][0]["cultivar"]["slug"] == "mountain-merit"
+    assert {item["cultivar"]["slug"] for item in crop_results["cultivars"]} == {
         "mountain-merit",
         "juliet",
         "sun-gold",
@@ -401,7 +404,7 @@ def test_catalog_search_matches_misspelled_crop_and_commercial_identifier(
         "green-zebra",
         "san-marzano",
         "san-marzano-2",
-    ]
+    }
 
     listing_response = catalog_client.get(
         "/api/catalog/search",
@@ -444,11 +447,11 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     assert second.status_code == 200
     assessment = first.json()
     assert second.json() == assessment
-    assert assessment["algorithm_version"] == "suitability-v1.0.0"
+    assert assessment["algorithm_version"] == "suitability-v1.1.0"
     assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
     assert assessment["input_fingerprint"].startswith("sha256:")
     assert assessment["status"] == "suitable"
-    assert assessment["score"] == 95
+    assert assessment["score"] == 80
     assert assessment["result_group"] == "best_documented_fit"
     assert assessment["constraints"] == []
     factors = {factor["code"]: factor for factor in assessment["factors"]}
@@ -457,7 +460,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
         "crop_baseline",
         "climate_normal",
     }
-    regional = factors["regional_recommendation"]
+    regional = factors["regional_evidence"]
     assert regional["evidence"][0]["source_scope"] == (
         "Current regional commercial recommendation; not written specifically for home gardeners"
     )
@@ -465,6 +468,20 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
         "Mid-Atlantic applicability uses an approximate coordinate envelope "
         "(36.5–42.5°N, 83–73°W), not a political-boundary lookup."
     ]
+    assert [item["code"] for item in assessment["dimensions"]] == [
+        "maturity_window",
+        "temperature_gdd",
+        "photoperiod",
+        "disease_pressure",
+        "growing_method",
+        "support",
+        "space",
+        "container_fit",
+        "intended_use",
+        "regional_evidence",
+        "evidence_quality",
+    ]
+    assert assessment["evidence_quality"] == 80
 
 
 def test_suitability_treats_protected_culture_as_a_constraint(
@@ -482,7 +499,7 @@ def test_suitability_treats_protected_culture_as_a_constraint(
     assert assessment["result_group"] == "constrained"
     assert "protected culture" in assessment["constraints"][0]
     protected_factor = next(
-        factor for factor in assessment["factors"] if factor["code"] == "protected_culture"
+        factor for factor in assessment["factors"] if factor["code"] == "growing_method"
     )
     assert {item["field_name"] for item in protected_factor["evidence"]} == {
         "crop_type",
@@ -508,9 +525,111 @@ def test_suitability_refuses_to_score_without_climate_evidence(
     assert assessment["status"] == "insufficient_evidence"
     assert assessment["score"] is None
     assert assessment["result_group"] == "insufficient_evidence"
-    assert assessment["missing_evidence"] == [
-        "A frost-free growing-season normal for this garden"
-    ]
+    assert "A frost-free growing-season normal for this garden" in assessment["missing_evidence"]
+    assert "Cultivar-specific photoperiod sensitivity" in assessment["missing_evidence"]
+    assert "The largest available container volume" in assessment["missing_evidence"]
+
+
+def test_suitability_enforces_support_and_space_constraints(
+    catalog_client: TestClient,
+) -> None:
+    profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={
+            "postal_code": "20910",
+            "growing_methods": ["raised_bed"],
+            "support_available": False,
+            "max_plant_spread_inches": 12,
+        },
+    ).json()
+
+    climbing = catalog_client.get(
+        "/api/suitability",
+        params={"garden_profile_id": profile["id"], "cultivar_slug": "san-marzano-2"},
+    ).json()
+    compact = catalog_client.get(
+        "/api/suitability",
+        params={"garden_profile_id": profile["id"], "cultivar_slug": "mountain-merit"},
+    ).json()
+
+    assert climbing["status"] == "not_recommended"
+    assert any("cannot provide" in constraint for constraint in climbing["constraints"])
+    assert compact["status"] == "not_recommended"
+    assert any("12-inch" in constraint for constraint in compact["constraints"])
+    assert next(item for item in compact["dimensions"] if item["code"] == "space")[
+        "status"
+    ] == "constraint"
+
+
+def test_suitability_matches_protected_culture_intended_use_and_disease_concern(
+    catalog_client: TestClient,
+) -> None:
+    protected_profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={
+            "postal_code": "20910",
+            "growing_methods": ["protected"],
+            "support_available": True,
+            "intended_uses": ["fresh"],
+        },
+    ).json()
+    protected = catalog_client.get(
+        "/api/suitability",
+        params={"garden_profile_id": protected_profile["id"], "cultivar_slug": "corinto"},
+    ).json()
+    assert protected["status"] == "suitable"
+    assert next(item for item in protected["dimensions"] if item["code"] == "growing_method")[
+        "status"
+    ] == "fit"
+
+    priority_profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={
+            "postal_code": "20910",
+            "growing_methods": ["raised_bed"],
+            "support_available": True,
+            "intended_uses": ["fresh"],
+            "disease_concerns": ["late_blight"],
+        },
+    ).json()
+    priority = catalog_client.get(
+        "/api/suitability",
+        params={"garden_profile_id": priority_profile["id"], "cultivar_slug": "mountain-merit"},
+    ).json()
+    factor_codes = {factor["code"] for factor in priority["factors"]}
+    assert {"disease_pressure", "intended_use"} <= factor_codes
+    assert next(
+        item for item in priority["dimensions"] if item["code"] == "disease_pressure"
+    )["status"] == "fit"
+
+
+def test_suitability_reports_container_and_preference_evidence_gaps(
+    catalog_client: TestClient,
+) -> None:
+    profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={
+            "postal_code": "20910",
+            "growing_methods": ["containers"],
+            "support_available": True,
+            "max_container_volume_gallons": 15,
+            "intended_uses": ["pickling"],
+            "disease_concerns": ["late_blight"],
+        },
+    ).json()
+    response = catalog_client.get(
+        "/api/suitability",
+        params={"garden_profile_id": profile["id"], "cultivar_slug": "provider"},
+    )
+
+    assert response.status_code == 200
+    assessment = response.json()
+    assert assessment["status"] == "conditional"
+    assert "A minimum container volume" in " ".join(assessment["missing_evidence"])
+    assert "Use evidence for: pickling" in assessment["missing_evidence"]
+    assert next(
+        item for item in assessment["dimensions"] if item["code"] == "disease_pressure"
+    )["status"] == "not_applicable"
 
 
 def test_garden_profile_captures_location_and_growing_context(
@@ -524,6 +643,11 @@ def test_garden_profile_captures_location_and_growing_context(
             "target_year": date.today().year,
             "experience_level": "intermediate",
             "growing_methods": ["containers", "containers", "in_ground"],
+            "support_available": False,
+            "max_plant_spread_inches": 18,
+            "max_container_volume_gallons": 10,
+            "intended_uses": ["pickling", "fresh", "pickling"],
+            "disease_concerns": ["late_blight", "early_blight", "late_blight"],
         },
     )
 
@@ -566,6 +690,11 @@ def test_garden_profile_captures_location_and_growing_context(
     assert normals["source"]["dataset_id"] == "noaa-normals-test"
     assert normals["source"]["extraction_method"] == ("nearest_qualifying_station_haversine")
     assert profile["growing_methods"] == ["in_ground", "containers"]
+    assert profile["support_available"] is False
+    assert profile["max_plant_spread_inches"] == 18
+    assert profile["max_container_volume_gallons"] == 10
+    assert profile["intended_uses"] == ["fresh", "pickling"]
+    assert profile["disease_concerns"] == ["early_blight", "late_blight"]
 
     fetched = catalog_client.get(f"/api/garden-profiles/{profile['id']}")
     assert fetched.status_code == 200
@@ -616,6 +745,16 @@ def test_garden_profile_retains_an_unmapped_postal_code(catalog_client: TestClie
         {"postal_code": "not-a-zip", "growing_methods": ["containers"]},
         {"latitude": 38.9, "growing_methods": ["containers"]},
         {"postal_code": "20910", "growing_methods": []},
+        {
+            "postal_code": "20910",
+            "growing_methods": ["containers"],
+            "max_plant_spread_inches": 5,
+        },
+        {
+            "postal_code": "20910",
+            "growing_methods": ["containers"],
+            "max_container_volume_gallons": 0.5,
+        },
         {
             "postal_code": "20910",
             "target_year": date.today().year - 1,

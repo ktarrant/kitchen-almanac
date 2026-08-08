@@ -111,6 +111,14 @@ class SuitabilityFactorResponse(BaseModel):
     evidence: list[SuitabilityEvidenceReference]
 
 
+class SuitabilityDimensionResponse(BaseModel):
+    code: str
+    label: str
+    status: str
+    explanation: str
+    evidence: list[SuitabilityEvidenceReference]
+
+
 class SuitabilityAssessmentResponse(BaseModel):
     garden_profile_id: str
     cultivar_slug: str
@@ -123,6 +131,7 @@ class SuitabilityAssessmentResponse(BaseModel):
     result_group: str
     summary: str
     factors: list[SuitabilityFactorResponse]
+    dimensions: list[SuitabilityDimensionResponse]
     constraints: list[str]
     assumptions: list[str]
     missing_evidence: list[str]
@@ -169,6 +178,26 @@ class GrowingMethod(StrEnum):
     IN_GROUND = "in_ground"
     RAISED_BED = "raised_bed"
     CONTAINERS = "containers"
+    PROTECTED = "protected"
+
+
+class IntendedUse(StrEnum):
+    FRESH = "fresh"
+    SNACKING = "snacking"
+    SAUCE = "sauce"
+    CANNING = "canning"
+    PICKLING = "pickling"
+    PROCESSING = "processing"
+
+
+class DiseaseConcern(StrEnum):
+    EARLY_BLIGHT = "early_blight"
+    FUSARIUM_WILT = "fusarium_wilt"
+    LATE_BLIGHT = "late_blight"
+    ROOT_KNOT_NEMATODE = "root_knot_nematode"
+    TOMATO_MOSAIC_VIRUS = "tomato_mosaic_virus"
+    TOMATO_SPOTTED_WILT_VIRUS = "tomato_spotted_wilt_virus"
+    VERTICILLIUM_WILT = "verticillium_wilt"
 
 
 class GardenProfileCreateRequest(BaseModel):
@@ -179,7 +208,12 @@ class GardenProfileCreateRequest(BaseModel):
     longitude: float | None = Field(default=None, ge=-180, le=180)
     target_year: int = Field(default_factory=lambda: date.today().year)
     experience_level: ExperienceLevel = ExperienceLevel.BEGINNER
-    growing_methods: list[GrowingMethod] = Field(min_length=1, max_length=3)
+    growing_methods: list[GrowingMethod] = Field(min_length=1, max_length=4)
+    support_available: bool | None = None
+    max_plant_spread_inches: int | None = Field(default=None, ge=6, le=120)
+    max_container_volume_gallons: float | None = Field(default=None, ge=1, le=100)
+    intended_uses: list[IntendedUse] = Field(default_factory=list, max_length=6)
+    disease_concerns: list[DiseaseConcern] = Field(default_factory=list, max_length=7)
 
     @field_validator("name")
     @classmethod
@@ -204,6 +238,16 @@ class GardenProfileCreateRequest(BaseModel):
     def normalize_growing_methods(cls, value: list[GrowingMethod]) -> list[GrowingMethod]:
         order = list(GrowingMethod)
         return [method for method in order if method in value]
+
+    @field_validator("intended_uses")
+    @classmethod
+    def normalize_intended_uses(cls, value: list[IntendedUse]) -> list[IntendedUse]:
+        return [item for item in IntendedUse if item in value]
+
+    @field_validator("disease_concerns")
+    @classmethod
+    def normalize_disease_concerns(cls, value: list[DiseaseConcern]) -> list[DiseaseConcern]:
+        return [item for item in DiseaseConcern if item in value]
 
     @model_validator(mode="after")
     def validate_location_and_year(self) -> GardenProfileCreateRequest:
@@ -289,6 +333,11 @@ class GardenProfileResponse(BaseModel):
     target_year: int
     experience_level: ExperienceLevel
     growing_methods: list[GrowingMethod]
+    support_available: bool | None
+    max_plant_spread_inches: int | None
+    max_container_volume_gallons: float | None
+    intended_uses: list[IntendedUse]
+    disease_concerns: list[DiseaseConcern]
     created_at: datetime
     updated_at: datetime
 

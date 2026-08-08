@@ -98,6 +98,21 @@ custom cultivars remain linked to their crop, while fuzzy, crop-type, or
 otherwise ambiguous results are returned as ranked candidates and require
 explicit confirmation.
 
+## Suitability model
+
+Garden profiles can record support availability, maximum per-plant width,
+container volume, intended culinary uses, recurring disease concerns, and
+protected-culture access. The current disease choices are explicitly scoped to
+tomatoes, the crop for which the catalog has comparable resistance evidence.
+The `suitability-v1.1.0` algorithm audits maturity,
+temperature/GDD, photoperiod, disease pressure, growing method, support, space,
+container fit, intended use, regional evidence, and evidence coverage. Every
+score-changing factor includes the catalog, climate, or garden-profile facts
+that produced it. Unsupported dimensions are returned as `unknown` and do not
+receive points; incompatible documented physical requirements are returned as
+constraints. Identical versioned inputs produce the same SHA-256 assessment
+fingerprint and ranking.
+
 ## Location data
 
 ZIP-area coordinates come from the [2025 U.S. Census Bureau ZCTA

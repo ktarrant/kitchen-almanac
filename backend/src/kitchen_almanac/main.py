@@ -298,6 +298,11 @@ def _garden_profile_response(profile: GardenProfile) -> GardenProfileResponse:
         target_year=profile.target_year,
         experience_level=profile.experience_level,
         growing_methods=profile.growing_methods,
+        support_available=profile.support_available,
+        max_plant_spread_inches=profile.max_plant_spread_inches,
+        max_container_volume_gallons=profile.max_container_volume_gallons,
+        intended_uses=profile.intended_uses,
+        disease_concerns=profile.disease_concerns,
         created_at=profile.created_at,
         updated_at=profile.updated_at,
     )

@@ -73,6 +73,11 @@ def create_garden_profile(
         target_year=request.target_year,
         experience_level=request.experience_level,
         growing_methods=[method.value for method in request.growing_methods],
+        support_available=request.support_available,
+        max_plant_spread_inches=request.max_plant_spread_inches,
+        max_container_volume_gallons=request.max_container_volume_gallons,
+        intended_uses=[item.value for item in request.intended_uses],
+        disease_concerns=[item.value for item in request.disease_concerns],
         created_at=now,
         updated_at=now,
     )

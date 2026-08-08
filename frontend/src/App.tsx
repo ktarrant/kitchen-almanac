@@ -1,6 +1,15 @@
 import { FormEvent, useMemo, useState } from "react";
 
-type GrowingMethod = "in_ground" | "raised_bed" | "containers";
+type GrowingMethod = "in_ground" | "raised_bed" | "containers" | "protected";
+type IntendedUse = "fresh" | "snacking" | "sauce" | "canning" | "pickling" | "processing";
+type DiseaseConcern =
+  | "early_blight"
+  | "fusarium_wilt"
+  | "late_blight"
+  | "root_knot_nematode"
+  | "tomato_mosaic_virus"
+  | "tomato_spotted_wilt_virus"
+  | "verticillium_wilt";
 
 type GardenProfile = {
   id: string;
@@ -12,6 +21,11 @@ type GardenProfile = {
   target_year: number;
   experience_level: "beginner" | "intermediate" | "advanced";
   growing_methods: GrowingMethod[];
+  support_available: boolean | null;
+  max_plant_spread_inches: number | null;
+  max_container_volume_gallons: number | null;
+  intended_uses: IntendedUse[];
+  disease_concerns: DiseaseConcern[];
   location_status: string;
   coordinate_method: string | null;
   location_source: {
@@ -113,6 +127,12 @@ type SuitabilityAssessment = {
     points: number;
     explanation: string;
   }[];
+  dimensions: {
+    code: string;
+    label: string;
+    status: "fit" | "caution" | "constraint" | "unknown" | "not_applicable";
+    explanation: string;
+  }[];
   constraints: string[];
   assumptions: string[];
   missing_evidence: string[];
@@ -167,7 +187,29 @@ const currentYear = new Date().getFullYear();
 const methodOptions: { value: GrowingMethod; label: string; detail: string }[] = [
   { value: "in_ground", label: "In ground", detail: "Beds planted directly in your soil" },
   { value: "raised_bed", label: "Raised beds", detail: "Contained beds with added soil" },
-  { value: "containers", label: "Containers", detail: "Pots, grow bags, and planters" }
+  { value: "containers", label: "Containers", detail: "Pots, grow bags, and planters" },
+  {
+    value: "protected",
+    label: "Protected culture",
+    detail: "A greenhouse or high tunnel"
+  }
+];
+const intendedUseOptions: { value: IntendedUse; label: string }[] = [
+  { value: "fresh", label: "Fresh eating" },
+  { value: "snacking", label: "Snacking" },
+  { value: "sauce", label: "Sauce" },
+  { value: "canning", label: "Canning" },
+  { value: "pickling", label: "Pickling" },
+  { value: "processing", label: "General processing" }
+];
+const diseaseOptions: { value: DiseaseConcern; label: string }[] = [
+  { value: "early_blight", label: "Early blight" },
+  { value: "late_blight", label: "Late blight" },
+  { value: "fusarium_wilt", label: "Fusarium wilt" },
+  { value: "verticillium_wilt", label: "Verticillium wilt" },
+  { value: "root_knot_nematode", label: "Root-knot nematode" },
+  { value: "tomato_mosaic_virus", label: "Tomato mosaic virus" },
+  { value: "tomato_spotted_wilt_virus", label: "Tomato spotted wilt virus" }
 ];
 
 async function responseMessage(response: Response): Promise<string> {
@@ -241,6 +283,11 @@ export default function App() {
   const [targetYear, setTargetYear] = useState(currentYear);
   const [experienceLevel, setExperienceLevel] = useState("beginner");
   const [growingMethods, setGrowingMethods] = useState<GrowingMethod[]>(["raised_bed"]);
+  const [supportChoice, setSupportChoice] = useState<"unknown" | "yes" | "no">("unknown");
+  const [maxPlantSpread, setMaxPlantSpread] = useState("");
+  const [maxContainerVolume, setMaxContainerVolume] = useState("");
+  const [intendedUses, setIntendedUses] = useState<IntendedUse[]>([]);
+  const [diseaseConcerns, setDiseaseConcerns] = useState<DiseaseConcern[]>([]);
   const [text, setText] = useState(initialWishlist);
   const [wishlist, setWishlist] = useState<Wishlist | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -278,6 +325,20 @@ export default function App() {
     );
   }
 
+  function toggleIntendedUse(use: IntendedUse) {
+    setIntendedUses((selected) =>
+      selected.includes(use) ? selected.filter((item) => item !== use) : [...selected, use]
+    );
+  }
+
+  function toggleDiseaseConcern(concern: DiseaseConcern) {
+    setDiseaseConcerns((selected) =>
+      selected.includes(concern)
+        ? selected.filter((item) => item !== concern)
+        : [...selected, concern]
+    );
+  }
+
   async function submitGardenProfile(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSavingProfile(true);
@@ -290,7 +351,15 @@ export default function App() {
           postal_code: postalCode,
           target_year: targetYear,
           experience_level: experienceLevel,
-          growing_methods: growingMethods
+          growing_methods: growingMethods,
+          support_available:
+            supportChoice === "unknown" ? null : supportChoice === "yes",
+          max_plant_spread_inches: maxPlantSpread ? Number(maxPlantSpread) : null,
+          max_container_volume_gallons: maxContainerVolume
+            ? Number(maxContainerVolume)
+            : null,
+          intended_uses: intendedUses,
+          disease_concerns: diseaseConcerns
         })
       });
       if (!response.ok) {
@@ -488,6 +557,95 @@ export default function App() {
               </div>
             </fieldset>
 
+            <fieldset>
+              <legend>What can your space support?</legend>
+              <p className="field-help">
+                Optional details turn possible physical conflicts into explicit checks.
+              </p>
+              <div className="field-grid">
+                <label className="field" htmlFor="support-available">
+                  <span>Cages, stakes, or trellises</span>
+                  <select
+                    id="support-available"
+                    value={supportChoice}
+                    onChange={(event) =>
+                      setSupportChoice(event.target.value as "unknown" | "yes" | "no")
+                    }
+                  >
+                    <option value="unknown">Not sure yet</option>
+                    <option value="yes">I can provide support</option>
+                    <option value="no">No support available</option>
+                  </select>
+                </label>
+                <label className="field" htmlFor="plant-spread">
+                  <span>Maximum width per plant</span>
+                  <select
+                    id="plant-spread"
+                    value={maxPlantSpread}
+                    onChange={(event) => setMaxPlantSpread(event.target.value)}
+                  >
+                    <option value="">Not specified</option>
+                    <option value="12">12 inches</option>
+                    <option value="18">18 inches</option>
+                    <option value="24">24 inches</option>
+                    <option value="36">36 inches</option>
+                    <option value="60">60 inches or more</option>
+                  </select>
+                </label>
+                {growingMethods.includes("containers") && (
+                  <label className="field" htmlFor="container-volume">
+                    <span>Largest available container</span>
+                    <select
+                      id="container-volume"
+                      value={maxContainerVolume}
+                      onChange={(event) => setMaxContainerVolume(event.target.value)}
+                    >
+                      <option value="">Not specified</option>
+                      <option value="3">3 gallons</option>
+                      <option value="5">5 gallons</option>
+                      <option value="10">10 gallons</option>
+                      <option value="15">15 gallons</option>
+                      <option value="20">20 gallons or more</option>
+                    </select>
+                  </label>
+                )}
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>What matters for this garden?</legend>
+              <p className="field-help">
+                Optional culinary goals and recurring disease concerns refine cultivar rankings.
+              </p>
+              <div className="preference-options">
+                {intendedUseOptions.map((option) => (
+                  <label key={option.value}>
+                    <input
+                      type="checkbox"
+                      checked={intendedUses.includes(option.value)}
+                      onChange={() => toggleIntendedUse(option.value)}
+                    />
+                    <span>{option.label}</span>
+                  </label>
+                ))}
+              </div>
+              <details className="disease-options">
+                <summary>Add recurring tomato disease concerns</summary>
+                <div className="preference-options">
+                  {diseaseOptions.map((option) => (
+                    <label key={option.value}>
+                      <input
+                        type="checkbox"
+                        checked={diseaseConcerns.includes(option.value)}
+                        onChange={() => toggleDiseaseConcern(option.value)}
+                      />
+                      <span>{option.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </details>
+            </fieldset>
+
             <div className="profile-footer">
               <p>
                 ZIP codes are matched to an approximate Census ZCTA representative point,
@@ -538,6 +696,27 @@ export default function App() {
               <div>
                 <dt>Setup</dt>
                 <dd>{profile.growing_methods.map((method) => method.replace("_", " ")).join(", ")}</dd>
+              </div>
+              <div>
+                <dt>Physical limits</dt>
+                <dd>
+                  {profile.support_available === null
+                    ? "Support not specified"
+                    : profile.support_available
+                      ? "Support available"
+                      : "No support"}
+                  {profile.max_plant_spread_inches
+                    ? ` · ${profile.max_plant_spread_inches} in per plant`
+                    : ""}
+                </dd>
+              </div>
+              <div>
+                <dt>Priorities</dt>
+                <dd>
+                  {[...profile.intended_uses, ...profile.disease_concerns]
+                    .map(humanize)
+                    .join(", ") || "None selected"}
+                </dd>
               </div>
               <div>
                 <dt>USDA zone</dt>
@@ -715,6 +894,22 @@ export default function App() {
                                 Missing: {result.suitability.missing_evidence.join("; ")}
                               </p>
                             )}
+                            <details className="suitability-details">
+                              <summary>
+                                Review all {result.suitability.dimensions.length} checks ·{" "}
+                                {result.suitability.evidence_quality}% evidence coverage
+                              </summary>
+                              <dl>
+                                {result.suitability.dimensions.map((dimension) => (
+                                  <div key={dimension.code}>
+                                    <dt>
+                                      {dimension.label} · {humanize(dimension.status)}
+                                    </dt>
+                                    <dd>{dimension.explanation}</dd>
+                                  </div>
+                                ))}
+                              </dl>
+                            </details>
                           </div>
                           {evidence && (
                             <p className="evidence-note">
