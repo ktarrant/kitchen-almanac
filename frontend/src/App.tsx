@@ -7,10 +7,17 @@ type GardenProfile = {
   name: string;
   location_input: string;
   postal_code: string | null;
+  latitude: number | null;
+  longitude: number | null;
   target_year: number;
   experience_level: "beginner" | "intermediate" | "advanced";
   growing_methods: GrowingMethod[];
   location_status: string;
+  coordinate_method: string | null;
+  location_source: {
+    title: string;
+    publisher: string | null;
+  } | null;
 };
 
 type CropMatch = {
@@ -241,7 +248,10 @@ export default function App() {
             </fieldset>
 
             <div className="profile-footer">
-              <p>We store the ZIP code you enter; climate-data enrichment comes next.</p>
+              <p>
+                ZIP codes are matched to an approximate Census ZCTA representative point,
+                never treated as an exact address.
+              </p>
               <button
                 className="primary-button"
                 disabled={savingProfile || !postalCode.trim() || growingMethods.length === 0}
@@ -258,6 +268,13 @@ export default function App() {
             <div>
               <p className="section-kicker">Garden saved</p>
               <h2>{profile.location_input}</h2>
+              {profile.location_source && (
+                <p className="source-note">
+                  Approximate ZCTA point from{" "}
+                  {profile.location_source.publisher ?? profile.location_source.title}
+                  .
+                </p>
+              )}
             </div>
             <dl>
               <div>

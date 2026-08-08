@@ -3,9 +3,10 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from uuid import uuid4
 
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from kitchen_almanac.db_models import GardenProfile
+from kitchen_almanac.db_models import GardenProfile, LocationDatasetVersion, PostalCodeLocation
 from kitchen_almanac.schemas import GardenProfileCreateRequest
 
 
@@ -23,6 +24,25 @@ def create_garden_profile(
         latitude = None
         longitude = None
         location_status = "postal_code_pending"
+        location_dataset_version_id = None
+        coordinate_method = None
+        coordinate_source_locator = None
+
+        postal_location = session.scalar(
+            select(PostalCodeLocation)
+            .join(LocationDatasetVersion)
+            .where(
+                LocationDatasetVersion.active.is_(True),
+                PostalCodeLocation.postal_code == postal_code,
+            )
+        )
+        if postal_location is not None:
+            latitude = postal_location.latitude
+            longitude = postal_location.longitude
+            location_status = "postal_code_resolved"
+            location_dataset_version_id = postal_location.location_dataset_version_id
+            coordinate_method = postal_location.coordinate_method
+            coordinate_source_locator = postal_location.source_locator
     else:
         assert request.latitude is not None
         assert request.longitude is not None
@@ -31,6 +51,9 @@ def create_garden_profile(
         latitude = request.latitude
         longitude = request.longitude
         location_status = "coordinates_provided"
+        location_dataset_version_id = None
+        coordinate_method = "user_provided"
+        coordinate_source_locator = None
 
     now = datetime.now(UTC)
     profile = GardenProfile(
@@ -42,6 +65,9 @@ def create_garden_profile(
         latitude=latitude,
         longitude=longitude,
         location_status=location_status,
+        location_dataset_version_id=location_dataset_version_id,
+        coordinate_method=coordinate_method,
+        coordinate_source_locator=coordinate_source_locator,
         target_year=request.target_year,
         experience_level=request.experience_level,
         growing_methods=[method.value for method in request.growing_methods],

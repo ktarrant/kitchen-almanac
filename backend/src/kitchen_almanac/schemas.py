@@ -87,6 +87,18 @@ class GardenProfileCreateRequest(BaseModel):
         return self
 
 
+class LocationSourceResponse(BaseModel):
+    dataset_id: str
+    source_document_id: str
+    title: str
+    publisher: str | None
+    source_url: str | None
+    sha256: str
+    retrieved_at: datetime | None
+    source_locator: str
+    coordinate_method: str
+
+
 class GardenProfileResponse(BaseModel):
     id: str
     name: str
@@ -96,6 +108,8 @@ class GardenProfileResponse(BaseModel):
     latitude: float | None
     longitude: float | None
     location_status: str
+    coordinate_method: str | None
+    location_source: LocationSourceResponse | None
     target_year: int
     experience_level: ExperienceLevel
     growing_methods: list[GrowingMethod]

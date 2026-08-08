@@ -109,6 +109,34 @@ class EvidenceClaim(Base):
     extractor_version: Mapped[str] = mapped_column(String(80))
 
 
+class LocationDatasetVersion(Base):
+    __tablename__ = "location_dataset_versions"
+
+    id: Mapped[str] = mapped_column(String(80), primary_key=True)
+    schema_version: Mapped[str] = mapped_column(String(30))
+    parser_version: Mapped[str] = mapped_column(String(30))
+    source_document_id: Mapped[str] = mapped_column(ForeignKey("source_documents.id"))
+    active: Mapped[bool] = mapped_column(Boolean, default=False)
+    loaded_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    source_document: Mapped[SourceDocument] = relationship()
+
+
+class PostalCodeLocation(Base):
+    __tablename__ = "postal_code_locations"
+    __table_args__ = (UniqueConstraint("location_dataset_version_id", "postal_code"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    location_dataset_version_id: Mapped[str] = mapped_column(
+        ForeignKey("location_dataset_versions.id"), index=True
+    )
+    postal_code: Mapped[str] = mapped_column(String(5), index=True)
+    latitude: Mapped[float] = mapped_column(Float)
+    longitude: Mapped[float] = mapped_column(Float)
+    coordinate_method: Mapped[str] = mapped_column(String(50))
+    source_locator: Mapped[str] = mapped_column(String(255))
+
+
 class GardenProfile(Base):
     __tablename__ = "garden_profiles"
 
@@ -120,12 +148,18 @@ class GardenProfile(Base):
     latitude: Mapped[float | None] = mapped_column(Float, nullable=True)
     longitude: Mapped[float | None] = mapped_column(Float, nullable=True)
     location_status: Mapped[str] = mapped_column(String(40))
+    location_dataset_version_id: Mapped[str | None] = mapped_column(
+        ForeignKey("location_dataset_versions.id"), nullable=True, index=True
+    )
+    coordinate_method: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    coordinate_source_locator: Mapped[str | None] = mapped_column(String(255), nullable=True)
     target_year: Mapped[int] = mapped_column(Integer)
     experience_level: Mapped[str] = mapped_column(String(20))
     growing_methods: Mapped[list[str]] = mapped_column(JSON)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
+    location_dataset: Mapped[LocationDatasetVersion | None] = relationship()
     wishlists: Mapped[list[Wishlist]] = relationship(back_populates="garden_profile")
 
 

@@ -239,6 +239,12 @@ h1 {
   font-size: 2.2rem;
 }
 
+.source-note {
+  margin: 0.45rem 0 0;
+  color: #68756c;
+  font-size: 0.75rem;
+}
+
 .profile-summary dl {
   display: flex;
   gap: 2.5rem;

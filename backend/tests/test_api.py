@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterator
-from datetime import date
+from datetime import UTC, date, datetime
 
 import pytest
 from fastapi.testclient import TestClient
@@ -10,6 +10,7 @@ from sqlalchemy.pool import StaticPool
 
 from kitchen_almanac.catalog import DEFAULT_SOURCE, build_catalog
 from kitchen_almanac.database import Base, get_session, make_engine
+from kitchen_almanac.db_models import LocationDatasetVersion, PostalCodeLocation, SourceDocument
 from kitchen_almanac.main import app
 from kitchen_almanac.services.catalog_repository import load_catalog
 
@@ -23,6 +24,38 @@ def catalog_client() -> Iterator[TestClient]:
     Base.metadata.create_all(engine)
     with Session(engine) as session:
         load_catalog(session, build_catalog(DEFAULT_SOURCE))
+        source = SourceDocument(
+            id="census-zcta-test-source",
+            title="Test Census ZCTA source",
+            source_path="test-zcta.txt",
+            source_url="https://www.census.gov/test-zcta",
+            publisher="United States Census Bureau",
+            sha256="0" * 64,
+            media_type="text/plain",
+            retrieved_at=datetime(2026, 8, 8, tzinfo=UTC),
+            license="U.S. Government work",
+        )
+        dataset = LocationDatasetVersion(
+            id="census-zcta-test",
+            schema_version="1.0.0",
+            parser_version="1.0.0",
+            source_document_id=source.id,
+            active=True,
+            loaded_at=datetime(2026, 8, 8, tzinfo=UTC),
+        )
+        session.add_all([source, dataset])
+        session.flush()
+        session.add(
+            PostalCodeLocation(
+                location_dataset_version_id=dataset.id,
+                postal_code="20910",
+                latitude=39.00286,
+                longitude=-77.036646,
+                coordinate_method="census_zcta_representative_point",
+                source_locator="test-zcta.txt:GEOID=20910",
+            )
+        )
+        session.commit()
 
     def test_session():
         with Session(engine) as session:
@@ -94,8 +127,21 @@ def test_garden_profile_captures_location_and_growing_context(
     assert profile["name"] == "Patio pots"
     assert profile["location_input"] == "20910-1234"
     assert profile["postal_code"] == "20910"
-    assert profile["latitude"] is None
-    assert profile["location_status"] == "postal_code_pending"
+    assert profile["latitude"] == 39.00286
+    assert profile["longitude"] == -77.036646
+    assert profile["location_status"] == "postal_code_resolved"
+    assert profile["coordinate_method"] == "census_zcta_representative_point"
+    assert profile["location_source"] == {
+        "dataset_id": "census-zcta-test",
+        "source_document_id": "census-zcta-test-source",
+        "title": "Test Census ZCTA source",
+        "publisher": "United States Census Bureau",
+        "source_url": "https://www.census.gov/test-zcta",
+        "sha256": "0" * 64,
+        "retrieved_at": "2026-08-08T00:00:00",
+        "source_locator": "test-zcta.txt:GEOID=20910",
+        "coordinate_method": "census_zcta_representative_point",
+    }
     assert profile["growing_methods"] == ["in_ground", "containers"]
 
     fetched = catalog_client.get(f"/api/garden-profiles/{profile['id']}")
@@ -118,6 +164,22 @@ def test_garden_profile_accepts_coordinates(catalog_client: TestClient) -> None:
     assert profile["postal_code"] is None
     assert profile["location_input"] == "38.990700,-77.026100"
     assert profile["location_status"] == "coordinates_provided"
+    assert profile["coordinate_method"] == "user_provided"
+    assert profile["location_source"] is None
+
+
+def test_garden_profile_retains_an_unmapped_postal_code(catalog_client: TestClient) -> None:
+    response = catalog_client.post(
+        "/api/garden-profiles",
+        json={"postal_code": "00000", "growing_methods": ["containers"]},
+    )
+
+    assert response.status_code == 201
+    profile = response.json()
+    assert profile["location_status"] == "postal_code_pending"
+    assert profile["latitude"] is None
+    assert profile["coordinate_method"] is None
+    assert profile["location_source"] is None
 
 
 @pytest.mark.parametrize(

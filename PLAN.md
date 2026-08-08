@@ -136,9 +136,9 @@ Acceptance criteria:
 
 Status: **In progress**
 
-Current progress: garden-context collection, persistence, validation, and
-wishlist association are implemented. Location and climate-data enrichment
-remain next.
+Current progress: garden-context collection, persistence, validation, wishlist
+association, and versioned ZIP-area coordinate resolution are implemented.
+USDA hardiness and NOAA climate enrichment remain next.
 
 - Collect a US ZIP code or coordinate pair before personalized catalog search.
 - Collect the target growing year, experience level, and expected growing

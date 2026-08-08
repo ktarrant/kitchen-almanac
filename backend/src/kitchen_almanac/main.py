@@ -17,6 +17,7 @@ from kitchen_almanac.schemas import (
     GardenProfileCreateRequest,
     GardenProfileResponse,
     HealthResponse,
+    LocationSourceResponse,
     WishlistCandidateResponse,
     WishlistCreateRequest,
     WishlistCropMatch,
@@ -100,6 +101,24 @@ def _crop_match(crop: Crop) -> WishlistCropMatch:
 
 
 def _garden_profile_response(profile: GardenProfile) -> GardenProfileResponse:
+    location_source = None
+    if (
+        profile.location_dataset is not None
+        and profile.coordinate_source_locator is not None
+        and profile.coordinate_method is not None
+    ):
+        source = profile.location_dataset.source_document
+        location_source = LocationSourceResponse(
+            dataset_id=profile.location_dataset.id,
+            source_document_id=source.id,
+            title=source.title,
+            publisher=source.publisher,
+            source_url=source.source_url,
+            sha256=source.sha256,
+            retrieved_at=source.retrieved_at,
+            source_locator=profile.coordinate_source_locator,
+            coordinate_method=profile.coordinate_method,
+        )
     return GardenProfileResponse(
         id=profile.id,
         name=profile.name,
@@ -109,6 +128,8 @@ def _garden_profile_response(profile: GardenProfile) -> GardenProfileResponse:
         latitude=profile.latitude,
         longitude=profile.longitude,
         location_status=profile.location_status,
+        coordinate_method=profile.coordinate_method,
+        location_source=location_source,
         target_year=profile.target_year,
         experience_level=profile.experience_level,
         growing_methods=profile.growing_methods,

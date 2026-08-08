@@ -8,6 +8,7 @@ from alembic.config import Config
 from sqlalchemy.orm import Session
 
 from alembic import command
+from kitchen_almanac import location_data
 from kitchen_almanac.catalog import (
     DEFAULT_OUTPUT,
     DEFAULT_SOURCE,
@@ -19,12 +20,15 @@ from kitchen_almanac.catalog import (
 )
 from kitchen_almanac.database import make_engine
 from kitchen_almanac.services.catalog_repository import load_catalog
+from kitchen_almanac.services.location_repository import load_location_dataset
 
 app = typer.Typer(no_args_is_help=True, help="Kitchen Almanac development and data tools.")
 catalog_app = typer.Typer(no_args_is_help=True, help="Build and publish crop catalogs.")
 db_app = typer.Typer(no_args_is_help=True, help="Manage the application database.")
+location_app = typer.Typer(no_args_is_help=True, help="Validate and load location datasets.")
 app.add_typer(catalog_app, name="catalog")
 app.add_typer(db_app, name="db")
+app.add_typer(location_app, name="locations")
 
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
 
@@ -95,6 +99,43 @@ def catalog_load(
         inserted = load_catalog(session, catalog)
     action = "Loaded" if inserted else "Already present"
     typer.echo(f"{action}: {catalog['dataset_id']}")
+
+
+@location_app.command("validate")
+def location_validate(
+    source: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = location_data.DEFAULT_SOURCE,
+) -> None:
+    """Validate the snapshotted Census postal-area coordinate source."""
+
+    try:
+        dataset = location_data.build_location_dataset(source)
+    except location_data.LocationDataError as error:
+        typer.echo(f"Location validation failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    typer.echo(f"Location dataset {dataset.id} is valid ({len(dataset.locations)} ZCTAs).")
+
+
+@location_app.command("load")
+def location_load(
+    source: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = location_data.DEFAULT_SOURCE,
+    database_url: Annotated[str | None, typer.Option(envvar="KITCHEN_ALMANAC_DATABASE_URL")] = None,
+) -> None:
+    """Load the validated Census postal-area coordinates into the database."""
+
+    try:
+        dataset = location_data.build_location_dataset(source)
+    except location_data.LocationDataError as error:
+        typer.echo(f"Location validation failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+
+    with Session(make_engine(database_url)) as session:
+        inserted = load_location_dataset(session, dataset)
+    action = "Loaded" if inserted else "Already present"
+    typer.echo(f"{action}: {dataset.id}")
 
 
 @db_app.command("upgrade")
