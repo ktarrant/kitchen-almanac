@@ -170,6 +170,9 @@ Current progress: the first reviewed cultivar snapshot models canonical
 cultivars, aliases, source-specific identifiers, crop baseline traits,
 cultivar-level evidence overrides, and separate commercial seed listings. A
 versioned loader and read API expose effective traits with explicit inheritance.
+Quick Import now extracts exact, fuzzy, crop-qualified, and crop-type cultivar
+intent while preserving the original wording; unknown cultivars remain linked
+to their recognized crop as custom intent.
 
 - Add canonical cultivars beneath each crop and keep cultivar identity separate
   from commercial seed listings.

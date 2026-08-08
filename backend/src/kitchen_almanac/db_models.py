@@ -354,6 +354,9 @@ class Wishlist(Base):
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True)
     dataset_version_id: Mapped[str] = mapped_column(ForeignKey("dataset_versions.id"), index=True)
+    cultivar_dataset_version_id: Mapped[str | None] = mapped_column(
+        ForeignKey("cultivar_dataset_versions.id"), nullable=True, index=True
+    )
     garden_profile_id: Mapped[str | None] = mapped_column(
         ForeignKey("garden_profiles.id"), nullable=True, index=True
     )
@@ -383,12 +386,24 @@ class WishlistEntry(Base):
     resolved_crop_id: Mapped[str | None] = mapped_column(
         ForeignKey("crops.id"), nullable=True, index=True
     )
+    intent_kind: Mapped[str] = mapped_column(String(30), default="crop")
+    cultivar_intent_text: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    crop_type_intent: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    resolved_cultivar_id: Mapped[str | None] = mapped_column(
+        ForeignKey("cultivars.id"), nullable=True, index=True
+    )
 
     wishlist: Mapped[Wishlist] = relationship(back_populates="entries")
     resolved_crop: Mapped[Crop | None] = relationship(foreign_keys=[resolved_crop_id])
+    resolved_cultivar: Mapped[Cultivar | None] = relationship(foreign_keys=[resolved_cultivar_id])
     candidates: Mapped[list[WishlistCandidate]] = relationship(
         cascade="all, delete-orphan",
         order_by="WishlistCandidate.rank",
+        back_populates="entry",
+    )
+    cultivar_candidates: Mapped[list[WishlistCultivarCandidate]] = relationship(
+        cascade="all, delete-orphan",
+        order_by="WishlistCultivarCandidate.rank",
         back_populates="entry",
     )
 
@@ -409,3 +424,21 @@ class WishlistCandidate(Base):
 
     entry: Mapped[WishlistEntry] = relationship(back_populates="candidates")
     crop: Mapped[Crop] = relationship()
+
+
+class WishlistCultivarCandidate(Base):
+    __tablename__ = "wishlist_cultivar_candidates"
+    __table_args__ = (
+        UniqueConstraint("wishlist_entry_id", "cultivar_id"),
+        UniqueConstraint("wishlist_entry_id", "rank"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    wishlist_entry_id: Mapped[str] = mapped_column(ForeignKey("wishlist_entries.id"), index=True)
+    cultivar_id: Mapped[str] = mapped_column(ForeignKey("cultivars.id"), index=True)
+    rank: Mapped[int] = mapped_column(Integer)
+    score: Mapped[float] = mapped_column(Float)
+    matched_alias: Mapped[str] = mapped_column(String(255))
+
+    entry: Mapped[WishlistEntry] = relationship(back_populates="cultivar_candidates")
+    cultivar: Mapped[Cultivar] = relationship()

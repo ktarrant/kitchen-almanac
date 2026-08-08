@@ -56,6 +56,20 @@ type Candidate = CropMatch & {
   matched_alias: string;
 };
 
+type CultivarMatch = {
+  id: string;
+  slug: string;
+  canonical_name: string;
+  crop_slug: string;
+  crop_name: string;
+  crop_type: string | null;
+};
+
+type CultivarCandidate = CultivarMatch & {
+  score: number;
+  matched_alias: string;
+};
+
 type WishlistEntry = {
   id: string;
   position: number;
@@ -63,19 +77,25 @@ type WishlistEntry = {
   normalized_text: string;
   status: "resolved" | "needs_confirmation" | "unresolved" | "custom";
   resolution_method: string | null;
+  intent_kind: "crop" | "cultivar" | "crop_type";
+  cultivar_intent_text: string | null;
+  crop_type_intent: string | null;
   resolved_crop: CropMatch | null;
+  resolved_cultivar: CultivarMatch | null;
   candidates: Candidate[];
+  cultivar_candidates: CultivarCandidate[];
 };
 
 type Wishlist = {
   id: string;
   dataset_id: string;
+  cultivar_dataset_id: string | null;
   garden_profile_id: string | null;
   name: string;
   entries: WishlistEntry[];
 };
 
-const initialWishlist = "Tomatoes\nGreen beans\nCarrots\nZucchini";
+const initialWishlist = "San Marzano tomatoes\npaste tomato\nCarrots\nZucchini";
 const currentYear = new Date().getFullYear();
 const methodOptions: { value: GrowingMethod; label: string; detail: string }[] = [
   { value: "in_ground", label: "In ground", detail: "Beds planted directly in your soil" },
@@ -106,7 +126,10 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
 
   const reviewCount = useMemo(
-    () => wishlist?.entries.filter((entry) => entry.status === "needs_confirmation").length ?? 0,
+    () =>
+      wishlist?.entries.filter(
+        (entry) => entry.status === "needs_confirmation" || entry.status === "unresolved"
+      ).length ?? 0,
     [wishlist]
   );
 
@@ -410,7 +433,15 @@ export default function App() {
                     <span className="status-label">{entry.status.replace("_", " ")}</span>
                   </div>
 
-                  {entry.status === "resolved" && entry.resolved_crop && (
+                  {entry.status === "resolved" && entry.resolved_cultivar && (
+                    <p className="match-copy">
+                      Matched cultivar <strong>{entry.resolved_cultivar.canonical_name}</strong>
+                      {` under ${entry.resolved_cultivar.crop_name}`}
+                      {entry.resolution_method === "user_confirmed" ? " by you" : ""}.
+                    </p>
+                  )}
+
+                  {entry.status === "resolved" && !entry.resolved_cultivar && entry.resolved_crop && (
                     <p className="match-copy">
                       Matched to <strong>{entry.resolved_crop.canonical_name}</strong>
                       {entry.resolution_method === "user_confirmed" ? " by you" : ""}.
@@ -419,8 +450,29 @@ export default function App() {
 
                   {entry.status === "needs_confirmation" && (
                     <div className="candidate-panel">
-                      <p>Which crop did you mean?</p>
+                      <p>
+                        {entry.cultivar_candidates.length
+                          ? "Which cultivar did you mean?"
+                          : "Which crop did you mean?"}
+                      </p>
                       <div className="candidate-actions">
+                        {entry.cultivar_candidates.map((candidate) => (
+                          <button
+                            type="button"
+                            className="candidate-button"
+                            disabled={updatingEntry === entry.id}
+                            key={candidate.id}
+                            onClick={() =>
+                              updateEntry(entry.id, { cultivar_slug: candidate.slug })
+                            }
+                          >
+                            <strong>{candidate.canonical_name}</strong>
+                            <span>
+                              {candidate.crop_type?.replace("_", " ") ?? candidate.crop_name} ·
+                              matched “{candidate.matched_alias}”
+                            </span>
+                          </button>
+                        ))}
                         {entry.candidates.map((candidate) => (
                           <button
                             type="button"
@@ -447,20 +499,28 @@ export default function App() {
 
                   {entry.status === "unresolved" && (
                     <div className="unresolved-panel">
-                      <p>We couldn’t confidently match this to the current crop catalog.</p>
+                      <p>
+                        {entry.resolved_crop && entry.cultivar_intent_text
+                          ? `We recognized ${entry.resolved_crop.canonical_name}, but “${entry.cultivar_intent_text}” is not a documented cultivar yet.`
+                          : "We couldn’t confidently match this to the current crop catalog."}
+                      </p>
                       <button
                         className="text-button"
                         type="button"
                         disabled={updatingEntry === entry.id}
                         onClick={() => updateEntry(entry.id, { keep_custom: true })}
                       >
-                        Keep as a custom crop
+                        {entry.resolved_crop ? "Keep as a custom cultivar" : "Keep as a custom crop"}
                       </button>
                     </div>
                   )}
 
                   {entry.status === "custom" && (
-                    <p className="match-copy">Saved with your original wording for later research.</p>
+                    <p className="match-copy">
+                      Saved with your original wording
+                      {entry.resolved_crop ? ` under ${entry.resolved_crop.canonical_name}` : ""} for
+                      later research.
+                    </p>
                   )}
                 </div>
               </article>

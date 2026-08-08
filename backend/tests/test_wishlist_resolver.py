@@ -23,11 +23,41 @@ class Crop:
     aliases: list[Alias] = field(default_factory=list)
 
 
+@dataclass
+class Cultivar:
+    id: str
+    slug: str
+    canonical_name: str
+    crop_type: str | None
+    crop: Crop
+    aliases: list[Alias] = field(default_factory=list)
+
+
 CROPS = [
     Crop("1", "fava-beans", "Fava Beans", [Alias("broad beans")]),
     Crop("2", "shell-beans", "Shell Beans", [Alias("shelling beans")]),
     Crop("3", "string-beans", "String Beans", [Alias("green beans")]),
     Crop("4", "tomatoes", "Tomatoes", [Alias("tomato")]),
+]
+
+TOMATO = CROPS[-1]
+CULTIVARS = [
+    Cultivar(
+        "c1",
+        "san-marzano",
+        "San Marzano",
+        "paste_plum",
+        TOMATO,
+        [Alias("San Marzano")],
+    ),
+    Cultivar(
+        "c2",
+        "san-marzano-2",
+        "San Marzano 2",
+        "paste_plum",
+        TOMATO,
+        [Alias("San Marzano 2"), Alias("San Marzano II")],
+    ),
 ]
 
 
@@ -70,3 +100,51 @@ def test_unknown_term_remains_unresolved() -> None:
     assert resolution.status == ResolutionStatus.UNRESOLVED
     assert resolution.resolved_crop is None
     assert resolution.candidates == ()
+
+
+def test_exact_cultivar_alias_resolves_without_losing_crop_identity() -> None:
+    resolution = resolve_term("San Marzano II", CROPS, CULTIVARS)
+
+    assert resolution.status == ResolutionStatus.RESOLVED
+    assert resolution.method == ResolutionMethod.EXACT_CULTIVAR_ALIAS
+    assert resolution.resolved_crop is TOMATO
+    assert resolution.resolved_cultivar is CULTIVARS[1]
+    assert resolution.cultivar_intent_text == "san marzano ii"
+
+
+def test_crop_qualified_cultivar_resolves_and_preserves_original_intent() -> None:
+    resolution = resolve_term("San Marzano tomatoes", CROPS, CULTIVARS)
+
+    assert resolution.status == ResolutionStatus.RESOLVED
+    assert resolution.resolved_crop is TOMATO
+    assert resolution.resolved_cultivar is CULTIVARS[0]
+    assert resolution.cultivar_intent_text == "san marzano"
+
+
+def test_crop_type_intent_returns_cultivar_candidates_for_confirmation() -> None:
+    resolution = resolve_term("paste tomato", CROPS, CULTIVARS)
+
+    assert resolution.status == ResolutionStatus.NEEDS_CONFIRMATION
+    assert resolution.method == ResolutionMethod.CROP_TYPE
+    assert resolution.crop_type_intent == "paste"
+    assert [candidate.cultivar.slug for candidate in resolution.cultivar_candidates] == [
+        "san-marzano",
+        "san-marzano-2",
+    ]
+
+
+def test_unknown_cultivar_intent_stays_linked_to_its_crop() -> None:
+    resolution = resolve_term("Black Krim tomatoes", CROPS, CULTIVARS)
+
+    assert resolution.status == ResolutionStatus.UNRESOLVED
+    assert resolution.resolved_crop is TOMATO
+    assert resolution.resolved_cultivar is None
+    assert resolution.cultivar_intent_text == "black krim"
+
+
+def test_cultivar_typo_requires_confirmation() -> None:
+    resolution = resolve_term("San Marzno tomato", CROPS, CULTIVARS)
+
+    assert resolution.status == ResolutionStatus.NEEDS_CONFIRMATION
+    assert resolution.method == ResolutionMethod.FUZZY_CULTIVAR
+    assert resolution.cultivar_candidates[0].cultivar.slug == "san-marzano"

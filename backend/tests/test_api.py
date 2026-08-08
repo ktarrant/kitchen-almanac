@@ -455,6 +455,83 @@ def test_wishlist_entries_can_be_confirmed_or_kept_custom(
     assert fetched.json()["entries"][1]["status"] == "custom"
 
 
+def test_quick_import_preserves_cultivar_and_crop_type_intent(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    response = catalog_client.post(
+        "/api/wishlists",
+        json={
+            "text": ("San Marzano tomatoes\nSan Marzano II\npaste tomato\nBlack Krim tomatoes"),
+            "garden_profile_id": garden_profile["id"],
+        },
+    )
+
+    assert response.status_code == 201
+    wishlist = response.json()
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-0b017ec1ab06c2d4"
+    san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
+
+    assert san_marzano["original_text"] == "San Marzano tomatoes"
+    assert san_marzano["intent_kind"] == "cultivar"
+    assert san_marzano["cultivar_intent_text"] == "san marzano"
+    assert san_marzano["resolved_crop"]["slug"] == "tomatoes"
+    assert san_marzano["resolved_cultivar"]["slug"] == "san-marzano"
+
+    assert san_marzano_2["resolved_cultivar"]["slug"] == "san-marzano-2"
+    assert san_marzano_2["resolution_method"] == "exact_cultivar_alias"
+
+    assert paste["status"] == "needs_confirmation"
+    assert paste["intent_kind"] == "crop_type"
+    assert paste["crop_type_intent"] == "paste"
+    assert [candidate["slug"] for candidate in paste["cultivar_candidates"]] == [
+        "san-marzano",
+        "san-marzano-2",
+    ]
+
+    assert black_krim["status"] == "unresolved"
+    assert black_krim["resolved_crop"]["slug"] == "tomatoes"
+    assert black_krim["resolved_cultivar"] is None
+    assert black_krim["cultivar_intent_text"] == "black krim"
+
+    selected = catalog_client.patch(
+        f"/api/wishlists/{wishlist['id']}/entries/{paste['id']}",
+        json={"cultivar_slug": "san-marzano-2"},
+    )
+    assert selected.status_code == 200
+    selected_paste = selected.json()["entries"][2]
+    assert selected_paste["status"] == "resolved"
+    assert selected_paste["resolved_crop"]["slug"] == "tomatoes"
+    assert selected_paste["resolved_cultivar"]["slug"] == "san-marzano-2"
+
+    custom = catalog_client.patch(
+        f"/api/wishlists/{wishlist['id']}/entries/{black_krim['id']}",
+        json={"keep_custom": True},
+    )
+    assert custom.status_code == 200
+    custom_black_krim = custom.json()["entries"][3]
+    assert custom_black_krim["status"] == "custom"
+    assert custom_black_krim["resolved_crop"]["slug"] == "tomatoes"
+    assert custom_black_krim["cultivar_intent_text"] == "black krim"
+
+
+def test_wishlist_entry_update_requires_exactly_one_action(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    created = catalog_client.post(
+        "/api/wishlists",
+        json={"text": "paste tomato", "garden_profile_id": garden_profile["id"]},
+    ).json()
+    entry = created["entries"][0]
+
+    response = catalog_client.patch(
+        f"/api/wishlists/{created['id']}/entries/{entry['id']}",
+        json={"crop_slug": "tomatoes", "cultivar_slug": "san-marzano"},
+    )
+    assert response.status_code == 422
+
+
 def test_wishlist_rejects_empty_input(
     catalog_client: TestClient,
     garden_profile: dict[str, object],

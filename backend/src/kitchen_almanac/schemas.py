@@ -251,12 +251,20 @@ class WishlistCreateRequest(BaseModel):
 
 class WishlistEntryUpdateRequest(BaseModel):
     crop_slug: str | None = Field(default=None, max_length=100)
+    cultivar_slug: str | None = Field(default=None, max_length=100)
     keep_custom: bool = False
 
     @model_validator(mode="after")
     def require_one_action(self) -> WishlistEntryUpdateRequest:
-        if (self.crop_slug is None) == (not self.keep_custom):
-            raise ValueError("Choose one crop or keep the entry as custom.")
+        actions = sum(
+            (
+                self.crop_slug is not None,
+                self.cultivar_slug is not None,
+                self.keep_custom,
+            )
+        )
+        if actions != 1:
+            raise ValueError("Choose one crop, one cultivar, or keep the entry as custom.")
         return self
 
 
@@ -271,6 +279,20 @@ class WishlistCandidateResponse(WishlistCropMatch):
     matched_alias: str
 
 
+class WishlistCultivarMatch(BaseModel):
+    id: str
+    slug: str
+    canonical_name: str
+    crop_slug: str
+    crop_name: str
+    crop_type: str | None
+
+
+class WishlistCultivarCandidateResponse(WishlistCultivarMatch):
+    score: float = Field(ge=0, le=1)
+    matched_alias: str
+
+
 class WishlistEntryResponse(BaseModel):
     id: str
     position: int
@@ -278,13 +300,19 @@ class WishlistEntryResponse(BaseModel):
     normalized_text: str
     status: str
     resolution_method: str | None
+    intent_kind: str
+    cultivar_intent_text: str | None
+    crop_type_intent: str | None
     resolved_crop: WishlistCropMatch | None
+    resolved_cultivar: WishlistCultivarMatch | None
     candidates: list[WishlistCandidateResponse]
+    cultivar_candidates: list[WishlistCultivarCandidateResponse]
 
 
 class WishlistResponse(BaseModel):
     id: str
     dataset_id: str
+    cultivar_dataset_id: str | None
     garden_profile_id: str | None
     name: str
     created_at: datetime

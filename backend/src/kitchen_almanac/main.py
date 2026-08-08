@@ -25,6 +25,8 @@ from kitchen_almanac.schemas import (
     WishlistCandidateResponse,
     WishlistCreateRequest,
     WishlistCropMatch,
+    WishlistCultivarCandidateResponse,
+    WishlistCultivarMatch,
     WishlistEntryResponse,
     WishlistEntryUpdateRequest,
     WishlistResponse,
@@ -111,6 +113,17 @@ def _crop_match(crop: Crop) -> WishlistCropMatch:
         slug=crop.slug,
         canonical_name=crop.canonical_name,
         planning_category=crop.planning_category,
+    )
+
+
+def _cultivar_match(cultivar) -> WishlistCultivarMatch:
+    return WishlistCultivarMatch(
+        id=cultivar.id,
+        slug=cultivar.slug,
+        canonical_name=cultivar.canonical_name,
+        crop_slug=cultivar.crop.slug,
+        crop_name=cultivar.crop.canonical_name,
+        crop_type=cultivar.crop_type,
     )
 
 
@@ -226,6 +239,7 @@ def _wishlist_response(wishlist: Wishlist) -> WishlistResponse:
     return WishlistResponse(
         id=wishlist.id,
         dataset_id=wishlist.dataset_version_id,
+        cultivar_dataset_id=wishlist.cultivar_dataset_version_id,
         garden_profile_id=wishlist.garden_profile_id,
         name=wishlist.name,
         created_at=wishlist.created_at,
@@ -238,7 +252,13 @@ def _wishlist_response(wishlist: Wishlist) -> WishlistResponse:
                 normalized_text=entry.normalized_text,
                 status=entry.status,
                 resolution_method=entry.resolution_method,
+                intent_kind=entry.intent_kind,
+                cultivar_intent_text=entry.cultivar_intent_text,
+                crop_type_intent=entry.crop_type_intent,
                 resolved_crop=_crop_match(entry.resolved_crop) if entry.resolved_crop else None,
+                resolved_cultivar=(
+                    _cultivar_match(entry.resolved_cultivar) if entry.resolved_cultivar else None
+                ),
                 candidates=[
                     WishlistCandidateResponse(
                         **_crop_match(candidate.crop).model_dump(),
@@ -246,6 +266,14 @@ def _wishlist_response(wishlist: Wishlist) -> WishlistResponse:
                         matched_alias=candidate.matched_alias,
                     )
                     for candidate in entry.candidates
+                ],
+                cultivar_candidates=[
+                    WishlistCultivarCandidateResponse(
+                        **_cultivar_match(candidate.cultivar).model_dump(),
+                        score=candidate.score,
+                        matched_alias=candidate.matched_alias,
+                    )
+                    for candidate in entry.cultivar_candidates
                 ],
             )
             for entry in wishlist.entries
@@ -340,6 +368,7 @@ def update_wishlist_entry_endpoint(
             wishlist_id=wishlist_id,
             entry_id=entry_id,
             crop_slug=request.crop_slug,
+            cultivar_slug=request.cultivar_slug,
             keep_custom=request.keep_custom,
         )
     except WishlistNotFoundError as error:
@@ -350,6 +379,6 @@ def update_wishlist_entry_endpoint(
     except InvalidCropSelectionError as error:
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
-            detail="The selected crop is not in this wishlist's catalog.",
+            detail="The selected crop or cultivar is not in this wishlist's catalog.",
         ) from error
     return _wishlist_response(wishlist)

@@ -51,13 +51,15 @@ The API includes:
 - `POST /api/garden-profiles` to save location and growing context.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
 - `POST /api/wishlists` to preserve and resolve a multiline Quick Import list
-  for a garden profile.
+  for a garden profile, including cultivar and crop-type intent.
 - `GET /api/wishlists/{id}` to retrieve its current resolution state.
 - `PATCH /api/wishlists/{id}/entries/{entry_id}` to confirm a crop or keep a
-  custom entry.
+  cultivar or crop, or keep a custom entry.
 
-Only unique exact aliases resolve automatically. Fuzzy or ambiguous results are
-returned as ranked candidates and require explicit confirmation.
+Only unique exact crop or cultivar aliases resolve automatically. Crop-qualified
+custom cultivars remain linked to their crop, while fuzzy, crop-type, or
+otherwise ambiguous results are returned as ranked candidates and require
+explicit confirmation.
 
 ## Location data
 
