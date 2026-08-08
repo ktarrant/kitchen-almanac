@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-SCHEMA_VERSION = "1.0.0"
-PARSER_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
+PARSER_VERSION = "1.1.0"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_SOURCE = REPOSITORY_ROOT / "Six Seasons Reference.md"
 DEFAULT_OUTPUT = REPOSITORY_ROOT / "data" / "seed" / "kitchen-almanac-catalog.v1.json"
@@ -77,6 +77,54 @@ CROP_GROUPS = {
 }
 PERENNIAL_CROPS = {"Artichokes", "Asparagus"}
 SPECIALTY_SYSTEMS = {"Mushrooms"}
+
+# These aliases are curated application data, not inferred corrections to the
+# source document. Keeping them here makes wishlist resolution reviewable and
+# ensures they participate in the versioned catalog digest.
+COMMON_ALIASES: dict[str, tuple[str, ...]] = {
+    "Artichokes": ("artichoke",),
+    "English Peas": ("english pea", "garden pea", "garden peas", "shelling peas"),
+    "Fava Beans": ("broad bean", "broad beans", "fava bean"),
+    "Lettuces and Early Greens": ("leafy greens", "lettuce", "salad greens"),
+    "Onion Family": ("alliums",),
+    "Radishes": ("radish",),
+    "Sugar Snap Peas": ("snap pea", "snap peas", "sugar snap pea"),
+    "Beets": ("beet",),
+    "Carrots": ("carrot",),
+    "Potatoes": ("potato",),
+    "Turnips": ("turnip",),
+    "Cucumbers": ("cucumber",),
+    "String Beans": ("green bean", "green beans", "snap beans", "string bean"),
+    "Summer Squash": ("courgette", "courgettes", "zucchini"),
+    "Corn": ("sweet corn",),
+    "Eggplant": ("aubergine", "aubergines"),
+    "Sweet Peppers and Chiles": (
+        "bell pepper",
+        "bell peppers",
+        "chile",
+        "chiles",
+        "chili",
+        "chilies",
+        "hot peppers",
+        "pepper",
+        "peppers",
+        "sweet pepper",
+        "sweet peppers",
+    ),
+    "Shell Beans": ("shell bean", "shelling beans"),
+    "Tomatoes": ("tomato",),
+    "Brussels Sprouts": ("brussel sprouts", "brussels sprout"),
+    "Swiss Chard": ("chard",),
+    "Collards": ("collard greens",),
+    "Mushrooms": ("mushroom",),
+    "Cabbage": ("cabbages",),
+    "Celery Root": ("celeriac",),
+    "Dried Corn and Polenta": ("flint corn", "polenta corn"),
+    "Onions": ("onion",),
+    "Parsnips": ("parsnip",),
+    "Rutabaga": ("rutabagas", "swede", "swedes"),
+    "Winter Squash": ("pumpkin", "pumpkins"),
+}
 
 
 def _sha256(data: bytes) -> str:
@@ -192,9 +240,15 @@ def build_catalog(source_path: Path = DEFAULT_SOURCE) -> dict[str, Any]:
 
     crops = []
     for crop in crops_by_name.values():
+        aliases = {
+            crop["canonical_name"],
+            *crop["source_names"],
+            *COMMON_ALIASES.get(crop["canonical_name"], ()),
+        }
         crops.append(
             {
                 **crop,
+                "aliases": sorted(aliases, key=str.casefold),
                 "source_names": sorted(crop["source_names"]),
                 "appearances": sorted(
                     crop["appearances"],
@@ -251,6 +305,11 @@ def validate_catalog(catalog: dict[str, Any], source_path: Path | None = None) -
     referenced_corrections: set[tuple[str, str]] = set()
     for crop in catalog["crops"]:
         canonical_name = crop.get("canonical_name")
+        aliases = crop.get("aliases", [])
+        if aliases != sorted(set(aliases), key=str.casefold):
+            errors.append(f"Aliases for {canonical_name!r} must be unique and sorted.")
+        if canonical_name not in aliases:
+            errors.append(f"Aliases for {canonical_name!r} must include its canonical name.")
         for source_name in crop.get("source_names", []):
             if source_name != canonical_name:
                 pair = (source_name, canonical_name)

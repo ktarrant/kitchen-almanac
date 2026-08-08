@@ -1,16 +1,16 @@
 from __future__ import annotations
 
-from sqlalchemy import create_engine, func, select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from kitchen_almanac.catalog import DEFAULT_SOURCE, build_catalog
-from kitchen_almanac.database import Base
+from kitchen_almanac.database import Base, make_engine
 from kitchen_almanac.db_models import Crop, DatasetVersion
 from kitchen_almanac.services.catalog_repository import load_catalog
 
 
 def test_catalog_load_is_idempotent() -> None:
-    engine = create_engine("sqlite:///:memory:")
+    engine = make_engine("sqlite:///:memory:")
     Base.metadata.create_all(engine)
     catalog = build_catalog(DEFAULT_SOURCE)
 

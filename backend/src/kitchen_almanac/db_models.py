@@ -2,7 +2,17 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from sqlalchemy import JSON, Boolean, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy import (
+    JSON,
+    Boolean,
+    DateTime,
+    Float,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from kitchen_almanac.database import Base
@@ -97,3 +107,61 @@ class EvidenceClaim(Base):
     source_locator: Mapped[str] = mapped_column(String(500))
     extraction_method: Mapped[str] = mapped_column(String(80))
     extractor_version: Mapped[str] = mapped_column(String(80))
+
+
+class Wishlist(Base):
+    __tablename__ = "wishlists"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    dataset_version_id: Mapped[str] = mapped_column(ForeignKey("dataset_versions.id"), index=True)
+    name: Mapped[str] = mapped_column(String(120), default="My garden wishlist")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    entries: Mapped[list[WishlistEntry]] = relationship(
+        cascade="all, delete-orphan",
+        order_by="WishlistEntry.position",
+        back_populates="wishlist",
+    )
+
+
+class WishlistEntry(Base):
+    __tablename__ = "wishlist_entries"
+    __table_args__ = (UniqueConstraint("wishlist_id", "position"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    wishlist_id: Mapped[str] = mapped_column(ForeignKey("wishlists.id"), index=True)
+    position: Mapped[int] = mapped_column(Integer)
+    original_text: Mapped[str] = mapped_column(String(120))
+    normalized_text: Mapped[str] = mapped_column(String(120))
+    status: Mapped[str] = mapped_column(String(30))
+    resolution_method: Mapped[str | None] = mapped_column(String(30), nullable=True)
+    resolved_crop_id: Mapped[str | None] = mapped_column(
+        ForeignKey("crops.id"), nullable=True, index=True
+    )
+
+    wishlist: Mapped[Wishlist] = relationship(back_populates="entries")
+    resolved_crop: Mapped[Crop | None] = relationship(foreign_keys=[resolved_crop_id])
+    candidates: Mapped[list[WishlistCandidate]] = relationship(
+        cascade="all, delete-orphan",
+        order_by="WishlistCandidate.rank",
+        back_populates="entry",
+    )
+
+
+class WishlistCandidate(Base):
+    __tablename__ = "wishlist_candidates"
+    __table_args__ = (
+        UniqueConstraint("wishlist_entry_id", "crop_id"),
+        UniqueConstraint("wishlist_entry_id", "rank"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    wishlist_entry_id: Mapped[str] = mapped_column(ForeignKey("wishlist_entries.id"), index=True)
+    crop_id: Mapped[str] = mapped_column(ForeignKey("crops.id"), index=True)
+    rank: Mapped[int] = mapped_column(Integer)
+    score: Mapped[float] = mapped_column(Float)
+    matched_alias: Mapped[str] = mapped_column(String(255))
+
+    entry: Mapped[WishlistEntry] = relationship(back_populates="candidates")
+    crop: Mapped[Crop] = relationship()

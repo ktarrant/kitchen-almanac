@@ -50,6 +50,14 @@ def test_categories_capture_nonstandard_planning_systems() -> None:
     assert crop_named(catalog, "Tomatoes")["planning_category"] == "annual_crop"
 
 
+def test_catalog_contains_reviewed_wishlist_aliases() -> None:
+    catalog = build_catalog(DEFAULT_SOURCE)
+
+    assert "tomato" in crop_named(catalog, "Tomatoes")["aliases"]
+    assert "zucchini" in crop_named(catalog, "Summer Squash")["aliases"]
+    assert "green beans" in crop_named(catalog, "String Beans")["aliases"]
+
+
 def test_seasonal_variants_merge_without_losing_appearances() -> None:
     catalog = build_catalog(DEFAULT_SOURCE)
     carrots = crop_named(catalog, "Carrots")

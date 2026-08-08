@@ -50,6 +50,10 @@ def load_catalog(session: Session, catalog: dict[str, Any]) -> bool:
         loaded_at=datetime.now(UTC),
     )
     session.add(dataset)
+    # The remaining rows use explicit foreign-key IDs rather than ORM
+    # relationships, so publish the source and dataset before their dependents.
+    # PostgreSQL enforces this ordering even within a transaction.
+    session.flush()
 
     for correction in catalog["corrections"]:
         session.add(CatalogCorrection(dataset_version_id=dataset_id, **correction))
@@ -63,7 +67,7 @@ def load_catalog(session: Session, catalog: dict[str, Any]) -> bool:
             canonical_name=crop_data["canonical_name"],
             planning_category=crop_data["planning_category"],
         )
-        crop.aliases = [CropAlias(alias=alias) for alias in crop_data["source_names"]]
+        crop.aliases = [CropAlias(alias=alias) for alias in crop_data["aliases"]]
         crop.appearances = [
             CropSeasonAppearance(
                 season=appearance["season"],

@@ -33,7 +33,17 @@ uv run --project backend kitchen-almanac catalog load
 uv run --project backend uvicorn kitchen_almanac.main:app --reload
 ```
 
-The initial endpoints are `GET /health` and `GET /api/crops`.
+The API includes:
+
+- `GET /health` for service health.
+- `GET /api/crops` for the active crop catalog.
+- `POST /api/wishlists` to preserve and resolve a multiline wishlist.
+- `GET /api/wishlists/{id}` to retrieve its current resolution state.
+- `PATCH /api/wishlists/{id}/entries/{entry_id}` to confirm a crop or keep a
+  custom entry.
+
+Only unique exact aliases resolve automatically. Fuzzy or ambiguous results are
+returned as ranked candidates and require explicit confirmation.
 
 ## Frontend
 

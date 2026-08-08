@@ -106,6 +106,8 @@ Acceptance criteria:
 
 ### Step 2: Wishlist resolution (Goal A)
 
+Status: **Completed on 2026-08-08**
+
 - Add a multiline wishlist editor.
 - Resolve canonical aliases before applying conservative fuzzy matching.
 - Require confirmation for ambiguous matches.

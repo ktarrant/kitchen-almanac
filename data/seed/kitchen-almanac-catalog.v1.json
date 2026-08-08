@@ -63,6 +63,10 @@
   ],
   "crops": [
     {
+      "aliases": [
+        "artichoke",
+        "Artichokes"
+      ],
       "appearances": [
         {
           "position": 1,
@@ -79,6 +83,9 @@
       ]
     },
     {
+      "aliases": [
+        "Asparagus"
+      ],
       "appearances": [
         {
           "position": 2,
@@ -95,6 +102,11 @@
       ]
     },
     {
+      "aliases": [
+        "beet",
+        "Beets",
+        "Beets (Early Season)"
+      ],
       "appearances": [
         {
           "position": 1,
@@ -118,6 +130,9 @@
       ]
     },
     {
+      "aliases": [
+        "Broccoli"
+      ],
       "appearances": [
         {
           "position": 1,
@@ -134,6 +149,11 @@
       ]
     },
     {
+      "aliases": [
+        "brussel sprouts",
+        "brussels sprout",
+        "Brussels Sprouts"
+      ],
       "appearances": [
         {
           "position": 2,
@@ -150,6 +170,10 @@
       ]
     },
     {
+      "aliases": [
+        "Cabbage",
+        "cabbages"
+      ],
       "appearances": [
         {
           "position": 1,
@@ -166,6 +190,12 @@
       ]
     },
     {
+      "aliases": [
+        "carrot",
+        "Carrots",
+        "Carrots (Early Season)",
+        "Carrots (Late Season)"
+      ],
       "appearances": [
         {
           "position": 2,
@@ -189,6 +219,9 @@
       ]
     },
     {
+      "aliases": [
+        "Cauliflower"
+      ],
       "appearances": [
         {
           "position": 2,
@@ -205,6 +238,9 @@
       ]
     },
     {
+      "aliases": [
+        "Celery"
+      ],
       "appearances": [
         {
           "position": 3,
@@ -221,6 +257,10 @@
       ]
     },
     {
+      "aliases": [
+        "celeriac",
+        "Celery Root"
+      ],
       "appearances": [
         {
           "position": 2,
@@ -237,6 +277,10 @@
       ]
     },
     {
+      "aliases": [
+        "collard greens",
+        "Collards"
+      ],
       "appearances": [
         {
           "position": 5,
@@ -253,6 +297,10 @@
       ]
     },
     {
+      "aliases": [
+        "Corn",
+        "sweet corn"
+      ],
       "appearances": [
         {
           "position": 1,
@@ -269,6 +317,10 @@
       ]
     },
     {
+      "aliases": [
+        "cucumber",
+        "Cucumbers"
+      ],
       "appearances": [
         {
           "position": 3,
@@ -285,6 +337,11 @@
       ]
     },
     {
+      "aliases": [
+        "Dried Corn and Polenta",
+        "flint corn",
+        "polenta corn"
+      ],
       "appearances": [
         {
           "position": 3,
@@ -301,6 +358,11 @@
       ]
     },
     {
+      "aliases": [
+        "aubergine",
+        "aubergines",
+        "Eggplant"
+      ],
       "appearances": [
         {
           "position": 2,
@@ -317,6 +379,13 @@
       ]
     },
     {
+      "aliases": [
+        "english pea",
+        "English Peas",
+        "garden pea",
+        "garden peas",
+        "shelling peas"
+      ],
       "appearances": [
         {
           "position": 3,
@@ -333,6 +402,12 @@
       ]
     },
     {
+      "aliases": [
+        "broad bean",
+        "broad beans",
+        "fava bean",
+        "Fava Beans"
+      ],
       "appearances": [
         {
           "position": 4,
@@ -349,6 +424,9 @@
       ]
     },
     {
+      "aliases": [
+        "Fennel"
+      ],
       "appearances": [
         {
           "position": 4,
@@ -365,6 +443,9 @@
       ]
     },
     {
+      "aliases": [
+        "Kale"
+      ],
       "appearances": [
         {
           "position": 6,
@@ -381,6 +462,9 @@
       ]
     },
     {
+      "aliases": [
+        "Kohlrabi"
+      ],
       "appearances": [
         {
           "position": 4,
@@ -397,6 +481,12 @@
       ]
     },
     {
+      "aliases": [
+        "leafy greens",
+        "lettuce",
+        "Lettuces and Early Greens",
+        "salad greens"
+      ],
       "appearances": [
         {
           "position": 5,
@@ -413,6 +503,10 @@
       ]
     },
     {
+      "aliases": [
+        "mushroom",
+        "Mushrooms"
+      ],
       "appearances": [
         {
           "position": 7,
@@ -429,6 +523,11 @@
       ]
     },
     {
+      "aliases": [
+        "alliums",
+        "Onion Family",
+        "Onion Family (Early Season)"
+      ],
       "appearances": [
         {
           "position": 6,
@@ -445,6 +544,11 @@
       ]
     },
     {
+      "aliases": [
+        "onion",
+        "Onions",
+        "Onions (Storage)"
+      ],
       "appearances": [
         {
           "position": 5,
@@ -461,6 +565,10 @@
       ]
     },
     {
+      "aliases": [
+        "parsnip",
+        "Parsnips"
+      ],
       "appearances": [
         {
           "position": 6,
@@ -477,6 +585,12 @@
       ]
     },
     {
+      "aliases": [
+        "potato",
+        "Potatoes",
+        "Potatoes (Early Season)",
+        "Potatoes (Late Season)"
+      ],
       "appearances": [
         {
           "position": 5,
@@ -500,6 +614,10 @@
       ]
     },
     {
+      "aliases": [
+        "radish",
+        "Radishes"
+      ],
       "appearances": [
         {
           "position": 7,
@@ -516,6 +634,13 @@
       ]
     },
     {
+      "aliases": [
+        "Rutabaga",
+        "rutabagas",
+        "Rutabage",
+        "swede",
+        "swedes"
+      ],
       "appearances": [
         {
           "position": 8,
@@ -532,6 +657,11 @@
       ]
     },
     {
+      "aliases": [
+        "shell bean",
+        "Shell Beans",
+        "shelling beans"
+      ],
       "appearances": [
         {
           "position": 4,
@@ -548,6 +678,13 @@
       ]
     },
     {
+      "aliases": [
+        "green bean",
+        "green beans",
+        "snap beans",
+        "string bean",
+        "String Beans"
+      ],
       "appearances": [
         {
           "position": 4,
@@ -564,6 +701,12 @@
       ]
     },
     {
+      "aliases": [
+        "snap pea",
+        "snap peas",
+        "sugar snap pea",
+        "Sugar Snap Peas"
+      ],
       "appearances": [
         {
           "position": 8,
@@ -580,6 +723,12 @@
       ]
     },
     {
+      "aliases": [
+        "courgette",
+        "courgettes",
+        "Summer Squash",
+        "zucchini"
+      ],
       "appearances": [
         {
           "position": 5,
@@ -596,6 +745,20 @@
       ]
     },
     {
+      "aliases": [
+        "bell pepper",
+        "bell peppers",
+        "chile",
+        "chiles",
+        "chili",
+        "chilies",
+        "hot peppers",
+        "pepper",
+        "peppers",
+        "sweet pepper",
+        "sweet peppers",
+        "Sweet Peppers and Chiles"
+      ],
       "appearances": [
         {
           "position": 3,
@@ -612,6 +775,10 @@
       ]
     },
     {
+      "aliases": [
+        "chard",
+        "Swiss Chard"
+      ],
       "appearances": [
         {
           "position": 4,
@@ -628,6 +795,10 @@
       ]
     },
     {
+      "aliases": [
+        "tomato",
+        "Tomatoes"
+      ],
       "appearances": [
         {
           "position": 5,
@@ -644,6 +815,12 @@
       ]
     },
     {
+      "aliases": [
+        "turnip",
+        "Turnips",
+        "Turnips (Early Season)",
+        "Turnips (Late Season)"
+      ],
       "appearances": [
         {
           "position": 6,
@@ -667,6 +844,11 @@
       ]
     },
     {
+      "aliases": [
+        "pumpkin",
+        "pumpkins",
+        "Winter Squash"
+      ],
       "appearances": [
         {
           "position": 10,
@@ -683,9 +865,9 @@
       ]
     }
   ],
-  "dataset_id": "kitchen-almanac-v1-f6a44b3a73c9701a",
-  "parser_version": "1.0.0",
-  "schema_version": "1.0.0",
+  "dataset_id": "kitchen-almanac-v1-f76ca812f62c8c39",
+  "parser_version": "1.1.0",
+  "schema_version": "1.1.0",
   "source": {
     "id": "sha256:6981390899702cdf71f8420963270bbfb9900be6ff091b297f997e0b18fab16e",
     "media_type": "text/markdown",
