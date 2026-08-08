@@ -10,10 +10,12 @@ from sqlalchemy.orm import Session, selectinload
 from kitchen_almanac import __version__
 from kitchen_almanac.config import get_settings
 from kitchen_almanac.database import get_session
-from kitchen_almanac.db_models import Crop, DatasetVersion, Wishlist
+from kitchen_almanac.db_models import Crop, DatasetVersion, GardenProfile, Wishlist
 from kitchen_almanac.schemas import (
     CropListResponse,
     CropSummary,
+    GardenProfileCreateRequest,
+    GardenProfileResponse,
     HealthResponse,
     WishlistCandidateResponse,
     WishlistCreateRequest,
@@ -21,6 +23,11 @@ from kitchen_almanac.schemas import (
     WishlistEntryResponse,
     WishlistEntryUpdateRequest,
     WishlistResponse,
+)
+from kitchen_almanac.services.garden_profile_service import (
+    GardenProfileNotFoundError,
+    create_garden_profile,
+    get_garden_profile,
 )
 from kitchen_almanac.services.wishlist_service import (
     CatalogUnavailableError,
@@ -92,10 +99,29 @@ def _crop_match(crop: Crop) -> WishlistCropMatch:
     )
 
 
+def _garden_profile_response(profile: GardenProfile) -> GardenProfileResponse:
+    return GardenProfileResponse(
+        id=profile.id,
+        name=profile.name,
+        country_code=profile.country_code,
+        location_input=profile.location_input,
+        postal_code=profile.postal_code,
+        latitude=profile.latitude,
+        longitude=profile.longitude,
+        location_status=profile.location_status,
+        target_year=profile.target_year,
+        experience_level=profile.experience_level,
+        growing_methods=profile.growing_methods,
+        created_at=profile.created_at,
+        updated_at=profile.updated_at,
+    )
+
+
 def _wishlist_response(wishlist: Wishlist) -> WishlistResponse:
     return WishlistResponse(
         id=wishlist.id,
         dataset_id=wishlist.dataset_version_id,
+        garden_profile_id=wishlist.garden_profile_id,
         name=wishlist.name,
         created_at=wishlist.created_at,
         updated_at=wishlist.updated_at,
@@ -123,6 +149,33 @@ def _wishlist_response(wishlist: Wishlist) -> WishlistResponse:
 
 
 @app.post(
+    "/api/garden-profiles",
+    response_model=GardenProfileResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_garden_profile_endpoint(
+    request: GardenProfileCreateRequest,
+    session: Annotated[Session, Depends(get_session)],
+) -> GardenProfileResponse:
+    return _garden_profile_response(create_garden_profile(session, request))
+
+
+@app.get("/api/garden-profiles/{profile_id}", response_model=GardenProfileResponse)
+def get_garden_profile_endpoint(
+    profile_id: str,
+    session: Annotated[Session, Depends(get_session)],
+) -> GardenProfileResponse:
+    try:
+        profile = get_garden_profile(session, profile_id)
+    except GardenProfileNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Garden profile not found.",
+        ) from error
+    return _garden_profile_response(profile)
+
+
+@app.post(
     "/api/wishlists",
     response_model=WishlistResponse,
     status_code=status.HTTP_201_CREATED,
@@ -132,11 +185,21 @@ def create_wishlist_endpoint(
     session: Annotated[Session, Depends(get_session)],
 ) -> WishlistResponse:
     try:
-        wishlist = create_wishlist(session, text=request.text, name=request.name.strip())
+        wishlist = create_wishlist(
+            session,
+            text=request.text,
+            garden_profile_id=request.garden_profile_id,
+            name=request.name.strip(),
+        )
     except CatalogUnavailableError as error:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=str(error),
+        ) from error
+    except GardenProfileNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Garden profile not found.",
         ) from error
     return _wishlist_response(wishlist)
 

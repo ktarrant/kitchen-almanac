@@ -9,10 +9,12 @@ from sqlalchemy.orm import Session, selectinload
 from kitchen_almanac.db_models import (
     Crop,
     DatasetVersion,
+    GardenProfile,
     Wishlist,
     WishlistCandidate,
     WishlistEntry,
 )
+from kitchen_almanac.services.garden_profile_service import GardenProfileNotFoundError
 from kitchen_almanac.services.wishlist_resolver import (
     ResolutionMethod,
     ResolutionStatus,
@@ -48,6 +50,7 @@ def create_wishlist(
     session: Session,
     *,
     text: str,
+    garden_profile_id: str,
     name: str = "My garden wishlist",
 ) -> Wishlist:
     dataset = session.scalar(select(DatasetVersion).where(DatasetVersion.active.is_(True)))
@@ -62,11 +65,14 @@ def create_wishlist(
     ).all()
     if not crops:
         raise CatalogUnavailableError("The active crop catalog is empty.")
+    if session.get(GardenProfile, garden_profile_id) is None:
+        raise GardenProfileNotFoundError(garden_profile_id)
 
     now = datetime.now(UTC)
     wishlist = Wishlist(
         id=str(uuid4()),
         dataset_version_id=dataset.id,
+        garden_profile_id=garden_profile_id,
         name=name,
         created_at=now,
         updated_at=now,

@@ -37,7 +37,10 @@ The API includes:
 
 - `GET /health` for service health.
 - `GET /api/crops` for the active crop catalog.
-- `POST /api/wishlists` to preserve and resolve a multiline wishlist.
+- `POST /api/garden-profiles` to save location and growing context.
+- `GET /api/garden-profiles/{id}` to retrieve that context.
+- `POST /api/wishlists` to preserve and resolve a multiline Quick Import list
+  for a garden profile.
 - `GET /api/wishlists/{id}` to retrieve its current resolution state.
 - `PATCH /api/wishlists/{id}/entries/{entry_id}` to confirm a crop or keep a
   custom entry.

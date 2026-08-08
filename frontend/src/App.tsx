@@ -1,5 +1,18 @@
 import { FormEvent, useMemo, useState } from "react";
 
+type GrowingMethod = "in_ground" | "raised_bed" | "containers";
+
+type GardenProfile = {
+  id: string;
+  name: string;
+  location_input: string;
+  postal_code: string | null;
+  target_year: number;
+  experience_level: "beginner" | "intermediate" | "advanced";
+  growing_methods: GrowingMethod[];
+  location_status: string;
+};
+
 type CropMatch = {
   slug: string;
   canonical_name: string;
@@ -25,11 +38,18 @@ type WishlistEntry = {
 type Wishlist = {
   id: string;
   dataset_id: string;
+  garden_profile_id: string | null;
   name: string;
   entries: WishlistEntry[];
 };
 
 const initialWishlist = "Tomatoes\nGreen beans\nCarrots\nZucchini";
+const currentYear = new Date().getFullYear();
+const methodOptions: { value: GrowingMethod; label: string; detail: string }[] = [
+  { value: "in_ground", label: "In ground", detail: "Beds planted directly in your soil" },
+  { value: "raised_bed", label: "Raised beds", detail: "Contained beds with added soil" },
+  { value: "containers", label: "Containers", detail: "Pots, grow bags, and planters" }
+];
 
 async function responseMessage(response: Response): Promise<string> {
   try {
@@ -41,9 +61,15 @@ async function responseMessage(response: Response): Promise<string> {
 }
 
 export default function App() {
+  const [profile, setProfile] = useState<GardenProfile | null>(null);
+  const [postalCode, setPostalCode] = useState("");
+  const [targetYear, setTargetYear] = useState(currentYear);
+  const [experienceLevel, setExperienceLevel] = useState("beginner");
+  const [growingMethods, setGrowingMethods] = useState<GrowingMethod[]>(["raised_bed"]);
   const [text, setText] = useState(initialWishlist);
   const [wishlist, setWishlist] = useState<Wishlist | null>(null);
-  const [busy, setBusy] = useState(false);
+  const [savingProfile, setSavingProfile] = useState(false);
+  const [matchingWishlist, setMatchingWishlist] = useState(false);
   const [updatingEntry, setUpdatingEntry] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -52,15 +78,50 @@ export default function App() {
     [wishlist]
   );
 
+  function toggleGrowingMethod(method: GrowingMethod) {
+    setGrowingMethods((selected) =>
+      selected.includes(method)
+        ? selected.filter((item) => item !== method)
+        : [...selected, method]
+    );
+  }
+
+  async function submitGardenProfile(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setSavingProfile(true);
+    setError(null);
+    try {
+      const response = await fetch("/api/garden-profiles", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          postal_code: postalCode,
+          target_year: targetYear,
+          experience_level: experienceLevel,
+          growing_methods: growingMethods
+        })
+      });
+      if (!response.ok) {
+        throw new Error(await responseMessage(response));
+      }
+      setProfile((await response.json()) as GardenProfile);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not save your garden.");
+    } finally {
+      setSavingProfile(false);
+    }
+  }
+
   async function submitWishlist(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setBusy(true);
+    if (!profile) return;
+    setMatchingWishlist(true);
     setError(null);
     try {
       const response = await fetch("/api/wishlists", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text })
+        body: JSON.stringify({ text, garden_profile_id: profile.id })
       });
       if (!response.ok) {
         throw new Error(await responseMessage(response));
@@ -69,7 +130,7 @@ export default function App() {
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not resolve this wishlist.");
     } finally {
-      setBusy(false);
+      setMatchingWishlist(false);
     }
   }
 
@@ -98,34 +159,149 @@ export default function App() {
     <main>
       <header className="site-header">
         <p className="eyebrow">Kitchen Almanac</p>
-        <p className="step-marker">01 / Choose crops</p>
+        <p className="step-marker">
+          {profile ? "02 / Quick import" : "01 / Garden context"}
+        </p>
       </header>
 
-      <section className="hero">
-        <h1>What would you love to harvest?</h1>
-        <p>
-          Start with the vegetables you actually want to eat. Add one crop per line—we’ll
-          match familiar names and ask whenever there’s room for doubt.
-        </p>
-      </section>
+      {!profile ? (
+        <>
+          <section className="hero">
+            <h1>Start with where you grow.</h1>
+            <p>
+              A good garden plan begins with place. Tell us your location and setup so later
+              recommendations can account for your season, space, and experience.
+            </p>
+          </section>
 
-      <form className="wishlist-form" onSubmit={submitWishlist}>
-        <label htmlFor="wishlist">Your vegetable wishlist</label>
-        <textarea
-          id="wishlist"
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-          rows={8}
-          maxLength={12_000}
-          placeholder={"Tomatoes\nSnap peas\nZucchini"}
-        />
-        <div className="form-footer">
-          <span>One crop per line · up to 100 entries</span>
-          <button className="primary-button" disabled={busy || !text.trim()} type="submit">
-            {busy ? "Matching…" : "Match my crops"}
-          </button>
-        </div>
-      </form>
+          <form className="profile-form" onSubmit={submitGardenProfile}>
+            <div className="field-grid">
+              <label className="field" htmlFor="postal-code">
+                <span>US ZIP code</span>
+                <input
+                  id="postal-code"
+                  inputMode="numeric"
+                  maxLength={10}
+                  pattern="[0-9]{5}(-[0-9]{4})?"
+                  placeholder="20910"
+                  required
+                  value={postalCode}
+                  onChange={(event) => setPostalCode(event.target.value)}
+                />
+              </label>
+              <label className="field" htmlFor="target-year">
+                <span>Planning year</span>
+                <select
+                  id="target-year"
+                  value={targetYear}
+                  onChange={(event) => setTargetYear(Number(event.target.value))}
+                >
+                  {[0, 1, 2].map((offset) => (
+                    <option key={offset} value={currentYear + offset}>
+                      {currentYear + offset}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="field" htmlFor="experience-level">
+                <span>Gardening experience</span>
+                <select
+                  id="experience-level"
+                  value={experienceLevel}
+                  onChange={(event) => setExperienceLevel(event.target.value)}
+                >
+                  <option value="beginner">Just getting started</option>
+                  <option value="intermediate">A few seasons in</option>
+                  <option value="advanced">Experienced grower</option>
+                </select>
+              </label>
+            </div>
+
+            <fieldset>
+              <legend>How will you grow?</legend>
+              <p className="field-help">Choose every setup you expect to use.</p>
+              <div className="method-options">
+                {methodOptions.map((method) => (
+                  <label
+                    className={
+                      growingMethods.includes(method.value) ? "method-option selected" : "method-option"
+                    }
+                    key={method.value}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={growingMethods.includes(method.value)}
+                      onChange={() => toggleGrowingMethod(method.value)}
+                    />
+                    <strong>{method.label}</strong>
+                    <span>{method.detail}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <div className="profile-footer">
+              <p>We store the ZIP code you enter; climate-data enrichment comes next.</p>
+              <button
+                className="primary-button"
+                disabled={savingProfile || !postalCode.trim() || growingMethods.length === 0}
+                type="submit"
+              >
+                {savingProfile ? "Saving…" : "Save garden & continue"}
+              </button>
+            </div>
+          </form>
+        </>
+      ) : (
+        <>
+          <section className="profile-summary" aria-label="Garden context">
+            <div>
+              <p className="section-kicker">Garden saved</p>
+              <h2>{profile.location_input}</h2>
+            </div>
+            <dl>
+              <div>
+                <dt>Season</dt>
+                <dd>{profile.target_year}</dd>
+              </div>
+              <div>
+                <dt>Setup</dt>
+                <dd>{profile.growing_methods.map((method) => method.replace("_", " ")).join(", ")}</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section className="hero compact-hero">
+            <h1>Bring over your crop list.</h1>
+            <p>
+              Search-and-select cultivar discovery is the next workflow slice. For now, quick
+              import keeps the earlier crop resolver available as a secondary path.
+            </p>
+          </section>
+
+          <form className="wishlist-form" onSubmit={submitWishlist}>
+            <label htmlFor="wishlist">Quick-import wishlist</label>
+            <textarea
+              id="wishlist"
+              value={text}
+              onChange={(event) => setText(event.target.value)}
+              rows={8}
+              maxLength={12_000}
+              placeholder={"Tomatoes\nSnap peas\nZucchini"}
+            />
+            <div className="form-footer">
+              <span>One crop per line · up to 100 entries</span>
+              <button
+                className="primary-button"
+                disabled={matchingWishlist || !text.trim()}
+                type="submit"
+              >
+                {matchingWishlist ? "Matching…" : "Match my crops"}
+              </button>
+            </div>
+          </form>
+        </>
+      )}
 
       {error && (
         <p className="error-message" role="alert">
@@ -133,7 +309,7 @@ export default function App() {
         </p>
       )}
 
-      {wishlist && (
+      {profile && wishlist && (
         <section className="results" aria-live="polite">
           <div className="results-heading">
             <div>

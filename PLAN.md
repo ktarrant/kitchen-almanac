@@ -8,7 +8,11 @@ garden layout and calendar, yield forecasts, and meal or preservation plans.
 
 The primary workflow is:
 
-`wishlist -> varieties -> grow guides -> garden plan -> yield forecast -> food plan`
+`garden context -> catalog search -> cultivar selection -> wishlist -> grow guides -> garden plan -> yield forecast -> food plan`
+
+Users add crops one at a time from a searchable cultivar catalog. A secondary
+Quick Import workflow accepts a multiline list and uses the crop resolver to
+prepare entries for confirmation.
 
 The first release is a local, single-household web application. It will accept
 a US ZIP code or coordinates rather than assuming a particular climate.
@@ -54,12 +58,20 @@ PLAN.md       implementation roadmap and decisions
 
 ## Core domain model
 
+- `GardenProfile`: location, target year, experience level, growing methods,
+  and links to versioned climate facts.
 - `LocationProfile`: ZIP, coordinates, elevation, hardiness zone, climate
-  station, frost dates, and growing degree days.
+  station, frost dates, and growing degree days derived for a garden profile.
 - `Crop`: canonical name, aliases, botanical family, crop category, and annual
   or perennial lifecycle.
-- `Variety`: cultivar, crop, maturity, temperature traits, disease resistance,
-  growth habit, and seed source.
+- `Cultivar`: canonical cultivated variety linked to a crop, with aliases,
+  maturity, growth habit, disease resistance, and other distinguishing traits.
+- `CultivarListing`: a source- or vendor-specific listing linked to a canonical
+  cultivar when identity can be established.
+- `WishlistItem`: a selected cultivar, a crop whose cultivar is undecided, or a
+  custom cultivar/crop linked to its garden profile.
+- `SuitabilityAssessment`: versioned cultivar-by-location constraints, score,
+  explanations, and evidence quality.
 - `SourceDocument` and `EvidenceClaim`: immutable provenance and extraction
   history.
 - `GrowProfile`: light, soil, water, spacing, container, trellis, sowing,
@@ -112,30 +124,104 @@ Status: **Completed on 2026-08-08**
 - Resolve canonical aliases before applying conservative fuzzy matching.
 - Require confirmation for ambiguous matches.
 - Preserve the user's original wording and allow unresolved custom entries.
+- Retain this workflow as Quick Import after catalog search becomes the primary
+  wishlist interface.
 
 Acceptance criteria:
 
 - Common aliases resolve consistently.
 - Ambiguous terms are never silently assigned.
 
-### Step 3: Location and regional suitability (Goal B)
+### Step 3: Garden context and location profile
 
-- Collect ZIP code or coordinates and a target growing year.
+Status: **In progress**
+
+Current progress: garden-context collection, persistence, validation, and
+wishlist association are implemented. Location and climate-data enrichment
+remain next.
+
+- Collect a US ZIP code or coordinate pair before personalized catalog search.
+- Collect the target growing year, experience level, and expected growing
+  methods such as in-ground beds, raised beds, and containers.
+- Persist garden profiles and associate every wishlist with one profile.
+- Resolve ZIP codes to coordinates and retain both the original and normalized
+  location input.
 - Import USDA 2023 hardiness-zone data while retaining required attribution.
 - Import or query NOAA climate normals for probable first and last freeze,
   growing-season length, temperatures, precipitation, and growing degree days.
-- Build provider adapters for regional Cooperative Extension recommendations
-  and cultivar sources whose terms permit ingestion.
-- Rank cultivars using explicit maturity, temperature, photoperiod, disease,
-  space, and evidence-quality rules.
-- Explain both positive rankings and disqualifying constraints.
+- Store climate values as versioned evidence rather than mutable profile fields.
 
 Acceptance criteria:
 
-- Each recommendation explains why it fits the location and cites the facts it
-  uses.
+- A user cannot request personalized suitability without a garden profile.
+- The same location source snapshot produces the same normalized climate
+  profile.
+- Every derived location or climate value is traceable to its source.
 
-### Step 4: Evidence-backed grow guides (Goal C)
+### Step 4: Cultivar identity and evidence catalog (Goal B)
+
+- Add canonical cultivars beneath each crop and keep cultivar identity separate
+  from commercial seed listings.
+- Support cultivar aliases, crop types such as paste or cherry tomato, and
+  source-specific identifiers.
+- Extract optional cultivar or type intent from imported wishlist wording
+  without discarding the original text.
+- Ingest maturity basis, growth habit, size, spacing, support, container use,
+  harvest pattern, culinary use, disease resistance, and climate traits.
+- Represent crop-level requirements as defaults and cultivar facts as
+  evidence-backed, field-specific overrides.
+- Snapshot sources and require review before cultivar identities or traits are
+  published.
+
+Acceptance criteria:
+
+- `Tomatoes`, `San Marzano tomatoes`, and a vendor's `San Marzano 2` listing
+  remain three distinguishable concepts.
+- No commercial listing is silently treated as a canonical cultivar.
+- Every cultivar-specific requirement is sourced, while missing traits visibly
+  fall back to the crop baseline.
+
+### Step 5: Searchable catalog and wishlist builder (Goal A/B)
+
+- Make one-at-a-time catalog search the primary wishlist workflow.
+- Search crop names, cultivar names, crop types, aliases, and approved source
+  listings using deterministic exact, prefix, and fuzzy ranking.
+- Group results into crop-level choices, locally recommended cultivars, other
+  documented cultivars, and custom-entry actions.
+- Let users add a confirmed cultivar, a crop with cultivar undecided, a custom
+  cultivar linked to a known crop, or a completely custom crop.
+- Show concise maturity, habit, space, disease, use, suitability, and evidence
+  information on result cards.
+- Retain multiline resolution as a secondary Quick Import path that prepares
+  entries for the same confirmation flow.
+
+Acceptance criteria:
+
+- Searching `tomato` can add generic tomatoes or a documented cultivar.
+- Searching `San Marzano` preserves the cultivar selection rather than reducing
+  it to generic tomatoes.
+- Custom cultivars inherit only known crop-level facts and clearly display
+  cultivar-specific unknowns.
+
+### Step 6: Regional cultivar suitability (Goal B)
+
+- Evaluate cultivar candidates against the garden's frost-free window,
+  temperature and growing-degree-day needs, photoperiod, disease pressure,
+  growing methods, support, space, intended use, and evidence quality.
+- Treat incompatible maturity windows and physical requirements as explicit
+  constraints rather than soft recommendations.
+- Rank generic-crop search results using the deterministic suitability model.
+- Explain positive rankings, disqualifying constraints, assumptions, and
+  missing evidence.
+
+Acceptance criteria:
+
+- Each recommendation explains why that cultivar fits the selected garden and
+  cites every fact used.
+- Identical garden, catalog, climate, and algorithm versions produce identical
+  rankings.
+
+### Step 7: Cultivar-aware, evidence-backed grow guides (Goal C)
 
 - Define a structured grow-guide schema covering light, soil, water, spacing,
   container size, trellising, starting method, planting, maintenance, companion
@@ -146,13 +232,17 @@ Acceptance criteria:
 - Require review before extracted facts are published.
 - Generate local timelines from relative planting rules.
 - Render beginner-friendly instructions, conflicts, confidence, and citations.
+- Generate effective instructions by combining the crop baseline with the
+  selected cultivar's field-specific overrides.
 
 Acceptance criteria:
 
 - A guide can be regenerated from stored inputs.
 - Every numeric recommendation is traceable to evidence.
+- The guide identifies which advice is cultivar-specific and which is inherited
+  from the crop baseline.
 
-### Step 5: Garden configuration and optimization (Goal D)
+### Step 8: Garden configuration and optimization (Goal D)
 
 - Model beds, containers, soil depth, usable area, sun, trellises, paths, and
   inaccessible margins.
@@ -171,7 +261,7 @@ Acceptance criteria:
 - Identical inputs produce identical assignments.
 - No assignment violates a declared constraint.
 
-### Step 6: Yield forecasting (Goal E)
+### Step 9: Yield forecasting (Goal E)
 
 - Store low, base, and high yield ranges by crop, cultivar, and growing method.
 - Model single, concentrated, repeated, and indeterminate harvest curves.
@@ -183,7 +273,7 @@ Acceptance criteria:
 
 - Every forecast is reproducible from cohorts and documented assumptions.
 
-### Step 7: Meals and preservation (Goal F)
+### Step 10: Meals and preservation (Goal F)
 
 - Normalize recipe ingredients into crop identities and consistent units.
 - Allocate forecast harvest to fresh eating, recipes, freezing, fermentation,
@@ -200,7 +290,7 @@ Acceptance criteria:
 - Every preservation recommendation links to an approved tested process.
 - Safety-affecting substitutions are never made silently.
 
-### Step 8: Product hardening
+### Step 11: Product hardening
 
 - Add end-to-end browser tests and contrasting climate fixtures.
 - Detect upstream source changes and stale datasets.
@@ -210,12 +300,14 @@ Acceptance criteria:
 
 ## Initial release scope
 
-The first complete vertical slice covers Goals A through D for approximately
+The first complete vertical slice covers garden context, catalog search,
+cultivar selection, suitability, grow guides, and planning for approximately
 ten to twelve annual crops: tomatoes, peppers, cucumbers, beans, lettuce,
 carrots, radishes, kale, broccoli, peas, beets, and squash. It should initially
 use one well-supported region while retaining a location-agnostic data model.
-Yield forecasting follows once the planner is validated; food utilization is
-the final major feature area.
+Quick Import remains available but is not the primary onboarding path. Yield
+forecasting follows once the planner is validated; food utilization is the
+final major feature area.
 
 ## Known risks and mitigations
 

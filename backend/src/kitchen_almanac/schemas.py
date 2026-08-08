@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from datetime import datetime
+import re
+from datetime import date, datetime
+from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -26,9 +28,85 @@ class CropListResponse(BaseModel):
     crops: list[CropSummary]
 
 
+class ExperienceLevel(StrEnum):
+    BEGINNER = "beginner"
+    INTERMEDIATE = "intermediate"
+    ADVANCED = "advanced"
+
+
+class GrowingMethod(StrEnum):
+    IN_GROUND = "in_ground"
+    RAISED_BED = "raised_bed"
+    CONTAINERS = "containers"
+
+
+class GardenProfileCreateRequest(BaseModel):
+    name: str = Field(default="My garden", min_length=1, max_length=120)
+    country_code: str = Field(default="US", pattern=r"^US$")
+    postal_code: str | None = None
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    target_year: int = Field(default_factory=lambda: date.today().year)
+    experience_level: ExperienceLevel = ExperienceLevel.BEGINNER
+    growing_methods: list[GrowingMethod] = Field(min_length=1, max_length=3)
+
+    @field_validator("name")
+    @classmethod
+    def validate_profile_name(cls, value: str) -> str:
+        value = value.strip()
+        if not value:
+            raise ValueError("Garden name cannot be blank.")
+        return value
+
+    @field_validator("postal_code", mode="before")
+    @classmethod
+    def validate_postal_code(cls, value: object) -> object:
+        if value is None:
+            return None
+        normalized = str(value).strip()
+        if not re.fullmatch(r"\d{5}(?:-\d{4})?", normalized):
+            raise ValueError("Enter a five-digit US ZIP code or ZIP+4.")
+        return normalized
+
+    @field_validator("growing_methods")
+    @classmethod
+    def normalize_growing_methods(cls, value: list[GrowingMethod]) -> list[GrowingMethod]:
+        order = list(GrowingMethod)
+        return [method for method in order if method in value]
+
+    @model_validator(mode="after")
+    def validate_location_and_year(self) -> GardenProfileCreateRequest:
+        coordinates_supplied = self.latitude is not None or self.longitude is not None
+        if coordinates_supplied and (self.latitude is None or self.longitude is None):
+            raise ValueError("Latitude and longitude must be provided together.")
+        if (self.postal_code is None) == (self.latitude is None):
+            raise ValueError("Provide either a US ZIP code or a coordinate pair.")
+        current_year = date.today().year
+        if not current_year <= self.target_year <= current_year + 10:
+            raise ValueError(f"Target year must be between {current_year} and {current_year + 10}.")
+        return self
+
+
+class GardenProfileResponse(BaseModel):
+    id: str
+    name: str
+    country_code: str
+    location_input: str
+    postal_code: str | None
+    latitude: float | None
+    longitude: float | None
+    location_status: str
+    target_year: int
+    experience_level: ExperienceLevel
+    growing_methods: list[GrowingMethod]
+    created_at: datetime
+    updated_at: datetime
+
+
 class WishlistCreateRequest(BaseModel):
     text: str = Field(min_length=1, max_length=12_000)
     name: str = Field(default="My garden wishlist", min_length=1, max_length=120)
+    garden_profile_id: str = Field(min_length=36, max_length=36)
 
     @field_validator("name")
     @classmethod
@@ -87,6 +165,7 @@ class WishlistEntryResponse(BaseModel):
 class WishlistResponse(BaseModel):
     id: str
     dataset_id: str
+    garden_profile_id: str | None
     name: str
     created_at: datetime
     updated_at: datetime

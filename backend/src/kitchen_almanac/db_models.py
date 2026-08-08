@@ -109,15 +109,39 @@ class EvidenceClaim(Base):
     extractor_version: Mapped[str] = mapped_column(String(80))
 
 
+class GardenProfile(Base):
+    __tablename__ = "garden_profiles"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    name: Mapped[str] = mapped_column(String(120))
+    country_code: Mapped[str] = mapped_column(String(2), default="US")
+    location_input: Mapped[str] = mapped_column(String(255))
+    postal_code: Mapped[str | None] = mapped_column(String(10), nullable=True, index=True)
+    latitude: Mapped[float | None] = mapped_column(Float, nullable=True)
+    longitude: Mapped[float | None] = mapped_column(Float, nullable=True)
+    location_status: Mapped[str] = mapped_column(String(40))
+    target_year: Mapped[int] = mapped_column(Integer)
+    experience_level: Mapped[str] = mapped_column(String(20))
+    growing_methods: Mapped[list[str]] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    wishlists: Mapped[list[Wishlist]] = relationship(back_populates="garden_profile")
+
+
 class Wishlist(Base):
     __tablename__ = "wishlists"
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True)
     dataset_version_id: Mapped[str] = mapped_column(ForeignKey("dataset_versions.id"), index=True)
+    garden_profile_id: Mapped[str | None] = mapped_column(
+        ForeignKey("garden_profiles.id"), nullable=True, index=True
+    )
     name: Mapped[str] = mapped_column(String(120), default="My garden wishlist")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
+    garden_profile: Mapped[GardenProfile | None] = relationship(back_populates="wishlists")
     entries: Mapped[list[WishlistEntry]] = relationship(
         cascade="all, delete-orphan",
         order_by="WishlistEntry.position",
