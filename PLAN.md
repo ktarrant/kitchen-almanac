@@ -164,6 +164,13 @@ Acceptance criteria:
 
 ### Step 4: Cultivar identity and evidence catalog (Goal B)
 
+Status: **In progress**
+
+Current progress: the first reviewed cultivar snapshot models canonical
+cultivars, aliases, source-specific identifiers, crop baseline traits,
+cultivar-level evidence overrides, and separate commercial seed listings. A
+versioned loader and read API expose effective traits with explicit inheritance.
+
 - Add canonical cultivars beneath each crop and keep cultivar identity separate
   from commercial seed listings.
 - Support cultivar aliases, crop types such as paste or cherry tomato, and

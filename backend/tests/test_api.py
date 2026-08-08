@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.pool import StaticPool
 
 from kitchen_almanac.catalog import DEFAULT_SOURCE, build_catalog
+from kitchen_almanac.cultivar_catalog import build_cultivar_catalog
 from kitchen_almanac.database import Base, get_session, make_engine
 from kitchen_almanac.db_models import (
     ClimateDatasetVersion,
@@ -19,6 +20,7 @@ from kitchen_almanac.db_models import (
 )
 from kitchen_almanac.main import app
 from kitchen_almanac.services.catalog_repository import load_catalog
+from kitchen_almanac.services.cultivar_repository import load_cultivar_catalog
 
 
 @pytest.fixture
@@ -30,6 +32,7 @@ def catalog_client() -> Iterator[TestClient]:
     Base.metadata.create_all(engine)
     with Session(engine) as session:
         load_catalog(session, build_catalog(DEFAULT_SOURCE))
+        load_cultivar_catalog(session, build_cultivar_catalog())
         source = SourceDocument(
             id="census-zcta-test-source",
             title="Test Census ZCTA source",
@@ -196,6 +199,56 @@ def test_crop_list_uses_active_catalog(catalog_client: TestClient) -> None:
     assert [crop["canonical_name"] for crop in payload["crops"]] == [
         "Artichokes",
         "Asparagus",
+    ]
+
+
+def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
+    catalog_client: TestClient,
+) -> None:
+    response = catalog_client.get("/api/cultivars?q=San%20Marzano")
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["dataset_id"] == "cultivar-catalog-v1-0b017ec1ab06c2d4"
+    assert payload["crop_dataset_id"] == "kitchen-almanac-v1-f76ca812f62c8c39"
+    assert [item["canonical_name"] for item in payload["cultivars"]] == [
+        "San Marzano",
+        "San Marzano 2",
+    ]
+
+    san_marzano, san_marzano_2 = payload["cultivars"]
+    maturity = next(
+        trait for trait in san_marzano["traits"] if trait["field_name"] == "days_to_maturity"
+    )
+    assert maturity["normalized_value"] == {
+        "minimum": 60,
+        "maximum": 80,
+        "basis": "unspecified",
+    }
+    assert maturity["inherited_from_crop"] is False
+    assert maturity["extraction_method"] == "manual_review"
+    assert maturity["source_excerpt"]
+    sun = next(trait for trait in san_marzano["traits"] if trait["field_name"] == "sun_hours")
+    assert sun["inherited_from_crop"] is True
+    assert sun["source"]["publisher"] == "University of Maryland Extension"
+
+    assert san_marzano_2["source_identifiers"][0]["source_identifier"] == "variety_id=3146"
+    assert san_marzano_2["aliases"] == ["San Marzano 2", "San Marzano II"]
+    listing = san_marzano_2["commercial_listings"][0]
+    assert listing["record_kind"] == "commercial_seed_listing"
+    assert listing["listing_name"] == "San Marzano 2 Tomato Seeds"
+    assert listing["source_identifier"] == "TM660-20"
+    assert listing["id"] != san_marzano_2["id"]
+
+
+def test_cultivar_alias_and_type_queries_are_supported(catalog_client: TestClient) -> None:
+    alias_response = catalog_client.get("/api/cultivars?q=San%20Marzano%20II")
+    assert [item["slug"] for item in alias_response.json()["cultivars"]] == ["san-marzano-2"]
+
+    type_response = catalog_client.get("/api/cultivars?q=paste&crop_slug=tomatoes")
+    assert [item["slug"] for item in type_response.json()["cultivars"]] == [
+        "san-marzano",
+        "san-marzano-2",
     ]
 
 

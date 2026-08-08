@@ -28,6 +28,67 @@ class CropListResponse(BaseModel):
     crops: list[CropSummary]
 
 
+class CatalogEvidenceSourceResponse(BaseModel):
+    source_document_id: str
+    title: str
+    publisher: str | None
+    source_url: str | None
+    sha256: str
+    retrieved_at: datetime | None
+    license: str | None
+    source_locator: str
+
+
+class CultivarTraitResponse(BaseModel):
+    field_name: str
+    normalized_value: dict | list | str | int | float | bool
+    unit: str | None
+    confidence: str
+    inherited_from_crop: bool
+    review_status: str
+    source_excerpt: str
+    extraction_method: str
+    extractor_version: str
+    source: CatalogEvidenceSourceResponse
+
+
+class CultivarSourceIdentifierResponse(BaseModel):
+    source_identifier: str
+    name_in_source: str
+    source: CatalogEvidenceSourceResponse
+
+
+class CommercialSeedListingResponse(BaseModel):
+    id: str
+    record_kind: str = "commercial_seed_listing"
+    vendor: str
+    listing_name: str
+    source_identifier: str
+    review_status: str
+    source: CatalogEvidenceSourceResponse
+
+
+class CultivarResponse(BaseModel):
+    id: str
+    slug: str
+    canonical_name: str
+    crop_slug: str
+    crop_name: str
+    crop_type: str | None
+    description: str | None
+    review_status: str
+    aliases: list[str]
+    traits: list[CultivarTraitResponse]
+    source_identifiers: list[CultivarSourceIdentifierResponse]
+    commercial_listings: list[CommercialSeedListingResponse]
+
+
+class CultivarListResponse(BaseModel):
+    dataset_id: str | None
+    crop_dataset_id: str | None
+    cultivars: list[CultivarResponse]
+
+
 class ExperienceLevel(StrEnum):
     BEGINNER = "beginner"
     INTERMEDIATE = "intermediate"

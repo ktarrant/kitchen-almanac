@@ -80,6 +80,122 @@ class CropSeasonAppearance(Base):
     position: Mapped[int] = mapped_column(Integer)
 
 
+class CultivarDatasetVersion(Base):
+    __tablename__ = "cultivar_dataset_versions"
+
+    id: Mapped[str] = mapped_column(String(80), primary_key=True)
+    schema_version: Mapped[str] = mapped_column(String(30))
+    parser_version: Mapped[str] = mapped_column(String(30))
+    crop_dataset_version_id: Mapped[str] = mapped_column(
+        ForeignKey("dataset_versions.id"), index=True
+    )
+    source_document_id: Mapped[str] = mapped_column(ForeignKey("source_documents.id"))
+    active: Mapped[bool] = mapped_column(Boolean, default=False)
+    loaded_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    crop_dataset: Mapped[DatasetVersion] = relationship()
+    source_document: Mapped[SourceDocument] = relationship()
+
+
+class Cultivar(Base):
+    __tablename__ = "cultivars"
+    __table_args__ = (UniqueConstraint("cultivar_dataset_version_id", "slug"),)
+
+    id: Mapped[str] = mapped_column(String(180), primary_key=True)
+    cultivar_dataset_version_id: Mapped[str] = mapped_column(
+        ForeignKey("cultivar_dataset_versions.id"), index=True
+    )
+    crop_id: Mapped[str] = mapped_column(ForeignKey("crops.id"), index=True)
+    slug: Mapped[str] = mapped_column(String(100))
+    canonical_name: Mapped[str] = mapped_column(String(255))
+    crop_type: Mapped[str | None] = mapped_column(String(80), nullable=True, index=True)
+    description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    review_status: Mapped[str] = mapped_column(String(20))
+
+    crop: Mapped[Crop] = relationship()
+    aliases: Mapped[list[CultivarAlias]] = relationship(cascade="all, delete-orphan")
+    source_identifiers: Mapped[list[CultivarSourceIdentifier]] = relationship(
+        cascade="all, delete-orphan"
+    )
+    commercial_listings: Mapped[list[CommercialSeedListing]] = relationship()
+
+
+class CultivarAlias(Base):
+    __tablename__ = "cultivar_aliases"
+    __table_args__ = (UniqueConstraint("cultivar_id", "alias"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    cultivar_id: Mapped[str] = mapped_column(ForeignKey("cultivars.id"), index=True)
+    alias: Mapped[str] = mapped_column(String(255))
+
+
+class CultivarSourceIdentifier(Base):
+    __tablename__ = "cultivar_source_identifiers"
+    __table_args__ = (UniqueConstraint("cultivar_id", "source_document_id", "source_identifier"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    cultivar_id: Mapped[str] = mapped_column(ForeignKey("cultivars.id"), index=True)
+    source_document_id: Mapped[str] = mapped_column(ForeignKey("source_documents.id"), index=True)
+    source_identifier: Mapped[str] = mapped_column(String(255))
+    name_in_source: Mapped[str] = mapped_column(String(255))
+
+    source_document: Mapped[SourceDocument] = relationship()
+
+
+class CultivarEvidenceClaim(Base):
+    __tablename__ = "cultivar_evidence_claims"
+    __table_args__ = (
+        UniqueConstraint(
+            "cultivar_dataset_version_id",
+            "subject_kind",
+            "subject_id",
+            "field_name",
+            "source_document_id",
+        ),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    cultivar_dataset_version_id: Mapped[str] = mapped_column(
+        ForeignKey("cultivar_dataset_versions.id"), index=True
+    )
+    subject_kind: Mapped[str] = mapped_column(String(30))
+    subject_id: Mapped[str] = mapped_column(String(180), index=True)
+    field_name: Mapped[str] = mapped_column(String(120))
+    normalized_value: Mapped[dict | list | str | int | float | bool] = mapped_column(JSON)
+    unit: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    confidence: Mapped[str] = mapped_column(String(20))
+    source_document_id: Mapped[str] = mapped_column(ForeignKey("source_documents.id"), index=True)
+    source_excerpt: Mapped[str] = mapped_column(Text)
+    source_locator: Mapped[str] = mapped_column(String(500))
+    extraction_method: Mapped[str] = mapped_column(String(80))
+    extractor_version: Mapped[str] = mapped_column(String(80))
+    review_status: Mapped[str] = mapped_column(String(20))
+
+    source_document: Mapped[SourceDocument] = relationship()
+
+
+class CommercialSeedListing(Base):
+    __tablename__ = "commercial_seed_listings"
+    __table_args__ = (
+        UniqueConstraint("cultivar_dataset_version_id", "vendor", "source_identifier"),
+    )
+
+    id: Mapped[str] = mapped_column(String(180), primary_key=True)
+    cultivar_dataset_version_id: Mapped[str] = mapped_column(
+        ForeignKey("cultivar_dataset_versions.id"), index=True
+    )
+    cultivar_id: Mapped[str | None] = mapped_column(
+        ForeignKey("cultivars.id"), nullable=True, index=True
+    )
+    source_document_id: Mapped[str] = mapped_column(ForeignKey("source_documents.id"), index=True)
+    vendor: Mapped[str] = mapped_column(String(255))
+    listing_name: Mapped[str] = mapped_column(String(255))
+    source_identifier: Mapped[str] = mapped_column(String(255))
+    review_status: Mapped[str] = mapped_column(String(20))
+
+    source_document: Mapped[SourceDocument] = relationship()
+
+
 class CatalogCorrection(Base):
     __tablename__ = "catalog_corrections"
 

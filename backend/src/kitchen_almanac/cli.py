@@ -8,7 +8,7 @@ from alembic.config import Config
 from sqlalchemy.orm import Session
 
 from alembic import command
-from kitchen_almanac import hardiness_data, location_data, noaa_normals_data
+from kitchen_almanac import cultivar_catalog, hardiness_data, location_data, noaa_normals_data
 from kitchen_almanac.catalog import (
     DEFAULT_OUTPUT,
     DEFAULT_SOURCE,
@@ -24,6 +24,10 @@ from kitchen_almanac.services.climate_repository import (
     load_hardiness_dataset,
     load_noaa_normals_dataset,
 )
+from kitchen_almanac.services.cultivar_repository import (
+    CultivarCatalogDependencyError,
+    load_cultivar_catalog,
+)
 from kitchen_almanac.services.hardiness_service import enrich_all_garden_hardiness
 from kitchen_almanac.services.location_repository import load_location_dataset
 from kitchen_almanac.services.noaa_normals_service import enrich_all_garden_noaa_normals
@@ -33,10 +37,12 @@ catalog_app = typer.Typer(no_args_is_help=True, help="Build and publish crop cat
 db_app = typer.Typer(no_args_is_help=True, help="Manage the application database.")
 location_app = typer.Typer(no_args_is_help=True, help="Validate and load location datasets.")
 climate_app = typer.Typer(no_args_is_help=True, help="Validate and load climate evidence.")
+cultivar_app = typer.Typer(no_args_is_help=True, help="Validate and load cultivar evidence.")
 app.add_typer(catalog_app, name="catalog")
 app.add_typer(db_app, name="db")
 app.add_typer(location_app, name="locations")
 app.add_typer(climate_app, name="climate")
+app.add_typer(cultivar_app, name="cultivars")
 
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
 
@@ -220,6 +226,48 @@ def noaa_load(
         enriched = enrich_all_garden_noaa_normals(session)
     action = "Loaded" if inserted else "Already present"
     typer.echo(f"{action}: {dataset.id}; enriched {enriched} garden profiles.")
+
+
+@cultivar_app.command("validate")
+def cultivar_validate(
+    source: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_catalog.DEFAULT_SOURCE,
+) -> None:
+    """Validate the reviewed cultivar evidence snapshot."""
+
+    try:
+        catalog = cultivar_catalog.build_cultivar_catalog(source)
+    except cultivar_catalog.CultivarCatalogError as error:
+        typer.echo(f"Cultivar validation failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    typer.echo(
+        f"Cultivar catalog {catalog.id} is valid ({len(catalog.data['cultivars'])} cultivars)."
+    )
+
+
+@cultivar_app.command("load")
+def cultivar_load(
+    source: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_catalog.DEFAULT_SOURCE,
+    database_url: Annotated[str | None, typer.Option(envvar="KITCHEN_ALMANAC_DATABASE_URL")] = None,
+) -> None:
+    """Publish approved cultivar identities, traits, and listings."""
+
+    try:
+        catalog = cultivar_catalog.build_cultivar_catalog(source)
+    except cultivar_catalog.CultivarCatalogError as error:
+        typer.echo(f"Cultivar validation failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    try:
+        with Session(make_engine(database_url)) as session:
+            inserted = load_cultivar_catalog(session, catalog)
+    except CultivarCatalogDependencyError as error:
+        typer.echo(f"Cultivar load failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    action = "Loaded" if inserted else "Already present"
+    typer.echo(f"{action}: {catalog.id}")
 
 
 @db_app.command("upgrade")

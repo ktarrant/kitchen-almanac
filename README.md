@@ -37,6 +37,8 @@ uv run --project backend kitchen-almanac climate validate-hardiness
 uv run --project backend kitchen-almanac climate load-hardiness
 uv run --project backend kitchen-almanac climate validate-noaa
 uv run --project backend kitchen-almanac climate load-noaa
+uv run --project backend kitchen-almanac cultivars validate
+uv run --project backend kitchen-almanac cultivars load
 uv run --project backend uvicorn kitchen_almanac.main:app --reload
 ```
 
@@ -44,6 +46,8 @@ The API includes:
 
 - `GET /health` for service health.
 - `GET /api/crops` for the active crop catalog.
+- `GET /api/cultivars` for approved cultivar identities, effective traits,
+  source identifiers, and separately modeled commercial listings.
 - `POST /api/garden-profiles` to save location and growing context.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
 - `POST /api/wishlists` to preserve and resolve a multiline Quick Import list

@@ -15,6 +15,7 @@ from kitchen_almanac.schemas import (
     ClimateNormalsResponse,
     CropListResponse,
     CropSummary,
+    CultivarListResponse,
     EvidenceSourceResponse,
     GardenProfileCreateRequest,
     GardenProfileResponse,
@@ -28,6 +29,7 @@ from kitchen_almanac.schemas import (
     WishlistEntryUpdateRequest,
     WishlistResponse,
 )
+from kitchen_almanac.services.cultivar_service import list_cultivars as query_cultivars
 from kitchen_almanac.services.garden_profile_service import (
     GardenProfileNotFoundError,
     create_garden_profile,
@@ -93,6 +95,15 @@ def list_crops(
             for crop in crops
         ],
     )
+
+
+@app.get("/api/cultivars", response_model=CultivarListResponse)
+def list_cultivars(
+    session: Annotated[Session, Depends(get_session)],
+    q: Annotated[str | None, Query(min_length=1, max_length=120)] = None,
+    crop_slug: Annotated[str | None, Query(max_length=100)] = None,
+) -> CultivarListResponse:
+    return query_cultivars(session, query=q, crop_slug=crop_slug)
 
 
 def _crop_match(crop: Crop) -> WishlistCropMatch:
