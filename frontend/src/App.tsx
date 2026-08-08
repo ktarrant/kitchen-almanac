@@ -70,6 +70,47 @@ type CultivarCandidate = CultivarMatch & {
   matched_alias: string;
 };
 
+type CultivarTrait = {
+  field_name: string;
+  normalized_value: Record<string, unknown> | unknown[] | string | number | boolean;
+  unit: string | null;
+  inherited_from_crop: boolean;
+  source: {
+    title: string;
+    publisher: string | null;
+  };
+};
+
+type CatalogCultivar = CultivarMatch & {
+  description: string | null;
+  aliases: string[];
+  traits: CultivarTrait[];
+  commercial_listings: {
+    id: string;
+    vendor: string;
+    listing_name: string;
+    source_identifier: string;
+  }[];
+};
+
+type CatalogSearchResults = {
+  query: string;
+  normalized_query: string;
+  crop_choices: {
+    crop: CropMatch;
+    score: number;
+    matched_alias: string;
+    match_method: string;
+  }[];
+  cultivars: {
+    cultivar: CatalogCultivar;
+    score: number;
+    matched_alias: string;
+    match_method: string;
+  }[];
+  can_add_custom: boolean;
+};
+
 type WishlistEntry = {
   id: string;
   position: number;
@@ -112,6 +153,34 @@ async function responseMessage(response: Response): Promise<string> {
   }
 }
 
+function humanize(value: string) {
+  return value.replaceAll("_", " ");
+}
+
+function traitSummary(trait: CultivarTrait): string {
+  const value = trait.normalized_value;
+  if (Array.isArray(value)) return value.join(", ");
+  if (typeof value !== "object") return `${humanize(String(value))}${trait.unit ? ` ${trait.unit}` : ""}`;
+
+  const minimum = value.minimum;
+  const maximum = value.maximum;
+  if (typeof minimum === "number" && typeof maximum === "number") {
+    return `${minimum}–${maximum}${trait.unit ? ` ${trait.unit}` : ""}`;
+  }
+  return Object.entries(value)
+    .filter(([, item]) => typeof item === "string" || typeof item === "number")
+    .map(([key, item]) => `${humanize(key)} ${item}`)
+    .join(" · ");
+}
+
+function featuredTraits(cultivar: CatalogCultivar) {
+  const preferred = ["days_to_maturity", "growth_habit", "plant_spacing", "fruit_weight"];
+  return preferred
+    .map((name) => cultivar.traits.find((trait) => trait.field_name === name))
+    .filter((trait): trait is CultivarTrait => trait !== undefined)
+    .slice(0, 3);
+}
+
 export default function App() {
   const [profile, setProfile] = useState<GardenProfile | null>(null);
   const [postalCode, setPostalCode] = useState("");
@@ -120,9 +189,14 @@ export default function App() {
   const [growingMethods, setGrowingMethods] = useState<GrowingMethod[]>(["raised_bed"]);
   const [text, setText] = useState(initialWishlist);
   const [wishlist, setWishlist] = useState<Wishlist | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<CatalogSearchResults | null>(null);
   const [savingProfile, setSavingProfile] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const [addingSelection, setAddingSelection] = useState<string | null>(null);
   const [matchingWishlist, setMatchingWishlist] = useState(false);
   const [updatingEntry, setUpdatingEntry] = useState<string | null>(null);
+  const [addedNotice, setAddedNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const reviewCount = useMemo(
@@ -189,6 +263,62 @@ export default function App() {
     }
   }
 
+  async function submitCatalogSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!profile || !searchQuery.trim()) return;
+    setSearching(true);
+    setError(null);
+    setAddedNotice(null);
+    try {
+      const parameters = new URLSearchParams({
+        q: searchQuery.trim(),
+        garden_profile_id: profile.id
+      });
+      const response = await fetch(`/api/catalog/search?${parameters}`);
+      if (!response.ok) {
+        throw new Error(await responseMessage(response));
+      }
+      setSearchResults((await response.json()) as CatalogSearchResults);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not search the catalog.");
+    } finally {
+      setSearching(false);
+    }
+  }
+
+  async function wishlistForSelection(): Promise<Wishlist> {
+    if (wishlist) return wishlist;
+    if (!profile) throw new Error("Save your garden before adding plants.");
+    const response = await fetch("/api/wishlists/builder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ garden_profile_id: profile.id })
+    });
+    if (!response.ok) throw new Error(await responseMessage(response));
+    return (await response.json()) as Wishlist;
+  }
+
+  async function addSearchSelection(key: string, body: object, label: string) {
+    setAddingSelection(key);
+    setError(null);
+    setAddedNotice(null);
+    try {
+      const currentWishlist = await wishlistForSelection();
+      const response = await fetch(`/api/wishlists/${currentWishlist.id}/entries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) throw new Error(await responseMessage(response));
+      setWishlist((await response.json()) as Wishlist);
+      setAddedNotice(`${label} added to your wishlist.`);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not add this plant.");
+    } finally {
+      setAddingSelection(null);
+    }
+  }
+
   async function updateEntry(entryId: string, body: object) {
     if (!wishlist) return;
     setUpdatingEntry(entryId);
@@ -215,7 +345,7 @@ export default function App() {
       <header className="site-header">
         <p className="eyebrow">Kitchen Almanac</p>
         <p className="step-marker">
-          {profile ? "02 / Quick import" : "01 / Garden context"}
+          {profile ? "02 / Find plants" : "01 / Garden context"}
         </p>
       </header>
 
@@ -374,34 +504,251 @@ export default function App() {
           </section>
 
           <section className="hero compact-hero">
-            <h1>Bring over your crop list.</h1>
+            <h1>What do you want to grow?</h1>
             <p>
-              Search-and-select cultivar discovery is the next workflow slice. For now, quick
-              import keeps the earlier crop resolver available as a secondary path.
+              Search one plant at a time. Choose a documented cultivar, keep the variety
+              undecided, or save your own wording for later research.
             </p>
           </section>
 
-          <form className="wishlist-form" onSubmit={submitWishlist}>
-            <label htmlFor="wishlist">Quick-import wishlist</label>
-            <textarea
-              id="wishlist"
-              value={text}
-              onChange={(event) => setText(event.target.value)}
-              rows={8}
-              maxLength={12_000}
-              placeholder={"Tomatoes\nSnap peas\nZucchini"}
-            />
-            <div className="form-footer">
-              <span>One crop per line · up to 100 entries</span>
+          <form className="catalog-search" onSubmit={submitCatalogSearch}>
+            <label htmlFor="catalog-query">Crop or cultivar</label>
+            <div className="search-row">
+              <input
+                id="catalog-query"
+                type="search"
+                maxLength={120}
+                placeholder="Try tomatoes or San Marzano"
+                autoComplete="off"
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+              />
               <button
                 className="primary-button"
-                disabled={matchingWishlist || !text.trim()}
+                disabled={searching || !searchQuery.trim()}
                 type="submit"
               >
-                {matchingWishlist ? "Matching…" : "Match my crops"}
+                {searching ? "Searching…" : "Search catalog"}
               </button>
             </div>
+            <p>Names, aliases, types, and spelling variations are supported.</p>
           </form>
+
+          {searchResults && (
+            <section className="search-results" aria-live="polite">
+              <div className="search-results-heading">
+                <div>
+                  <p className="section-kicker">Catalog matches</p>
+                  <h2>Results for “{searchResults.query}”</h2>
+                </div>
+                <p>
+                  {searchResults.crop_choices.length + searchResults.cultivars.length} documented
+                  choices
+                </p>
+              </div>
+
+              {searchResults.crop_choices.length > 0 && (
+                <div className="result-group">
+                  <div className="result-group-heading">
+                    <h3>Crop choices</h3>
+                    <p>Add the crop now and choose a cultivar later.</p>
+                  </div>
+                  <div className="crop-result-list">
+                    {searchResults.crop_choices.map((result) => (
+                      <article className="crop-result-card" key={result.crop.slug}>
+                        <div>
+                          <p className="result-kind">Crop · {humanize(result.match_method)}</p>
+                          <h3>{result.crop.canonical_name}</h3>
+                          <p>{humanize(result.crop.planning_category)}</p>
+                        </div>
+                        <button
+                          className="secondary-button"
+                          type="button"
+                          disabled={addingSelection !== null}
+                          onClick={() =>
+                            addSearchSelection(
+                              `crop-${result.crop.slug}`,
+                              {
+                                original_text: searchResults.query,
+                                selection_kind: "crop",
+                                crop_slug: result.crop.slug
+                              },
+                              result.crop.canonical_name
+                            )
+                          }
+                        >
+                          {addingSelection === `crop-${result.crop.slug}`
+                            ? "Adding…"
+                            : "Add crop"}
+                        </button>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {searchResults.cultivars.length > 0 && (
+                <div className="result-group">
+                  <div className="result-group-heading">
+                    <h3>Documented cultivars</h3>
+                    <p>Review the evidence-backed differences, then choose one explicitly.</p>
+                  </div>
+                  <div className="cultivar-result-list">
+                    {searchResults.cultivars.map((result) => {
+                      const traits = featuredTraits(result.cultivar);
+                      const evidence = traits[0]?.source;
+                      return (
+                        <article className="cultivar-result-card" key={result.cultivar.id}>
+                          <div className="cultivar-card-heading">
+                            <div>
+                              <p className="result-kind">
+                                {result.cultivar.crop_type
+                                  ? humanize(result.cultivar.crop_type)
+                                  : result.cultivar.crop_name}
+                                {` · ${humanize(result.match_method)}`}
+                              </p>
+                              <h3>{result.cultivar.canonical_name}</h3>
+                            </div>
+                            <span>
+                              {result.match_method === "related_crop"
+                                ? "Related cultivar"
+                                : `${Math.round(result.score * 100)}% match`}
+                            </span>
+                          </div>
+                          {result.cultivar.description && <p>{result.cultivar.description}</p>}
+                          {traits.length > 0 && (
+                            <dl className="trait-list">
+                              {traits.map((trait) => (
+                                <div key={trait.field_name}>
+                                  <dt>{humanize(trait.field_name)}</dt>
+                                  <dd>
+                                    {traitSummary(trait)}
+                                    {trait.inherited_from_crop ? " · crop baseline" : ""}
+                                  </dd>
+                                </div>
+                              ))}
+                            </dl>
+                          )}
+                          {evidence && (
+                            <p className="evidence-note">
+                              Evidence: {evidence.publisher ?? evidence.title}
+                            </p>
+                          )}
+                          <button
+                            className="secondary-button"
+                            type="button"
+                            disabled={addingSelection !== null}
+                            onClick={() =>
+                              addSearchSelection(
+                                `cultivar-${result.cultivar.slug}`,
+                                {
+                                  original_text: searchResults.query,
+                                  selection_kind: "cultivar",
+                                  cultivar_slug: result.cultivar.slug
+                                },
+                                result.cultivar.canonical_name
+                              )
+                            }
+                          >
+                            {addingSelection === `cultivar-${result.cultivar.slug}`
+                              ? "Adding…"
+                              : "Add cultivar"}
+                          </button>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {searchResults.crop_choices.length === 0 &&
+                searchResults.cultivars.length === 0 && (
+                  <p className="empty-results">
+                    No documented match was close enough. You can still keep your wording.
+                  </p>
+                )}
+
+              {searchResults.can_add_custom && (
+                <div className="custom-actions">
+                  <div>
+                    <h3>Don’t see the right one?</h3>
+                    <p>Custom entries stay clearly marked until supporting evidence is added.</p>
+                  </div>
+                  <div>
+                    {searchResults.crop_choices[0] && (
+                      <button
+                        className="text-button"
+                        type="button"
+                        disabled={addingSelection !== null}
+                        onClick={() =>
+                          addSearchSelection(
+                            "custom-cultivar",
+                            {
+                              original_text: searchResults.query,
+                              selection_kind: "custom_cultivar",
+                              crop_slug: searchResults.crop_choices[0].crop.slug
+                            },
+                            searchResults.query
+                          )
+                        }
+                      >
+                        Keep as a custom cultivar under{" "}
+                        {searchResults.crop_choices[0].crop.canonical_name}
+                      </button>
+                    )}
+                    <button
+                      className="text-button"
+                      type="button"
+                      disabled={addingSelection !== null}
+                      onClick={() =>
+                        addSearchSelection(
+                          "custom-crop",
+                          {
+                            original_text: searchResults.query,
+                            selection_kind: "custom_crop"
+                          },
+                          searchResults.query
+                        )
+                      }
+                    >
+                      Keep as a completely custom crop
+                    </button>
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
+
+          {addedNotice && (
+            <p className="success-message" role="status">
+              {addedNotice}
+            </p>
+          )}
+
+          <details className="quick-import">
+            <summary>Have a list already? Use Quick Import</summary>
+            <form className="wishlist-form" onSubmit={submitWishlist}>
+              <label htmlFor="wishlist">One crop or cultivar per line</label>
+              <textarea
+                id="wishlist"
+                value={text}
+                onChange={(event) => setText(event.target.value)}
+                rows={8}
+                maxLength={12_000}
+                placeholder={"Tomatoes\nSnap peas\nZucchini"}
+              />
+              <div className="form-footer">
+                <span>Up to 100 entries · uncertain matches require confirmation</span>
+                <button
+                  className="primary-button"
+                  disabled={matchingWishlist || !text.trim()}
+                  type="submit"
+                >
+                  {matchingWishlist ? "Matching…" : "Match my list"}
+                </button>
+              </div>
+            </form>
+          </details>
         </>
       )}
 
@@ -416,7 +763,10 @@ export default function App() {
           <div className="results-heading">
             <div>
               <p className="section-kicker">Wishlist review</p>
-              <h2>{wishlist.entries.length} crops on your list</h2>
+              <h2>
+                {wishlist.entries.length}{" "}
+                {wishlist.entries.length === 1 ? "plant" : "plants"} on your list
+              </h2>
             </div>
             <p className={reviewCount ? "review-count attention" : "review-count"}>
               {reviewCount ? `${reviewCount} need your input` : "Everything is settled"}

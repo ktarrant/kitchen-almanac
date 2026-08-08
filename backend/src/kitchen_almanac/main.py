@@ -12,6 +12,7 @@ from kitchen_almanac.config import get_settings
 from kitchen_almanac.database import get_session
 from kitchen_almanac.db_models import Crop, DatasetVersion, GardenProfile, Wishlist
 from kitchen_almanac.schemas import (
+    CatalogSearchResponse,
     ClimateNormalsResponse,
     CropListResponse,
     CropSummary,
@@ -22,14 +23,20 @@ from kitchen_almanac.schemas import (
     HardinessResponse,
     HealthResponse,
     LocationSourceResponse,
+    WishlistBuilderCreateRequest,
     WishlistCandidateResponse,
     WishlistCreateRequest,
     WishlistCropMatch,
     WishlistCultivarCandidateResponse,
     WishlistCultivarMatch,
+    WishlistEntryCreateRequest,
     WishlistEntryResponse,
     WishlistEntryUpdateRequest,
     WishlistResponse,
+)
+from kitchen_almanac.services.catalog_search_service import (
+    CatalogSearchUnavailableError,
+    search_catalog,
 )
 from kitchen_almanac.services.cultivar_service import list_cultivars as query_cultivars
 from kitchen_almanac.services.garden_profile_service import (
@@ -41,7 +48,9 @@ from kitchen_almanac.services.wishlist_service import (
     CatalogUnavailableError,
     InvalidCropSelectionError,
     WishlistNotFoundError,
+    add_wishlist_entry,
     create_wishlist,
+    create_wishlist_builder,
     get_wishlist,
     update_wishlist_entry,
 )
@@ -106,6 +115,30 @@ def list_cultivars(
     crop_slug: Annotated[str | None, Query(max_length=100)] = None,
 ) -> CultivarListResponse:
     return query_cultivars(session, query=q, crop_slug=crop_slug)
+
+
+@app.get("/api/catalog/search", response_model=CatalogSearchResponse)
+def search_catalog_endpoint(
+    session: Annotated[Session, Depends(get_session)],
+    q: Annotated[str, Query(min_length=1, max_length=120)],
+    garden_profile_id: Annotated[str, Query(min_length=36, max_length=36)],
+) -> CatalogSearchResponse:
+    try:
+        return search_catalog(
+            session,
+            query=q,
+            garden_profile_id=garden_profile_id,
+        )
+    except GardenProfileNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Garden profile not found.",
+        ) from error
+    except CatalogSearchUnavailableError as error:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=str(error),
+        ) from error
 
 
 def _crop_match(crop: Crop) -> WishlistCropMatch:
@@ -333,6 +366,66 @@ def create_wishlist_endpoint(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Garden profile not found.",
+        ) from error
+    return _wishlist_response(wishlist)
+
+
+@app.post(
+    "/api/wishlists/builder",
+    response_model=WishlistResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_wishlist_builder_endpoint(
+    request: WishlistBuilderCreateRequest,
+    session: Annotated[Session, Depends(get_session)],
+) -> WishlistResponse:
+    try:
+        wishlist = create_wishlist_builder(
+            session,
+            garden_profile_id=request.garden_profile_id,
+            name=request.name,
+        )
+    except CatalogUnavailableError as error:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=str(error),
+        ) from error
+    except GardenProfileNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Garden profile not found.",
+        ) from error
+    return _wishlist_response(wishlist)
+
+
+@app.post(
+    "/api/wishlists/{wishlist_id}/entries",
+    response_model=WishlistResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def add_wishlist_entry_endpoint(
+    wishlist_id: str,
+    request: WishlistEntryCreateRequest,
+    session: Annotated[Session, Depends(get_session)],
+) -> WishlistResponse:
+    try:
+        wishlist = add_wishlist_entry(
+            session,
+            wishlist_id=wishlist_id,
+            original_text=request.original_text,
+            selection_kind=request.selection_kind,
+            crop_slug=request.crop_slug,
+            cultivar_slug=request.cultivar_slug,
+        )
+    except WishlistNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Wishlist not found.",
+        ) from error
+    except InvalidCropSelectionError as error:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+            detail="The selected crop or cultivar is not in this wishlist's catalog.",
         ) from error
     return _wishlist_response(wishlist)
 

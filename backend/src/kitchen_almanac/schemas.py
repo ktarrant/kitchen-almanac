@@ -89,6 +89,36 @@ class CultivarListResponse(BaseModel):
     cultivars: list[CultivarResponse]
 
 
+class CatalogCropChoice(BaseModel):
+    slug: str
+    canonical_name: str
+    planning_category: str
+
+
+class CatalogCropSearchResult(BaseModel):
+    crop: CatalogCropChoice
+    score: float = Field(ge=0, le=1)
+    matched_alias: str
+    match_method: str
+
+
+class CatalogCultivarSearchResult(BaseModel):
+    cultivar: CultivarResponse
+    score: float = Field(ge=0, le=1)
+    matched_alias: str
+    match_method: str
+
+
+class CatalogSearchResponse(BaseModel):
+    query: str
+    normalized_query: str
+    crop_dataset_id: str
+    cultivar_dataset_id: str | None
+    crop_choices: list[CatalogCropSearchResult]
+    cultivars: list[CatalogCultivarSearchResult]
+    can_add_custom: bool = True
+
+
 class ExperienceLevel(StrEnum):
     BEGINNER = "beginner"
     INTERMEDIATE = "intermediate"
@@ -248,6 +278,53 @@ class WishlistCreateRequest(BaseModel):
             raise ValueError("Each wishlist entry must be 120 characters or fewer.")
         return value
 
+
+class WishlistBuilderCreateRequest(BaseModel):
+    garden_profile_id: str = Field(min_length=36, max_length=36)
+    name: str = Field(default="My garden wishlist", min_length=1, max_length=120)
+
+    @field_validator("name")
+    @classmethod
+    def validate_name(cls, value: str) -> str:
+        value = value.strip()
+        if not value:
+            raise ValueError("Wishlist name cannot be blank.")
+        return value
+
+
+class WishlistEntryCreateRequest(BaseModel):
+    original_text: str = Field(min_length=1, max_length=120)
+    selection_kind: str = Field(pattern=r"^(crop|cultivar|custom_cultivar|custom_crop)$")
+    crop_slug: str | None = Field(default=None, max_length=100)
+    cultivar_slug: str | None = Field(default=None, max_length=100)
+
+    @field_validator("original_text")
+    @classmethod
+    def validate_original_text(cls, value: str) -> str:
+        value = value.strip()
+        if not value:
+            raise ValueError("Entry wording cannot be blank.")
+        return value
+
+    @model_validator(mode="after")
+    def validate_selection(self) -> WishlistEntryCreateRequest:
+        if self.selection_kind == "crop" and (
+            self.crop_slug is None or self.cultivar_slug is not None
+        ):
+            raise ValueError("A crop selection requires one crop.")
+        if self.selection_kind == "cultivar" and (
+            self.cultivar_slug is None or self.crop_slug is not None
+        ):
+            raise ValueError("A cultivar selection requires one cultivar.")
+        if self.selection_kind == "custom_cultivar" and (
+            self.crop_slug is None or self.cultivar_slug is not None
+        ):
+            raise ValueError("A custom cultivar requires its known crop.")
+        if self.selection_kind == "custom_crop" and (
+            self.crop_slug is not None or self.cultivar_slug is not None
+        ):
+            raise ValueError("A custom crop cannot reference a catalog selection.")
+        return self
 
 class WishlistEntryUpdateRequest(BaseModel):
     crop_slug: str | None = Field(default=None, max_length=100)

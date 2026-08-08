@@ -19,8 +19,10 @@ from kitchen_almanac.db_models import (
 )
 from kitchen_almanac.services.garden_profile_service import GardenProfileNotFoundError
 from kitchen_almanac.services.wishlist_resolver import (
+    IntentKind,
     ResolutionMethod,
     ResolutionStatus,
+    normalize_term,
     resolve_term,
 )
 
@@ -56,6 +58,64 @@ def parse_wishlist_lines(text: str) -> list[str]:
     return [line.strip() for line in text.splitlines() if line.strip()]
 
 
+def _active_catalogs(
+    session: Session,
+) -> tuple[DatasetVersion, CultivarDatasetVersion | None]:
+    dataset = session.scalar(select(DatasetVersion).where(DatasetVersion.active.is_(True)))
+    if dataset is None:
+        raise CatalogUnavailableError("Load a crop catalog before building a wishlist.")
+    cultivar_dataset = session.scalar(
+        select(CultivarDatasetVersion).where(
+            CultivarDatasetVersion.active.is_(True),
+            CultivarDatasetVersion.crop_dataset_version_id == dataset.id,
+        )
+    )
+    return dataset, cultivar_dataset
+
+
+def _cultivar_intent(normalized_text: str, crop: Crop) -> str:
+    crop_aliases = sorted(
+        {
+            normalize_term(crop.canonical_name),
+            *(normalize_term(alias.alias) for alias in crop.aliases),
+        },
+        key=len,
+        reverse=True,
+    )
+    return next(
+        (
+            normalized_text[: -(len(alias) + 1)]
+            for alias in crop_aliases
+            if normalized_text.endswith(f" {alias}")
+        ),
+        normalized_text,
+    )
+
+
+def create_wishlist_builder(
+    session: Session,
+    *,
+    garden_profile_id: str,
+    name: str = "My garden wishlist",
+) -> Wishlist:
+    dataset, cultivar_dataset = _active_catalogs(session)
+    if session.get(GardenProfile, garden_profile_id) is None:
+        raise GardenProfileNotFoundError(garden_profile_id)
+    now = datetime.now(UTC)
+    wishlist = Wishlist(
+        id=str(uuid4()),
+        dataset_version_id=dataset.id,
+        cultivar_dataset_version_id=cultivar_dataset.id if cultivar_dataset else None,
+        garden_profile_id=garden_profile_id,
+        name=name,
+        created_at=now,
+        updated_at=now,
+    )
+    session.add(wishlist)
+    session.commit()
+    return get_wishlist(session, wishlist.id)
+
+
 def create_wishlist(
     session: Session,
     *,
@@ -63,9 +123,7 @@ def create_wishlist(
     garden_profile_id: str,
     name: str = "My garden wishlist",
 ) -> Wishlist:
-    dataset = session.scalar(select(DatasetVersion).where(DatasetVersion.active.is_(True)))
-    if dataset is None:
-        raise CatalogUnavailableError("Load a crop catalog before resolving a wishlist.")
+    dataset, cultivar_dataset = _active_catalogs(session)
 
     crops = session.scalars(
         select(Crop)
@@ -75,12 +133,6 @@ def create_wishlist(
     ).all()
     if not crops:
         raise CatalogUnavailableError("The active crop catalog is empty.")
-    cultivar_dataset = session.scalar(
-        select(CultivarDatasetVersion).where(
-            CultivarDatasetVersion.active.is_(True),
-            CultivarDatasetVersion.crop_dataset_version_id == dataset.id,
-        )
-    )
     cultivars = (
         session.scalars(
             select(Cultivar)
@@ -145,6 +197,71 @@ def create_wishlist(
         wishlist.entries.append(entry)
 
     session.add(wishlist)
+    session.commit()
+    return get_wishlist(session, wishlist.id)
+
+
+def add_wishlist_entry(
+    session: Session,
+    *,
+    wishlist_id: str,
+    original_text: str,
+    selection_kind: str,
+    crop_slug: str | None,
+    cultivar_slug: str | None,
+) -> Wishlist:
+    wishlist = get_wishlist(session, wishlist_id)
+    normalized_text = normalize_term(original_text)
+    position = max((entry.position for entry in wishlist.entries), default=0) + 1
+    entry = WishlistEntry(
+        id=str(uuid4()),
+        position=position,
+        original_text=original_text,
+        normalized_text=normalized_text,
+        status=ResolutionStatus.CUSTOM,
+        resolution_method=ResolutionMethod.CUSTOM,
+        intent_kind=IntentKind.CROP,
+    )
+
+    if selection_kind in {"crop", "custom_cultivar"}:
+        crop = session.scalar(
+            select(Crop).where(
+                Crop.dataset_version_id == wishlist.dataset_version_id,
+                Crop.slug == crop_slug,
+            )
+        )
+        if crop is None:
+            raise InvalidCropSelectionError(crop_slug or "")
+        entry.resolved_crop = crop
+        if selection_kind == "crop":
+            entry.status = ResolutionStatus.RESOLVED
+            entry.resolution_method = ResolutionMethod.USER_CONFIRMED
+        else:
+            entry.intent_kind = IntentKind.CULTIVAR
+            entry.cultivar_intent_text = _cultivar_intent(normalized_text, crop)
+    elif selection_kind == "cultivar":
+        if wishlist.cultivar_dataset_version_id is None:
+            raise InvalidCropSelectionError(cultivar_slug or "")
+        cultivar = session.scalar(
+            select(Cultivar)
+            .where(
+                Cultivar.cultivar_dataset_version_id == wishlist.cultivar_dataset_version_id,
+                Cultivar.slug == cultivar_slug,
+                Cultivar.review_status == "approved",
+            )
+            .options(selectinload(Cultivar.crop).selectinload(Crop.aliases))
+        )
+        if cultivar is None:
+            raise InvalidCropSelectionError(cultivar_slug or "")
+        entry.status = ResolutionStatus.RESOLVED
+        entry.resolution_method = ResolutionMethod.USER_CONFIRMED
+        entry.intent_kind = IntentKind.CULTIVAR
+        entry.cultivar_intent_text = _cultivar_intent(normalized_text, cultivar.crop)
+        entry.resolved_crop_id = cultivar.crop_id
+        entry.resolved_cultivar = cultivar
+
+    wishlist.entries.append(entry)
+    wishlist.updated_at = datetime.now(UTC)
     session.commit()
     return get_wishlist(session, wishlist.id)
 

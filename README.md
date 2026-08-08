@@ -48,8 +48,14 @@ The API includes:
 - `GET /api/crops` for the active crop catalog.
 - `GET /api/cultivars` for approved cultivar identities, effective traits,
   source identifiers, and separately modeled commercial listings.
+- `GET /api/catalog/search` for deterministic one-at-a-time crop and cultivar
+  discovery within a garden profile. Exact, prefix, commercial listing, and
+  fuzzy matches are labeled in the response.
 - `POST /api/garden-profiles` to save location and growing context.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
+- `POST /api/wishlists/builder` to create an empty, catalog-pinned wishlist.
+- `POST /api/wishlists/{id}/entries` to explicitly add a documented crop,
+  documented cultivar, custom cultivar beneath a known crop, or custom crop.
 - `POST /api/wishlists` to preserve and resolve a multiline Quick Import list
   for a garden profile, including cultivar and crop-type intent.
 - `GET /api/wishlists/{id}` to retrieve its current resolution state.

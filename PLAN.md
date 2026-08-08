@@ -197,6 +197,19 @@ Acceptance criteria:
 
 ### Step 5: Searchable catalog and wishlist builder (Goal A/B)
 
+Status: **In progress**
+
+Current progress: the primary frontend workflow now searches crops and
+cultivars one at a time. A deterministic API ranks canonical names, aliases,
+crop types, approved commercial listing names and identifiers, and spelling
+variations. Results remain suggestions until the user explicitly adds a
+documented cultivar, a crop with its cultivar undecided, a custom cultivar
+linked to a known crop, or a custom crop. The wishlist builder pins both active
+catalog versions, and Quick Import remains available as a secondary workflow.
+Result cards expose concise effective traits, inherited crop baselines, and an
+evidence publisher. Location-specific recommendation groups will be added by
+the Step 6 suitability model rather than implied by text matching alone.
+
 - Make one-at-a-time catalog search the primary wishlist workflow.
 - Search crop names, cultivar names, crop types, aliases, and approved source
   listings using deterministic exact, prefix, and fuzzy ranking.
@@ -214,6 +227,10 @@ Acceptance criteria:
 - Searching `tomato` can add generic tomatoes or a documented cultivar.
 - Searching `San Marzano` preserves the cultivar selection rather than reducing
   it to generic tomatoes.
+- Searching `San Marzano tomatoes` returns both documented San Marzano
+  cultivars in deterministic order and never silently chooses one.
+- Misspellings such as `san marzno` and `tomatos` produce explicit fuzzy
+  suggestions rather than automatic assignments.
 - Custom cultivars inherit only known crop-level facts and clearly display
   cultivar-specific unknowns.
 

@@ -252,6 +252,126 @@ def test_cultivar_alias_and_type_queries_are_supported(catalog_client: TestClien
     ]
 
 
+def test_catalog_search_returns_crop_and_related_cultivars(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": "tomatoes", "garden_profile_id": garden_profile["id"]},
+    )
+
+    assert response.status_code == 200
+    results = response.json()
+    assert results["normalized_query"] == "tomatoes"
+    assert results["crop_choices"][0] == {
+        "crop": {
+            "slug": "tomatoes",
+            "canonical_name": "Tomatoes",
+            "planning_category": "annual_crop",
+        },
+        "score": 1.0,
+        "matched_alias": "Tomatoes",
+        "match_method": "exact",
+    }
+    assert len(results["crop_choices"]) == 1
+    assert [item["cultivar"]["slug"] for item in results["cultivars"]] == [
+        "san-marzano",
+        "san-marzano-2",
+    ]
+    assert {item["match_method"] for item in results["cultivars"]} == {"related_crop"}
+
+
+def test_catalog_search_ranks_specific_cultivars_without_auto_selecting(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    response = catalog_client.get(
+        "/api/catalog/search",
+        params={
+            "q": "San Marzano tomatoes",
+            "garden_profile_id": garden_profile["id"],
+        },
+    )
+
+    assert response.status_code == 200
+    results = response.json()
+    assert [item["cultivar"]["slug"] for item in results["cultivars"]] == [
+        "san-marzano",
+        "san-marzano-2",
+    ]
+    assert results["cultivars"][0]["match_method"] == "exact"
+    assert results["cultivars"][0]["score"] == 1.0
+    assert results["cultivars"][1]["match_method"] == "prefix"
+    assert results["crop_choices"][0]["crop"]["slug"] == "tomatoes"
+    assert results["crop_choices"][0]["match_method"] == "crop_context"
+
+
+@pytest.mark.parametrize("query", ["san marzno tomatoes", "san marzno tomatos"])
+def test_catalog_search_offers_fuzzy_cultivar_suggestions(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+    query: str,
+) -> None:
+    response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": query, "garden_profile_id": garden_profile["id"]},
+    )
+
+    assert response.status_code == 200
+    results = response.json()
+    assert [item["cultivar"]["slug"] for item in results["cultivars"]] == [
+        "san-marzano",
+        "san-marzano-2",
+    ]
+    assert results["cultivars"][0]["match_method"] == "fuzzy"
+    assert results["cultivars"][0]["score"] < 1
+
+
+def test_catalog_search_matches_misspelled_crop_and_commercial_identifier(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    crop_response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": "tomatos", "garden_profile_id": garden_profile["id"]},
+    )
+    assert crop_response.status_code == 200
+    crop_results = crop_response.json()
+    assert crop_results["crop_choices"][0]["crop"]["slug"] == "tomatoes"
+    assert crop_results["crop_choices"][0]["match_method"] == "fuzzy"
+    assert len(crop_results["crop_choices"]) == 1
+    assert [item["cultivar"]["slug"] for item in crop_results["cultivars"]] == [
+        "san-marzano",
+        "san-marzano-2",
+    ]
+
+    listing_response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": "TM660-20", "garden_profile_id": garden_profile["id"]},
+    )
+    assert listing_response.status_code == 200
+    listing_results = listing_response.json()
+    assert [item["cultivar"]["slug"] for item in listing_results["cultivars"]] == [
+        "san-marzano-2"
+    ]
+    assert listing_results["cultivars"][0]["match_method"] == "commercial_listing"
+
+
+def test_catalog_search_requires_an_existing_garden_profile(
+    catalog_client: TestClient,
+) -> None:
+    response = catalog_client.get(
+        "/api/catalog/search",
+        params={
+            "q": "tomatoes",
+            "garden_profile_id": "00000000-0000-0000-0000-000000000000",
+        },
+    )
+
+    assert response.status_code == 404
+
+
 def test_garden_profile_captures_location_and_growing_context(
     catalog_client: TestClient,
 ) -> None:
@@ -453,6 +573,83 @@ def test_wishlist_entries_can_be_confirmed_or_kept_custom(
     fetched = catalog_client.get(f"/api/wishlists/{created['id']}")
     assert fetched.status_code == 200
     assert fetched.json()["entries"][1]["status"] == "custom"
+
+
+def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    created_response = catalog_client.post(
+        "/api/wishlists/builder",
+        json={"garden_profile_id": garden_profile["id"], "name": "Summer ideas"},
+    )
+    assert created_response.status_code == 201
+    wishlist = created_response.json()
+    assert wishlist["name"] == "Summer ideas"
+    assert wishlist["entries"] == []
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-0b017ec1ab06c2d4"
+
+    selections = [
+        {
+            "original_text": "San Marzano tomatoes",
+            "selection_kind": "cultivar",
+            "cultivar_slug": "san-marzano",
+        },
+        {
+            "original_text": "tomatoes",
+            "selection_kind": "crop",
+            "crop_slug": "tomatoes",
+        },
+        {
+            "original_text": "Black Krim tomatoes",
+            "selection_kind": "custom_cultivar",
+            "crop_slug": "tomatoes",
+        },
+        {"original_text": "Dragon fruit", "selection_kind": "custom_crop"},
+    ]
+    for selection in selections:
+        added = catalog_client.post(
+            f"/api/wishlists/{wishlist['id']}/entries",
+            json=selection,
+        )
+        assert added.status_code == 201
+        wishlist = added.json()
+
+    cultivar, crop, custom_cultivar, custom_crop = wishlist["entries"]
+    assert [entry["position"] for entry in wishlist["entries"]] == [1, 2, 3, 4]
+    assert cultivar["resolved_cultivar"]["slug"] == "san-marzano"
+    assert cultivar["resolved_crop"]["slug"] == "tomatoes"
+    assert cultivar["cultivar_intent_text"] == "san marzano"
+    assert crop["resolved_crop"]["slug"] == "tomatoes"
+    assert crop["resolved_cultivar"] is None
+    assert custom_cultivar["status"] == "custom"
+    assert custom_cultivar["intent_kind"] == "cultivar"
+    assert custom_cultivar["cultivar_intent_text"] == "black krim"
+    assert custom_cultivar["resolved_crop"]["slug"] == "tomatoes"
+    assert custom_crop["status"] == "custom"
+    assert custom_crop["intent_kind"] == "crop"
+    assert custom_crop["resolved_crop"] is None
+
+
+def test_wishlist_builder_validates_selection_shape(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    wishlist = catalog_client.post(
+        "/api/wishlists/builder",
+        json={"garden_profile_id": garden_profile["id"]},
+    ).json()
+
+    response = catalog_client.post(
+        f"/api/wishlists/{wishlist['id']}/entries",
+        json={
+            "original_text": "tomatoes",
+            "selection_kind": "cultivar",
+            "crop_slug": "tomatoes",
+        },
+    )
+
+    assert response.status_code == 422
 
 
 def test_quick_import_preserves_cultivar_and_crop_type_intent(
