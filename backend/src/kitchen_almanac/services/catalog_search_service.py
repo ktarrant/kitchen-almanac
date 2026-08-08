@@ -21,6 +21,7 @@ from kitchen_almanac.schemas import (
 )
 from kitchen_almanac.services.cultivar_service import list_cultivars
 from kitchen_almanac.services.garden_profile_service import GardenProfileNotFoundError
+from kitchen_almanac.services.suitability_service import assess_cultivar
 from kitchen_almanac.services.wishlist_resolver import normalize_term
 
 MINIMUM_FUZZY_SCORE = 0.64
@@ -105,7 +106,15 @@ def search_catalog(
     query: str,
     garden_profile_id: str,
 ) -> CatalogSearchResponse:
-    if session.get(GardenProfile, garden_profile_id) is None:
+    profile = session.scalar(
+        select(GardenProfile)
+        .where(GardenProfile.id == garden_profile_id)
+        .options(
+            selectinload(GardenProfile.location_dataset),
+            selectinload(GardenProfile.location_evidence),
+        )
+    )
+    if profile is None:
         raise GardenProfileNotFoundError(garden_profile_id)
     crop_dataset = session.scalar(select(DatasetVersion).where(DatasetVersion.active.is_(True)))
     if crop_dataset is None:
@@ -240,8 +249,31 @@ def search_catalog(
                     score=round(score, 4),
                     matched_alias=matched_alias,
                     match_method=method,
+                    suitability=assess_cultivar(
+                        profile,
+                        cultivar_response,
+                        cultivar_dataset_id=cultivar_dataset.id,
+                    ),
                 )
             )
+
+    generic_crop_search = context is not None and not context.intent
+    suitability_group_rank = {
+        "best_documented_fit": 0,
+        "other_documented": 1,
+        "conditional": 2,
+        "constrained": 3,
+        "insufficient_evidence": 4,
+    }
+
+    def cultivar_sort_key(item: CatalogCultivarSearchResult):
+        if generic_crop_search:
+            return (
+                suitability_group_rank[item.suitability.result_group],
+                -(item.suitability.score if item.suitability.score is not None else -1),
+                item.cultivar.canonical_name.casefold(),
+            )
+        return (-item.score, item.cultivar.canonical_name.casefold())
 
     return CatalogSearchResponse(
         query=query,
@@ -254,6 +286,6 @@ def search_catalog(
         )[:5],
         cultivars=sorted(
             cultivar_results,
-            key=lambda item: (-item.score, item.cultivar.canonical_name.casefold()),
+            key=cultivar_sort_key,
         )[:12],
     )

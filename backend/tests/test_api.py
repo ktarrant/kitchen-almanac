@@ -255,7 +255,7 @@ def test_cultivar_alias_and_type_queries_are_supported(catalog_client: TestClien
 @pytest.mark.parametrize(
     ("query", "expected_slugs"),
     [
-        ("cucumbers", ["corinto", "eureka", "marketmore-76", "picolino", "tasty-green"]),
+        ("cucumbers", ["eureka", "marketmore-76", "tasty-green", "corinto", "picolino"]),
         ("zucchini", ["dunja", "eight-ball", "gentry", "sunburst"]),
         ("Provider", ["provider"]),
     ],
@@ -319,16 +319,18 @@ def test_catalog_search_returns_crop_and_related_cultivars(
     }
     assert len(results["crop_choices"]) == 1
     assert [item["cultivar"]["slug"] for item in results["cultivars"]] == [
+        "mountain-merit",
+        "juliet",
+        "sun-gold",
         "brandywine-red",
         "cherokee-purple",
         "green-zebra",
-        "juliet",
-        "mountain-merit",
         "san-marzano",
         "san-marzano-2",
-        "sun-gold",
     ]
     assert {item["match_method"] for item in results["cultivars"]} == {"related_crop"}
+    assert results["cultivars"][0]["suitability"]["result_group"] == "best_documented_fit"
+    assert results["cultivars"][0]["suitability"]["score"] == 95
 
 
 def test_catalog_search_ranks_specific_cultivars_without_auto_selecting(
@@ -391,14 +393,14 @@ def test_catalog_search_matches_misspelled_crop_and_commercial_identifier(
     assert crop_results["crop_choices"][0]["match_method"] == "fuzzy"
     assert len(crop_results["crop_choices"]) == 1
     assert [item["cultivar"]["slug"] for item in crop_results["cultivars"]] == [
+        "mountain-merit",
+        "juliet",
+        "sun-gold",
         "brandywine-red",
         "cherokee-purple",
         "green-zebra",
-        "juliet",
-        "mountain-merit",
         "san-marzano",
         "san-marzano-2",
-        "sun-gold",
     ]
 
     listing_response = catalog_client.get(
@@ -425,6 +427,90 @@ def test_catalog_search_requires_an_existing_garden_profile(
     )
 
     assert response.status_code == 404
+
+
+def test_suitability_assessment_is_versioned_explainable_and_deterministic(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    parameters = {
+        "garden_profile_id": garden_profile["id"],
+        "cultivar_slug": "mountain-merit",
+    }
+    first = catalog_client.get("/api/suitability", params=parameters)
+    second = catalog_client.get("/api/suitability", params=parameters)
+
+    assert first.status_code == 200
+    assert second.status_code == 200
+    assessment = first.json()
+    assert second.json() == assessment
+    assert assessment["algorithm_version"] == "suitability-v1.0.0"
+    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
+    assert assessment["input_fingerprint"].startswith("sha256:")
+    assert assessment["status"] == "suitable"
+    assert assessment["score"] == 95
+    assert assessment["result_group"] == "best_documented_fit"
+    assert assessment["constraints"] == []
+    factors = {factor["code"]: factor for factor in assessment["factors"]}
+    assert factors["maturity_window"]["points"] == 20
+    assert {item["origin"] for item in factors["maturity_window"]["evidence"]} == {
+        "crop_baseline",
+        "climate_normal",
+    }
+    regional = factors["regional_recommendation"]
+    assert regional["evidence"][0]["source_scope"] == (
+        "Current regional commercial recommendation; not written specifically for home gardeners"
+    )
+    assert assessment["assumptions"] == [
+        "Mid-Atlantic applicability uses an approximate coordinate envelope "
+        "(36.5–42.5°N, 83–73°W), not a political-boundary lookup."
+    ]
+
+
+def test_suitability_treats_protected_culture_as_a_constraint(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    response = catalog_client.get(
+        "/api/suitability",
+        params={"garden_profile_id": garden_profile["id"], "cultivar_slug": "corinto"},
+    )
+
+    assert response.status_code == 200
+    assessment = response.json()
+    assert assessment["status"] == "not_recommended"
+    assert assessment["result_group"] == "constrained"
+    assert "protected culture" in assessment["constraints"][0]
+    protected_factor = next(
+        factor for factor in assessment["factors"] if factor["code"] == "protected_culture"
+    )
+    assert {item["field_name"] for item in protected_factor["evidence"]} == {
+        "crop_type",
+        "growing_methods",
+    }
+
+
+def test_suitability_refuses_to_score_without_climate_evidence(
+    catalog_client: TestClient,
+) -> None:
+    profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={"postal_code": "00000", "growing_methods": ["containers"]},
+    ).json()
+
+    response = catalog_client.get(
+        "/api/suitability",
+        params={"garden_profile_id": profile["id"], "cultivar_slug": "provider"},
+    )
+
+    assert response.status_code == 200
+    assessment = response.json()
+    assert assessment["status"] == "insufficient_evidence"
+    assert assessment["score"] is None
+    assert assessment["result_group"] == "insufficient_evidence"
+    assert assessment["missing_evidence"] == [
+        "A frost-free growing-season normal for this garden"
+    ]
 
 
 def test_garden_profile_captures_location_and_growing_context(

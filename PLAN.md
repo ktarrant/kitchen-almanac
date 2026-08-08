@@ -248,6 +248,26 @@ Acceptance criteria:
 
 ### Step 6: Regional cultivar suitability (Goal B)
 
+Status: **In progress**
+
+Current progress: a versioned deterministic assessment now scores documented
+cultivars against the garden's NOAA 50-percent frost-free window with an
+explicit planning buffer. It treats protected-culture mismatches and maturity
+overruns as constraints; accounts for growing method, beginner-facing growth
+habit complexity, regional recommendation scope, and documented disease
+resistance; and reports assumptions, missing evidence, evidence quality, and a
+fingerprint of every versioned input. Generic crop searches rank and group
+cultivars by this assessment, while cultivar-specific searches continue to
+rank by name relevance. The frontend shows the score, leading reasons,
+constraints, and gaps, and a direct API returns the complete cited assessment.
+
+This first model intentionally does not yet score cultivar-specific
+temperature/GDD thresholds, photoperiod, local disease pressure, precise
+container/support dimensions, or intended culinary use because the baseline
+catalog does not contain enough comparable evidence for those dimensions.
+Those fields remain the next suitability expansion rather than being inferred
+from a regional commercial listing.
+
 - Evaluate cultivar candidates against the garden's frost-free window,
   temperature and growing-degree-day needs, photoperiod, disease pressure,
   growing methods, support, space, intended use, and evidence quality.

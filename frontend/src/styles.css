@@ -439,6 +439,52 @@ h1 {
   font-weight: 720;
 }
 
+.cultivar-card-heading .suitability-badge.conditional,
+.cultivar-card-heading .suitability-badge.insufficient_evidence {
+  color: #775b24;
+  background: #f4eac8;
+}
+
+.cultivar-card-heading .suitability-badge.not_recommended {
+  color: #7a3c31;
+  background: #f1ddd5;
+}
+
+.suitability-summary {
+  margin: 0 0 0.9rem;
+  padding: 0.75rem;
+  border-left: 3px solid #8ba184;
+  background: #f4f5ec;
+}
+
+.suitability-summary > p,
+.suitability-summary ul {
+  margin: 0;
+  color: #45594b;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.suitability-summary ul {
+  margin-top: 0.45rem;
+  padding-left: 1rem;
+}
+
+.suitability-summary li + li {
+  margin-top: 0.35rem;
+}
+
+.suitability-summary .constraint-note,
+.suitability-summary .missing-note {
+  margin-top: 0.5rem;
+  color: #7a3c31;
+  font-weight: 680;
+}
+
+.suitability-summary .missing-note {
+  color: #775b24;
+}
+
 .trait-list {
   display: grid;
   gap: 0.45rem;

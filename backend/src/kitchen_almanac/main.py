@@ -23,6 +23,7 @@ from kitchen_almanac.schemas import (
     HardinessResponse,
     HealthResponse,
     LocationSourceResponse,
+    SuitabilityAssessmentResponse,
     WishlistBuilderCreateRequest,
     WishlistCandidateResponse,
     WishlistCreateRequest,
@@ -43,6 +44,11 @@ from kitchen_almanac.services.garden_profile_service import (
     GardenProfileNotFoundError,
     create_garden_profile,
     get_garden_profile,
+)
+from kitchen_almanac.services.suitability_service import (
+    CultivarNotFoundError,
+    SuitabilityUnavailableError,
+    get_suitability_assessment,
 )
 from kitchen_almanac.services.wishlist_service import (
     CatalogUnavailableError,
@@ -135,6 +141,35 @@ def search_catalog_endpoint(
             detail="Garden profile not found.",
         ) from error
     except CatalogSearchUnavailableError as error:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=str(error),
+        ) from error
+
+
+@app.get("/api/suitability", response_model=SuitabilityAssessmentResponse)
+def cultivar_suitability_endpoint(
+    session: Annotated[Session, Depends(get_session)],
+    garden_profile_id: Annotated[str, Query(min_length=36, max_length=36)],
+    cultivar_slug: Annotated[str, Query(min_length=1, max_length=100)],
+) -> SuitabilityAssessmentResponse:
+    try:
+        return get_suitability_assessment(
+            session,
+            garden_profile_id=garden_profile_id,
+            cultivar_slug=cultivar_slug,
+        )
+    except GardenProfileNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Garden profile not found.",
+        ) from error
+    except CultivarNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Cultivar not found in the active catalog.",
+        ) from error
+    except SuitabilityUnavailableError as error:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=str(error),

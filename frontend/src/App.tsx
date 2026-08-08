@@ -94,6 +94,30 @@ type CatalogCultivar = CultivarMatch & {
   }[];
 };
 
+type SuitabilityAssessment = {
+  algorithm_version: string;
+  input_fingerprint: string;
+  status: "suitable" | "conditional" | "not_recommended" | "insufficient_evidence";
+  score: number | null;
+  evidence_quality: number;
+  result_group:
+    | "best_documented_fit"
+    | "other_documented"
+    | "conditional"
+    | "constrained"
+    | "insufficient_evidence";
+  summary: string;
+  factors: {
+    code: string;
+    effect: "positive" | "caution" | "constraint";
+    points: number;
+    explanation: string;
+  }[];
+  constraints: string[];
+  assumptions: string[];
+  missing_evidence: string[];
+};
+
 type CatalogSearchResults = {
   query: string;
   normalized_query: string;
@@ -108,6 +132,7 @@ type CatalogSearchResults = {
     score: number;
     matched_alias: string;
     match_method: string;
+    suitability: SuitabilityAssessment;
   }[];
   can_add_custom: boolean;
 };
@@ -182,6 +207,34 @@ function featuredTraits(cultivar: CatalogCultivar) {
     .slice(0, 3);
 }
 
+const suitabilityGroups = [
+  {
+    key: "best_documented_fit",
+    title: "Best documented fits",
+    description: "Strongest fit from the climate, setup, and regional evidence currently available."
+  },
+  {
+    key: "other_documented",
+    title: "Other suitable cultivars",
+    description: "No hard conflict found, but the supporting evidence is less locally specific."
+  },
+  {
+    key: "conditional",
+    title: "Could fit with more information",
+    description: "A key planning fact is still missing or needs confirmation."
+  },
+  {
+    key: "constrained",
+    title: "Documented constraints",
+    description: "These cultivars conflict with the current season or growing setup."
+  },
+  {
+    key: "insufficient_evidence",
+    title: "Not enough evidence to rank",
+    description: "Kitchen Almanac will not guess without the climate or cultivar facts it needs."
+  }
+] as const;
+
 export default function App() {
   const [profile, setProfile] = useState<GardenProfile | null>(null);
   const [postalCode, setPostalCode] = useState("");
@@ -207,6 +260,15 @@ export default function App() {
       ).length ?? 0,
     [wishlist]
   );
+  const groupedCultivars = suitabilityGroups
+    .map((group) => ({
+      ...group,
+      results:
+        searchResults?.cultivars.filter(
+          (result) => result.suitability.result_group === group.key
+        ) ?? []
+    }))
+    .filter((group) => group.results.length > 0);
 
   function toggleGrowingMethod(method: GrowingMethod) {
     setGrowingMethods((selected) =>
@@ -588,14 +650,14 @@ export default function App() {
                 </div>
               )}
 
-              {searchResults.cultivars.length > 0 && (
-                <div className="result-group">
+              {groupedCultivars.map((group) => (
+                <div className="result-group" key={group.key}>
                   <div className="result-group-heading">
-                    <h3>Documented cultivars</h3>
-                    <p>Review the evidence-backed differences, then choose one explicitly.</p>
+                    <h3>{group.title}</h3>
+                    <p>{group.description}</p>
                   </div>
                   <div className="cultivar-result-list">
-                    {searchResults.cultivars.map((result) => {
+                    {group.results.map((result) => {
                       const traits = featuredTraits(result.cultivar);
                       const evidence =
                         result.cultivar.traits.find((trait) => trait.source.scope)?.source ??
@@ -612,10 +674,10 @@ export default function App() {
                               </p>
                               <h3>{result.cultivar.canonical_name}</h3>
                             </div>
-                            <span>
-                              {result.match_method === "related_crop"
-                                ? "Related cultivar"
-                                : `${Math.round(result.score * 100)}% match`}
+                            <span className={`suitability-badge ${result.suitability.status}`}>
+                              {result.suitability.score === null
+                                ? "Needs climate"
+                                : `${result.suitability.score}/100 fit`}
                             </span>
                           </div>
                           {result.cultivar.description && <p>{result.cultivar.description}</p>}
@@ -632,6 +694,28 @@ export default function App() {
                               ))}
                             </dl>
                           )}
+                          <div className="suitability-summary">
+                            <p>{result.suitability.summary}</p>
+                            {result.suitability.factors.length > 0 && (
+                              <ul>
+                                {result.suitability.factors.slice(0, 2).map((factor) => (
+                                  <li className={factor.effect} key={factor.code}>
+                                    {factor.explanation}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                            {result.suitability.constraints.map((constraint) => (
+                              <p className="constraint-note" key={constraint}>
+                                Constraint: {constraint}
+                              </p>
+                            ))}
+                            {result.suitability.missing_evidence.length > 0 && (
+                              <p className="missing-note">
+                                Missing: {result.suitability.missing_evidence.join("; ")}
+                              </p>
+                            )}
+                          </div>
                           {evidence && (
                             <p className="evidence-note">
                               Evidence: {evidence.publisher ?? evidence.title}
@@ -663,7 +747,7 @@ export default function App() {
                     })}
                   </div>
                 </div>
-              )}
+              ))}
 
               {searchResults.crop_choices.length === 0 &&
                 searchResults.cultivars.length === 0 && (

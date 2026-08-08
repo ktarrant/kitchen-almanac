@@ -77,7 +77,11 @@ The API includes:
   source identifiers, and separately modeled commercial listings.
 - `GET /api/catalog/search` for deterministic one-at-a-time crop and cultivar
   discovery within a garden profile. Exact, prefix, commercial listing, and
-  fuzzy matches are labeled in the response.
+  fuzzy matches are labeled in the response; generic crop results include a
+  versioned, evidence-backed suitability assessment and are ranked by it.
+- `GET /api/suitability` for the complete cited assessment of one cultivar
+  against one garden profile, including its algorithm version, input
+  fingerprint, constraints, assumptions, and missing evidence.
 - `POST /api/garden-profiles` to save location and growing context.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
 - `POST /api/wishlists/builder` to create an empty, catalog-pinned wishlist.

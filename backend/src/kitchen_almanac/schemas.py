@@ -90,6 +90,44 @@ class CultivarListResponse(BaseModel):
     cultivars: list[CultivarResponse]
 
 
+class SuitabilityEvidenceReference(BaseModel):
+    field_name: str
+    value: dict | list | str | int | float | bool
+    origin: str
+    source_document_id: str | None = None
+    title: str | None = None
+    publisher: str | None = None
+    source_url: str | None = None
+    source_locator: str | None = None
+    source_scope: str | None = None
+    inherited_from_crop: bool = False
+
+
+class SuitabilityFactorResponse(BaseModel):
+    code: str
+    effect: str
+    points: int
+    explanation: str
+    evidence: list[SuitabilityEvidenceReference]
+
+
+class SuitabilityAssessmentResponse(BaseModel):
+    garden_profile_id: str
+    cultivar_slug: str
+    cultivar_dataset_id: str
+    algorithm_version: str
+    input_fingerprint: str
+    status: str
+    score: int | None = Field(default=None, ge=0, le=100)
+    evidence_quality: int = Field(ge=0, le=100)
+    result_group: str
+    summary: str
+    factors: list[SuitabilityFactorResponse]
+    constraints: list[str]
+    assumptions: list[str]
+    missing_evidence: list[str]
+
+
 class CatalogCropChoice(BaseModel):
     slug: str
     canonical_name: str
@@ -108,6 +146,7 @@ class CatalogCultivarSearchResult(BaseModel):
     score: float = Field(ge=0, le=1)
     matched_alias: str
     match_method: str
+    suitability: SuitabilityAssessmentResponse
 
 
 class CatalogSearchResponse(BaseModel):
