@@ -1,0 +1,1824 @@
+{
+  "commercial_listings": [
+    {
+      "cultivar_slug": "san-marzano-2",
+      "id": "reimer-tm660-20",
+      "listing_name": "San Marzano 2 Tomato Seeds",
+      "review_status": "approved",
+      "source_identifier": "TM660-20",
+      "source_key": "reimer-san-marzano-2-tm660-20",
+      "vendor": "Reimer Seeds"
+    }
+  ],
+  "crop_baselines": [
+    {
+      "crop_slug": "tomatoes",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "transplant",
+            "maximum": 90,
+            "minimum": 65
+          },
+          "source_excerpt": "The extension baseline gives a 65–90 day range measured from transplanting.",
+          "source_key": "umd-tomatoes-2025",
+          "source_locator": "About tomatoes > Days to maturity",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "sun_hours",
+          "normalized_value": {
+            "minimum": 6,
+            "preferred_maximum": 10,
+            "preferred_minimum": 8
+          },
+          "source_excerpt": "Tomatoes require at least six sun hours, with eight to ten preferred.",
+          "source_key": "umd-tomatoes-2025",
+          "source_locator": "About tomatoes > Planting",
+          "unit": "hours_per_day"
+        },
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 36,
+            "minimum": 18
+          },
+          "source_excerpt": "Plant spacing varies by habit and support system from 18 to 36 inches.",
+          "source_key": "umd-tomatoes-2025",
+          "source_locator": "About tomatoes > Spacing",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "frost_tender",
+          "normalized_value": true,
+          "source_excerpt": "Tomatoes are tender warm-season annuals whose top growth is injured by frost.",
+          "source_key": "umd-tomatoes-2025",
+          "source_locator": "About tomatoes > Hardiness",
+          "unit": null
+        }
+      ]
+    }
+  ],
+  "crop_dataset_id": "kitchen-almanac-v1-f76ca812f62c8c39",
+  "cultivars": [
+    {
+      "aliases": [
+        "Brandywine Red"
+      ],
+      "canonical_name": "Brandywine Red",
+      "crop_slug": "tomatoes",
+      "crop_type": "beefsteak",
+      "description": "A late-season, indeterminate red beefsteak heirloom tomato with potato-leaf foliage.",
+      "review_status": "approved",
+      "slug": "brandywine-red",
+      "source_identifiers": [
+        {
+          "name_in_source": "Brandywine Red",
+          "source_identifier": "page=3;table=heirloom-tomatoes;row=Brandywine-Red",
+          "source_key": "mid-atlantic-tomatoes-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "beefsteak",
+          "source_excerpt": "The table reports type for Brandywine Red.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Brandywine Red",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Brandywine Red.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Brandywine Red",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "indeterminate",
+          "source_excerpt": "The table reports growth habit for Brandywine Red.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Brandywine Red",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Brandywine Red.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Brandywine Red",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_type",
+          "normalized_value": "potato_leaf",
+          "source_excerpt": "The table reports leaf type for Brandywine Red.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Brandywine Red",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Brandywine Red among its recommended varieties.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Brandywine Red",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "late",
+          "source_excerpt": "The table reports maturity season for Brandywine Red.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Brandywine Red",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cherokee Purple"
+      ],
+      "canonical_name": "Cherokee Purple",
+      "crop_slug": "tomatoes",
+      "crop_type": "globe",
+      "description": "A midseason, indeterminate burgundy heirloom globe tomato listed in the regional guide.",
+      "review_status": "approved",
+      "slug": "cherokee-purple",
+      "source_identifiers": [
+        {
+          "name_in_source": "Cherokee Purple",
+          "source_identifier": "page=3;table=heirloom-tomatoes;row=Cherokee-Purple",
+          "source_key": "mid-atlantic-tomatoes-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "globe",
+          "source_excerpt": "The table reports type for Cherokee Purple.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Cherokee Purple",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "burgundy",
+          "source_excerpt": "The table reports fruit color for Cherokee Purple.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Cherokee Purple",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "indeterminate",
+          "source_excerpt": "The table reports growth habit for Cherokee Purple.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Cherokee Purple",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Cherokee Purple.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Cherokee Purple",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Cherokee Purple among its recommended varieties.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Cherokee Purple",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "midseason",
+          "source_excerpt": "The table reports maturity season for Cherokee Purple.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Cherokee Purple",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cobra"
+      ],
+      "canonical_name": "Cobra",
+      "crop_slug": "string-beans",
+      "crop_type": "pole_snap",
+      "description": "A medium-green pole snap bean listed for fresh use and heat tolerance in the Mid-Atlantic region.",
+      "review_status": "approved",
+      "slug": "cobra",
+      "source_identifiers": [
+        {
+          "name_in_source": "Cobra",
+          "source_identifier": "page=3;table=recommended-snap-bean-varieties;row=Cobra",
+          "source_key": "mid-atlantic-beans-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "pole_snap",
+          "source_excerpt": "The table reports type for Cobra.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Cobra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 55,
+            "minimum": 55
+          },
+          "source_excerpt": "The table reports 55 days for Cobra.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Cobra",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "medium_green",
+          "source_excerpt": "The table reports fruit color for Cobra.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Cobra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_length",
+          "normalized_value": 6.5,
+          "source_excerpt": "The table reports the characteristic fruit length for Cobra.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Cobra",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "pole",
+          "source_excerpt": "The table reports growth habit for Cobra.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Cobra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "heat_tolerant",
+          "normalized_value": true,
+          "source_excerpt": "The table reports heat tolerance for Cobra.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Cobra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Cobra among its recommended varieties.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Cobra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh"
+          ],
+          "source_excerpt": "The table reports listed uses for Cobra.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Cobra",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Corinto"
+      ],
+      "canonical_name": "Corinto",
+      "crop_slug": "cucumbers",
+      "crop_type": "protected_slicer",
+      "description": "An early gynoecious and parthenocarpic hybrid cucumber listed for protected culture in the Mid-Atlantic region.",
+      "review_status": "approved",
+      "slug": "corinto",
+      "source_identifiers": [
+        {
+          "name_in_source": "Corinto",
+          "source_identifier": "page=3;table=recommended-varieties;row=Corinto",
+          "source_key": "mid-atlantic-cucumbers-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "protected_slicer",
+          "source_excerpt": "The table reports type for Corinto.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Corinto",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 48,
+            "minimum": 48
+          },
+          "source_excerpt": "The table reports 48 days for Corinto.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Corinto",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "flowering_habit",
+          "normalized_value": "gynoecious_parthenocarpic",
+          "source_excerpt": "The table reports flowering habit for Corinto.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Corinto",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Corinto.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Corinto",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Corinto among its recommended varieties.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Corinto",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh"
+          ],
+          "source_excerpt": "The table reports listed uses for Corinto.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Corinto",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Dunja"
+      ],
+      "canonical_name": "Dunja",
+      "crop_slug": "summer-squash",
+      "crop_type": "green_zucchini",
+      "description": "A medium-green hybrid zucchini listed in the current Mid-Atlantic summer squash recommendations.",
+      "review_status": "approved",
+      "slug": "dunja",
+      "source_identifiers": [
+        {
+          "name_in_source": "Dunja",
+          "source_identifier": "page=3;table=recommended-varieties;row=Dunja",
+          "source_key": "mid-atlantic-summer-squash-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "green_zucchini",
+          "source_excerpt": "The table reports type for Dunja.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Dunja",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "medium_green",
+          "source_excerpt": "The table reports fruit color for Dunja.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Dunja",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Dunja.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Dunja",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Dunja among its recommended varieties.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Dunja",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Eight Ball"
+      ],
+      "canonical_name": "Eight Ball",
+      "crop_slug": "summer-squash",
+      "crop_type": "specialty_summer_squash",
+      "description": "A round, green hybrid specialty summer squash listed in the current Mid-Atlantic recommendations.",
+      "review_status": "approved",
+      "slug": "eight-ball",
+      "source_identifiers": [
+        {
+          "name_in_source": "Eight Ball",
+          "source_identifier": "page=3;table=recommended-varieties;row=Eight-Ball",
+          "source_key": "mid-atlantic-summer-squash-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "specialty_summer_squash",
+          "source_excerpt": "The table reports type for Eight Ball.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Eight Ball",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "green",
+          "source_excerpt": "The table reports fruit color for Eight Ball.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Eight Ball",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "round",
+          "source_excerpt": "The table reports fruit shape for Eight Ball.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Eight Ball",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Eight Ball.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Eight Ball",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Eight Ball among its recommended varieties.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Eight Ball",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Eureka"
+      ],
+      "canonical_name": "Eureka",
+      "crop_slug": "cucumbers",
+      "crop_type": "pickling",
+      "description": "A monoecious, hybrid pickling cucumber listed for hand harvest and fresh use in the Mid-Atlantic region.",
+      "review_status": "approved",
+      "slug": "eureka",
+      "source_identifiers": [
+        {
+          "name_in_source": "Eureka",
+          "source_identifier": "page=3;table=recommended-varieties;row=Eureka",
+          "source_key": "mid-atlantic-cucumbers-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "pickling",
+          "source_excerpt": "The table reports type for Eureka.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Eureka",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 57,
+            "minimum": 57
+          },
+          "source_excerpt": "The table reports 57 days for Eureka.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Eureka",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "flowering_habit",
+          "normalized_value": "monoecious",
+          "source_excerpt": "The table reports flowering habit for Eureka.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Eureka",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Eureka.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Eureka",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Eureka among its recommended varieties.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Eureka",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh",
+            "pickling"
+          ],
+          "source_excerpt": "The table reports listed uses for Eureka.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Eureka",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Gentry"
+      ],
+      "canonical_name": "Gentry",
+      "crop_slug": "summer-squash",
+      "crop_type": "yellow_crookneck",
+      "description": "A heat-tolerant hybrid yellow crookneck squash listed in the current Mid-Atlantic recommendations.",
+      "review_status": "approved",
+      "slug": "gentry",
+      "source_identifiers": [
+        {
+          "name_in_source": "Gentry",
+          "source_identifier": "page=3;table=recommended-varieties;row=Gentry",
+          "source_key": "mid-atlantic-summer-squash-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "yellow_crookneck",
+          "source_excerpt": "The table reports type for Gentry.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Gentry",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "heat_tolerant",
+          "normalized_value": true,
+          "source_excerpt": "The table reports heat tolerance for Gentry.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Gentry",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Gentry.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Gentry",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Gentry among its recommended varieties.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Gentry",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Green Zebra"
+      ],
+      "canonical_name": "Green Zebra",
+      "crop_slug": "tomatoes",
+      "crop_type": "globe",
+      "description": "A midseason, indeterminate heirloom tomato with yellow-gold fruit and dark green striping.",
+      "review_status": "approved",
+      "slug": "green-zebra",
+      "source_identifiers": [
+        {
+          "name_in_source": "Green Zebra",
+          "source_identifier": "page=3;table=heirloom-tomatoes;row=Green-Zebra",
+          "source_key": "mid-atlantic-tomatoes-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "globe",
+          "source_excerpt": "The table reports type for Green Zebra.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Green Zebra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "yellow_gold_with_dark_green_stripes",
+          "source_excerpt": "The table reports fruit color for Green Zebra.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Green Zebra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "indeterminate",
+          "source_excerpt": "The table reports growth habit for Green Zebra.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Green Zebra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Green Zebra.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Green Zebra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Green Zebra among its recommended varieties.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Green Zebra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "midseason",
+          "source_excerpt": "The table reports maturity season for Green Zebra.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Green Zebra",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Juliet"
+      ],
+      "canonical_name": "Juliet",
+      "crop_slug": "tomatoes",
+      "crop_type": "large_grape",
+      "description": "A red, indeterminate hybrid large-grape tomato listed in the current Mid-Atlantic recommendations.",
+      "review_status": "approved",
+      "slug": "juliet",
+      "source_identifiers": [
+        {
+          "name_in_source": "Juliet",
+          "source_identifier": "page=4;table=cherry-grape-plum-cluster;row=Juliet",
+          "source_key": "mid-atlantic-tomatoes-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "large_grape",
+          "source_excerpt": "The table reports type for Juliet.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Juliet",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "disease_resistance",
+          "normalized_value": [
+            "early_blight",
+            "late_blight"
+          ],
+          "source_excerpt": "The table reports reported disease resistance for Juliet.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Juliet",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Juliet.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Juliet",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "indeterminate",
+          "source_excerpt": "The table reports growth habit for Juliet.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Juliet",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Juliet.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Juliet",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Juliet among its recommended varieties.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Juliet",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Marketmore 76"
+      ],
+      "canonical_name": "Marketmore 76",
+      "crop_slug": "cucumbers",
+      "crop_type": "standard_slicer",
+      "description": "A monoecious, open-pollinated standard slicing cucumber listed for Mid-Atlantic field production.",
+      "review_status": "approved",
+      "slug": "marketmore-76",
+      "source_identifiers": [
+        {
+          "name_in_source": "Marketmore 76",
+          "source_identifier": "page=3;table=recommended-varieties;row=Marketmore-76",
+          "source_key": "mid-atlantic-cucumbers-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "standard_slicer",
+          "source_excerpt": "The table reports type for Marketmore 76.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 63,
+            "minimum": 63
+          },
+          "source_excerpt": "The table reports 63 days for Marketmore 76.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "flowering_habit",
+          "normalized_value": "monoecious",
+          "source_excerpt": "The table reports flowering habit for Marketmore 76.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Marketmore 76.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Marketmore 76 among its recommended varieties.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh"
+          ],
+          "source_excerpt": "The table reports listed uses for Marketmore 76.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Maxibel"
+      ],
+      "canonical_name": "Maxibel",
+      "crop_slug": "string-beans",
+      "crop_type": "bush_snap",
+      "description": "A long, medium-green, round-podded bush snap bean listed for fresh use in the Mid-Atlantic region.",
+      "review_status": "approved",
+      "slug": "maxibel",
+      "source_identifiers": [
+        {
+          "name_in_source": "Maxibel",
+          "source_identifier": "page=3;table=recommended-snap-bean-varieties;row=Maxibel",
+          "source_key": "mid-atlantic-beans-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "bush_snap",
+          "source_excerpt": "The table reports type for Maxibel.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Maxibel",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 60,
+            "minimum": 60
+          },
+          "source_excerpt": "The table reports 60 days for Maxibel.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Maxibel",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "medium_green",
+          "source_excerpt": "The table reports fruit color for Maxibel.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Maxibel",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_length",
+          "normalized_value": 7.0,
+          "source_excerpt": "The table reports the characteristic fruit length for Maxibel.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Maxibel",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "bush",
+          "source_excerpt": "The table reports growth habit for Maxibel.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Maxibel",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Maxibel among its recommended varieties.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Maxibel",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh"
+          ],
+          "source_excerpt": "The table reports listed uses for Maxibel.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Maxibel",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Mountain Merit"
+      ],
+      "canonical_name": "Mountain Merit",
+      "crop_slug": "tomatoes",
+      "crop_type": "globe",
+      "description": "A midseason, determinate red hybrid globe tomato with multiple reported disease resistances.",
+      "review_status": "approved",
+      "slug": "mountain-merit",
+      "source_identifiers": [
+        {
+          "name_in_source": "Mountain Merit",
+          "source_identifier": "page=3;table=market-tomatoes;row=Mountain-Merit",
+          "source_key": "mid-atlantic-tomatoes-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "globe",
+          "source_excerpt": "The table reports type for Mountain Merit.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "disease_resistance",
+          "normalized_value": [
+            "fusarium_wilt",
+            "late_blight",
+            "root_knot_nematode",
+            "tomato_spotted_wilt_virus",
+            "verticillium_wilt"
+          ],
+          "source_excerpt": "The table reports reported disease resistance for Mountain Merit.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Mountain Merit.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "determinate",
+          "source_excerpt": "The table reports growth habit for Mountain Merit.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Mountain Merit.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Mountain Merit among its recommended varieties.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "midseason",
+          "source_excerpt": "The table reports maturity season for Mountain Merit.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Picolino"
+      ],
+      "canonical_name": "Picolino",
+      "crop_slug": "cucumbers",
+      "crop_type": "protected_snacking",
+      "description": "A gynoecious and parthenocarpic hybrid snacking cucumber listed for protected culture in the Mid-Atlantic region.",
+      "review_status": "approved",
+      "slug": "picolino",
+      "source_identifiers": [
+        {
+          "name_in_source": "Picolino",
+          "source_identifier": "page=3;table=recommended-varieties;row=Picolino",
+          "source_key": "mid-atlantic-cucumbers-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "protected_snacking",
+          "source_excerpt": "The table reports type for Picolino.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Picolino",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 50,
+            "minimum": 50
+          },
+          "source_excerpt": "The table reports 50 days for Picolino.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Picolino",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "flowering_habit",
+          "normalized_value": "gynoecious_parthenocarpic",
+          "source_excerpt": "The table reports flowering habit for Picolino.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Picolino",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Picolino.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Picolino",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Picolino among its recommended varieties.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Picolino",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh",
+            "snacking"
+          ],
+          "source_excerpt": "The table reports listed uses for Picolino.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Picolino",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Provider"
+      ],
+      "canonical_name": "Provider",
+      "crop_slug": "string-beans",
+      "crop_type": "bush_snap",
+      "description": "A medium-green, round-podded bush snap bean listed for fresh use in the Mid-Atlantic region.",
+      "review_status": "approved",
+      "slug": "provider",
+      "source_identifiers": [
+        {
+          "name_in_source": "Provider",
+          "source_identifier": "page=3;table=recommended-snap-bean-varieties;row=Provider",
+          "source_key": "mid-atlantic-beans-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "bush_snap",
+          "source_excerpt": "The table reports type for Provider.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 55,
+            "minimum": 55
+          },
+          "source_excerpt": "The table reports 55 days for Provider.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "medium_green",
+          "source_excerpt": "The table reports fruit color for Provider.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_length",
+          "normalized_value": 5.5,
+          "source_excerpt": "The table reports the characteristic fruit length for Provider.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "bush",
+          "source_excerpt": "The table reports growth habit for Provider.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Provider among its recommended varieties.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh"
+          ],
+          "source_excerpt": "The table reports listed uses for Provider.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Roma 2",
+        "Roma II"
+      ],
+      "canonical_name": "Roma II",
+      "crop_slug": "string-beans",
+      "crop_type": "bush_flat_snap",
+      "description": "A medium-green, flat-podded bush snap bean listed for fresh and processing use in the Mid-Atlantic region.",
+      "review_status": "approved",
+      "slug": "roma-ii",
+      "source_identifiers": [
+        {
+          "name_in_source": "Roma II",
+          "source_identifier": "page=3;table=recommended-snap-bean-varieties;row=Roma-II",
+          "source_key": "mid-atlantic-beans-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "bush_flat_snap",
+          "source_excerpt": "The table reports type for Roma II.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Roma II",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 58,
+            "minimum": 58
+          },
+          "source_excerpt": "The table reports 58 days for Roma II.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Roma II",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "medium_green",
+          "source_excerpt": "The table reports fruit color for Roma II.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Roma II",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_length",
+          "normalized_value": 5.5,
+          "source_excerpt": "The table reports the characteristic fruit length for Roma II.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Roma II",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "bush",
+          "source_excerpt": "The table reports growth habit for Roma II.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Roma II",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Roma II among its recommended varieties.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Roma II",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh",
+            "processing"
+          ],
+          "source_excerpt": "The table reports listed uses for Roma II.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Roma II",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "San Marzano"
+      ],
+      "canonical_name": "San Marzano",
+      "crop_slug": "tomatoes",
+      "crop_type": "paste_plum",
+      "description": "An early- to main-season red paste/plum tomato cultivar.",
+      "review_status": "approved",
+      "slug": "san-marzano",
+      "source_identifiers": [
+        {
+          "name_in_source": "San Marzano",
+          "source_identifier": "variety_id=1515",
+          "source_key": "cornell-san-marzano-1515"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": [
+            "paste",
+            "plum"
+          ],
+          "source_excerpt": "Cornell classifies this cultivar as a paste/plum tomato.",
+          "source_key": "cornell-san-marzano-1515",
+          "source_locator": "Variety details > Description",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "unspecified",
+            "maximum": 80,
+            "minimum": 60
+          },
+          "source_excerpt": "The variety record reports a maturity range of 60 to 80 days.",
+          "source_key": "cornell-san-marzano-1515",
+          "source_locator": "Variety details > Days To Maturity",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_dimensions",
+          "normalized_value": {
+            "length": 3.0,
+            "width": 1.5
+          },
+          "source_excerpt": "The red fruit is described as approximately three by one-and-a-half inches.",
+          "source_key": "cornell-san-marzano-1515",
+          "source_locator": "Variety details > Description",
+          "unit": "inches"
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "San Marzano 2",
+        "San Marzano II"
+      ],
+      "canonical_name": "San Marzano 2",
+      "crop_slug": "tomatoes",
+      "crop_type": "paste_plum",
+      "description": "A distinct main-season Italian paste/plum tomato cultivar.",
+      "review_status": "approved",
+      "slug": "san-marzano-2",
+      "source_identifiers": [
+        {
+          "name_in_source": "San Marzano 2",
+          "source_identifier": "variety_id=3146",
+          "source_key": "cornell-san-marzano-2-3146"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": [
+            "paste",
+            "plum"
+          ],
+          "source_excerpt": "Cornell describes this as an Italian paste/plum cultivar.",
+          "source_key": "cornell-san-marzano-2-3146",
+          "source_locator": "Variety details > Description",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "unspecified",
+            "maximum": 90,
+            "minimum": 79
+          },
+          "source_excerpt": "The variety record reports a maturity range of 79 to 90 days.",
+          "source_key": "cornell-san-marzano-2-3146",
+          "source_locator": "Variety details > Days To Maturity",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "indeterminate",
+          "source_excerpt": "The variety record identifies the vines as indeterminate.",
+          "source_key": "cornell-san-marzano-2-3146",
+          "source_locator": "Variety details > Description",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_weight",
+          "normalized_value": {
+            "maximum": 7,
+            "minimum": 5
+          },
+          "source_excerpt": "The elongated fruit is reported at five to seven ounces.",
+          "source_key": "cornell-san-marzano-2-3146",
+          "source_locator": "Variety details > Description",
+          "unit": "ounces"
+        },
+        {
+          "confidence": "high",
+          "field_name": "harvest_pattern",
+          "normalized_value": {
+            "cluster_maximum": 6,
+            "cluster_minimum": 5
+          },
+          "source_excerpt": "Fruit is reported in clusters containing five or six tomatoes.",
+          "source_key": "cornell-san-marzano-2-3146",
+          "source_locator": "Variety details > Description",
+          "unit": "fruit_per_cluster"
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Sun Gold",
+        "Sungold"
+      ],
+      "canonical_name": "Sun Gold",
+      "crop_slug": "tomatoes",
+      "crop_type": "cherry",
+      "description": "An orange, indeterminate hybrid cherry tomato listed in the current Mid-Atlantic recommendations.",
+      "review_status": "approved",
+      "slug": "sun-gold",
+      "source_identifiers": [
+        {
+          "name_in_source": "Sun Gold",
+          "source_identifier": "page=4;table=cherry-grape-plum-cluster;row=Sun-Gold",
+          "source_key": "mid-atlantic-tomatoes-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "cherry",
+          "source_excerpt": "The table reports type for Sun Gold.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Sun Gold",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "disease_resistance",
+          "normalized_value": [
+            "fusarium_wilt",
+            "tomato_mosaic_virus"
+          ],
+          "source_excerpt": "The table reports reported disease resistance for Sun Gold.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Sun Gold",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "orange",
+          "source_excerpt": "The table reports fruit color for Sun Gold.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Sun Gold",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "growth_habit",
+          "normalized_value": "indeterminate",
+          "source_excerpt": "The table reports growth habit for Sun Gold.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Sun Gold",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Sun Gold.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Sun Gold",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Sun Gold among its recommended varieties.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Sun Gold",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Sunburst"
+      ],
+      "canonical_name": "Sunburst",
+      "crop_slug": "summer-squash",
+      "crop_type": "scallop",
+      "description": "A bright golden-yellow hybrid scallop squash listed in the current Mid-Atlantic recommendations.",
+      "review_status": "approved",
+      "slug": "sunburst",
+      "source_identifiers": [
+        {
+          "name_in_source": "Sunburst",
+          "source_identifier": "page=3;table=recommended-varieties;row=Sunburst",
+          "source_key": "mid-atlantic-summer-squash-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "scallop",
+          "source_excerpt": "The table reports type for Sunburst.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Sunburst",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "bright_golden_yellow",
+          "source_excerpt": "The table reports fruit color for Sunburst.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Sunburst",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Sunburst.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Sunburst",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Sunburst among its recommended varieties.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Sunburst",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tasty Green"
+      ],
+      "canonical_name": "Tasty Green",
+      "crop_slug": "cucumbers",
+      "crop_type": "long_slicer",
+      "description": "A monoecious, hybrid long slicing cucumber listed for Mid-Atlantic field production.",
+      "review_status": "approved",
+      "slug": "tasty-green",
+      "source_identifiers": [
+        {
+          "name_in_source": "Tasty Green",
+          "source_identifier": "page=3;table=recommended-varieties;row=Tasty-Green",
+          "source_key": "mid-atlantic-cucumbers-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "long_slicer",
+          "source_excerpt": "The table reports type for Tasty Green.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Tasty Green",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 52,
+            "minimum": 52
+          },
+          "source_excerpt": "The table reports 52 days for Tasty Green.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Tasty Green",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "flowering_habit",
+          "normalized_value": "monoecious",
+          "source_excerpt": "The table reports flowering habit for Tasty Green.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Tasty Green",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Tasty Green.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Tasty Green",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Tasty Green among its recommended varieties.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Tasty Green",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh"
+          ],
+          "source_excerpt": "The table reports listed uses for Tasty Green.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Tasty Green",
+          "unit": null
+        }
+      ]
+    }
+  ],
+  "review_status": "approved",
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "key": "cornell-san-marzano-1515",
+      "license": null,
+      "publisher": "Cornell Cooperative Extension",
+      "retrieved_at": "2026-08-08T00:00:00Z",
+      "title": "Vegetable Varieties for Gardeners: San Marzano",
+      "url": "https://vegvariety.cce.cornell.edu/main/detail.php?filterBy=0&variety_id=1515"
+    },
+    {
+      "key": "cornell-san-marzano-2-3146",
+      "license": null,
+      "publisher": "Cornell Cooperative Extension",
+      "retrieved_at": "2026-08-08T00:00:00Z",
+      "title": "Vegetable Varieties for Gardeners: San Marzano 2",
+      "url": "https://vegvariety.cce.cornell.edu/main/detail.php?filterBy=0&variety_id=3146"
+    },
+    {
+      "key": "mid-atlantic-beans-2026-2027",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-08T00:00:00Z",
+      "scope": "Current regional commercial recommendation; not written specifically for home gardeners",
+      "sha256": "174b0596cf199e757e8253ee64b049bba6789fcfe0745a540193a451c37dfeff",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/beans-snap-lima.pdf",
+      "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Beans (Snap and Lima)",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/beans-snap-lima.pdf"
+    },
+    {
+      "key": "mid-atlantic-cucumbers-2026-2027",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-08T00:00:00Z",
+      "scope": "Current regional commercial recommendation; not written specifically for home gardeners",
+      "sha256": "d2fb9ebc913cc79227ed2317b6b5613084a0d5c00c87eb7f9e054d0ce7102858",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cucumbers.pdf",
+      "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Cucumbers",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cucumbers.pdf"
+    },
+    {
+      "key": "mid-atlantic-summer-squash-2026-2027",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-08T00:00:00Z",
+      "scope": "Current regional commercial recommendation; not written specifically for home gardeners",
+      "sha256": "a7264f8b3664b289ce729dedbf8e994e6866d69d0ec5a2ab6dfbc3e220022446",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/summer-squash.pdf",
+      "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Summer Squash",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/summer-squash.pdf"
+    },
+    {
+      "key": "mid-atlantic-tomatoes-2026-2027",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-08T00:00:00Z",
+      "scope": "Current regional commercial recommendation; not written specifically for home gardeners",
+      "sha256": "b3010676317a3413a0198a6af20cc277e625934d2b31655c24e3daf75e28fe86",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/tomatoes.pdf",
+      "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Tomatoes",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/tomatoes.pdf"
+    },
+    {
+      "key": "reimer-san-marzano-2-tm660-20",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-08T00:00:00Z",
+      "title": "San Marzano 2 Tomato Seeds",
+      "url": "https://www.reimerseeds.com/san-marzano-2-tomato-seeds"
+    },
+    {
+      "key": "umd-tomatoes-2025",
+      "license": null,
+      "publisher": "University of Maryland Extension",
+      "retrieved_at": "2026-08-08T00:00:00Z",
+      "title": "Growing Tomatoes in a Home Garden",
+      "url": "https://www.extension.umd.edu/resource/growing-tomatoes-home-garden"
+    }
+  ]
+}

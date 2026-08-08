@@ -31,8 +31,7 @@ class CultivarCatalogDependencyError(ValueError):
 def load_cultivar_catalog(session: Session, catalog: CultivarCatalog) -> bool:
     """Publish an approved cultivar snapshot against its exact crop catalog."""
 
-    if session.get(CultivarDatasetVersion, catalog.id) is not None:
-        return False
+    already_loaded = session.get(CultivarDatasetVersion, catalog.id) is not None
 
     crop_dataset = session.get(DatasetVersion, catalog.crop_dataset_id)
     if crop_dataset is None or not crop_dataset.active:
@@ -55,23 +54,35 @@ def load_cultivar_catalog(session: Session, catalog: CultivarCatalog) -> bool:
     source_documents: dict[str, SourceDocument] = {}
     for source_data in catalog.data["sources"]:
         document_id = source_document_id(source_data)
-        document = session.get(SourceDocument, document_id)
+        source_sha = source_data.get("sha256", source_record_sha256(source_data))
+        document = session.get(SourceDocument, document_id) or session.scalar(
+            select(SourceDocument).where(SourceDocument.sha256 == source_sha)
+        )
         if document is None:
             document = SourceDocument(
                 id=document_id,
                 title=source_data["title"],
-                source_path=f"{catalog.source_path}#sources/{source_data['key']}",
+                source_path=source_data.get(
+                    "source_path", f"{catalog.source_path}#sources/{source_data['key']}"
+                ),
                 source_url=source_data["url"],
                 publisher=source_data["publisher"],
-                sha256=source_record_sha256(source_data),
-                media_type="application/json",
+                sha256=source_sha,
+                media_type=source_data.get("media_type", "application/json"),
                 retrieved_at=datetime.fromisoformat(
                     source_data["retrieved_at"].replace("Z", "+00:00")
                 ),
                 license=source_data["license"],
+                source_scope=source_data.get("scope"),
             )
             session.add(document)
+        elif document.source_scope != source_data.get("scope"):
+            document.source_scope = source_data.get("scope")
         source_documents[source_data["key"]] = document
+
+    if already_loaded:
+        session.commit()
+        return False
 
     session.execute(update(CultivarDatasetVersion).values(active=False))
     version = CultivarDatasetVersion(

@@ -11,7 +11,7 @@ SCHEMA_VERSION = "1.0.0"
 PARSER_VERSION = "1.0.0"
 EXTRACTOR_VERSION = "manual-review-1.0.0"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_SOURCE = REPOSITORY_ROOT / "data/source/cultivars/reviewed-cultivars.v1.json"
+DEFAULT_SOURCE = REPOSITORY_ROOT / "data/seed/cultivar-catalog.v1.json"
 
 
 class CultivarCatalogError(ValueError):
@@ -128,6 +128,15 @@ def validate_cultivar_catalog(data: object) -> list[str]:
             datetime.fromisoformat(str(source.get("retrieved_at", "")).replace("Z", "+00:00"))
         except ValueError:
             errors.append(f"Source {source.get('key')!r} has an invalid retrieval time.")
+        snapshot_fields = {"source_path", "sha256", "media_type"}
+        present_snapshot_fields = snapshot_fields & source.keys()
+        if present_snapshot_fields and present_snapshot_fields != snapshot_fields:
+            errors.append(
+                f"Source {source.get('key')!r} must provide source_path, sha256, "
+                "and media_type together."
+            )
+        elif present_snapshot_fields and len(source["sha256"]) != 64:
+            errors.append(f"Source {source.get('key')!r} has an invalid SHA-256 digest.")
 
     baselines = data["crop_baselines"]
     if not isinstance(baselines, list):

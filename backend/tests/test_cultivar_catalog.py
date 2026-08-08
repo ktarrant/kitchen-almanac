@@ -13,11 +13,30 @@ from kitchen_almanac.cultivar_catalog import (
 def test_reviewed_cultivar_snapshot_is_valid_and_deterministic() -> None:
     catalog = build_cultivar_catalog()
 
-    assert catalog.id == "cultivar-catalog-v1-0b017ec1ab06c2d4"
+    assert catalog.id == "cultivar-catalog-v1-ee57671abbf353bd"
     assert catalog.crop_dataset_id == "kitchen-almanac-v1-f76ca812f62c8c39"
     assert [item["slug"] for item in catalog.data["cultivars"]] == [
+        "brandywine-red",
+        "cherokee-purple",
+        "cobra",
+        "corinto",
+        "dunja",
+        "eight-ball",
+        "eureka",
+        "gentry",
+        "green-zebra",
+        "juliet",
+        "marketmore-76",
+        "maxibel",
+        "mountain-merit",
+        "picolino",
+        "provider",
+        "roma-ii",
         "san-marzano",
         "san-marzano-2",
+        "sun-gold",
+        "sunburst",
+        "tasty-green",
     ]
     assert catalog.data["commercial_listings"][0]["id"] == "reimer-tm660-20"
 

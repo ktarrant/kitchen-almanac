@@ -78,6 +78,7 @@ type CultivarTrait = {
   source: {
     title: string;
     publisher: string | null;
+    scope: string | null;
   };
 };
 
@@ -596,7 +597,9 @@ export default function App() {
                   <div className="cultivar-result-list">
                     {searchResults.cultivars.map((result) => {
                       const traits = featuredTraits(result.cultivar);
-                      const evidence = traits[0]?.source;
+                      const evidence =
+                        result.cultivar.traits.find((trait) => trait.source.scope)?.source ??
+                        traits[0]?.source;
                       return (
                         <article className="cultivar-result-card" key={result.cultivar.id}>
                           <div className="cultivar-card-heading">
@@ -632,6 +635,7 @@ export default function App() {
                           {evidence && (
                             <p className="evidence-note">
                               Evidence: {evidence.publisher ?? evidence.title}
+                              {evidence.scope ? ` · ${evidence.scope}` : ""}
                             </p>
                           )}
                           <button

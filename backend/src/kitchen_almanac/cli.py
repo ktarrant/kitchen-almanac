@@ -8,7 +8,13 @@ from alembic.config import Config
 from sqlalchemy.orm import Session
 
 from alembic import command
-from kitchen_almanac import cultivar_catalog, hardiness_data, location_data, noaa_normals_data
+from kitchen_almanac import (
+    cultivar_catalog,
+    cultivar_pipeline,
+    hardiness_data,
+    location_data,
+    noaa_normals_data,
+)
 from kitchen_almanac.catalog import (
     DEFAULT_OUTPUT,
     DEFAULT_SOURCE,
@@ -244,6 +250,95 @@ def cultivar_validate(
     typer.echo(
         f"Cultivar catalog {catalog.id} is valid ({len(catalog.data['cultivars'])} cultivars)."
     )
+
+
+@cultivar_app.command("fetch")
+def cultivar_fetch(
+    staged: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_pipeline.DEFAULT_STAGED,
+) -> None:
+    """Fetch locally retained source documents and verify their reviewed checksums."""
+
+    try:
+        fetched, present = cultivar_pipeline.fetch_staged_sources(staged)
+    except cultivar_pipeline.CultivarPipelineError as error:
+        typer.echo(f"Cultivar source fetch failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    typer.echo(f"Fetched {fetched} source snapshots; {present} already verified.")
+
+
+@cultivar_app.command("reconcile")
+def cultivar_reconcile(
+    base: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_pipeline.DEFAULT_BASE,
+    staged: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_pipeline.DEFAULT_STAGED,
+    decisions: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_pipeline.DEFAULT_DECISIONS,
+) -> None:
+    """Report exact and possible identity collisions before publication."""
+
+    try:
+        base_data = cultivar_pipeline.read_pipeline_json(base, "base cultivar catalog")
+        staged_data = cultivar_pipeline.read_pipeline_json(staged, "staged cultivar data")
+        decision_data = cultivar_pipeline.read_pipeline_json(
+            decisions, "cultivar review decisions"
+        )
+        errors = [
+            *cultivar_pipeline.validate_staged_cultivars(staged_data),
+            *cultivar_pipeline.validate_review_decisions(staged_data, decision_data),
+        ]
+        if errors:
+            raise cultivar_pipeline.CultivarPipelineError(" ".join(errors))
+        report = cultivar_pipeline.reconcile_candidates(base_data, staged_data, decision_data)
+    except cultivar_pipeline.CultivarPipelineError as error:
+        typer.echo(f"Cultivar reconciliation failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+
+    for item in report:
+        matches = ",".join(item.exact_matches) or item.possible_match or "none"
+        typer.echo(f"{item.candidate_id}: {item.decision}; identity match={matches}")
+    typer.echo(f"Reviewed {len(report)} staged cultivar candidates.")
+
+
+@cultivar_app.command("publish")
+def cultivar_publish(
+    base: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_pipeline.DEFAULT_BASE,
+    staged: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_pipeline.DEFAULT_STAGED,
+    decisions: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = cultivar_pipeline.DEFAULT_DECISIONS,
+    output: Annotated[Path, typer.Option(file_okay=True, dir_okay=False)] = (
+        cultivar_pipeline.DEFAULT_OUTPUT
+    ),
+) -> None:
+    """Build the deterministic approved snapshot from reviewed staged evidence."""
+
+    try:
+        data = cultivar_pipeline.build_expanded_snapshot(
+            base,
+            staged,
+            decisions,
+            verify_snapshots=True,
+        )
+        cultivar_pipeline.write_expanded_snapshot(data, output)
+        catalog = cultivar_catalog.build_cultivar_catalog(output)
+    except (
+        cultivar_pipeline.CultivarPipelineError,
+        cultivar_catalog.CultivarCatalogError,
+    ) as error:
+        typer.echo(f"Cultivar publication failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    typer.echo(f"Published {len(data['cultivars'])} cultivars to {output}")
+    typer.echo(f"Dataset: {catalog.id}")
 
 
 @cultivar_app.command("load")

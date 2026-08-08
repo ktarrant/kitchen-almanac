@@ -37,10 +37,37 @@ uv run --project backend kitchen-almanac climate validate-hardiness
 uv run --project backend kitchen-almanac climate load-hardiness
 uv run --project backend kitchen-almanac climate validate-noaa
 uv run --project backend kitchen-almanac climate load-noaa
+uv run --project backend kitchen-almanac cultivars fetch
+uv run --project backend kitchen-almanac cultivars reconcile
+uv run --project backend kitchen-almanac cultivars publish
 uv run --project backend kitchen-almanac cultivars validate
 uv run --project backend kitchen-almanac cultivars load
 uv run --project backend uvicorn kitchen_almanac.main:app --reload
 ```
+
+## Cultivar data workflow
+
+Cultivar data is not maintained by editing database rows. The reproducible
+publication workflow uses:
+
+- `data/source/cultivars/reviewed-cultivars.v1.json` as the approved base.
+- `data/source/cultivars/staged-mid-atlantic.v1.json` for normalized records
+  extracted from pinned source documents.
+- `data/source/cultivars/review-decisions.v1.json` for explicit create, link,
+  or reject decisions tied to the exact staging checksum.
+- `data/seed/cultivar-catalog.v1.json` as the deterministic published artifact
+  loaded by the application.
+
+`cultivars reconcile` reports exact and possible identity collisions.
+`cultivars fetch` downloads source documents for local review and verifies their
+approved checksums; copyrighted source binaries are intentionally not
+redistributed in the repository. `cultivars publish` verifies the local source
+snapshots and review coverage before building the artifact. `cultivars load`
+then activates that immutable catalog version idempotently. The initial
+expanded cohort contains 21 cultivars across tomatoes, cucumbers, string beans,
+and summer squash. Its Mid-Atlantic source tables are commercial-production
+recommendations; that scope is retained in the evidence rather than silently
+presented as home-garden trial data.
 
 The API includes:
 

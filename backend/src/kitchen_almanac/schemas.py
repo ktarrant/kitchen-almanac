@@ -36,6 +36,7 @@ class CatalogEvidenceSourceResponse(BaseModel):
     sha256: str
     retrieved_at: datetime | None
     license: str | None
+    scope: str | None
     source_locator: str
 
 

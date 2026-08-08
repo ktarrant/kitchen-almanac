@@ -30,6 +30,7 @@ class SourceDocument(Base):
     media_type: Mapped[str] = mapped_column(String(100))
     retrieved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     license: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    source_scope: Mapped[str | None] = mapped_column(String(500), nullable=True)
 
 
 class DatasetVersion(Base):

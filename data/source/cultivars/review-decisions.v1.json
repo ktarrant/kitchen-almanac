@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "staging_sha256": "76db3e02d733b88a81327f346a0078e37810d6b712960e644caa046fc3ff404c",
+  "reviewed_at": "2026-08-08T00:00:00Z",
+  "reviewer": "Kitchen Almanac data review",
+  "decisions": [
+    {
+      "candidate_id": "mid-atlantic-2026-provider",
+      "action": "create",
+      "canonical_slug": "provider"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-maxibel",
+      "action": "create",
+      "canonical_slug": "maxibel"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-roma-ii",
+      "action": "create",
+      "canonical_slug": "roma-ii"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-cobra",
+      "action": "create",
+      "canonical_slug": "cobra"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-marketmore-76",
+      "action": "create",
+      "canonical_slug": "marketmore-76"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-tasty-green",
+      "action": "create",
+      "canonical_slug": "tasty-green"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-eureka",
+      "action": "create",
+      "canonical_slug": "eureka"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-corinto",
+      "action": "create",
+      "canonical_slug": "corinto"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-picolino",
+      "action": "create",
+      "canonical_slug": "picolino"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-dunja",
+      "action": "create",
+      "canonical_slug": "dunja"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-eight-ball",
+      "action": "create",
+      "canonical_slug": "eight-ball"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-sunburst",
+      "action": "create",
+      "canonical_slug": "sunburst"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-gentry",
+      "action": "create",
+      "canonical_slug": "gentry"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-mountain-merit",
+      "action": "create",
+      "canonical_slug": "mountain-merit"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-brandywine-red",
+      "action": "create",
+      "canonical_slug": "brandywine-red"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-cherokee-purple",
+      "action": "create",
+      "canonical_slug": "cherokee-purple"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-green-zebra",
+      "action": "create",
+      "canonical_slug": "green-zebra"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-sun-gold",
+      "action": "create",
+      "canonical_slug": "sun-gold"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-juliet",
+      "action": "create",
+      "canonical_slug": "juliet"
+    }
+  ]
+}

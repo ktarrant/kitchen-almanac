@@ -31,6 +31,7 @@ def _source_response(source, locator: str) -> CatalogEvidenceSourceResponse:
         sha256=source.sha256,
         retrieved_at=source.retrieved_at,
         license=source.license,
+        scope=source.source_scope,
         source_locator=locator,
     )
 

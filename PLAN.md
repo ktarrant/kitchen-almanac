@@ -166,13 +166,25 @@ Acceptance criteria:
 
 Status: **In progress**
 
-Current progress: the first reviewed cultivar snapshot models canonical
-cultivars, aliases, source-specific identifiers, crop baseline traits,
-cultivar-level evidence overrides, and separate commercial seed listings. A
-versioned loader and read API expose effective traits with explicit inheritance.
-Quick Import now extracts exact, fuzzy, crop-qualified, and crop-type cultivar
-intent while preserving the original wording; unknown cultivars remain linked
-to their recognized crop as custom intent.
+Current progress: the reviewed catalog now contains 21 canonical cultivars
+across tomatoes, cucumbers, string beans, and summer squash, with 126
+field-level evidence claims. Four current 2026–2027 Mid-Atlantic Extension
+commodity PDFs are retained with checksums and explicit commercial-production
+scope. New acquisition tooling separates staged source records, immutable
+review decisions, identity reconciliation, and deterministic publication. The
+publisher refuses stale review files, changed source snapshots, duplicate
+identities, unreviewed candidates, and unsupported attributes. The versioned
+loader and read API expose effective traits with explicit inheritance and keep
+commercial seed listings separate. Quick Import extracts exact, fuzzy,
+crop-qualified, and crop-type cultivar intent while preserving the original
+wording; unknown cultivars remain linked to their recognized crop as custom
+intent.
+
+The next catalog cohort should split broad lettuce/greens and pepper/chile crop
+groups into concrete crop identities before attaching cultivars. Additional
+home-garden and trial evidence should supplement the current regional
+commercial recommendations before suitability scoring treats them as directly
+equivalent.
 
 - Add canonical cultivars beneath each crop and keep cultivar identity separate
   from commercial seed listings.

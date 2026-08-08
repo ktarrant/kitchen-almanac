@@ -209,7 +209,7 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["dataset_id"] == "cultivar-catalog-v1-0b017ec1ab06c2d4"
+    assert payload["dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
     assert payload["crop_dataset_id"] == "kitchen-almanac-v1-f76ca812f62c8c39"
     assert [item["canonical_name"] for item in payload["cultivars"]] == [
         "San Marzano",
@@ -252,6 +252,49 @@ def test_cultivar_alias_and_type_queries_are_supported(catalog_client: TestClien
     ]
 
 
+@pytest.mark.parametrize(
+    ("query", "expected_slugs"),
+    [
+        ("cucumbers", ["corinto", "eureka", "marketmore-76", "picolino", "tasty-green"]),
+        ("zucchini", ["dunja", "eight-ball", "gentry", "sunburst"]),
+        ("Provider", ["provider"]),
+    ],
+)
+def test_expanded_catalog_is_searchable(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+    query: str,
+    expected_slugs: list[str],
+) -> None:
+    response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": query, "garden_profile_id": garden_profile["id"]},
+    )
+
+    assert response.status_code == 200
+    assert [item["cultivar"]["slug"] for item in response.json()["cultivars"]] == expected_slugs
+
+
+def test_expanded_cultivar_evidence_retains_source_scope(catalog_client: TestClient) -> None:
+    response = catalog_client.get("/api/cultivars?q=Provider")
+
+    assert response.status_code == 200
+    provider = response.json()["cultivars"][0]
+    regional_claim = next(
+        trait for trait in provider["traits"] if trait["field_name"] == "regional_recommendation"
+    )
+    assert regional_claim["normalized_value"] == {
+        "region": "mid_atlantic",
+        "production_context": "commercial",
+    }
+    assert regional_claim["source"]["scope"] == (
+        "Current regional commercial recommendation; not written specifically for home gardeners"
+    )
+    assert regional_claim["source"]["sha256"] == (
+        "174b0596cf199e757e8253ee64b049bba6789fcfe0745a540193a451c37dfeff"
+    )
+
+
 def test_catalog_search_returns_crop_and_related_cultivars(
     catalog_client: TestClient,
     garden_profile: dict[str, object],
@@ -276,8 +319,14 @@ def test_catalog_search_returns_crop_and_related_cultivars(
     }
     assert len(results["crop_choices"]) == 1
     assert [item["cultivar"]["slug"] for item in results["cultivars"]] == [
+        "brandywine-red",
+        "cherokee-purple",
+        "green-zebra",
+        "juliet",
+        "mountain-merit",
         "san-marzano",
         "san-marzano-2",
+        "sun-gold",
     ]
     assert {item["match_method"] for item in results["cultivars"]} == {"related_crop"}
 
@@ -342,8 +391,14 @@ def test_catalog_search_matches_misspelled_crop_and_commercial_identifier(
     assert crop_results["crop_choices"][0]["match_method"] == "fuzzy"
     assert len(crop_results["crop_choices"]) == 1
     assert [item["cultivar"]["slug"] for item in crop_results["cultivars"]] == [
+        "brandywine-red",
+        "cherokee-purple",
+        "green-zebra",
+        "juliet",
+        "mountain-merit",
         "san-marzano",
         "san-marzano-2",
+        "sun-gold",
     ]
 
     listing_response = catalog_client.get(
@@ -587,7 +642,7 @@ def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
     wishlist = created_response.json()
     assert wishlist["name"] == "Summer ideas"
     assert wishlist["entries"] == []
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-0b017ec1ab06c2d4"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
 
     selections = [
         {
@@ -666,7 +721,7 @@ def test_quick_import_preserves_cultivar_and_crop_type_intent(
 
     assert response.status_code == 201
     wishlist = response.json()
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-0b017ec1ab06c2d4"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
     san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
 
     assert san_marzano["original_text"] == "San Marzano tomatoes"
