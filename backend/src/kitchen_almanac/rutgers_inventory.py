@@ -182,7 +182,14 @@ def read_manifest(
 def validate_manifest(manifest: object, *, verify_snapshots: bool = False) -> list[str]:
     if not isinstance(manifest, dict):
         return ["Rutgers corpus manifest must be a JSON object."]
-    required = {"schema_version", "corpus_id", "publication", "extraction_policy", "documents"}
+    required = {
+        "schema_version",
+        "corpus_id",
+        "publication",
+        "extraction_policy",
+        "full_manual",
+        "documents",
+    }
     missing = required - manifest.keys()
     if missing:
         return [f"Rutgers corpus manifest is missing keys: {sorted(missing)!r}."]
@@ -207,6 +214,41 @@ def validate_manifest(manifest: object, *, verify_snapshots: bool = False) -> li
         errors.append("Rutgers publication audience must retain its commercial-grower scope.")
     if manifest["extraction_policy"] != REQUIRED_EXTRACTION_POLICY:
         errors.append("Rutgers extraction policy does not match the required safety boundary.")
+
+    full_manual = manifest["full_manual"]
+    required_full_manual = {
+        "key",
+        "title",
+        "url",
+        "source_path",
+        "sha256",
+        "media_type",
+        "page_count",
+        "toc_pdf_page",
+        "manual_page_offset",
+        "commodity_end_manual_page",
+        "fetch_method",
+        "form_data",
+    }
+    if not isinstance(full_manual, dict) or required_full_manual - full_manual.keys():
+        errors.append("Rutgers full-manual metadata is incomplete.")
+    else:
+        if full_manual["media_type"] != "application/pdf":
+            errors.append("Rutgers full manual must be a PDF.")
+        if not re.fullmatch(r"[0-9a-f]{64}", str(full_manual["sha256"])):
+            errors.append("Rutgers full manual has an invalid SHA-256 digest.")
+        if full_manual["fetch_method"] != "form_post" or not full_manual["form_data"]:
+            errors.append("Rutgers full manual must retain its reproducible form POST metadata.")
+        for field in (
+            "page_count",
+            "toc_pdf_page",
+            "manual_page_offset",
+            "commodity_end_manual_page",
+        ):
+            if not isinstance(full_manual[field], int) or full_manual[field] < 1:
+                errors.append(f"Rutgers full manual has an invalid {field!r} value.")
+        if verify_snapshots:
+            _validate_full_manual_snapshot(full_manual, errors)
 
     documents = manifest["documents"]
     if not isinstance(documents, list) or not documents:
@@ -278,14 +320,21 @@ def fetch_sources(manifest_path: Path = DEFAULT_MANIFEST) -> tuple[int, int]:
     manifest = read_manifest(manifest_path)
     fetched = 0
     present = 0
-    for document in manifest["documents"]:
+    for document in [manifest["full_manual"], *manifest["documents"]]:
         destination = _repository_path(document["source_path"])
         if destination.is_file() and _file_sha256(destination) == document["sha256"]:
             present += 1
             continue
         destination.parent.mkdir(parents=True, exist_ok=True)
         try:
-            with urllib.request.urlopen(document["url"]) as response:  # noqa: S310
+            request: str | urllib.request.Request = document["url"]
+            if document.get("fetch_method") == "form_post":
+                request = urllib.request.Request(  # noqa: S310
+                    document["url"],
+                    data=document["form_data"].encode("ascii"),
+                    method="POST",
+                )
+            with urllib.request.urlopen(request) as response:  # noqa: S310
                 contents = response.read()
         except OSError as error:
             raise RutgersInventoryError(
@@ -438,3 +487,25 @@ def _file_sha256(path: Path) -> str:
         for chunk in iter(lambda: source.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _validate_full_manual_snapshot(document: dict[str, Any], errors: list[str]) -> None:
+    source_path = _repository_path(document["source_path"])
+    if not source_path.is_file():
+        errors.append(
+            f"Rutgers snapshot {document['source_path']!r} does not exist. "
+            "Run `kitchen-almanac rutgers fetch` first."
+        )
+        return
+    if _file_sha256(source_path) != document["sha256"]:
+        errors.append("Rutgers full manual checksum does not match.")
+        return
+    try:
+        actual_pages = len(PdfReader(source_path).pages)
+    except Exception as error:
+        errors.append(f"Rutgers full manual cannot be read: {error}")
+        return
+    if actual_pages != document["page_count"]:
+        errors.append(
+            f"Rutgers full manual has {actual_pages} pages; expected {document['page_count']}."
+        )

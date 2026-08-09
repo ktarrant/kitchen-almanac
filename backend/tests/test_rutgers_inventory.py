@@ -17,6 +17,20 @@ def test_manifest_and_committed_report_define_review_only_corpus() -> None:
     report = _read_json(rutgers_inventory.DEFAULT_REPORT)
 
     assert rutgers_inventory.validate_manifest(manifest) == []
+    assert manifest["full_manual"] == {
+        "commodity_end_manual_page": 493,
+        "fetch_method": "form_post",
+        "form_data": "Submit=Download+Full+PDF",
+        "key": "mid-atlantic-full-manual-2026-2027",
+        "manual_page_offset": 14,
+        "media_type": "application/pdf",
+        "page_count": 512,
+        "sha256": "605dd9e8bc9cd1cf565372f0181941a28caf23ba6614f438c33845815a47991d",
+        "source_path": "data/source/cultivars/mid-atlantic-2026-2027/e001.pdf",
+        "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations",
+        "toc_pdf_page": 12,
+        "url": "https://njaes.rutgers.edu/pubs/download.php?strPubID=E001",
+    }
     assert len(manifest["documents"]) == 8
     assert {document["section_kind"] for document in manifest["documents"]} == {
         "commodity",
@@ -129,6 +143,9 @@ def test_manifest_checksum_validation_detects_changed_snapshot(tmp_path, monkeyp
     document["sha256"] = hashlib.sha256(b"expected contents").hexdigest()
     manifest["documents"] = [document]
     monkeypatch.setattr(rutgers_inventory, "REPOSITORY_ROOT", tmp_path)
+    monkeypatch.setattr(
+        rutgers_inventory, "_validate_full_manual_snapshot", lambda _document, _errors: None
+    )
 
     errors = rutgers_inventory.validate_manifest(manifest, verify_snapshots=True)
 

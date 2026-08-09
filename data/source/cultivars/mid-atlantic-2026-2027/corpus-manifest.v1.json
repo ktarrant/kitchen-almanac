@@ -18,6 +18,20 @@
     "commercial_rates": "commercial_context_only",
     "database_publication": "prohibited_without_review"
   },
+  "full_manual": {
+    "commodity_end_manual_page": 493,
+    "fetch_method": "form_post",
+    "form_data": "Submit=Download+Full+PDF",
+    "key": "mid-atlantic-full-manual-2026-2027",
+    "manual_page_offset": 14,
+    "media_type": "application/pdf",
+    "page_count": 512,
+    "sha256": "605dd9e8bc9cd1cf565372f0181941a28caf23ba6614f438c33845815a47991d",
+    "source_path": "data/source/cultivars/mid-atlantic-2026-2027/e001.pdf",
+    "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations",
+    "toc_pdf_page": 12,
+    "url": "https://njaes.rutgers.edu/pubs/download.php?strPubID=E001"
+  },
   "documents": [
     {
       "key": "mid-atlantic-general-production-2026-2027",

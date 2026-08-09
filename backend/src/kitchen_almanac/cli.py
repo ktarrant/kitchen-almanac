@@ -16,6 +16,7 @@ from kitchen_almanac import (
     noaa_normals_data,
     rutgers_extraction,
     rutgers_inventory,
+    rutgers_taxonomy,
 )
 from kitchen_almanac.catalog import (
     DEFAULT_OUTPUT,
@@ -433,6 +434,42 @@ def rutgers_extract_evidence(
     typer.echo(f"Extracted {len(staged['candidates'])} review candidates to {output}")
 
 
+@rutgers_app.command("taxonomy")
+def rutgers_build_taxonomy_coverage(
+    manifest: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = rutgers_inventory.DEFAULT_MANIFEST,
+    crosswalk: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = rutgers_taxonomy.DEFAULT_CROSSWALK,
+    output: Annotated[Path, typer.Option(file_okay=True, dir_okay=False)] = (
+        rutgers_taxonomy.DEFAULT_REPORT
+    ),
+) -> None:
+    """Build full-manual commodity taxonomy and minimum-evidence coverage."""
+
+    try:
+        report = rutgers_taxonomy.build_taxonomy_coverage_report(
+            manifest_path=manifest,
+            crosswalk_path=crosswalk,
+        )
+        rutgers_taxonomy.write_taxonomy_coverage_report(report, output)
+    except rutgers_taxonomy.RutgersTaxonomyError as error:
+        typer.echo(f"Rutgers taxonomy inventory failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    summary = report["summary"]
+    typer.echo(
+        f"Mapped {summary['rutgers_crop_concept_count']} crop concepts from "
+        f"{summary['commodity_section_count']} commodity sections."
+    )
+    typer.echo(
+        f"Exact: {summary['mapping_status_counts']['exact']}; "
+        f"needs split: {summary['mapping_status_counts']['broader_catalog_identity']}; "
+        f"missing: {summary['mapping_status_counts']['missing_catalog_identity']}."
+    )
+    typer.echo(f"Wrote taxonomy coverage report to {output}")
+
+
 @rutgers_app.command("validate")
 def rutgers_validate_inventory(
     report: Annotated[
@@ -448,10 +485,12 @@ def rutgers_validate_inventory(
         errors = [
             *rutgers_inventory.validate_coverage_report(report, manifest),
             *rutgers_extraction.validate_committed_extraction(manifest_path=manifest),
+            *rutgers_taxonomy.validate_committed_taxonomy_report(manifest_path=manifest),
         ]
     except (
         rutgers_inventory.RutgersInventoryError,
         rutgers_extraction.RutgersExtractionError,
+        rutgers_taxonomy.RutgersTaxonomyError,
     ) as error:
         typer.echo(f"Rutgers inventory validation failed: {error}", err=True)
         raise typer.Exit(code=1) from error
@@ -459,7 +498,10 @@ def rutgers_validate_inventory(
         for error in errors:
             typer.echo(f"- {error}", err=True)
         raise typer.Exit(code=1)
-    typer.echo("Rutgers corpus, coverage report, structured evidence, and review are valid.")
+    typer.echo(
+        "Rutgers corpus, page coverage, taxonomy coverage, structured evidence, and review "
+        "are valid."
+    )
 
 
 @db_app.command("upgrade")

@@ -205,6 +205,15 @@ identities before attaching cultivars. Additional home-garden and trial
 evidence should supplement regional commercial recommendations before
 suitability scoring treats them as directly equivalent.
 
+The complete 512-page Rutgers manual is now the reproducible corpus anchor. A
+reviewed taxonomy crosswalk covers all 31 commodity sections and separates them
+into 46 crop concepts: 26 map exactly to the current catalog, 9 expose catalog
+groups that must be split, and 11 require new canonical crop identities. A
+deterministic minimum-useful coverage matrix measures identity, cultivar,
+commercial listing, soil, water, spacing, container, planting, harvest, and
+threat coverage before each new crop cohort is published. The cole-crop chapter
+is the next representative bundled section for validating this model.
+
 - Add canonical cultivars beneath each crop and keep cultivar identity separate
   from commercial seed listings.
 - Support cultivar aliases, crop types such as paste or cherry tomato, and
@@ -339,8 +348,8 @@ instruction enters a guide.
 The first evidence-expansion pass establishes the 2026/2027 Rutgers Mid-Atlantic
 manual as the primary corpus. A checksum-pinned manifest now covers its general
 production, soil and nutrient, irrigation, beans, cucumbers, summer squash, and
-tomatoes sections, plus the beets commodity table used by the catalog expansion
-workflow. A deterministic page-level inventory maps the corpus to grow-
+tomatoes sections, plus the beets commodity table and complete 512-page manual.
+A deterministic page-level inventory maps the corpus to grow-
 guide evidence fields while quarantining chemical controls, retaining commercial
 rates as context only, and prohibiting database publication without review.
 The inventory is the review queue foundation, not itself gardening advice. The

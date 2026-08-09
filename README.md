@@ -48,6 +48,7 @@ uv run --project backend kitchen-almanac cultivars validate
 uv run --project backend kitchen-almanac cultivars load
 uv run --project backend kitchen-almanac rutgers fetch
 uv run --project backend kitchen-almanac rutgers inventory
+uv run --project backend kitchen-almanac rutgers taxonomy
 uv run --project backend kitchen-almanac rutgers extract
 uv run --project backend kitchen-almanac rutgers validate
 uv run --project backend uvicorn kitchen_almanac.main:app --reload
@@ -86,8 +87,9 @@ cultivars with AAS cultivar data or observed 2025 Virginia home-garden trial
 results. The app keeps those evidence contexts distinct.
 
 Rutgers is the primary corpus for the next grow-guide evidence pass. Its
-manifest pins the general production, soil and nutrient, irrigation, and five
-initial commodity sections by URL and SHA-256 digest. `rutgers fetch` restores
+manifest pins the complete 512-page manual plus general production, soil and
+nutrient, irrigation, and five initial commodity sections by URL and SHA-256
+digest. `rutgers fetch` restores
 the locally retained PDFs, `rutgers inventory` builds a deterministic page-level
 coverage report, and `rutgers extract` reproduces structured candidates from
 pinned source spans. Review decisions pin the exact candidate digest before
@@ -99,6 +101,15 @@ after review. The first reviewed irrigation pass publishes qualitative water
 management and critical-growth-stage guidance for beans, cucumbers, summer
 squash, and tomatoes; it deliberately does not turn commercial daily rates into
 universal home-garden schedules.
+
+`rutgers taxonomy` verifies the full manual's table of contents and builds a
+deterministic registry of all 31 commodity sections and 46 individual crop
+concepts. The reviewed crosswalk currently finds 26 exact catalog identities,
+9 concepts attached to catalog groups that must be split, and 11 missing crop
+identities. Its minimum-useful coverage matrix reports published identity,
+cultivar, commercial availability, soil, water, spacing, container, planting,
+harvest, and threat evidence independently; detected PDF material remains a
+review candidate rather than automatically becoming gardening guidance.
 
 The API includes:
 
