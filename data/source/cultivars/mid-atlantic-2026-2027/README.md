@@ -33,6 +33,11 @@ candidate. Only approved home-garden candidates are merged into the generated
 cultivar catalog; held commercial or location-dependent candidates cannot pass
 the publication gate.
 
+The current review publishes qualitative water-management guidance and critical
+watering stages for the four initial crops. Commercial field-capacity targets
+and peak daily rates remain staged as explicit holds, and the app does not infer
+a weekly watering quantity from them.
+
 The publication states that its recommendations are for commercial vegetable
 growers rather than specifically for home gardeners. Kitchen Almanac retains
 that scope and applies these boundaries:

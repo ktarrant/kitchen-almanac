@@ -1,6 +1,43 @@
 {
   "candidates": [
     {
+      "applicability": "commercial_context_only",
+      "confidence": "high",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "commercial_water_demand",
+      "id": "rutgers-2026-cucumbers-commercial-water-demand",
+      "normalized_value": {
+        "peak_inches_per_day": {
+          "minimum_exclusive": 0.25
+        }
+      },
+      "source_excerpt": "The commercial section gives peak crop water use as a daily rate.",
+      "source_key": "mid-atlantic-cucumbers-2026-2027",
+      "source_locator": "PDF page 6 (manual p. 225), Irrigation",
+      "source_page": 6,
+      "source_span_sha256": "99e9b9954ce9bafe1043a0eee2b2db63b9367d0912e334af39715b79bd9fa9ae",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "critical_watering_stages",
+      "id": "rutgers-2026-cucumbers-critical-watering-stages",
+      "normalized_value": [
+        "flowering",
+        "fruiting"
+      ],
+      "source_excerpt": "Water deficit during flowering and fruiting has the greatest impact.",
+      "source_key": "mid-atlantic-cucumbers-2026-2027",
+      "source_locator": "PDF page 6 (manual p. 225), Irrigation",
+      "source_page": 6,
+      "source_span_sha256": "44a777b630e486894061efbdf436dd96b663518abf1ced8dae75fc41c1ab457b",
+      "unit": null
+    },
+    {
       "applicability": "home_garden_candidate",
       "confidence": "medium",
       "crop_id": "cucumbers",
@@ -104,6 +141,24 @@
       "unit": null
     },
     {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "water_management_guidance",
+      "id": "rutgers-2026-cucumbers-water-management-guidance",
+      "normalized_value": [
+        "Keep root-zone moisture consistent, especially during flowering and fruiting.",
+        "Apply water near the root zone while limiting canopy and soil-surface wetness."
+      ],
+      "source_excerpt": "The cucumber section prioritizes moisture during flowering and fruiting while limiting wet foliage and soil surfaces.",
+      "source_key": "mid-atlantic-cucumbers-2026-2027",
+      "source_locator": "PDF page 6 (manual p. 225), Irrigation",
+      "source_page": 6,
+      "source_span_sha256": "7c5e1eb73dc76edc4d85b7eaf672dd26863ae69f9cc989fadea159a1dfbc6cd8",
+      "unit": null
+    },
+    {
       "applicability": "commercial_context_only",
       "confidence": "high",
       "crop_id": "string-beans",
@@ -125,6 +180,44 @@
       "source_locator": "PDF page 6 (manual p. 173), Spacing > Snap Beans",
       "source_page": 6,
       "source_span_sha256": "c4c2619bec3b3a94a13481e9fe9f90e561220f20e114db9f7bc9ac2a5316c29e",
+      "unit": null
+    },
+    {
+      "applicability": "commercial_context_only",
+      "confidence": "high",
+      "crop_id": "string-beans",
+      "extraction_method": "deterministic_regex",
+      "field_name": "commercial_water_demand",
+      "id": "rutgers-2026-string-beans-commercial-water-demand",
+      "normalized_value": {
+        "minimum_field_capacity_percent": 50,
+        "peak_inches_per_day": {
+          "minimum_exclusive": 0.25
+        }
+      },
+      "source_excerpt": "The commercial section specifies a field-capacity floor and peak daily demand.",
+      "source_key": "mid-atlantic-beans-2026-2027",
+      "source_locator": "PDF page 6 (manual p. 173), Irrigation",
+      "source_page": 6,
+      "source_span_sha256": "e5e24ffd4cbbc47e84b554e8d8a84612330b6f63605d0cd8f4678609a35e0aa7",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "string-beans",
+      "extraction_method": "deterministic_regex",
+      "field_name": "critical_watering_stages",
+      "id": "rutgers-2026-string-beans-critical-watering-stages",
+      "normalized_value": [
+        "flowering",
+        "pod_sizing"
+      ],
+      "source_excerpt": "Water deficit during flowering and pod sizing has the greatest impact.",
+      "source_key": "mid-atlantic-beans-2026-2027",
+      "source_locator": "PDF page 6 (manual p. 173), Irrigation",
+      "source_page": 6,
+      "source_span_sha256": "c4d3ab143b796a06f226edf6fc7654e40d17156caa4dcce24c24047d5dd81c2e",
       "unit": null
     },
     {
@@ -209,6 +302,43 @@
       "source_locator": "PDF page 6 (manual p. 173), Spacing > Snap Beans",
       "source_page": 6,
       "source_span_sha256": "69bd26cff2ab42c2bd5daf667af45b584c4b7c2e9d79c52a134154625fba191f",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "string-beans",
+      "extraction_method": "deterministic_regex",
+      "field_name": "water_management_guidance",
+      "id": "rutgers-2026-string-beans-water-management-guidance",
+      "normalized_value": [
+        "Keep root-zone moisture consistent from early leaf development through pod sizing.",
+        "Prioritize watering during flowering and pod sizing.",
+        "Limit prolonged canopy wetness to reduce disease pressure."
+      ],
+      "source_excerpt": "The bean section emphasizes consistent moisture through pod sizing and warns that canopy wetness promotes disease.",
+      "source_key": "mid-atlantic-beans-2026-2027",
+      "source_locator": "PDF page 6 (manual p. 173), Irrigation",
+      "source_page": 6,
+      "source_span_sha256": "531a14af02925955f349137d7c4cf5094878b547ac549835031a22ddad7d6df9",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "summer-squash",
+      "extraction_method": "deterministic_regex",
+      "field_name": "critical_watering_stages",
+      "id": "rutgers-2026-summer-squash-critical-watering-stages",
+      "normalized_value": [
+        "bud_development",
+        "flowering"
+      ],
+      "source_excerpt": "The crop table identifies bud development and flowering as the most critical summer-squash water stages.",
+      "source_key": "mid-atlantic-irrigation-2026-2027",
+      "source_locator": "PDF page 4, Table C-1: Most Critical Periods of Water Needs by Crops",
+      "source_page": 4,
+      "source_span_sha256": "c9bee14e628b6aceb957f029c6bdf799cece4cc87d413316654e7cb9dffafe0a",
       "unit": null
     },
     {
@@ -322,6 +452,43 @@
     {
       "applicability": "home_garden_candidate",
       "confidence": "medium",
+      "crop_id": "summer-squash",
+      "extraction_method": "deterministic_regex",
+      "field_name": "water_management_guidance",
+      "id": "rutgers-2026-summer-squash-water-management-guidance",
+      "normalized_value": [
+        "Adjust watering frequency for soil texture; sandy soils need smaller, more frequent applications.",
+        "Avoid applying water faster than the soil can absorb it."
+      ],
+      "source_excerpt": "The manual links watering frequency to soil texture and cautions against applying water faster than soil can absorb it.",
+      "source_key": "mid-atlantic-irrigation-2026-2027",
+      "source_locator": "PDF page 5, Basic Principles of Irrigation Management",
+      "source_page": 5,
+      "source_span_sha256": "dea68dc80e27f9b15e293426880bc985a1a39d8464f0b17b7b0b68c5f6c1d721",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "tomatoes",
+      "extraction_method": "deterministic_regex",
+      "field_name": "critical_watering_stages",
+      "id": "rutgers-2026-tomatoes-critical-watering-stages",
+      "normalized_value": [
+        "early_flowering",
+        "fruit_set",
+        "fruit_enlargement"
+      ],
+      "source_excerpt": "The crop table identifies early flowering, fruit set, and enlargement as the most critical tomato water stages.",
+      "source_key": "mid-atlantic-irrigation-2026-2027",
+      "source_locator": "PDF page 4, Table C-1: Most Critical Periods of Water Needs by Crops",
+      "source_page": 4,
+      "source_span_sha256": "091c3f418e70268bedf2f7eb5830fd0ac2ec687b8ab9f1c0b3d50299537b66c8",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
       "crop_id": "tomatoes",
       "extraction_method": "deterministic_regex",
       "field_name": "harvest_guidance",
@@ -423,6 +590,24 @@
       "source_page": 8,
       "source_span_sha256": "311ce7395dec858dadeb88b86a8f1b999b4b8a40d357b201772584e65783f25a",
       "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "tomatoes",
+      "extraction_method": "deterministic_regex",
+      "field_name": "water_management_guidance",
+      "id": "rutgers-2026-tomatoes-water-management-guidance",
+      "normalized_value": [
+        "Use soil texture and root-zone moisture—not a fixed schedule—to guide watering frequency and volume.",
+        "Keep plant-available water below saturation and above the permanent wilting point."
+      ],
+      "source_excerpt": "The tomato section recommends soil-moisture monitoring and texture-aware management between field capacity and the wilting point.",
+      "source_key": "mid-atlantic-tomatoes-2026-2027",
+      "source_locator": "PDF page 6 (manual p. 455), Irrigation",
+      "source_page": 6,
+      "source_span_sha256": "4673a56021ea841e3a77e7d238fbe0f302cbe3c06a4a6b68eb9485edb552735e",
+      "unit": null
     }
   ],
   "corpus_id": "rutgers-mid-atlantic-commercial-vegetables-2026-2027",
@@ -455,6 +640,18 @@
       "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cucumbers.pdf",
       "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Cucumbers",
       "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cucumbers.pdf"
+    },
+    {
+      "key": "mid-atlantic-irrigation-2026-2027",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Regional commercial irrigation guidance; qualitative principles require home-garden review and system rates remain commercial context only",
+      "sha256": "ebef544db14fa8d17fe464460091e466fc7f1260569431e2018f030850ed7585",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/irrigation-management.pdf",
+      "title": "Irrigation Management",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/irrigation-management.pdf"
     },
     {
       "key": "mid-atlantic-soil-nutrient-2026-2027",

@@ -1,9 +1,19 @@
 {
   "schema_version": "1.0.0",
-  "staging_sha256": "e70940ce852d84d810d34eda124f65bc1d9bc6a0c261131e16120b71ea8f516a",
+  "staging_sha256": "00e7444997811d4eff8d08939b2e3cd5526b4382fb3a529dee0a20e838087887",
   "reviewed_at": "2026-08-09T00:00:00Z",
   "reviewer": "Kitchen Almanac data review",
   "decisions": [
+    {
+      "candidate_id": "rutgers-2026-cucumbers-commercial-water-demand",
+      "action": "hold",
+      "rationale": "A peak commercial daily demand is not a universal home-garden watering prescription."
+    },
+    {
+      "candidate_id": "rutgers-2026-cucumbers-critical-watering-stages",
+      "action": "approve_create",
+      "rationale": "Flowering and fruiting are crop-development stages that transfer directly to home-garden monitoring."
+    },
     {
       "candidate_id": "rutgers-2026-cucumbers-harvest-guidance",
       "action": "approve_create",
@@ -35,9 +45,24 @@
       "rationale": "Both documented starting methods are practical at home-garden scale."
     },
     {
+      "candidate_id": "rutgers-2026-cucumbers-water-management-guidance",
+      "action": "approve_create",
+      "rationale": "Consistent root-zone moisture and reduced foliage wetness are qualitative practices that transfer safely to home gardens."
+    },
+    {
       "candidate_id": "rutgers-2026-string-beans-commercial-spacing",
       "action": "hold",
       "rationale": "Plants per foot and machinery-oriented rows are commercial context, not a home spacing rule."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-commercial-water-demand",
+      "action": "hold",
+      "rationale": "The field-capacity target and peak commercial daily demand need soil, system, and local context before home use."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-critical-watering-stages",
+      "action": "approve_create",
+      "rationale": "Flowering and pod sizing are crop-development stages that transfer directly to home-garden monitoring."
     },
     {
       "candidate_id": "rutgers-2026-string-beans-harvest-guidance",
@@ -63,6 +88,16 @@
       "candidate_id": "rutgers-2026-string-beans-starting-method",
       "action": "approve_create",
       "rationale": "Direct sowing is explicitly established and practical at home-garden scale."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-water-management-guidance",
+      "action": "approve_create",
+      "rationale": "Consistent root-zone moisture and reduced canopy wetness are qualitative practices that transfer safely to home gardens."
+    },
+    {
+      "candidate_id": "rutgers-2026-summer-squash-critical-watering-stages",
+      "action": "approve_create",
+      "rationale": "The crop table's bud-development and flowering stages transfer directly to home-garden monitoring."
     },
     {
       "candidate_id": "rutgers-2026-summer-squash-harvest-guidance",
@@ -95,6 +130,16 @@
       "rationale": "Both documented starting methods are practical at home-garden scale."
     },
     {
+      "candidate_id": "rutgers-2026-summer-squash-water-management-guidance",
+      "action": "approve_create",
+      "rationale": "Texture-aware frequency and avoiding runoff are qualitative principles that transfer safely to home gardens."
+    },
+    {
+      "candidate_id": "rutgers-2026-tomatoes-critical-watering-stages",
+      "action": "approve_create",
+      "rationale": "The crop table's flowering, fruit-set, and enlargement stages transfer directly to home-garden monitoring."
+    },
+    {
       "candidate_id": "rutgers-2026-tomatoes-harvest-guidance",
       "action": "approve_create",
       "rationale": "Ripeness selection, careful handling, and frequent picking transfer to home gardens."
@@ -123,6 +168,11 @@
       "candidate_id": "rutgers-2026-tomatoes-starting-method",
       "action": "approve_create",
       "rationale": "Transplanting is explicitly established and practical at home-garden scale."
+    },
+    {
+      "candidate_id": "rutgers-2026-tomatoes-water-management-guidance",
+      "action": "approve_create",
+      "rationale": "Texture-aware root-zone monitoring is a qualitative principle that transfers safely without publishing commercial schedules."
     }
   ]
 }

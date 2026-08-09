@@ -28,7 +28,7 @@ from kitchen_almanac.services.suitability_service import (
     assess_cultivar,
 )
 
-GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.1.0"
+GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.2.0"
 
 
 def _trait(cultivar: CultivarResponse, field_name: str) -> CultivarTraitResponse | None:
@@ -92,6 +92,15 @@ def _range_text(value: object, *, unit: str | None = None) -> str:
     if isinstance(value, bool):
         return "yes" if value else "no"
     return f"{value} {unit or ''}".strip().replace("_", " ")
+
+
+def _human_list(values: list[object]) -> str:
+    labels = [str(value).replace("_", " ") for value in values]
+    if len(labels) < 2:
+        return "".join(labels)
+    if len(labels) == 2:
+        return " and ".join(labels)
+    return f"{', '.join(labels[:-1])}, and {labels[-1]}"
 
 
 def _section(
@@ -179,6 +188,54 @@ def _soil_section(cultivar: CultivarResponse) -> GrowGuideSectionResponse:
     )
 
 
+def _water_section(cultivar: CultivarResponse) -> GrowGuideSectionResponse:
+    amount = _trait(cultivar, "water_inches_per_week")
+    management = _trait(cultivar, "water_management_guidance")
+    stages = _trait(cultivar, "critical_watering_stages")
+    traits = [trait for trait in (amount, management, stages) if trait is not None]
+    if not traits:
+        return _section(
+            code="water",
+            title="Water",
+            status="missing",
+            summary="No reviewed watering amount, timing, or management guidance is available yet.",
+            missing_evidence=["Watering amount, timing, or management guidance"],
+        )
+
+    instructions: list[str] = []
+    if amount:
+        instructions.append(f"Provide {_range_text(amount.normalized_value, unit=amount.unit)}.")
+    if management:
+        values = (
+            management.normalized_value
+            if isinstance(management.normalized_value, list)
+            else [management.normalized_value]
+        )
+        instructions.extend(str(value) for value in values)
+    if stages:
+        stages_text = (
+            _human_list(stages.normalized_value)
+            if isinstance(stages.normalized_value, list)
+            else _range_text(stages.normalized_value)
+        )
+        instructions.append(f"Pay closest attention to moisture during {stages_text}.")
+
+    missing_evidence: list[str] = []
+    if amount is None:
+        missing_evidence.append("Reviewed watering quantity")
+    if management is None and stages is None:
+        missing_evidence.append("Water-management timing or practices")
+    return _section(
+        code="water",
+        title="Water",
+        status="partial" if missing_evidence else "documented",
+        summary=instructions[0],
+        instructions=instructions,
+        traits=traits,
+        missing_evidence=missing_evidence,
+    )
+
+
 def _parse_normal_date(value: str, year: int) -> date:
     month, day = (int(part) for part in value.split("/", maxsplit=1))
     return date(year, month, day)
@@ -229,14 +286,7 @@ def _build_sections(
     sections.extend(
         [
             _soil_section(cultivar),
-            _simple_trait_section(
-                cultivar,
-                code="water",
-                title="Water",
-                field_name="water_inches_per_week",
-                missing_label="watering amount or frequency",
-                instruction_prefix="Provide",
-            ),
+            _water_section(cultivar),
         ]
     )
 

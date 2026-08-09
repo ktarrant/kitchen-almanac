@@ -318,7 +318,7 @@ Acceptance criteria:
 
 Status: **In progress**
 
-Current progress: `grow-guide-v1.1.0` provides a structured API and frontend
+Current progress: `grow-guide-v1.2.0` provides a structured API and frontend
 guide for every selected documented cultivar. It deterministically merges
 approved cultivar overrides with crop baselines, renders all eleven guide
 sections with documented, partial, or missing states, carries citations and
@@ -338,14 +338,15 @@ tomatoes sections. A deterministic page-level inventory maps the corpus to grow-
 guide evidence fields while quarantining chemical controls, retaining commercial
 rates as context only, and prohibiting database publication without review.
 The inventory is the review queue foundation, not itself gardening advice. The
-first provider adapter now extracts 24 source-span-pinned candidates for crop pH,
-lime thresholds, starting methods, spacing, harvest guidance, and broad regional
-planting windows. Review admits 18 home-scale facts into four crop baselines,
-retains UMD as the primary corroborated tomato-spacing source, and holds all
-regional calendar windows plus commercial snap-bean density until suitable
-location and home-scale adapters exist.
+first provider adapter now extracts 34 source-span-pinned candidates for crop pH,
+lime thresholds, starting methods, spacing, harvest guidance, irrigation, and
+broad regional planting windows. Review admits 26 home-scale facts into four
+crop baselines, including qualitative water-management practices and critical
+watering stages. It retains UMD as the primary corroborated tomato-spacing
+source and holds regional calendar windows, commercial density, and commercial
+daily water targets until suitable location and home-scale adapters exist.
 
-Remaining work is primarily evidence expansion: reviewed soil, water,
+Remaining work is primarily evidence expansion: reviewed soil-condition,
 container, support, starting, and maintenance rules for the initial crop cohort,
 plus additional relative planting rules and provider-specific ingestion
 automation. Companion considerations are explicitly deferred to GitHub issue

@@ -89,7 +89,10 @@ approved crop baselines enter `cultivars publish`; `rutgers validate` detects
 changed PDFs, stale extraction, or stale review decisions. Chemical controls
 remain quarantined, commercial rates remain context-only, and insect and disease
 sections contribute only threat, resistance, and nonchemical-practice candidates
-after review.
+after review. The first reviewed irrigation pass publishes qualitative water
+management and critical-growth-stage guidance for beans, cucumbers, summer
+squash, and tomatoes; it deliberately does not turn commercial daily rates into
+universal home-garden schedules.
 
 The API includes:
 
@@ -151,12 +154,14 @@ fingerprint and ranking.
 ## Grow guides
 
 Documented cultivars on a garden wishlist expose a grow guide in the saved
-garden card. The `grow-guide-v1.1.0` generator renders light, soil, water,
+garden card. The `grow-guide-v1.2.0` generator renders light, soil, water,
 spacing, containers, support, starting, planting, maintenance, companions, and
 harvest as separate evidence states. Cultivar claims override crop baselines
 field by field; each instruction identifies its origin, confidence, source, and
 source locator. Unsupported guidance remains visible as missing evidence rather
-than being filled with generic advice.
+than being filled with generic advice. Water guidance includes reviewed
+management practices and critical growth stages while continuing to show
+numeric quantity as missing unless a suitable reviewed source supports it.
 
 When reviewed frost sensitivity, transplant-based maturity, and NOAA freeze
 normals are all available, the guide generates a target-year outdoor planting

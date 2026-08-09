@@ -210,7 +210,7 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["dataset_id"] == "cultivar-catalog-v1-7e661558da91efcd"
+    assert payload["dataset_id"] == "cultivar-catalog-v1-8971e569e94bd713"
     assert payload["crop_dataset_id"] == "kitchen-almanac-v1-f76ca812f62c8c39"
     assert [item["canonical_name"] for item in payload["cultivars"]] == [
         "San Marzano",
@@ -466,7 +466,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     assessment = first.json()
     assert second.json() == assessment
     assert assessment["algorithm_version"] == "suitability-v1.1.0"
-    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-7e661558da91efcd"
+    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-8971e569e94bd713"
     assert assessment["input_fingerprint"].startswith("sha256:")
     assert assessment["status"] == "suitable"
     assert assessment["score"] == 80
@@ -795,7 +795,7 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     guide = response.json()
     assert guide["cultivar_name"] == "Mountain Merit"
     assert guide["crop_name"] == "Tomatoes"
-    assert guide["algorithm_version"] == "grow-guide-v1.1.0"
+    assert guide["algorithm_version"] == "grow-guide-v1.2.0"
     assert len(guide["input_fingerprint"]) == 64
     assert [section["code"] for section in guide["sections"]] == [
         "light",
@@ -823,6 +823,20 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     assert sections["soil"]["evidence"][0]["publisher"] == (
         "Rutgers NJAES Cooperative Extension"
     )
+    assert sections["water"]["status"] == "partial"
+    assert sections["water"]["summary"] == (
+        "Use soil texture and root-zone moisture—not a fixed schedule—to guide watering "
+        "frequency and volume."
+    )
+    assert sections["water"]["instructions"][-1] == (
+        "Pay closest attention to moisture during early flowering, fruit set, and fruit "
+        "enlargement."
+    )
+    assert {item["field_name"] for item in sections["water"]["evidence"]} == {
+        "critical_watering_stages",
+        "water_management_guidance",
+    }
+    assert sections["water"]["missing_evidence"] == ["Reviewed watering quantity"]
     assert sections["trellising"]["status"] == "partial"
     assert sections["starting_method"]["summary"] == "Starting method: transplant."
     assert sections["planting"]["status"] == "documented"
@@ -1162,7 +1176,7 @@ def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
     wishlist = created_response.json()
     assert wishlist["name"] == "Summer ideas"
     assert wishlist["entries"] == []
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-7e661558da91efcd"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-8971e569e94bd713"
 
     selections = [
         {
@@ -1241,7 +1255,7 @@ def test_quick_import_preserves_cultivar_and_crop_type_intent(
 
     assert response.status_code == 201
     wishlist = response.json()
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-7e661558da91efcd"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-8971e569e94bd713"
     san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
 
     assert san_marzano["original_text"] == "San Marzano tomatoes"
