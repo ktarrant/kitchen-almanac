@@ -46,6 +46,9 @@ uv run --project backend kitchen-almanac cultivars reconcile
 uv run --project backend kitchen-almanac cultivars publish
 uv run --project backend kitchen-almanac cultivars validate
 uv run --project backend kitchen-almanac cultivars load
+uv run --project backend kitchen-almanac rutgers fetch
+uv run --project backend kitchen-almanac rutgers inventory
+uv run --project backend kitchen-almanac rutgers validate
 uv run --project backend uvicorn kitchen_almanac.main:app --reload
 ```
 
@@ -74,6 +77,16 @@ recommendations; that scope is retained in the evidence rather than silently
 presented as home-garden trial data. A research-depth cohort supplements five
 cultivars with AAS cultivar data or observed 2025 Virginia home-garden trial
 results. The app keeps those evidence contexts distinct.
+
+Rutgers is the primary corpus for the next grow-guide evidence pass. Its
+manifest pins the general production, soil and nutrient, irrigation, and four
+initial commodity sections by URL and SHA-256 digest. `rutgers fetch` restores
+the locally retained PDFs, `rutgers inventory` builds a deterministic page-level
+coverage report, and `rutgers validate` detects changed PDFs or a stale report.
+The report identifies review candidates only: it cannot load facts into the
+database. Chemical controls remain quarantined, commercial rates remain
+context-only, and insect and disease sections contribute only threat,
+resistance, and nonchemical-practice candidates after review.
 
 The API includes:
 

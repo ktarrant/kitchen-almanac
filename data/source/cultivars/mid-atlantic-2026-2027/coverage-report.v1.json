@@ -1,0 +1,1888 @@
+{
+  "corpus_id": "rutgers-mid-atlantic-commercial-vegetables-2026-2027",
+  "crop_coverage": [
+    {
+      "commodity_source": "mid-atlantic-cucumbers-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "cucumbers",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            5
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            5,
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            11
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            14
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-beans-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "string-beans",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4,
+            5
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            5,
+            6
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            7
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            11
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            15
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            5,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-summer-squash-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "summer-squash",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            5
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            5
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            5,
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            6
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            9
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-tomatoes-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "tomatoes",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            5,
+            7
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            8,
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            5,
+            9,
+            12
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            11
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            15
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            21
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            7,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24,
+            25,
+            26
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "matched_markers": {
+            "soil pH": [
+              14,
+              29,
+              30
+            ]
+          },
+          "pages": [
+            14,
+            29,
+            30
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {
+            "nutrient management": [
+              9,
+              11,
+              13,
+              33,
+              52
+            ]
+          },
+          "pages": [
+            9,
+            11,
+            13,
+            33,
+            52
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {
+            "planting dates": [
+              35
+            ]
+          },
+          "pages": [
+            35
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {
+            "irrigation heading": [
+              11
+            ]
+          },
+          "pages": [
+            11
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {
+            "harvest heading": [
+              20
+            ]
+          },
+          "pages": [
+            20
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {
+            "weed control": [
+              21
+            ]
+          },
+          "pages": [
+            21
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {
+            "insect control": [
+              22
+            ]
+          },
+          "pages": [
+            22
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {
+            "disease control": [
+              22
+            ]
+          },
+          "pages": [
+            22
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {
+            "food safety concerns": [
+              11,
+              51
+            ],
+            "good agricultural practices": [
+              38,
+              53
+            ]
+          },
+          "pages": [
+            11,
+            38,
+            51,
+            53
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fumigant": [
+              11,
+              12,
+              28,
+              29,
+              30,
+              34,
+              43
+            ],
+            "fungicide": [
+              4,
+              12,
+              14,
+              15,
+              17,
+              22,
+              34,
+              47
+            ],
+            "herbicide": [
+              4,
+              12,
+              14,
+              15,
+              16,
+              17,
+              21,
+              22,
+              27,
+              28,
+              30,
+              31,
+              44,
+              47
+            ],
+            "insecticide": [
+              4,
+              12,
+              14,
+              15,
+              22,
+              47,
+              50
+            ],
+            "pesticide": [
+              1,
+              3,
+              4,
+              5,
+              6,
+              8,
+              9,
+              11,
+              12,
+              13,
+              14,
+              22,
+              23,
+              27,
+              28,
+              37,
+              43,
+              45,
+              46,
+              48,
+              49,
+              51
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            21,
+            22,
+            23,
+            27,
+            28,
+            29,
+            30,
+            31,
+            34,
+            37,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [],
+      "extracted_text_sha256": "8bb2710edfe6a64d232becf9abbca841fbf3e263d99e8c003d483c382d8d867e",
+      "key": "mid-atlantic-general-production-2026-2027",
+      "page_count": 54,
+      "section_kind": "general",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/general-production-recommendations.pdf",
+      "source_sha256": "b32f90c22e5de2aa61565a432bfb9c76cb275b02a7c5827bfe90c163b15dfdbd",
+      "title": "General Production Recommendations"
+    },
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "matched_markers": {
+            "soil pH": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              14
+            ]
+          },
+          "pages": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            14
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {
+            "nutrient management": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "plant tissue testing": [
+              17
+            ],
+            "recommended nutrients based on soil tests": [
+              11,
+              14
+            ]
+          },
+          "pages": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {
+            "food safety concerns": [
+              4
+            ]
+          },
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fumigant": [
+              21
+            ],
+            "fungicide": [
+              20
+            ],
+            "herbicide": [
+              20,
+              23
+            ],
+            "insecticide": [
+              20
+            ],
+            "pesticide": [
+              1,
+              3
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            20,
+            21,
+            23
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [],
+      "extracted_text_sha256": "0738ba61b1df4066697ee3279f1d857700e208be0257d9d6806a9882273c9fa8",
+      "key": "mid-atlantic-soil-nutrient-2026-2027",
+      "page_count": 25,
+      "section_kind": "soil_nutrient",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/soil-nutrient-management.pdf",
+      "source_sha256": "b5a446470701aba4b68e8f9f56b58ddf72dc8141e68ab378a5ceb63314cae95a",
+      "title": "Soil and Nutrient Management"
+    },
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "matched_markers": {
+            "soil pH": [
+              11
+            ]
+          },
+          "pages": [
+            11
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {
+            "irrigation heading": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ]
+          },
+          "pages": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fungicide": [
+              13
+            ],
+            "herbicide": [
+              12
+            ],
+            "insecticide": [
+              13
+            ],
+            "pesticide": [
+              1,
+              3,
+              6,
+              10,
+              13
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            6,
+            10,
+            12,
+            13
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [],
+      "extracted_text_sha256": "59648cd41a03f8b46525cddaf4ede01599fcb4d019835669c2c78149177b9851",
+      "key": "mid-atlantic-irrigation-2026-2027",
+      "page_count": 14,
+      "section_kind": "irrigation",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/irrigation-management.pdf",
+      "source_sha256": "ebef544db14fa8d17fe464460091e466fc7f1260569431e2018f030850ed7585",
+      "title": "Irrigation Management"
+    },
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
+          "matched_markers": {
+            "recommended lima bean varieties": [
+              5
+            ],
+            "recommended snap bean varieties": [
+              4
+            ]
+          },
+          "pages": [
+            4,
+            5
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "matched_markers": {
+            "slightly acid soils": [
+              6
+            ]
+          },
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {
+            "nutrient management": [
+              5
+            ],
+            "plant tissue testing": [
+              6
+            ],
+            "recommended nutrients based on soil tests": [
+              5
+            ]
+          },
+          "pages": [
+            5,
+            6
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {
+            "planting": [
+              6
+            ],
+            "spacing": [
+              6
+            ]
+          },
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {
+            "irrigation heading": [
+              6
+            ]
+          },
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {
+            "harvest and post-harvest considerations": [
+              7
+            ]
+          },
+          "pages": [
+            7
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {
+            "weed control": [
+              8
+            ]
+          },
+          "pages": [
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {
+            "insect control": [
+              11
+            ]
+          },
+          "pages": [
+            11
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {
+            "disease control": [
+              15
+            ]
+          },
+          "pages": [
+            15
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fumigant": [
+              15
+            ],
+            "fungicide": [
+              5,
+              15,
+              16,
+              17,
+              18
+            ],
+            "herbicide": [
+              8,
+              9,
+              10,
+              11
+            ],
+            "insecticide": [
+              8,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "pesticide": [
+              1,
+              3,
+              8,
+              11,
+              15
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            5,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [
+        "string-beans"
+      ],
+      "extracted_text_sha256": "683e1fcd34862da9aebc10f4940d4ed00a435b5b762711bc61dcf27f6a902669",
+      "key": "mid-atlantic-beans-2026-2027",
+      "page_count": 19,
+      "section_kind": "commodity",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/beans-snap-lima.pdf",
+      "source_sha256": "174b0596cf199e757e8253ee64b049bba6789fcfe0745a540193a451c37dfeff",
+      "title": "Beans (Snap and Lima)"
+    },
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
+          "matched_markers": {
+            "recommended varieties": [
+              4
+            ]
+          },
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {
+            "nutrient management": [
+              5
+            ],
+            "plant tissue testing": [
+              5
+            ],
+            "recommended nutrients based on soil tests": [
+              5
+            ]
+          },
+          "pages": [
+            5
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {
+            "planting dates": [
+              5
+            ],
+            "space rows": [
+              6
+            ],
+            "spacing": [
+              6
+            ]
+          },
+          "pages": [
+            5,
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {
+            "irrigation heading": [
+              6
+            ]
+          },
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {
+            "harvest heading": [
+              8
+            ]
+          },
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {
+            "weed control": [
+              8
+            ]
+          },
+          "pages": [
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {
+            "insect control": [
+              11
+            ]
+          },
+          "pages": [
+            11
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {
+            "disease control": [
+              14
+            ]
+          },
+          "pages": [
+            14
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fumigant": [
+              6,
+              14,
+              17
+            ],
+            "fungicide": [
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "herbicide": [
+              6,
+              8,
+              9,
+              10,
+              11
+            ],
+            "insecticide": [
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              16
+            ],
+            "pesticide": [
+              1,
+              3,
+              8,
+              10,
+              11,
+              14
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [
+        "cucumbers"
+      ],
+      "extracted_text_sha256": "743dd5199f1cf55015dc717d74e8abe5d5def082c6934978601dbca695897561",
+      "key": "mid-atlantic-cucumbers-2026-2027",
+      "page_count": 19,
+      "section_kind": "commodity",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cucumbers.pdf",
+      "source_sha256": "d2fb9ebc913cc79227ed2317b6b5613084a0d5c00c87eb7f9e054d0ce7102858",
+      "title": "Cucumbers"
+    },
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
+          "matched_markers": {
+            "recommended varieties": [
+              4
+            ]
+          },
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {
+            "nutrient management": [
+              5
+            ],
+            "recommended nutrients based on soil tests": [
+              5
+            ]
+          },
+          "pages": [
+            5
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {
+            "seeding, transplanting, and spacing": [
+              5
+            ],
+            "space rows": [
+              5
+            ]
+          },
+          "pages": [
+            5
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {
+            "harvest and post-harvest considerations": [
+              5
+            ],
+            "harvest heading": [
+              6
+            ]
+          },
+          "pages": [
+            5,
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {
+            "weed control": [
+              6
+            ]
+          },
+          "pages": [
+            6
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {
+            "insect control": [
+              9
+            ]
+          },
+          "pages": [
+            9
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {
+            "disease control": [
+              13
+            ]
+          },
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fumigant": [
+              5,
+              13,
+              14
+            ],
+            "fungicide": [
+              5,
+              13,
+              14,
+              15
+            ],
+            "herbicide": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "insecticide": [
+              5,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "pesticide": [
+              1,
+              3,
+              5,
+              6,
+              8,
+              9,
+              13
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [
+        "summer-squash"
+      ],
+      "extracted_text_sha256": "4e321882fd3a053ef9a5be0ec0faf84b646fc02bb9648fcbf4b3fb13a3d7777f",
+      "key": "mid-atlantic-summer-squash-2026-2027",
+      "page_count": 17,
+      "section_kind": "commodity",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/summer-squash.pdf",
+      "source_sha256": "a7264f8b3664b289ce729dedbf8e994e6866d69d0ec5a2ab6dfbc3e220022446",
+      "title": "Summer Squash"
+    },
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
+          "matched_markers": {
+            "recommended varieties": [
+              4
+            ]
+          },
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "matched_markers": {
+            "soil pH": [
+              6
+            ]
+          },
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {
+            "nutrient management": [
+              5
+            ],
+            "plant tissue testing": [
+              7
+            ],
+            "recommended nutrients based on soil tests": [
+              5
+            ]
+          },
+          "pages": [
+            5,
+            7
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {
+            "space rows": [
+              8
+            ],
+            "transplanting": [
+              9
+            ]
+          },
+          "pages": [
+            8,
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {
+            "irrigation heading": [
+              6
+            ],
+            "irrigation plan": [
+              6
+            ]
+          },
+          "pages": [
+            6
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {
+            "harvest and post-harvest considerations": [
+              9
+            ],
+            "harvest heading": [
+              5,
+              12
+            ]
+          },
+          "pages": [
+            5,
+            9,
+            12
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {
+            "weed control": [
+              11
+            ]
+          },
+          "pages": [
+            11
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {
+            "insect control": [
+              15
+            ]
+          },
+          "pages": [
+            15
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {
+            "disease control": [
+              21
+            ]
+          },
+          "pages": [
+            21
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fumigant": [
+              7,
+              21,
+              23,
+              26
+            ],
+            "fungicide": [
+              11,
+              21,
+              23,
+              24,
+              25,
+              26
+            ],
+            "herbicide": [
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "insecticide": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              26
+            ],
+            "pesticide": [
+              1,
+              3,
+              11,
+              12,
+              14,
+              15,
+              20,
+              21
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            7,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24,
+            25,
+            26
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [
+        "tomatoes"
+      ],
+      "extracted_text_sha256": "c18e101adf59ad3cc1ddf6324dd727a37d8368bb058603a296cefdfa91215ea8",
+      "key": "mid-atlantic-tomatoes-2026-2027",
+      "page_count": 27,
+      "section_kind": "commodity",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/tomatoes.pdf",
+      "source_sha256": "b3010676317a3413a0198a6af20cc277e625934d2b31655c24e3daf75e28fe86",
+      "title": "Tomatoes"
+    }
+  ],
+  "extraction_policy": {
+    "chemical_controls": "quarantined",
+    "commercial_rates": "commercial_context_only",
+    "database_publication": "prohibited_without_review",
+    "default": "review_required",
+    "insect_and_disease_sections": "threat_names_and_nonchemical_practices_only"
+  },
+  "publication": {
+    "audience": "commercial vegetable growers",
+    "edition": "2026/2027",
+    "landing_page": "https://njaes.rutgers.edu/pubs/publication.php?pid=E001",
+    "license": null,
+    "publisher": "Rutgers NJAES Cooperative Extension",
+    "region": "Mid-Atlantic United States",
+    "retrieved_at": "2026-08-09T00:00:00Z",
+    "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations"
+  },
+  "report_scope": "Page-level source inventory only. Detected fields are review candidates, not published gardening guidance.",
+  "schema_version": "1.0.0",
+  "summary": {
+    "category_document_counts": {
+      "chemical_controls": 7,
+      "cultivar_recommendations": 4,
+      "disease_threats": 5,
+      "food_safety": 2,
+      "harvest_and_storage": 5,
+      "insect_threats": 5,
+      "irrigation": 5,
+      "nutrient_management": 6,
+      "planting_and_spacing": 5,
+      "soil_ph": 5,
+      "weed_management": 5
+    },
+    "crop_count": 4,
+    "document_count": 7,
+    "page_count": 175,
+    "status_counts": {
+      "not_detected": 23,
+      "quarantined": 7,
+      "restricted_review": 21,
+      "review_required": 26
+    }
+  }
+}

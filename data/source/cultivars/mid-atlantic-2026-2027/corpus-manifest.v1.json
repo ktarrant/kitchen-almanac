@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "corpus_id": "rutgers-mid-atlantic-commercial-vegetables-2026-2027",
+  "publication": {
+    "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations",
+    "publisher": "Rutgers NJAES Cooperative Extension",
+    "landing_page": "https://njaes.rutgers.edu/pubs/publication.php?pid=E001",
+    "edition": "2026/2027",
+    "region": "Mid-Atlantic United States",
+    "audience": "commercial vegetable growers",
+    "retrieved_at": "2026-08-09T00:00:00Z",
+    "license": null
+  },
+  "extraction_policy": {
+    "default": "review_required",
+    "chemical_controls": "quarantined",
+    "insect_and_disease_sections": "threat_names_and_nonchemical_practices_only",
+    "commercial_rates": "commercial_context_only",
+    "database_publication": "prohibited_without_review"
+  },
+  "documents": [
+    {
+      "key": "mid-atlantic-general-production-2026-2027",
+      "title": "General Production Recommendations",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/general-production-recommendations.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/general-production-recommendations.pdf",
+      "sha256": "b32f90c22e5de2aa61565a432bfb9c76cb275b02a7c5827bfe90c163b15dfdbd",
+      "media_type": "application/pdf",
+      "section_kind": "general",
+      "crop_ids": []
+    },
+    {
+      "key": "mid-atlantic-soil-nutrient-2026-2027",
+      "title": "Soil and Nutrient Management",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/soil-nutrient-management.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/soil-nutrient-management.pdf",
+      "sha256": "b5a446470701aba4b68e8f9f56b58ddf72dc8141e68ab378a5ceb63314cae95a",
+      "media_type": "application/pdf",
+      "section_kind": "soil_nutrient",
+      "crop_ids": []
+    },
+    {
+      "key": "mid-atlantic-irrigation-2026-2027",
+      "title": "Irrigation Management",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/irrigation-management.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/irrigation-management.pdf",
+      "sha256": "ebef544db14fa8d17fe464460091e466fc7f1260569431e2018f030850ed7585",
+      "media_type": "application/pdf",
+      "section_kind": "irrigation",
+      "crop_ids": []
+    },
+    {
+      "key": "mid-atlantic-beans-2026-2027",
+      "title": "Beans (Snap and Lima)",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/beans-snap-lima.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/beans-snap-lima.pdf",
+      "sha256": "174b0596cf199e757e8253ee64b049bba6789fcfe0745a540193a451c37dfeff",
+      "media_type": "application/pdf",
+      "section_kind": "commodity",
+      "crop_ids": [
+        "string-beans"
+      ]
+    },
+    {
+      "key": "mid-atlantic-cucumbers-2026-2027",
+      "title": "Cucumbers",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cucumbers.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cucumbers.pdf",
+      "sha256": "d2fb9ebc913cc79227ed2317b6b5613084a0d5c00c87eb7f9e054d0ce7102858",
+      "media_type": "application/pdf",
+      "section_kind": "commodity",
+      "crop_ids": [
+        "cucumbers"
+      ]
+    },
+    {
+      "key": "mid-atlantic-summer-squash-2026-2027",
+      "title": "Summer Squash",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/summer-squash.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/summer-squash.pdf",
+      "sha256": "a7264f8b3664b289ce729dedbf8e994e6866d69d0ec5a2ab6dfbc3e220022446",
+      "media_type": "application/pdf",
+      "section_kind": "commodity",
+      "crop_ids": [
+        "summer-squash"
+      ]
+    },
+    {
+      "key": "mid-atlantic-tomatoes-2026-2027",
+      "title": "Tomatoes",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/tomatoes.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/tomatoes.pdf",
+      "sha256": "b3010676317a3413a0198a6af20cc277e625934d2b31655c24e3daf75e28fe86",
+      "media_type": "application/pdf",
+      "section_kind": "commodity",
+      "crop_ids": [
+        "tomatoes"
+      ]
+    }
+  ]
+}

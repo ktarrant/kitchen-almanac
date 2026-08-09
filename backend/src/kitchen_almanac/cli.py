@@ -14,6 +14,7 @@ from kitchen_almanac import (
     hardiness_data,
     location_data,
     noaa_normals_data,
+    rutgers_inventory,
 )
 from kitchen_almanac.catalog import (
     DEFAULT_OUTPUT,
@@ -44,11 +45,13 @@ db_app = typer.Typer(no_args_is_help=True, help="Manage the application database
 location_app = typer.Typer(no_args_is_help=True, help="Validate and load location datasets.")
 climate_app = typer.Typer(no_args_is_help=True, help="Validate and load climate evidence.")
 cultivar_app = typer.Typer(no_args_is_help=True, help="Validate and load cultivar evidence.")
+rutgers_app = typer.Typer(no_args_is_help=True, help="Inventory the primary Rutgers source corpus.")
 app.add_typer(catalog_app, name="catalog")
 app.add_typer(db_app, name="db")
 app.add_typer(location_app, name="locations")
 app.add_typer(climate_app, name="climate")
 app.add_typer(cultivar_app, name="cultivars")
+app.add_typer(rutgers_app, name="rutgers")
 
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
 
@@ -363,6 +366,70 @@ def cultivar_load(
         raise typer.Exit(code=1) from error
     action = "Loaded" if inserted else "Already present"
     typer.echo(f"{action}: {catalog.id}")
+
+
+@rutgers_app.command("fetch")
+def rutgers_fetch(
+    manifest: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = rutgers_inventory.DEFAULT_MANIFEST,
+) -> None:
+    """Fetch checksum-pinned sections of the Rutgers primary corpus."""
+
+    try:
+        fetched, present = rutgers_inventory.fetch_sources(manifest)
+    except rutgers_inventory.RutgersInventoryError as error:
+        typer.echo(f"Rutgers source fetch failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    typer.echo(f"Fetched {fetched} Rutgers source snapshots; {present} already verified.")
+
+
+@rutgers_app.command("inventory")
+def rutgers_build_inventory(
+    manifest: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = rutgers_inventory.DEFAULT_MANIFEST,
+    output: Annotated[Path, typer.Option(file_okay=True, dir_okay=False)] = (
+        rutgers_inventory.DEFAULT_REPORT
+    ),
+) -> None:
+    """Build a deterministic, review-only coverage report from retained PDFs."""
+
+    try:
+        report = rutgers_inventory.build_coverage_report(manifest)
+        rutgers_inventory.write_coverage_report(report, output)
+    except rutgers_inventory.RutgersInventoryError as error:
+        typer.echo(f"Rutgers inventory failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    summary = report["summary"]
+    typer.echo(
+        f"Inventoried {summary['document_count']} documents and {summary['page_count']} pages "
+        f"for {summary['crop_count']} crops."
+    )
+    typer.echo(f"Wrote review-only coverage report to {output}")
+
+
+@rutgers_app.command("validate")
+def rutgers_validate_inventory(
+    report: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = rutgers_inventory.DEFAULT_REPORT,
+    manifest: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = rutgers_inventory.DEFAULT_MANIFEST,
+) -> None:
+    """Verify corpus checksums and the committed deterministic coverage report."""
+
+    try:
+        errors = rutgers_inventory.validate_coverage_report(report, manifest)
+    except rutgers_inventory.RutgersInventoryError as error:
+        typer.echo(f"Rutgers inventory validation failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    if errors:
+        for error in errors:
+            typer.echo(f"- {error}", err=True)
+        raise typer.Exit(code=1)
+    typer.echo("Rutgers corpus snapshots and coverage report are valid.")
 
 
 @db_app.command("upgrade")

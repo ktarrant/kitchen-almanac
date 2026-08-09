@@ -331,6 +331,14 @@ existing reviewed-catalog pipeline supplies immutable source snapshots,
 checksums, extraction metadata, and approval gates; no unreviewed or LLM-made
 instruction enters a guide.
 
+The first evidence-expansion pass establishes the 2026/2027 Rutgers Mid-Atlantic
+manual as the primary corpus. A checksum-pinned manifest now covers its general
+production, soil and nutrient, irrigation, beans, cucumbers, summer squash, and
+tomatoes sections. A deterministic page-level inventory maps the corpus to grow-
+guide evidence fields while quarantining chemical controls, retaining commercial
+rates as context only, and prohibiting database publication without review.
+This inventory is the review queue foundation; it is not itself gardening advice.
+
 Remaining work is primarily evidence expansion: reviewed soil, water,
 container, support, starting, maintenance, and companion rules for the initial
 crop cohort, plus additional relative planting rules and provider-specific
