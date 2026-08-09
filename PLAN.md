@@ -346,9 +346,11 @@ regional calendar windows plus commercial snap-bean density until suitable
 location and home-scale adapters exist.
 
 Remaining work is primarily evidence expansion: reviewed soil, water,
-container, support, starting, maintenance, and companion rules for the initial
-crop cohort, plus additional relative planting rules and provider-specific
-ingestion automation.
+container, support, starting, and maintenance rules for the initial crop cohort,
+plus additional relative planting rules and provider-specific ingestion
+automation. Companion considerations are explicitly deferred to GitHub issue
+#12 because they require a separate, stricter evidence review and do not block
+the core grow-guide work.
 
 - Define a structured grow-guide schema covering light, soil, water, spacing,
   container size, trellising, starting method, planting, maintenance, companion
