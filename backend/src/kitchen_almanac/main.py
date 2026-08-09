@@ -19,6 +19,7 @@ from kitchen_almanac.schemas import (
     CultivarListResponse,
     EvidenceSourceResponse,
     GardenProfileCreateRequest,
+    GardenProfileListResponse,
     GardenProfileResponse,
     HardinessResponse,
     HealthResponse,
@@ -44,6 +45,7 @@ from kitchen_almanac.services.garden_profile_service import (
     GardenProfileNotFoundError,
     create_garden_profile,
     get_garden_profile,
+    list_garden_profiles,
 )
 from kitchen_almanac.services.suitability_service import (
     CultivarNotFoundError,
@@ -364,6 +366,15 @@ def create_garden_profile_endpoint(
     session: Annotated[Session, Depends(get_session)],
 ) -> GardenProfileResponse:
     return _garden_profile_response(create_garden_profile(session, request))
+
+
+@app.get("/api/garden-profiles", response_model=GardenProfileListResponse)
+def list_garden_profiles_endpoint(
+    session: Annotated[Session, Depends(get_session)],
+) -> GardenProfileListResponse:
+    return GardenProfileListResponse(
+        profiles=[_garden_profile_response(profile) for profile in list_garden_profiles(session)]
+    )
 
 
 @app.get("/api/garden-profiles/{profile_id}", response_model=GardenProfileResponse)

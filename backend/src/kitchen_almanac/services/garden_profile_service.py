@@ -4,7 +4,7 @@ from datetime import UTC, datetime
 from uuid import uuid4
 
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from kitchen_almanac.db_models import GardenProfile, LocationDatasetVersion, PostalCodeLocation
 from kitchen_almanac.schemas import GardenProfileCreateRequest
@@ -95,3 +95,22 @@ def get_garden_profile(session: Session, profile_id: str) -> GardenProfile:
     if profile is None:
         raise GardenProfileNotFoundError(profile_id)
     return profile
+
+
+def list_garden_profiles(session: Session) -> list[GardenProfile]:
+    return list(
+        session.scalars(
+            select(GardenProfile)
+            .options(
+                selectinload(GardenProfile.location_dataset).selectinload(
+                    LocationDatasetVersion.source_document
+                ),
+                selectinload(GardenProfile.location_evidence),
+            )
+            .order_by(
+                GardenProfile.updated_at.desc(),
+                GardenProfile.created_at.desc(),
+                GardenProfile.id,
+            )
+        ).all()
+    )

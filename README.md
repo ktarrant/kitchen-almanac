@@ -22,6 +22,10 @@ uv run --project backend kitchen-almanac catalog validate
 uv run --project backend pytest
 ```
 
+Unless `KITCHEN_ALMANAC_DATABASE_URL` is set, every command uses
+`kitchen-almanac.db` in the repository root. This is independent of the current
+working directory, so backend commands and the API share one local database.
+
 The catalog builder reads `Six Seasons Reference.md` and writes
 `data/seed/kitchen-almanac-catalog.v1.json`. The output is deterministic and records
 all changes made to source labels.
@@ -87,6 +91,7 @@ The API includes:
   against one garden profile, including its algorithm version, input
   fingerprint, constraints, assumptions, and missing evidence.
 - `POST /api/garden-profiles` to save location and growing context.
+- `GET /api/garden-profiles` to list saved garden contexts newest-first.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
 - `POST /api/wishlists/builder` to create an empty, catalog-pinned wishlist.
 - `POST /api/wishlists/{id}/entries` to explicitly add a documented crop,

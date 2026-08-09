@@ -718,6 +718,27 @@ def test_garden_profile_captures_location_and_growing_context(
     assert fetched.status_code == 200
     assert fetched.json() == profile
 
+    listed = catalog_client.get("/api/garden-profiles")
+    assert listed.status_code == 200
+    assert listed.json()["profiles"][0] == profile
+
+
+def test_garden_profiles_are_listed_newest_first(catalog_client: TestClient) -> None:
+    first = catalog_client.post(
+        "/api/garden-profiles",
+        json={"name": "First", "postal_code": "20910", "growing_methods": ["containers"]},
+    ).json()
+    second = catalog_client.post(
+        "/api/garden-profiles",
+        json={"name": "Second", "postal_code": "20851", "growing_methods": ["in_ground"]},
+    ).json()
+
+    response = catalog_client.get("/api/garden-profiles")
+
+    assert response.status_code == 200
+    profiles = response.json()["profiles"]
+    assert [profile["id"] for profile in profiles[:2]] == [second["id"], first["id"]]
+
 
 def test_garden_profile_accepts_coordinates(catalog_client: TestClient) -> None:
     response = catalog_client.post(

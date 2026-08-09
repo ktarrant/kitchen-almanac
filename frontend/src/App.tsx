@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 
 type GrowingMethod = "in_ground" | "raised_bed" | "containers" | "protected";
 type IntendedUse = "fresh" | "snacking" | "sauce" | "canning" | "pickling" | "processing";
@@ -57,6 +57,8 @@ type GardenProfile = {
       publisher: string | null;
     };
   } | null;
+  created_at: string;
+  updated_at: string;
 };
 
 type CropMatch = {
@@ -290,6 +292,10 @@ const suitabilityGroups = [
 
 export default function App() {
   const [profile, setProfile] = useState<GardenProfile | null>(null);
+  const [savedProfiles, setSavedProfiles] = useState<GardenProfile[]>([]);
+  const [loadingProfiles, setLoadingProfiles] = useState(true);
+  const [creatingProfile, setCreatingProfile] = useState(false);
+  const [profileName, setProfileName] = useState("My garden");
   const [postalCode, setPostalCode] = useState("");
   const [targetYear, setTargetYear] = useState(currentYear);
   const [experienceLevel, setExperienceLevel] = useState("beginner");
@@ -310,6 +316,28 @@ export default function App() {
   const [updatingEntry, setUpdatingEntry] = useState<string | null>(null);
   const [addedNotice, setAddedNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    async function loadProfiles() {
+      try {
+        const response = await fetch("/api/garden-profiles", { signal: controller.signal });
+        if (!response.ok) throw new Error(await responseMessage(response));
+        const profiles = ((await response.json()) as { profiles: GardenProfile[] }).profiles;
+        setSavedProfiles(profiles);
+        const rememberedId = window.localStorage.getItem("kitchen-almanac-profile-id");
+        const remembered = profiles.find((item) => item.id === rememberedId);
+        if (remembered) setProfile(remembered);
+      } catch (caught) {
+        if (caught instanceof DOMException && caught.name === "AbortError") return;
+        setError(caught instanceof Error ? caught.message : "Could not load saved gardens.");
+      } finally {
+        if (!controller.signal.aborted) setLoadingProfiles(false);
+      }
+    }
+    void loadProfiles();
+    return () => controller.abort();
+  }, []);
 
   const reviewCount = useMemo(
     () =>
@@ -350,6 +378,25 @@ export default function App() {
     );
   }
 
+  function chooseGardenProfile(selected: GardenProfile) {
+    setProfile(selected);
+    setWishlist(null);
+    setSearchResults(null);
+    setSearchQuery("");
+    setAddedNotice(null);
+    setError(null);
+    window.localStorage.setItem("kitchen-almanac-profile-id", selected.id);
+  }
+
+  function switchGardenProfile() {
+    setProfile(null);
+    setWishlist(null);
+    setSearchResults(null);
+    setAddedNotice(null);
+    setCreatingProfile(false);
+    window.localStorage.removeItem("kitchen-almanac-profile-id");
+  }
+
   async function submitGardenProfile(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSavingProfile(true);
@@ -359,6 +406,7 @@ export default function App() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          name: profileName,
           postal_code: postalCode,
           target_year: targetYear,
           experience_level: experienceLevel,
@@ -376,7 +424,10 @@ export default function App() {
       if (!response.ok) {
         throw new Error(await responseMessage(response));
       }
-      setProfile((await response.json()) as GardenProfile);
+      const created = (await response.json()) as GardenProfile;
+      setSavedProfiles((profiles) => [created, ...profiles]);
+      setCreatingProfile(false);
+      chooseGardenProfile(created);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not save your garden.");
     } finally {
@@ -495,15 +546,69 @@ export default function App() {
       {!profile ? (
         <>
           <section className="hero">
-            <h1>Start with where you grow.</h1>
+            <h1>{savedProfiles.length > 0 ? "Continue your garden." : "Start with where you grow."}</h1>
             <p>
-              A good garden plan begins with place. Tell us your location and setup so later
-              recommendations can account for your season, space, and experience.
+              {savedProfiles.length > 0
+                ? "Choose a saved garden to continue, or create a new context for a different place or setup."
+                : "A good garden plan begins with place. Tell us your location and setup so later recommendations can account for your season, space, and experience."}
             </p>
           </section>
 
+          {loadingProfiles && <p className="profile-loading">Loading saved gardens…</p>}
+
+          {!loadingProfiles && savedProfiles.length > 0 && (
+            <section className="saved-profiles" aria-labelledby="saved-gardens-heading">
+              <div className="saved-profiles-heading">
+                <div>
+                  <p className="section-kicker">Saved gardens</p>
+                  <h2 id="saved-gardens-heading">Pick up where you left off</h2>
+                </div>
+                <button
+                  className="secondary-button"
+                  type="button"
+                  onClick={() => setCreatingProfile((visible) => !visible)}
+                >
+                  {creatingProfile ? "Cancel new garden" : "Create another garden"}
+                </button>
+              </div>
+              <div className="saved-profile-list">
+                {savedProfiles.map((saved) => (
+                  <article className="saved-profile-card" key={saved.id}>
+                    <div>
+                      <p className="result-kind">{saved.location_input}</p>
+                      <h3>{saved.name}</h3>
+                      <p>
+                        {saved.target_year} · {saved.growing_methods.map(humanize).join(", ")}
+                        {saved.hardiness ? ` · USDA ${saved.hardiness.zone}` : ""}
+                      </p>
+                    </div>
+                    <button
+                      className="secondary-button"
+                      type="button"
+                      onClick={() => chooseGardenProfile(saved)}
+                    >
+                      Use this garden
+                    </button>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {!loadingProfiles && (savedProfiles.length === 0 || creatingProfile) && (
           <form className="profile-form" onSubmit={submitGardenProfile}>
             <div className="field-grid">
+              <label className="field" htmlFor="profile-name">
+                <span>Garden name</span>
+                <input
+                  id="profile-name"
+                  maxLength={120}
+                  placeholder="Backyard garden"
+                  required
+                  value={profileName}
+                  onChange={(event) => setProfileName(event.target.value)}
+                />
+              </label>
               <label className="field" htmlFor="postal-code">
                 <span>US ZIP code</span>
                 <input
@@ -664,20 +769,27 @@ export default function App() {
               </p>
               <button
                 className="primary-button"
-                disabled={savingProfile || !postalCode.trim() || growingMethods.length === 0}
+                disabled={
+                  savingProfile ||
+                  !profileName.trim() ||
+                  !postalCode.trim() ||
+                  growingMethods.length === 0
+                }
                 type="submit"
               >
                 {savingProfile ? "Saving…" : "Save garden & continue"}
               </button>
             </div>
           </form>
+          )}
         </>
       ) : (
         <>
           <section className="profile-summary" aria-label="Garden context">
             <div>
               <p className="section-kicker">Garden saved</p>
-              <h2>{profile.location_input}</h2>
+              <h2>{profile.name}</h2>
+              <p className="profile-location">{profile.location_input}</p>
               {profile.location_source && (
                 <p className="source-note">
                   Approximate ZCTA point from{" "}
@@ -754,6 +866,9 @@ export default function App() {
                 </dd>
               </div>
             </dl>
+            <button className="text-button" type="button" onClick={switchGardenProfile}>
+              Switch garden
+            </button>
           </section>
 
           <section className="hero compact-hero">

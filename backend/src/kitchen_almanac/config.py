@@ -1,8 +1,12 @@
 from __future__ import annotations
 
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_DATABASE_URL = f"sqlite:///{REPOSITORY_ROOT / 'kitchen-almanac.db'}"
 
 
 class Settings(BaseSettings):
@@ -12,7 +16,7 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    database_url: str = "sqlite:///./kitchen-almanac.db"
+    database_url: str = DEFAULT_DATABASE_URL
     cors_origins: str = "http://localhost:5173"
 
     @property

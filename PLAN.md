@@ -145,6 +145,9 @@ qualifying station from a pinned NOAA 1991–2020 normals archive for probable
 freeze dates, growing-season length, temperature, precipitation, and GDD50.
 Every derived value carries an immutable dataset ID, source checksum, locator,
 extraction method, extractor version, distance or raster cell, and confidence.
+Saved profiles are listed newest-first on the home page, can be selected without
+creating another record, and the last explicit selection is remembered in the
+local browser. Users can switch gardens or deliberately create another profile.
 
 - Collect a US ZIP code or coordinate pair before personalized catalog search.
 - Collect the target growing year, experience level, and expected growing

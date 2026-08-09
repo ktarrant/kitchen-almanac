@@ -354,6 +354,10 @@ class GardenProfileResponse(BaseModel):
     updated_at: datetime
 
 
+class GardenProfileListResponse(BaseModel):
+    profiles: list[GardenProfileResponse]
+
+
 class WishlistCreateRequest(BaseModel):
     text: str = Field(min_length=1, max_length=12_000)
     name: str = Field(default="My garden wishlist", min_length=1, max_length=120)
