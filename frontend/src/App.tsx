@@ -311,7 +311,9 @@ export default function App() {
   const [profile, setProfile] = useState<GardenProfile | null>(null);
   const [savedProfiles, setSavedProfiles] = useState<GardenProfile[]>([]);
   const [loadingProfiles, setLoadingProfiles] = useState(true);
-  const [creatingProfile, setCreatingProfile] = useState(false);
+  const [profileToDelete, setProfileToDelete] = useState<GardenProfile | null>(null);
+  const [deletingProfile, setDeletingProfile] = useState(false);
+  const [deleteGardenError, setDeleteGardenError] = useState<string | null>(null);
   const [profileName, setProfileName] = useState("My garden");
   const [postalCode, setPostalCode] = useState("");
   const [targetYear, setTargetYear] = useState(currentYear);
@@ -336,6 +338,8 @@ export default function App() {
   const [addedNotice, setAddedNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const wishlistRequestId = useRef(0);
+  const createGardenDialogRef = useRef<HTMLDialogElement>(null);
+  const deleteGardenDialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -361,6 +365,12 @@ export default function App() {
       wishlistRequestId.current += 1;
     };
   }, []);
+
+  useEffect(() => {
+    if (profileToDelete && !deleteGardenDialogRef.current?.open) {
+      deleteGardenDialogRef.current?.showModal();
+    }
+  }, [profileToDelete]);
 
   const reviewCount = useMemo(
     () =>
@@ -431,8 +441,59 @@ export default function App() {
     setLoadingWishlist(false);
     setSearchResults(null);
     setAddedNotice(null);
-    setCreatingProfile(false);
     window.localStorage.removeItem("kitchen-almanac-profile-id");
+  }
+
+  function openCreateGardenDialog() {
+    setError(null);
+    if (!createGardenDialogRef.current?.open) {
+      createGardenDialogRef.current?.showModal();
+    }
+  }
+
+  function closeCreateGardenDialog() {
+    createGardenDialogRef.current?.close();
+  }
+
+  function requestGardenDeletion(saved: GardenProfile) {
+    setDeleteGardenError(null);
+    setProfileToDelete(saved);
+  }
+
+  function cancelGardenDeletion() {
+    if (deletingProfile) return;
+    deleteGardenDialogRef.current?.close();
+    setProfileToDelete(null);
+    setDeleteGardenError(null);
+  }
+
+  async function confirmGardenDeletion() {
+    if (!profileToDelete) return;
+    const deletedProfile = profileToDelete;
+    setDeletingProfile(true);
+    setDeleteGardenError(null);
+    try {
+      const response = await fetch(`/api/garden-profiles/${deletedProfile.id}`, {
+        method: "DELETE"
+      });
+      if (!response.ok) throw new Error(await responseMessage(response));
+
+      setSavedProfiles((profiles) =>
+        profiles.filter((saved) => saved.id !== deletedProfile.id)
+      );
+      if (window.localStorage.getItem("kitchen-almanac-profile-id") === deletedProfile.id) {
+        window.localStorage.removeItem("kitchen-almanac-profile-id");
+      }
+      if (profile?.id === deletedProfile.id) switchGardenProfile();
+      deleteGardenDialogRef.current?.close();
+      setProfileToDelete(null);
+    } catch (caught) {
+      setDeleteGardenError(
+        caught instanceof Error ? caught.message : "Could not delete this garden."
+      );
+    } finally {
+      setDeletingProfile(false);
+    }
   }
 
   async function submitGardenProfile(event: FormEvent<HTMLFormElement>) {
@@ -464,7 +525,7 @@ export default function App() {
       }
       const created = (await response.json()) as GardenProfile;
       setSavedProfiles((profiles) => [created, ...profiles]);
-      setCreatingProfile(false);
+      createGardenDialogRef.current?.close();
       void chooseGardenProfile(created);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not save your garden.");
@@ -624,9 +685,9 @@ export default function App() {
                 <button
                   className="secondary-button"
                   type="button"
-                  onClick={() => setCreatingProfile((visible) => !visible)}
+                  onClick={openCreateGardenDialog}
                 >
-                  {creatingProfile ? "Cancel new garden" : "Create another garden"}
+                  Create another garden
                 </button>
               </div>
               <div className="saved-profile-list">
@@ -640,21 +701,64 @@ export default function App() {
                         {saved.hardiness ? ` · USDA ${saved.hardiness.zone}` : ""}
                       </p>
                     </div>
-                    <button
-                      className="secondary-button"
-                      type="button"
-                      onClick={() => chooseGardenProfile(saved)}
-                    >
-                      Use this garden
-                    </button>
+                    <div className="saved-profile-actions">
+                      <button
+                        className="secondary-button"
+                        type="button"
+                        onClick={() => chooseGardenProfile(saved)}
+                      >
+                        Use this garden
+                      </button>
+                      <button
+                        className="text-button danger-text-button"
+                        type="button"
+                        onClick={() => requestGardenDeletion(saved)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </article>
                 ))}
               </div>
             </section>
           )}
 
-          {!loadingProfiles && (savedProfiles.length === 0 || creatingProfile) && (
+          {!loadingProfiles && (
+          <dialog
+            aria-labelledby="create-garden-heading"
+            className={
+              savedProfiles.length === 0
+                ? "create-garden-dialog inline"
+                : "create-garden-dialog"
+            }
+            open={savedProfiles.length === 0 ? true : undefined}
+            ref={createGardenDialogRef}
+            onCancel={(event) => {
+              if (savedProfiles.length === 0) event.preventDefault();
+            }}
+          >
           <form className="profile-form" onSubmit={submitGardenProfile}>
+            <div className="create-garden-heading">
+              <div>
+                <p className="section-kicker">New garden</p>
+                <h2 id="create-garden-heading">Create a garden context</h2>
+              </div>
+              {savedProfiles.length > 0 && (
+                <button
+                  aria-label="Close new garden form"
+                  className="dialog-close-button"
+                  type="button"
+                  onClick={closeCreateGardenDialog}
+                >
+                  Close
+                </button>
+              )}
+            </div>
+            {error && (
+              <p className="error-message" role="alert">
+                {error}
+              </p>
+            )}
             <div className="field-grid">
               <label className="field" htmlFor="profile-name">
                 <span>Garden name</span>
@@ -664,6 +768,7 @@ export default function App() {
                   placeholder="Backyard garden"
                   required
                   value={profileName}
+                  autoFocus={savedProfiles.length > 0}
                   onChange={(event) => setProfileName(event.target.value)}
                 />
               </label>
@@ -825,21 +930,78 @@ export default function App() {
                 ZIP codes are matched to an approximate Census ZCTA representative point,
                 never treated as an exact address.
               </p>
-              <button
-                className="primary-button"
-                disabled={
-                  savingProfile ||
-                  !profileName.trim() ||
-                  !postalCode.trim() ||
-                  growingMethods.length === 0
-                }
-                type="submit"
-              >
-                {savingProfile ? "Saving…" : "Save garden & continue"}
-              </button>
+              <div className="profile-footer-actions">
+                {savedProfiles.length > 0 && (
+                  <button
+                    className="secondary-button"
+                    disabled={savingProfile}
+                    type="button"
+                    onClick={closeCreateGardenDialog}
+                  >
+                    Cancel
+                  </button>
+                )}
+                <button
+                  className="primary-button"
+                  disabled={
+                    savingProfile ||
+                    !profileName.trim() ||
+                    !postalCode.trim() ||
+                    growingMethods.length === 0
+                  }
+                  type="submit"
+                >
+                  {savingProfile ? "Saving…" : "Save garden & continue"}
+                </button>
+              </div>
             </div>
           </form>
+          </dialog>
           )}
+
+          <dialog
+            aria-labelledby="delete-garden-heading"
+            className="confirmation-dialog"
+            ref={deleteGardenDialogRef}
+            onCancel={(event) => {
+              event.preventDefault();
+              cancelGardenDeletion();
+            }}
+          >
+            {profileToDelete && (
+              <div>
+                <p className="section-kicker">Delete garden</p>
+                <h2 id="delete-garden-heading">Delete “{profileToDelete.name}”?</h2>
+                <p>
+                  This permanently removes the garden context, its location evidence, and all
+                  saved wishlist entries. Catalog and cultivar research will not be affected.
+                </p>
+                {deleteGardenError && (
+                  <p className="dialog-error" role="alert">
+                    {deleteGardenError}
+                  </p>
+                )}
+                <div className="confirmation-actions">
+                  <button
+                    className="secondary-button"
+                    disabled={deletingProfile}
+                    type="button"
+                    onClick={cancelGardenDeletion}
+                  >
+                    Keep garden
+                  </button>
+                  <button
+                    className="danger-button"
+                    disabled={deletingProfile}
+                    type="button"
+                    onClick={() => void confirmGardenDeletion()}
+                  >
+                    {deletingProfile ? "Deleting…" : "Delete garden"}
+                  </button>
+                </div>
+              </div>
+            )}
+          </dialog>
         </>
       ) : (
         <>
@@ -1279,7 +1441,7 @@ export default function App() {
         </>
       )}
 
-      {error && (
+      {error && profile && (
         <p className="error-message" role="alert">
           {error}
         </p>

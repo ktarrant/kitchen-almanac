@@ -93,6 +93,9 @@ The API includes:
 - `POST /api/garden-profiles` to save location and growing context.
 - `GET /api/garden-profiles` to list saved garden contexts newest-first.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
+- `DELETE /api/garden-profiles/{id}` to atomically remove a garden and its
+  location evidence, wishlists, entries, and match candidates while preserving
+  shared catalog and source data.
 - `GET /api/garden-profiles/{id}/wishlists/active` to restore its most recently
   updated wishlist without creating or merging records.
 - `POST /api/wishlists/builder` to create an empty, catalog-pinned wishlist.

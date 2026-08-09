@@ -740,6 +740,45 @@ def test_garden_profiles_are_listed_newest_first(catalog_client: TestClient) -> 
     assert [profile["id"] for profile in profiles[:2]] == [second["id"], first["id"]]
 
 
+def test_garden_profile_deletion_removes_only_its_planning_data(
+    catalog_client: TestClient,
+) -> None:
+    deleted_profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={"name": "Delete me", "postal_code": "20910", "growing_methods": ["containers"]},
+    ).json()
+    retained_profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={"name": "Keep me", "postal_code": "20851", "growing_methods": ["in_ground"]},
+    ).json()
+    deleted_wishlist = catalog_client.post(
+        "/api/wishlists",
+        json={
+            "text": "beans\nTomato",
+            "garden_profile_id": deleted_profile["id"],
+        },
+    ).json()
+    retained_wishlist = catalog_client.post(
+        "/api/wishlists/builder",
+        json={"garden_profile_id": retained_profile["id"], "name": "Keep this list"},
+    ).json()
+    cultivars_before = catalog_client.get("/api/cultivars").json()
+
+    response = catalog_client.delete(f"/api/garden-profiles/{deleted_profile['id']}")
+
+    assert response.status_code == 204
+    assert response.content == b""
+    assert catalog_client.get(f"/api/garden-profiles/{deleted_profile['id']}").status_code == 404
+    assert catalog_client.get(f"/api/wishlists/{deleted_wishlist['id']}").status_code == 404
+    assert catalog_client.get(f"/api/garden-profiles/{retained_profile['id']}").status_code == 200
+    assert catalog_client.get(f"/api/wishlists/{retained_wishlist['id']}").status_code == 200
+    assert catalog_client.get("/api/cultivars").json() == cultivars_before
+
+    missing_profile_id = "00000000-0000-0000-0000-000000000000"
+    missing = catalog_client.delete(f"/api/garden-profiles/{missing_profile_id}")
+    assert missing.status_code == 404
+
+
 def test_garden_profile_accepts_coordinates(catalog_client: TestClient) -> None:
     response = catalog_client.post(
         "/api/garden-profiles",

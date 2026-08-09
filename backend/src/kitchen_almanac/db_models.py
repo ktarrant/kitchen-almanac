@@ -352,7 +352,10 @@ class GardenProfile(Base):
         cascade="all, delete-orphan",
         order_by="LocationEvidenceClaim.field_name",
     )
-    wishlists: Mapped[list[Wishlist]] = relationship(back_populates="garden_profile")
+    wishlists: Mapped[list[Wishlist]] = relationship(
+        back_populates="garden_profile",
+        cascade="all, delete-orphan",
+    )
 
 
 class Wishlist(Base):

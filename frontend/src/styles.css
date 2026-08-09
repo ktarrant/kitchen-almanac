@@ -171,6 +171,123 @@ h1 {
   line-height: 1.45;
 }
 
+.saved-profile-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.saved-profile-actions .text-button {
+  margin-top: 0.25rem;
+}
+
+.create-garden-dialog {
+  width: min(880px, calc(100% - 2rem));
+  max-height: calc(100vh - 2rem);
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  color: inherit;
+  background: transparent;
+  overflow: auto;
+}
+
+.create-garden-dialog::backdrop,
+.confirmation-dialog::backdrop {
+  background: rgb(25 39 30 / 58%);
+  backdrop-filter: blur(3px);
+}
+
+.create-garden-dialog.inline {
+  position: static;
+  width: 100%;
+  max-height: none;
+  margin: 0;
+  overflow: visible;
+}
+
+.create-garden-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.create-garden-heading h2 {
+  margin: 0.35rem 0 0;
+  font-size: 2rem;
+}
+
+.dialog-close-button {
+  padding: 0.35rem 0;
+  border: 0;
+  border-bottom: 1px solid currentcolor;
+  color: #76533d;
+  background: transparent;
+  font-weight: 700;
+}
+
+.profile-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.confirmation-dialog {
+  width: min(480px, calc(100% - 2rem));
+  padding: 1.5rem;
+  border: 1px solid #9da895;
+  border-radius: 18px;
+  color: #263e30;
+  background: #fffdf6;
+  box-shadow: 0 24px 80px rgb(18 31 23 / 28%);
+}
+
+.confirmation-dialog h2 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 2rem;
+}
+
+.confirmation-dialog > div > p:not(.section-kicker) {
+  color: #59675e;
+  line-height: 1.6;
+}
+
+.confirmation-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.danger-button {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #8c342b;
+  border-radius: 999px;
+  color: #fffdf6;
+  background: #8c342b;
+  font-size: 0.78rem;
+  font-weight: 720;
+}
+
+.danger-button:hover:not(:disabled) {
+  background: #6f251f;
+}
+
+.danger-text-button {
+  color: #8c342b;
+}
+
+.dialog-error {
+  padding: 0.75rem;
+  border-left: 3px solid #8c342b;
+  color: #722820 !important;
+  background: #f8e8e3;
+}
+
 .field-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1080,6 +1197,24 @@ textarea:focus {
   .saved-profile-card {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .saved-profile-actions {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .profile-footer-actions,
+  .confirmation-actions {
+    width: 100%;
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .profile-footer-actions .secondary-button,
+  .confirmation-actions .secondary-button,
+  .confirmation-actions .danger-button {
+    width: 100%;
   }
 
   .profile-summary dl {

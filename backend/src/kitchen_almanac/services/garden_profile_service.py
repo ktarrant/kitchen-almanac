@@ -97,6 +97,15 @@ def get_garden_profile(session: Session, profile_id: str) -> GardenProfile:
     return profile
 
 
+def delete_garden_profile(session: Session, profile_id: str) -> None:
+    profile = session.get(GardenProfile, profile_id)
+    if profile is None:
+        raise GardenProfileNotFoundError(profile_id)
+
+    session.delete(profile)
+    session.commit()
+
+
 def list_garden_profiles(session: Session) -> list[GardenProfile]:
     return list(
         session.scalars(

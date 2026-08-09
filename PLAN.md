@@ -147,7 +147,11 @@ Every derived value carries an immutable dataset ID, source checksum, locator,
 extraction method, extractor version, distance or raster cell, and confidence.
 Saved profiles are listed newest-first on the home page, can be selected without
 creating another record, and the last explicit selection is remembered in the
-local browser. Users can switch gardens or deliberately create another profile.
+local browser. Users can switch gardens or deliberately create another profile
+in an accessible dialog connected to the creation action. A confirmed delete
+flow atomically removes the selected garden and its owned planning data without
+affecting shared catalog evidence; deleting the last garden returns the user to
+the initial creation state.
 
 - Collect a US ZIP code or coordinate pair before personalized catalog search.
 - Collect the target growing year, experience level, and expected growing

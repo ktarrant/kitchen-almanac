@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Annotated
 
-from fastapi import Depends, FastAPI, HTTPException, Query, status
+from fastapi import Depends, FastAPI, HTTPException, Query, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
@@ -44,6 +44,7 @@ from kitchen_almanac.services.cultivar_service import list_cultivars as query_cu
 from kitchen_almanac.services.garden_profile_service import (
     GardenProfileNotFoundError,
     create_garden_profile,
+    delete_garden_profile,
     get_garden_profile,
     list_garden_profiles,
 )
@@ -392,6 +393,24 @@ def get_garden_profile_endpoint(
             detail="Garden profile not found.",
         ) from error
     return _garden_profile_response(profile)
+
+
+@app.delete(
+    "/api/garden-profiles/{profile_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+def delete_garden_profile_endpoint(
+    profile_id: str,
+    session: Annotated[Session, Depends(get_session)],
+) -> Response:
+    try:
+        delete_garden_profile(session, profile_id)
+    except GardenProfileNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Garden profile not found.",
+        ) from error
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @app.get(
