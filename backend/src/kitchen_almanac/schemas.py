@@ -138,6 +138,48 @@ class SuitabilityAssessmentResponse(BaseModel):
     missing_evidence: list[str]
 
 
+class GrowGuideSectionResponse(BaseModel):
+    code: str
+    title: str
+    status: Literal["documented", "partial", "missing", "conflict"]
+    summary: str
+    instructions: list[str]
+    confidence: str | None
+    provenance: Literal["cultivar", "crop_baseline", "mixed", "none"]
+    evidence: list[SuitabilityEvidenceReference]
+    missing_evidence: list[str]
+
+
+class GrowGuideTimelineEventResponse(BaseModel):
+    code: str
+    title: str
+    start_date: date
+    end_date: date | None = None
+    summary: str
+    confidence: str
+    evidence: list[SuitabilityEvidenceReference]
+
+
+class GrowGuideResponse(BaseModel):
+    garden_profile_id: str
+    garden_name: str
+    target_year: int
+    cultivar_slug: str
+    cultivar_name: str
+    crop_slug: str
+    crop_name: str
+    cultivar_dataset_id: str
+    crop_dataset_id: str
+    algorithm_version: str
+    input_fingerprint: str
+    summary: str
+    sections: list[GrowGuideSectionResponse]
+    timeline: list[GrowGuideTimelineEventResponse]
+    conflicts: list[str]
+    assumptions: list[str]
+    missing_evidence: list[str]
+
+
 class CatalogCropChoice(BaseModel):
     slug: str
     canonical_name: str

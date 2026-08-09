@@ -195,6 +195,57 @@ type Wishlist = {
   entries: WishlistEntry[];
 };
 
+type GuideEvidence = {
+  field_name: string;
+  value: object | unknown[] | string | number | boolean;
+  origin: "cultivar_catalog" | "crop_baseline" | "climate_normal" | "garden_profile";
+  source_document_id: string | null;
+  title: string | null;
+  publisher: string | null;
+  source_url: string | null;
+  source_locator: string | null;
+  source_scope: string | null;
+  inherited_from_crop: boolean;
+};
+
+type GrowGuide = {
+  garden_profile_id: string;
+  garden_name: string;
+  target_year: number;
+  cultivar_slug: string;
+  cultivar_name: string;
+  crop_slug: string;
+  crop_name: string;
+  cultivar_dataset_id: string;
+  crop_dataset_id: string;
+  algorithm_version: string;
+  input_fingerprint: string;
+  summary: string;
+  sections: {
+    code: string;
+    title: string;
+    status: "documented" | "partial" | "missing" | "conflict";
+    summary: string;
+    instructions: string[];
+    confidence: string | null;
+    provenance: "cultivar" | "crop_baseline" | "mixed" | "none";
+    evidence: GuideEvidence[];
+    missing_evidence: string[];
+  }[];
+  timeline: {
+    code: string;
+    title: string;
+    start_date: string;
+    end_date: string | null;
+    summary: string;
+    confidence: string;
+    evidence: GuideEvidence[];
+  }[];
+  conflicts: string[];
+  assumptions: string[];
+  missing_evidence: string[];
+};
+
 const initialWishlist = "San Marzano tomatoes\npaste tomato\nCarrots\nZucchini";
 const currentYear = new Date().getFullYear();
 const methodOptions: { value: GrowingMethod; label: string; detail: string }[] = [
@@ -236,6 +287,12 @@ async function responseMessage(response: Response): Promise<string> {
 
 function humanize(value: string) {
   return value.replaceAll("_", " ");
+}
+
+function formatGuideDate(value: string) {
+  return new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" }).format(
+    new Date(`${value}T12:00:00`)
+  );
 }
 
 function wishlistEntryName(entry: WishlistEntry) {
@@ -335,11 +392,16 @@ export default function App() {
   const [loadingWishlist, setLoadingWishlist] = useState(false);
   const [updatingEntry, setUpdatingEntry] = useState<string | null>(null);
   const [removingEntry, setRemovingEntry] = useState<string | null>(null);
+  const [guideCultivarSlug, setGuideCultivarSlug] = useState<string | null>(null);
+  const [growGuide, setGrowGuide] = useState<GrowGuide | null>(null);
+  const [loadingGrowGuide, setLoadingGrowGuide] = useState(false);
   const [addedNotice, setAddedNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const wishlistRequestId = useRef(0);
+  const growGuideRequestId = useRef(0);
   const createGardenDialogRef = useRef<HTMLDialogElement>(null);
   const deleteGardenDialogRef = useRef<HTMLDialogElement>(null);
+  const growGuideRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -413,11 +475,14 @@ export default function App() {
 
   async function chooseGardenProfile(selected: GardenProfile) {
     const requestId = ++wishlistRequestId.current;
+    growGuideRequestId.current += 1;
     setProfile(selected);
     setWishlist(null);
     setLoadingWishlist(true);
     setSearchResults(null);
     setSearchQuery("");
+    setGuideCultivarSlug(null);
+    setGrowGuide(null);
     setAddedNotice(null);
     setError(null);
     window.localStorage.setItem("kitchen-almanac-profile-id", selected.id);
@@ -436,10 +501,13 @@ export default function App() {
 
   function switchGardenProfile() {
     wishlistRequestId.current += 1;
+    growGuideRequestId.current += 1;
     setProfile(null);
     setWishlist(null);
     setLoadingWishlist(false);
     setSearchResults(null);
+    setGuideCultivarSlug(null);
+    setGrowGuide(null);
     setAddedNotice(null);
     window.localStorage.removeItem("kitchen-almanac-profile-id");
   }
@@ -645,12 +713,54 @@ export default function App() {
       });
       if (!response.ok) throw new Error(await responseMessage(response));
       setWishlist((await response.json()) as Wishlist);
+      if (entry.resolved_cultivar?.slug === guideCultivarSlug) {
+        growGuideRequestId.current += 1;
+        setGuideCultivarSlug(null);
+        setGrowGuide(null);
+        setLoadingGrowGuide(false);
+      }
       setAddedNotice(`${wishlistEntryName(entry)} removed from your selected plants.`);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not remove this plant.");
     } finally {
       setRemovingEntry(null);
     }
+  }
+
+  async function showGrowGuide(cultivar: CultivarMatch) {
+    if (!profile) return;
+    const requestId = ++growGuideRequestId.current;
+    setGuideCultivarSlug(cultivar.slug);
+    setGrowGuide(null);
+    setLoadingGrowGuide(true);
+    setError(null);
+    try {
+      const params = new URLSearchParams({
+        garden_profile_id: profile.id,
+        cultivar_slug: cultivar.slug
+      });
+      const response = await fetch(`/api/grow-guides?${params}`);
+      if (!response.ok) throw new Error(await responseMessage(response));
+      const guide = (await response.json()) as GrowGuide;
+      if (growGuideRequestId.current !== requestId) return;
+      setGrowGuide(guide);
+      window.requestAnimationFrame(() => {
+        growGuideRef.current?.focus();
+        growGuideRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    } catch (caught) {
+      if (growGuideRequestId.current !== requestId) return;
+      setError(caught instanceof Error ? caught.message : "Could not generate this grow guide.");
+    } finally {
+      if (growGuideRequestId.current === requestId) setLoadingGrowGuide(false);
+    }
+  }
+
+  function closeGrowGuide() {
+    growGuideRequestId.current += 1;
+    setGuideCultivarSlug(null);
+    setGrowGuide(null);
+    setLoadingGrowGuide(false);
   }
 
   return (
@@ -1116,14 +1226,28 @@ export default function App() {
                         <strong>{wishlistEntryName(entry)}</strong>
                         <span>{wishlistEntryKind(entry)}</span>
                       </div>
-                      <button
-                        type="button"
-                        disabled={removingEntry !== null}
-                        onClick={() => void removeEntry(entry)}
-                        aria-label={`Remove ${wishlistEntryName(entry)}`}
-                      >
-                        {removingEntry === entry.id ? "Removing…" : "Remove"}
-                      </button>
+                      <div className="selected-plant-actions">
+                        {entry.resolved_cultivar && (
+                          <button
+                            className="guide-link-button"
+                            type="button"
+                            disabled={loadingGrowGuide && guideCultivarSlug === entry.resolved_cultivar.slug}
+                            onClick={() => void showGrowGuide(entry.resolved_cultivar!)}
+                          >
+                            {loadingGrowGuide && guideCultivarSlug === entry.resolved_cultivar.slug
+                              ? "Loading guide…"
+                              : "Grow guide"}
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          disabled={removingEntry !== null}
+                          onClick={() => void removeEntry(entry)}
+                          aria-label={`Remove ${wishlistEntryName(entry)}`}
+                        >
+                          {removingEntry === entry.id ? "Removing…" : "Remove"}
+                        </button>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -1147,6 +1271,184 @@ export default function App() {
               Switch garden
             </button>
           </section>
+
+          {guideCultivarSlug && (
+            <section
+              aria-busy={loadingGrowGuide}
+              aria-live="polite"
+              className="grow-guide"
+              ref={growGuideRef}
+              tabIndex={-1}
+            >
+              <div className="grow-guide-heading">
+                <div>
+                  <p className="section-kicker">Cultivar-aware grow guide</p>
+                  <h2>{growGuide?.cultivar_name ?? "Building your guide…"}</h2>
+                  {growGuide && (
+                    <p>
+                      {growGuide.crop_name} · {growGuide.garden_name} · {growGuide.target_year}
+                    </p>
+                  )}
+                </div>
+                <button className="text-button" type="button" onClick={closeGrowGuide}>
+                  Close guide
+                </button>
+              </div>
+
+              {loadingGrowGuide && <p className="guide-loading">Combining reviewed evidence…</p>}
+
+              {growGuide && (
+                <>
+                  <p className="guide-summary">{growGuide.summary}</p>
+
+                  {growGuide.conflicts.length > 0 && (
+                    <div className="guide-conflicts" role="note">
+                      <strong>Garden conflicts</strong>
+                      <ul>
+                        {growGuide.conflicts.map((conflict) => (
+                          <li key={conflict}>{conflict}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <section className="guide-timeline" aria-labelledby="guide-timeline-heading">
+                    <div>
+                      <p className="section-kicker">Local timeline</p>
+                      <h3 id="guide-timeline-heading">Planning dates</h3>
+                    </div>
+                    {growGuide.timeline.length > 0 ? (
+                      <ol>
+                        {growGuide.timeline.map((event) => (
+                          <li key={event.code}>
+                            <time dateTime={event.start_date}>
+                              {formatGuideDate(event.start_date)}
+                              {event.end_date && event.end_date !== event.start_date
+                                ? ` – ${formatGuideDate(event.end_date)}`
+                                : ""}
+                            </time>
+                            <div>
+                              <strong>{event.title}</strong>
+                              <p>{event.summary}</p>
+                              <details className="guide-sources">
+                                <summary>
+                                  {event.evidence.length} evidence {event.evidence.length === 1 ? "record" : "records"}
+                                </summary>
+                                <ul>
+                                  {event.evidence.map((evidence, index) => (
+                                    <li key={`${event.code}-${evidence.field_name}-${index}`}>
+                                      {evidence.source_url ? (
+                                        <a href={evidence.source_url} target="_blank" rel="noreferrer">
+                                          {evidence.publisher ?? evidence.title ?? humanize(evidence.origin)}
+                                        </a>
+                                      ) : (
+                                        <strong>
+                                          {evidence.publisher ?? evidence.title ?? humanize(evidence.origin)}
+                                        </strong>
+                                      )}
+                                      {evidence.source_locator && <span>{evidence.source_locator}</span>}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </details>
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    ) : (
+                      <p className="guide-empty">
+                        A local timeline needs both a reviewed relative planting rule and climate
+                        normals for this garden.
+                      </p>
+                    )}
+                  </section>
+
+                  <div className="guide-section-grid">
+                    {growGuide.sections.map((section) => (
+                      <article className={`guide-section ${section.status}`} key={section.code}>
+                        <div className="guide-section-heading">
+                          <h3>{section.title}</h3>
+                          <span>{humanize(section.status)}</span>
+                        </div>
+                        <p>{section.summary}</p>
+                        {section.instructions.length > 1 && (
+                          <ul>
+                            {section.instructions.map((instruction) => (
+                              <li key={instruction}>{instruction}</li>
+                            ))}
+                          </ul>
+                        )}
+                        <p className="guide-provenance">
+                          {section.provenance === "crop_baseline"
+                            ? "Inherited crop guidance"
+                            : section.provenance === "cultivar"
+                              ? "Cultivar-specific guidance"
+                              : section.provenance === "mixed"
+                                ? "Crop and cultivar evidence"
+                                : "Evidence needed"}
+                          {section.confidence ? ` · ${humanize(section.confidence)} confidence` : ""}
+                        </p>
+                        {section.missing_evidence.length > 0 && (
+                          <p className="guide-gap">
+                            Missing: {section.missing_evidence.join("; ")}
+                          </p>
+                        )}
+                        {section.evidence.length > 0 && (
+                          <details className="guide-sources">
+                            <summary>
+                              {section.evidence.length} evidence {section.evidence.length === 1 ? "record" : "records"}
+                            </summary>
+                            <ul>
+                              {section.evidence.map((evidence, index) => (
+                                <li key={`${evidence.field_name}-${evidence.source_document_id}-${index}`}>
+                                  {evidence.source_url ? (
+                                    <a href={evidence.source_url} target="_blank" rel="noreferrer">
+                                      {evidence.publisher ?? evidence.title ?? humanize(evidence.origin)}
+                                    </a>
+                                  ) : (
+                                    <strong>
+                                      {evidence.publisher ?? evidence.title ?? humanize(evidence.origin)}
+                                    </strong>
+                                  )}
+                                  {evidence.source_locator && <span>{evidence.source_locator}</span>}
+                                  {evidence.inherited_from_crop && <span>Inherited from crop baseline</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </details>
+                        )}
+                      </article>
+                    ))}
+                  </div>
+
+                  <details className="guide-audit">
+                    <summary>Guide assumptions and reproducibility</summary>
+                    {growGuide.assumptions.length > 0 && (
+                      <ul>
+                        {growGuide.assumptions.map((assumption) => (
+                          <li key={assumption}>{assumption}</li>
+                        ))}
+                      </ul>
+                    )}
+                    <dl>
+                      <div>
+                        <dt>Guide algorithm</dt>
+                        <dd>{growGuide.algorithm_version}</dd>
+                      </div>
+                      <div>
+                        <dt>Cultivar dataset</dt>
+                        <dd>{growGuide.cultivar_dataset_id}</dd>
+                      </div>
+                      <div>
+                        <dt>Input fingerprint</dt>
+                        <dd>{growGuide.input_fingerprint}</dd>
+                      </div>
+                    </dl>
+                  </details>
+                </>
+              )}
+            </section>
+          )}
 
           <section className="catalog-panel" aria-label="Catalog search">
             <form className="catalog-search" onSubmit={submitCatalogSearch}>

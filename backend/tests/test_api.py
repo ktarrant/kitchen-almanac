@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterator
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 
 import pytest
 from fastapi.testclient import TestClient
@@ -777,6 +777,109 @@ def test_garden_profile_deletion_removes_only_its_planning_data(
     missing_profile_id = "00000000-0000-0000-0000-000000000000"
     missing = catalog_client.delete(f"/api/garden-profiles/{missing_profile_id}")
     assert missing.status_code == 404
+
+
+def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    response = catalog_client.get(
+        "/api/grow-guides",
+        params={
+            "garden_profile_id": garden_profile["id"],
+            "cultivar_slug": "mountain-merit",
+        },
+    )
+
+    assert response.status_code == 200
+    guide = response.json()
+    assert guide["cultivar_name"] == "Mountain Merit"
+    assert guide["crop_name"] == "Tomatoes"
+    assert guide["algorithm_version"] == "grow-guide-v1.0.0"
+    assert len(guide["input_fingerprint"]) == 64
+    assert [section["code"] for section in guide["sections"]] == [
+        "light",
+        "soil",
+        "water",
+        "spacing",
+        "containers",
+        "trellising",
+        "starting_method",
+        "planting",
+        "maintenance",
+        "companions",
+        "harvest",
+    ]
+    sections = {section["code"]: section for section in guide["sections"]}
+    assert sections["light"]["provenance"] == "crop_baseline"
+    assert sections["light"]["evidence"][0]["publisher"] == "University of Maryland Extension"
+    assert sections["spacing"]["provenance"] == "cultivar"
+    assert sections["spacing"]["summary"] == "Space plants 24 inches apart."
+    assert sections["soil"]["status"] == "missing"
+    assert sections["soil"]["evidence"] == []
+    assert sections["trellising"]["status"] == "partial"
+    assert sections["planting"]["status"] == "documented"
+    assert all(
+        section["evidence"]
+        for section in guide["sections"]
+        if section["status"] == "documented"
+    )
+
+    target_year = int(garden_profile["target_year"])
+    planting_date = date(target_year, 3, 24)
+    events = {event["code"]: event for event in guide["timeline"]}
+    assert events["outdoor_planting_boundary"]["start_date"] == planting_date.isoformat()
+    assert events["estimated_first_harvest"]["start_date"] == (
+        planting_date + timedelta(days=75)
+    ).isoformat()
+    assert events["estimated_first_harvest"]["end_date"] == (
+        planting_date + timedelta(days=75)
+    ).isoformat()
+    assert len(events["estimated_first_harvest"]["evidence"]) == 2
+    assert "Soil pH or soil-condition guidance" in guide["missing_evidence"]
+
+    repeated = catalog_client.get(
+        "/api/grow-guides",
+        params={
+            "garden_profile_id": garden_profile["id"],
+            "cultivar_slug": "mountain-merit",
+        },
+    )
+    assert repeated.json() == guide
+
+
+def test_grow_guide_reports_missing_context_and_unknown_records(
+    catalog_client: TestClient,
+) -> None:
+    profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={"postal_code": "00000", "growing_methods": ["containers"]},
+    ).json()
+
+    response = catalog_client.get(
+        "/api/grow-guides",
+        params={"garden_profile_id": profile["id"], "cultivar_slug": "mountain-merit"},
+    )
+    assert response.status_code == 200
+    guide = response.json()
+    assert guide["timeline"] == []
+    planting = next(section for section in guide["sections"] if section["code"] == "planting")
+    assert planting["status"] == "partial"
+    assert planting["missing_evidence"] == ["Local probable last-spring-freeze date"]
+
+    missing_cultivar = catalog_client.get(
+        "/api/grow-guides",
+        params={"garden_profile_id": profile["id"], "cultivar_slug": "not-a-cultivar"},
+    )
+    assert missing_cultivar.status_code == 404
+    missing_profile = catalog_client.get(
+        "/api/grow-guides",
+        params={
+            "garden_profile_id": "00000000-0000-0000-0000-000000000000",
+            "cultivar_slug": "mountain-merit",
+        },
+    )
+    assert missing_profile.status_code == 404
 
 
 def test_garden_profile_accepts_coordinates(catalog_client: TestClient) -> None:

@@ -564,6 +564,260 @@ h1 {
   font-weight: 720;
 }
 
+.selected-plant-list li > .selected-plant-actions {
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+.selected-plant-list .guide-link-button {
+  color: #315b3d;
+}
+
+.grow-guide {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #7f927d;
+  border-radius: 18px;
+  outline: none;
+  background: rgb(241 241 225 / 92%);
+  box-shadow: 0 18px 60px rgb(38 53 43 / 9%);
+  scroll-margin-top: 1rem;
+}
+
+.grow-guide:focus-visible {
+  box-shadow: 0 0 0 4px rgb(66 104 78 / 18%), 0 18px 60px rgb(38 53 43 / 9%);
+}
+
+.grow-guide-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #bdc3b3;
+}
+
+.grow-guide-heading h2 {
+  margin: 0.35rem 0 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.grow-guide-heading > div > p:last-child,
+.guide-summary,
+.guide-loading,
+.guide-empty {
+  color: #5d6b62;
+  line-height: 1.6;
+}
+
+.grow-guide-heading > div > p:last-child {
+  margin: 0.35rem 0 0;
+}
+
+.guide-summary {
+  max-width: 720px;
+  margin: 1.25rem 0;
+}
+
+.guide-conflicts {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-left: 4px solid #9a4f2f;
+  border-radius: 4px;
+  color: #733923;
+  background: #fae8dc;
+}
+
+.guide-conflicts ul,
+.guide-section ul,
+.guide-audit ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.guide-timeline {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 1.25rem;
+  border: 1px solid #b6bead;
+  border-radius: 14px;
+  background: #fffdf6;
+}
+
+.guide-timeline h3 {
+  margin: 0.3rem 0 0;
+  font-size: 1.65rem;
+}
+
+.guide-timeline ol {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-timeline li {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.25fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid #e0dfd5;
+}
+
+.guide-timeline li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.guide-timeline time {
+  color: #315b3d;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.guide-timeline strong {
+  color: #263e30;
+}
+
+.guide-timeline li p {
+  margin: 0.25rem 0 0;
+  color: #68756c;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.guide-section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.guide-section {
+  padding: 1rem;
+  border: 1px solid #bec3b4;
+  border-radius: 12px;
+  background: #fffdf6;
+}
+
+.guide-section.missing {
+  border-style: dashed;
+  background: rgb(255 253 246 / 58%);
+}
+
+.guide-section.partial {
+  border-color: #c7aa7b;
+}
+
+.guide-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.guide-section-heading h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.guide-section-heading span {
+  color: #647267;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-section > p,
+.guide-section li {
+  color: #536159;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.guide-section .guide-provenance {
+  margin-bottom: 0;
+  color: #315b3d;
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+.guide-section .guide-gap {
+  margin: 0.45rem 0 0;
+  color: #8b4e32;
+  font-size: 0.7rem;
+}
+
+.guide-sources {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid #e0dfd5;
+  color: #59675e;
+  font-size: 0.72rem;
+}
+
+.guide-sources summary,
+.guide-audit summary {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.guide-sources ul {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-sources li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.guide-sources a {
+  color: #315b3d;
+  font-weight: 750;
+}
+
+.guide-sources span {
+  color: #788278;
+  font-size: 0.66rem;
+}
+
+.guide-audit {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-top: 1px solid #aeb7a5;
+  color: #59675e;
+  font-size: 0.75rem;
+}
+
+.guide-audit dl {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.guide-audit dl div {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.guide-audit dt {
+  font-weight: 750;
+}
+
+.guide-audit dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
 .selected-plants-empty,
 .selection-notice {
   margin: 0.8rem 0 0;
@@ -1223,6 +1477,7 @@ textarea:focus {
   }
 
   .selected-plants-heading,
+  .grow-guide-heading,
   .entry-title-row {
     align-items: flex-start;
     flex-direction: column;
@@ -1243,6 +1498,12 @@ textarea:focus {
   }
 
   .candidate-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-timeline,
+  .guide-timeline li,
+  .guide-section-grid {
     grid-template-columns: 1fr;
   }
 }

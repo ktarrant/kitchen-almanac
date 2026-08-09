@@ -316,6 +316,26 @@ Acceptance criteria:
 
 ### Step 7: Cultivar-aware, evidence-backed grow guides (Goal C)
 
+Status: **In progress**
+
+Current progress: `grow-guide-v1.0.0` provides a structured API and frontend
+guide for every selected documented cultivar. It deterministically merges
+approved cultivar overrides with crop baselines, renders all eleven guide
+sections with documented, partial, or missing states, carries citations and
+confidence into the UI, and surfaces suitability conflicts. For frost-tender
+crops with reviewed transplant maturity and NOAA normals, it calculates a
+target-year planting boundary and first-harvest range while labeling climate
+normals as planning inputs rather than forecasts. Identical catalog, garden,
+climate, and algorithm inputs produce the same SHA-256 fingerprint. The
+existing reviewed-catalog pipeline supplies immutable source snapshots,
+checksums, extraction metadata, and approval gates; no unreviewed or LLM-made
+instruction enters a guide.
+
+Remaining work is primarily evidence expansion: reviewed soil, water,
+container, support, starting, maintenance, and companion rules for the initial
+crop cohort, plus additional relative planting rules and provider-specific
+ingestion automation.
+
 - Define a structured grow-guide schema covering light, soil, water, spacing,
   container size, trellising, starting method, planting, maintenance, companion
   considerations, and harvest.

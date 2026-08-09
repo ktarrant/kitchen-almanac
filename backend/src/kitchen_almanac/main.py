@@ -21,6 +21,7 @@ from kitchen_almanac.schemas import (
     GardenProfileCreateRequest,
     GardenProfileListResponse,
     GardenProfileResponse,
+    GrowGuideResponse,
     HardinessResponse,
     HealthResponse,
     LocationSourceResponse,
@@ -48,6 +49,7 @@ from kitchen_almanac.services.garden_profile_service import (
     get_garden_profile,
     list_garden_profiles,
 )
+from kitchen_almanac.services.grow_guide_service import get_grow_guide
 from kitchen_almanac.services.suitability_service import (
     CultivarNotFoundError,
     SuitabilityUnavailableError,
@@ -160,6 +162,35 @@ def cultivar_suitability_endpoint(
 ) -> SuitabilityAssessmentResponse:
     try:
         return get_suitability_assessment(
+            session,
+            garden_profile_id=garden_profile_id,
+            cultivar_slug=cultivar_slug,
+        )
+    except GardenProfileNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Garden profile not found.",
+        ) from error
+    except CultivarNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Cultivar not found in the active catalog.",
+        ) from error
+    except SuitabilityUnavailableError as error:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=str(error),
+        ) from error
+
+
+@app.get("/api/grow-guides", response_model=GrowGuideResponse)
+def cultivar_grow_guide_endpoint(
+    session: Annotated[Session, Depends(get_session)],
+    garden_profile_id: Annotated[str, Query(min_length=36, max_length=36)],
+    cultivar_slug: Annotated[str, Query(min_length=1, max_length=100)],
+) -> GrowGuideResponse:
+    try:
+        return get_grow_guide(
             session,
             garden_profile_id=garden_profile_id,
             cultivar_slug=cultivar_slug,

@@ -90,6 +90,9 @@ The API includes:
 - `GET /api/suitability` for the complete cited assessment of one cultivar
   against one garden profile, including its algorithm version, input
   fingerprint, constraints, assumptions, and missing evidence.
+- `GET /api/grow-guides` to combine reviewed crop baselines, cultivar
+  overrides, and local climate normals into a cited, reproducible guide and
+  planting timeline.
 - `POST /api/garden-profiles` to save location and growing context.
 - `GET /api/garden-profiles` to list saved garden contexts newest-first.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
@@ -128,6 +131,23 @@ that produced it. Unsupported dimensions are returned as `unknown` and do not
 receive points; incompatible documented physical requirements are returned as
 constraints. Identical versioned inputs produce the same SHA-256 assessment
 fingerprint and ranking.
+
+## Grow guides
+
+Documented cultivars on a garden wishlist expose a grow guide in the saved
+garden card. The `grow-guide-v1.0.0` generator renders light, soil, water,
+spacing, containers, support, starting, planting, maintenance, companions, and
+harvest as separate evidence states. Cultivar claims override crop baselines
+field by field; each instruction identifies its origin, confidence, source, and
+source locator. Unsupported guidance remains visible as missing evidence rather
+than being filled with generic advice.
+
+When reviewed frost sensitivity, transplant-based maturity, and NOAA freeze
+normals are all available, the guide generates a target-year outdoor planting
+boundary and first-harvest range. These dates are planning calculations from
+50-percent-probability climate normals, not weather forecasts. The response
+retains the guide, crop catalog, cultivar catalog, climate evidence, algorithm
+version, and a deterministic SHA-256 input fingerprint needed to reproduce it.
 
 ## Location data
 
