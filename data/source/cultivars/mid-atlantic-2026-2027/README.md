@@ -15,6 +15,7 @@ and reproduce the inventory from the repository root with:
 ```console
 uv run --project backend kitchen-almanac rutgers fetch
 uv run --project backend kitchen-almanac rutgers inventory
+uv run --project backend kitchen-almanac rutgers extract
 uv run --project backend kitchen-almanac rutgers validate
 ```
 
@@ -22,6 +23,15 @@ Exact source URLs, retrieval metadata, and checksums are recorded in
 `corpus-manifest.v1.json`. `coverage-report.v1.json` is a deterministic,
 page-level map of potential evidence fields. It records where review should
 start; it does not extract facts into the application database.
+
+`structured-evidence.v1.json` is reproduced from deterministic regular-expression
+matches against pinned PDF pages. It stores normalized candidates, concise
+source summaries, locators, and source-span hashes without copying whole source
+passages. `structured-review-decisions.v1.json` pins the complete staging digest
+and records an approval, corroboration, hold, or rejection rationale for every
+candidate. Only approved home-garden candidates are merged into the generated
+cultivar catalog; held commercial or location-dependent candidates cannot pass
+the publication gate.
 
 The publication states that its recommendations are for commercial vegetable
 growers rather than specifically for home gardeners. Kitchen Almanac retains

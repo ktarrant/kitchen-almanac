@@ -48,6 +48,7 @@ uv run --project backend kitchen-almanac cultivars validate
 uv run --project backend kitchen-almanac cultivars load
 uv run --project backend kitchen-almanac rutgers fetch
 uv run --project backend kitchen-almanac rutgers inventory
+uv run --project backend kitchen-almanac rutgers extract
 uv run --project backend kitchen-almanac rutgers validate
 uv run --project backend uvicorn kitchen_almanac.main:app --reload
 ```
@@ -82,11 +83,13 @@ Rutgers is the primary corpus for the next grow-guide evidence pass. Its
 manifest pins the general production, soil and nutrient, irrigation, and four
 initial commodity sections by URL and SHA-256 digest. `rutgers fetch` restores
 the locally retained PDFs, `rutgers inventory` builds a deterministic page-level
-coverage report, and `rutgers validate` detects changed PDFs or a stale report.
-The report identifies review candidates only: it cannot load facts into the
-database. Chemical controls remain quarantined, commercial rates remain
-context-only, and insect and disease sections contribute only threat,
-resistance, and nonchemical-practice candidates after review.
+coverage report, and `rutgers extract` reproduces structured candidates from
+pinned source spans. Review decisions pin the exact candidate digest before
+approved crop baselines enter `cultivars publish`; `rutgers validate` detects
+changed PDFs, stale extraction, or stale review decisions. Chemical controls
+remain quarantined, commercial rates remain context-only, and insect and disease
+sections contribute only threat, resistance, and nonchemical-practice candidates
+after review.
 
 The API includes:
 
@@ -148,7 +151,7 @@ fingerprint and ranking.
 ## Grow guides
 
 Documented cultivars on a garden wishlist expose a grow guide in the saved
-garden card. The `grow-guide-v1.0.0` generator renders light, soil, water,
+garden card. The `grow-guide-v1.1.0` generator renders light, soil, water,
 spacing, containers, support, starting, planting, maintenance, companions, and
 harvest as separate evidence states. Cultivar claims override crop baselines
 field by field; each instruction identifies its origin, confidence, source, and

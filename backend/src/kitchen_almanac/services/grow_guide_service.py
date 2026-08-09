@@ -28,7 +28,7 @@ from kitchen_almanac.services.suitability_service import (
     assess_cultivar,
 )
 
-GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.0.0"
+GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.1.0"
 
 
 def _trait(cultivar: CultivarResponse, field_name: str) -> CultivarTraitResponse | None:
@@ -149,6 +149,36 @@ def _simple_trait_section(
     )
 
 
+def _soil_section(cultivar: CultivarResponse) -> GrowGuideSectionResponse:
+    target = _trait(cultivar, "soil_ph")
+    lime_below = _trait(cultivar, "lime_below_ph")
+    if target is None:
+        return _section(
+            code="soil",
+            title="Soil",
+            status="missing",
+            summary="No reviewed soil pH or soil-condition guidance is available yet.",
+            missing_evidence=["Soil pH or soil-condition guidance"],
+        )
+    target_text = f"{float(target.normalized_value):.1f}"
+    instructions = [f"Aim for a soil pH of {target_text}."]
+    traits = [target]
+    if lime_below:
+        threshold = f"{float(lime_below.normalized_value):.1f}"
+        instructions.append(
+            f"Use a soil test to determine lime needs when pH falls below {threshold}."
+        )
+        traits.append(lime_below)
+    return _section(
+        code="soil",
+        title="Soil",
+        status="documented",
+        summary=" ".join(instructions),
+        instructions=instructions,
+        traits=traits,
+    )
+
+
 def _parse_normal_date(value: str, year: int) -> date:
     month, day = (int(part) for part in value.split("/", maxsplit=1))
     return date(year, month, day)
@@ -198,14 +228,7 @@ def _build_sections(
 
     sections.extend(
         [
-            _simple_trait_section(
-                cultivar,
-                code="soil",
-                title="Soil",
-                field_name="soil_ph",
-                missing_label="soil pH or soil-condition guidance",
-                instruction_prefix="Use a soil pH of",
-            ),
+            _soil_section(cultivar),
             _simple_trait_section(
                 cultivar,
                 code="water",
@@ -466,9 +489,14 @@ def _build_sections(
         )
     )
 
+    harvest_guidance = _trait(cultivar, "harvest_guidance")
     harvest_traits = [
         trait
-        for trait in [_trait(cultivar, "days_to_maturity"), _trait(cultivar, "harvest_pattern")]
+        for trait in [
+            _trait(cultivar, "days_to_maturity"),
+            _trait(cultivar, "harvest_pattern"),
+            harvest_guidance,
+        ]
         if trait
     ]
     if maturity and isinstance(maturity.normalized_value, dict):
@@ -482,12 +510,28 @@ def _build_sections(
         details = [instruction]
         if harvest_pattern:
             details.append(f"Harvest pattern: {_range_text(harvest_pattern.normalized_value)}.")
+        if harvest_guidance:
+            guidance = harvest_guidance.normalized_value
+            details.extend(guidance if isinstance(guidance, list) else [str(guidance)])
         sections.append(
             _section(
                 code="harvest",
                 title="Harvest",
                 status="documented",
                 summary=instruction,
+                instructions=details,
+                traits=harvest_traits,
+            )
+        )
+    elif harvest_guidance:
+        guidance = harvest_guidance.normalized_value
+        details = guidance if isinstance(guidance, list) else [str(guidance)]
+        sections.append(
+            _section(
+                code="harvest",
+                title="Harvest",
+                status="documented",
+                summary=details[0],
                 instructions=details,
                 traits=harvest_traits,
             )

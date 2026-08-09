@@ -54,6 +54,16 @@ def test_expanded_snapshot_is_deterministic_and_covers_four_crops(tmp_path) -> N
         "summer-squash": 4,
         "tomatoes": 8,
     }
+    baseline_counts = {
+        baseline["crop_slug"]: len(baseline["traits"])
+        for baseline in expanded["crop_baselines"]
+    }
+    assert baseline_counts == {
+        "cucumbers": 5,
+        "string-beans": 4,
+        "summer-squash": 5,
+        "tomatoes": 8,
+    }
 
     provider = next(item for item in expanded["cultivars"] if item["slug"] == "provider")
     maturity = next(

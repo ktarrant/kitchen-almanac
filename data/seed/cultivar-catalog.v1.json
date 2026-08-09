@@ -12,6 +12,167 @@
   ],
   "crop_baselines": [
     {
+      "crop_slug": "cucumbers",
+      "traits": [
+        {
+          "confidence": "medium",
+          "field_name": "harvest_guidance",
+          "normalized_value": [
+            "Harvest at full varietal size while seeds are still soft.",
+            "For slicers and hand-picked pickling cucumbers, harvest every two to three days."
+          ],
+          "source_excerpt": "Harvest at varietal size with soft seeds; hand-picked crops need frequent picking.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 7 (manual p. 226), Harvest and Storage",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "lime_below_ph",
+          "normalized_value": 6.0,
+          "source_excerpt": "The crop table marks pH 6.0 as the threshold below which to lime.",
+          "source_key": "mid-atlantic-soil-nutrient-2026-2027",
+          "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 6
+          },
+          "source_excerpt": "In-row spacing spans 6–12 inches depending on cucumber type.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 6 (manual p. 225), Spacing",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "soil_ph",
+          "normalized_value": 6.5,
+          "source_excerpt": "The crop table gives cucumbers a target soil pH of 6.5.",
+          "source_key": "mid-atlantic-soil-nutrient-2026-2027",
+          "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "starting_method",
+          "normalized_value": [
+            "direct_sow",
+            "transplant"
+          ],
+          "source_excerpt": "The section covers both direct seeding and container-grown transplants.",
+          "source_key": "mid-atlantic-cucumbers-2026-2027",
+          "source_locator": "PDF page 5 (manual p. 224), Planting Dates",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "crop_slug": "string-beans",
+      "traits": [
+        {
+          "confidence": "medium",
+          "field_name": "harvest_guidance",
+          "normalized_value": [
+            "Pick fresh snap beans repeatedly when pods reach the desired size."
+          ],
+          "source_excerpt": "Fresh-market snap beans are hand harvested repeatedly at the desired size.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 7 (manual p. 174), Harvest and Post-Harvest Considerations",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "lime_below_ph",
+          "normalized_value": 6.0,
+          "source_excerpt": "The crop table marks pH 6.0 as the threshold below which to lime.",
+          "source_key": "mid-atlantic-soil-nutrient-2026-2027",
+          "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "soil_ph",
+          "normalized_value": 6.2,
+          "source_excerpt": "The crop table gives string-beans a target soil pH of 6.2.",
+          "source_key": "mid-atlantic-soil-nutrient-2026-2027",
+          "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "starting_method",
+          "normalized_value": "direct_sow",
+          "source_excerpt": "The snap-bean directions specify sowing seed directly in prepared rows.",
+          "source_key": "mid-atlantic-beans-2026-2027",
+          "source_locator": "PDF page 6 (manual p. 173), Spacing > Snap Beans",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "crop_slug": "summer-squash",
+      "traits": [
+        {
+          "confidence": "medium",
+          "field_name": "harvest_guidance",
+          "normalized_value": [
+            "Harvest after fruit reaches the desired size but before seeds or rind harden.",
+            "Handle fruit carefully to prevent bruising and scratching."
+          ],
+          "source_excerpt": "Harvest before seeds or rind harden, and handle the delicate fruit carefully.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 5 (manual p. 417), Harvest and Post-Harvest Considerations",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "lime_below_ph",
+          "normalized_value": 6.0,
+          "source_excerpt": "The crop table marks pH 6.0 as the threshold below which to lime.",
+          "source_key": "mid-atlantic-soil-nutrient-2026-2027",
+          "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 36,
+            "minimum": 24
+          },
+          "source_excerpt": "The in-row recommendation is two to three feet between plants.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 5 (manual p. 417), Seeding, Transplanting, and Spacing",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "soil_ph",
+          "normalized_value": 6.5,
+          "source_excerpt": "The crop table gives summer-squash a target soil pH of 6.5.",
+          "source_key": "mid-atlantic-soil-nutrient-2026-2027",
+          "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "starting_method",
+          "normalized_value": [
+            "direct_sow",
+            "transplant"
+          ],
+          "source_excerpt": "The section provides both seeding and transplanting directions.",
+          "source_key": "mid-atlantic-summer-squash-2026-2027",
+          "source_locator": "PDF page 5 (manual p. 417), Seeding, Transplanting, and Spacing",
+          "unit": null
+        }
+      ]
+    },
+    {
       "crop_slug": "tomatoes",
       "traits": [
         {
@@ -29,16 +190,33 @@
         },
         {
           "confidence": "high",
-          "field_name": "sun_hours",
-          "normalized_value": {
-            "minimum": 6,
-            "preferred_maximum": 10,
-            "preferred_minimum": 8
-          },
-          "source_excerpt": "Tomatoes require at least six sun hours, with eight to ten preferred.",
+          "field_name": "frost_tender",
+          "normalized_value": true,
+          "source_excerpt": "Tomatoes are tender warm-season annuals whose top growth is injured by frost.",
           "source_key": "umd-tomatoes-2025",
-          "source_locator": "About tomatoes > Planting",
-          "unit": "hours_per_day"
+          "source_locator": "About tomatoes > Hardiness",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "harvest_guidance",
+          "normalized_value": [
+            "Choose harvest ripeness for the intended use; fully ripe is appropriate for direct use.",
+            "Handle fruit carefully and harvest often during peak production."
+          ],
+          "source_excerpt": "Harvest stage depends on use; fruit needs careful handling and frequent picking.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 9 (manual p. 458), Harvest and Post-Harvest Considerations",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "lime_below_ph",
+          "normalized_value": 6.0,
+          "source_excerpt": "The crop table marks pH 6.0 as the threshold below which to lime.",
+          "source_key": "mid-atlantic-soil-nutrient-2026-2027",
+          "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
+          "unit": null
         },
         {
           "confidence": "high",
@@ -54,12 +232,34 @@
         },
         {
           "confidence": "high",
-          "field_name": "frost_tender",
-          "normalized_value": true,
-          "source_excerpt": "Tomatoes are tender warm-season annuals whose top growth is injured by frost.",
-          "source_key": "umd-tomatoes-2025",
-          "source_locator": "About tomatoes > Hardiness",
+          "field_name": "soil_ph",
+          "normalized_value": 6.5,
+          "source_excerpt": "The crop table gives tomatoes a target soil pH of 6.5.",
+          "source_key": "mid-atlantic-soil-nutrient-2026-2027",
+          "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
           "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "starting_method",
+          "normalized_value": "transplant",
+          "source_excerpt": "The fresh-market production section establishes tomatoes as transplants.",
+          "source_key": "mid-atlantic-tomatoes-2026-2027",
+          "source_locator": "PDF page 8 (manual p. 457), Fresh Market Tomatoes",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "sun_hours",
+          "normalized_value": {
+            "minimum": 6,
+            "preferred_maximum": 10,
+            "preferred_minimum": 8
+          },
+          "source_excerpt": "Tomatoes require at least six sun hours, with eight to ten preferred.",
+          "source_key": "umd-tomatoes-2025",
+          "source_locator": "About tomatoes > Planting",
+          "unit": "hours_per_day"
         }
       ]
     }
@@ -2289,6 +2489,18 @@
       "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cucumbers.pdf",
       "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Cucumbers",
       "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cucumbers.pdf"
+    },
+    {
+      "key": "mid-atlantic-soil-nutrient-2026-2027",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Regional commercial soil and nutrient guidance; crop pH values require home-garden review and per-acre rates remain commercial context only",
+      "sha256": "b5a446470701aba4b68e8f9f56b58ddf72dc8141e68ab378a5ceb63314cae95a",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/soil-nutrient-management.pdf",
+      "title": "Soil and Nutrient Management",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/soil-nutrient-management.pdf"
     },
     {
       "key": "mid-atlantic-summer-squash-2026-2027",

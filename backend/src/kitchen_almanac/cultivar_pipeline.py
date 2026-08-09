@@ -16,6 +16,7 @@ from kitchen_almanac.cultivar_catalog import (
     CultivarCatalogError,
     validate_cultivar_catalog,
 )
+from kitchen_almanac.rutgers_extraction import load_and_apply_reviewed_crop_baselines
 from kitchen_almanac.services.wishlist_resolver import normalize_term
 
 STAGING_SCHEMA_VERSION = "1.0.0"
@@ -566,8 +567,11 @@ def build_expanded_snapshot(
     *,
     verify_snapshots: bool = False,
 ) -> dict[str, Any]:
+    base = load_and_apply_reviewed_crop_baselines(
+        read_pipeline_json(base_path, "base cultivar catalog")
+    )
     return publish_staged_catalog(
-        read_pipeline_json(base_path, "base cultivar catalog"),
+        base,
         read_pipeline_json(staged_path, "staged cultivar data"),
         read_pipeline_json(decisions_path, "cultivar review decisions"),
         verify_snapshots=verify_snapshots,

@@ -14,6 +14,7 @@ from kitchen_almanac import (
     hardiness_data,
     location_data,
     noaa_normals_data,
+    rutgers_extraction,
     rutgers_inventory,
 )
 from kitchen_almanac.catalog import (
@@ -409,6 +410,29 @@ def rutgers_build_inventory(
     typer.echo(f"Wrote review-only coverage report to {output}")
 
 
+@rutgers_app.command("extract")
+def rutgers_extract_evidence(
+    manifest: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = rutgers_inventory.DEFAULT_MANIFEST,
+    output: Annotated[Path, typer.Option(file_okay=True, dir_okay=False)] = (
+        rutgers_extraction.DEFAULT_STAGED
+    ),
+) -> None:
+    """Extract deterministic, review-gated evidence candidates from the corpus."""
+
+    try:
+        staged = rutgers_extraction.build_structured_evidence(manifest)
+        rutgers_extraction.write_structured_evidence(staged, output)
+    except (
+        rutgers_inventory.RutgersInventoryError,
+        rutgers_extraction.RutgersExtractionError,
+    ) as error:
+        typer.echo(f"Rutgers structured extraction failed: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    typer.echo(f"Extracted {len(staged['candidates'])} review candidates to {output}")
+
+
 @rutgers_app.command("validate")
 def rutgers_validate_inventory(
     report: Annotated[
@@ -421,15 +445,21 @@ def rutgers_validate_inventory(
     """Verify corpus checksums and the committed deterministic coverage report."""
 
     try:
-        errors = rutgers_inventory.validate_coverage_report(report, manifest)
-    except rutgers_inventory.RutgersInventoryError as error:
+        errors = [
+            *rutgers_inventory.validate_coverage_report(report, manifest),
+            *rutgers_extraction.validate_committed_extraction(manifest_path=manifest),
+        ]
+    except (
+        rutgers_inventory.RutgersInventoryError,
+        rutgers_extraction.RutgersExtractionError,
+    ) as error:
         typer.echo(f"Rutgers inventory validation failed: {error}", err=True)
         raise typer.Exit(code=1) from error
     if errors:
         for error in errors:
             typer.echo(f"- {error}", err=True)
         raise typer.Exit(code=1)
-    typer.echo("Rutgers corpus snapshots and coverage report are valid.")
+    typer.echo("Rutgers corpus, coverage report, structured evidence, and review are valid.")
 
 
 @db_app.command("upgrade")

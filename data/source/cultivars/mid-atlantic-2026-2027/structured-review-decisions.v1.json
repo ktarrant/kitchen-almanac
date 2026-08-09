@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "staging_sha256": "e70940ce852d84d810d34eda124f65bc1d9bc6a0c261131e16120b71ea8f516a",
+  "reviewed_at": "2026-08-09T00:00:00Z",
+  "reviewer": "Kitchen Almanac data review",
+  "decisions": [
+    {
+      "candidate_id": "rutgers-2026-cucumbers-harvest-guidance",
+      "action": "approve_create",
+      "rationale": "The maturity cues and hand-harvest interval transfer directly to home gardens."
+    },
+    {
+      "candidate_id": "rutgers-2026-cucumbers-lime-below-ph",
+      "action": "approve_create",
+      "rationale": "The crop-specific table provides a clear soil-testing threshold."
+    },
+    {
+      "candidate_id": "rutgers-2026-cucumbers-plant-spacing",
+      "action": "approve_create",
+      "rationale": "The combined range preserves the documented difference between slicing and pickling types."
+    },
+    {
+      "candidate_id": "rutgers-2026-cucumbers-regional-planting-window",
+      "action": "hold",
+      "rationale": "Broad regional calendar dates require a location and climate adapter before publication."
+    },
+    {
+      "candidate_id": "rutgers-2026-cucumbers-soil-ph",
+      "action": "approve_create",
+      "rationale": "The crop-specific target pH is suitable for soil guidance."
+    },
+    {
+      "candidate_id": "rutgers-2026-cucumbers-starting-method",
+      "action": "approve_create",
+      "rationale": "Both documented starting methods are practical at home-garden scale."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-commercial-spacing",
+      "action": "hold",
+      "rationale": "Plants per foot and machinery-oriented rows are commercial context, not a home spacing rule."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-harvest-guidance",
+      "action": "approve_create",
+      "rationale": "Repeated picking at the desired pod size transfers directly to home gardens."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-lime-below-ph",
+      "action": "approve_create",
+      "rationale": "The crop-specific table provides a clear soil-testing threshold."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-regional-planting-window",
+      "action": "hold",
+      "rationale": "Broad regional calendar dates require a location and climate adapter before publication."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-soil-ph",
+      "action": "approve_create",
+      "rationale": "The crop-specific target pH is suitable for soil guidance."
+    },
+    {
+      "candidate_id": "rutgers-2026-string-beans-starting-method",
+      "action": "approve_create",
+      "rationale": "Direct sowing is explicitly established and practical at home-garden scale."
+    },
+    {
+      "candidate_id": "rutgers-2026-summer-squash-harvest-guidance",
+      "action": "approve_create",
+      "rationale": "The maturity cue and gentle-handling instruction transfer directly to home gardens."
+    },
+    {
+      "candidate_id": "rutgers-2026-summer-squash-lime-below-ph",
+      "action": "approve_create",
+      "rationale": "The crop-specific table provides a clear soil-testing threshold."
+    },
+    {
+      "candidate_id": "rutgers-2026-summer-squash-plant-spacing",
+      "action": "approve_create",
+      "rationale": "The in-row spacing range is independent of commercial machinery and transferable."
+    },
+    {
+      "candidate_id": "rutgers-2026-summer-squash-regional-planting-window",
+      "action": "hold",
+      "rationale": "Broad regional calendar dates require a location and climate adapter before publication."
+    },
+    {
+      "candidate_id": "rutgers-2026-summer-squash-soil-ph",
+      "action": "approve_create",
+      "rationale": "The crop-specific target pH is suitable for soil guidance."
+    },
+    {
+      "candidate_id": "rutgers-2026-summer-squash-starting-method",
+      "action": "approve_create",
+      "rationale": "Both documented starting methods are practical at home-garden scale."
+    },
+    {
+      "candidate_id": "rutgers-2026-tomatoes-harvest-guidance",
+      "action": "approve_create",
+      "rationale": "Ripeness selection, careful handling, and frequent picking transfer to home gardens."
+    },
+    {
+      "candidate_id": "rutgers-2026-tomatoes-lime-below-ph",
+      "action": "approve_create",
+      "rationale": "The crop-specific table provides a clear soil-testing threshold."
+    },
+    {
+      "candidate_id": "rutgers-2026-tomatoes-plant-spacing",
+      "action": "corroborate_existing",
+      "rationale": "The Rutgers range matches the existing UMD home-garden baseline, which remains primary."
+    },
+    {
+      "candidate_id": "rutgers-2026-tomatoes-regional-planting-window",
+      "action": "hold",
+      "rationale": "Broad regional calendar dates require a location and climate adapter before publication."
+    },
+    {
+      "candidate_id": "rutgers-2026-tomatoes-soil-ph",
+      "action": "approve_create",
+      "rationale": "The crop-specific target pH is suitable for soil guidance."
+    },
+    {
+      "candidate_id": "rutgers-2026-tomatoes-starting-method",
+      "action": "approve_create",
+      "rationale": "Transplanting is explicitly established and practical at home-garden scale."
+    }
+  ]
+}
