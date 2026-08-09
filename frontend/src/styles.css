@@ -467,7 +467,8 @@ h1 {
   font-weight: 720;
 }
 
-.catalog-search {
+.catalog-panel {
+  margin-top: 3rem;
   padding: 1.4rem;
   border: 1px solid #6f816f;
   border-radius: 18px;
@@ -514,11 +515,9 @@ h1 {
 }
 
 .search-results {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border: 1px solid #9da895;
-  border-radius: 18px;
-  background: rgb(249 247 239 / 65%);
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #a9b09d;
 }
 
 .search-results-heading,

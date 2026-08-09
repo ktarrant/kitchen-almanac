@@ -986,31 +986,32 @@ export default function App() {
             </button>
           </section>
 
-          <form className="catalog-search" onSubmit={submitCatalogSearch}>
-            <label htmlFor="catalog-query">Crop or cultivar</label>
-            <div className="search-row">
-              <input
-                id="catalog-query"
-                type="search"
-                maxLength={120}
-                placeholder="Try tomatoes or San Marzano"
-                autoComplete="off"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-              />
-              <button
-                className="primary-button"
-                disabled={searching || !searchQuery.trim()}
-                type="submit"
-              >
-                {searching ? "Searching…" : "Search catalog"}
-              </button>
-            </div>
-            <p>Names, aliases, types, and spelling variations are supported.</p>
-          </form>
+          <section className="catalog-panel" aria-label="Catalog search">
+            <form className="catalog-search" onSubmit={submitCatalogSearch}>
+              <label htmlFor="catalog-query">Crop or cultivar</label>
+              <div className="search-row">
+                <input
+                  id="catalog-query"
+                  type="search"
+                  maxLength={120}
+                  placeholder="Try tomatoes or San Marzano"
+                  autoComplete="off"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                />
+                <button
+                  className="primary-button"
+                  disabled={searching || !searchQuery.trim()}
+                  type="submit"
+                >
+                  {searching ? "Searching…" : "Search catalog"}
+                </button>
+              </div>
+              <p>Names, aliases, types, and spelling variations are supported.</p>
+            </form>
 
-          {searchResults && (
-            <section className="search-results" aria-live="polite">
+            {searchResults && (
+              <div className="search-results" aria-live="polite">
               <div className="search-results-heading">
                 <div>
                   <p className="section-kicker">Catalog matches</p>
@@ -1247,8 +1248,9 @@ export default function App() {
                   </div>
                 </div>
               )}
-            </section>
-          )}
+              </div>
+            )}
+          </section>
 
           <details className="quick-import">
             <summary>Have a list already? Use Quick Import</summary>
