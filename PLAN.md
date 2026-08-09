@@ -72,6 +72,8 @@ PLAN.md       implementation roadmap and decisions
   custom cultivar/crop linked to its garden profile.
 - `SuitabilityAssessment`: versioned cultivar-by-location constraints, score,
   explanations, and evidence quality.
+- `CultivarResearchQuality`: versioned breadth score for reviewed,
+  cultivar-specific sources and facts, kept separate from garden suitability.
 - `SourceDocument` and `EvidenceClaim`: immutable provenance and extraction
   history.
 - `GrowProfile`: light, soil, water, spacing, container, trellis, sowing,
@@ -167,18 +169,23 @@ Acceptance criteria:
 Status: **In progress**
 
 Current progress: the reviewed catalog now contains 21 canonical cultivars
-across tomatoes, cucumbers, string beans, and summer squash, with 126
-field-level evidence claims. Four current 2026–2027 Mid-Atlantic Extension
-commodity PDFs are retained with checksums and explicit commercial-production
-scope. New acquisition tooling separates staged source records, immutable
-review decisions, identity reconciliation, and deterministic publication. The
-publisher refuses stale review files, changed source snapshots, duplicate
-identities, unreviewed candidates, and unsupported attributes. The versioned
-loader and read API expose effective traits with explicit inheritance and keep
-commercial seed listings separate. Quick Import extracts exact, fuzzy,
-crop-qualified, and crop-type cultivar intent while preserving the original
-wording; unknown cultivars remain linked to their recognized crop as custom
-intent.
+across tomatoes, cucumbers, string beans, and summer squash, with 160 direct
+field-level evidence claims from ten retained sources. Four current 2026–2027
+Mid-Atlantic Extension commodity PDFs retain explicit commercial-production
+scope. A depth cohort adds cultivar-specific AAS evidence for Mountain Merit
+and a 2025 Virginia home-garden trial for Provider, Marketmore 76, Dunja, and
+Sun Gold. Trial observations, regional awards, and catalog claims remain
+separate facts with their own context and confidence.
+
+Acquisition tooling separates staged source records, immutable review
+decisions, identity reconciliation, enrichment of existing cultivars, and
+deterministic publication. The publisher refuses stale review files, changed
+source snapshots, duplicate identities, unsupported enrichment targets,
+unreviewed candidates, and unsupported attributes. The versioned loader and
+read API expose effective traits with explicit inheritance and keep commercial
+seed listings separate. Quick Import extracts exact, fuzzy, crop-qualified,
+and crop-type cultivar intent while preserving the original wording; unknown
+cultivars remain linked to their recognized crop as custom intent.
 
 The next catalog cohort should split broad lettuce/greens and pepper/chile crop
 groups into concrete crop identities before attaching cultivars. Additional
@@ -222,6 +229,13 @@ Result cards expose concise effective traits, inherited crop baselines, and an
 evidence publisher. The Step 6 model now supplies location-specific result
 groups, suitability reasons, constraints, and evidence gaps rather than
 implying recommendation from text matching alone.
+
+Broad crop searches also expose a versioned research-quality score based on
+independent reviewed sources and coverage of maturity, habit, space, harvest,
+disease, regional, and home-garden trial facts. Within each suitability group,
+well-researched cultivars are preferred over thinly documented ones. This
+quality score describes the evidence record only; it never substitutes for
+garden fit.
 
 - Make one-at-a-time catalog search the primary wishlist workflow.
 - Search crop names, cultivar names, crop types, aliases, and approved source

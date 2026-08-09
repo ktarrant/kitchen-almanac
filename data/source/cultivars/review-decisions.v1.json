@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "staging_sha256": "76db3e02d733b88a81327f346a0078e37810d6b712960e644caa046fc3ff404c",
-  "reviewed_at": "2026-08-08T00:00:00Z",
+  "staging_sha256": "a8ac88329a8b964fdade14fd34ca01f85552c253cf030105d319a37f13b4532a",
+  "reviewed_at": "2026-08-09T00:00:00Z",
   "reviewer": "Kitchen Almanac data review",
   "decisions": [
     {
@@ -98,6 +98,31 @@
       "candidate_id": "mid-atlantic-2026-juliet",
       "action": "create",
       "canonical_slug": "juliet"
+    },
+    {
+      "candidate_id": "aas-2014-mountain-merit-evidence",
+      "action": "enrich",
+      "canonical_slug": "mountain-merit"
+    },
+    {
+      "candidate_id": "vce-2025-provider-evidence",
+      "action": "enrich",
+      "canonical_slug": "provider"
+    },
+    {
+      "candidate_id": "vce-2025-marketmore-76-evidence",
+      "action": "enrich",
+      "canonical_slug": "marketmore-76"
+    },
+    {
+      "candidate_id": "vce-2025-dunja-evidence",
+      "action": "enrich",
+      "canonical_slug": "dunja"
+    },
+    {
+      "candidate_id": "vce-2025-sun-gold-evidence",
+      "action": "enrich",
+      "canonical_slug": "sun-gold"
     }
   ]
 }

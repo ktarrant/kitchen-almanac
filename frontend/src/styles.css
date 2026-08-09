@@ -485,6 +485,27 @@ h1 {
   background: #f1ddd5;
 }
 
+.research-quality {
+  align-self: flex-start;
+  margin: 0.35rem 0 0;
+  padding: 0.24rem 0.48rem;
+  border-radius: 999px;
+  color: #654f2f;
+  background: #f1ead8;
+  font-size: 0.68rem;
+  font-weight: 720;
+}
+
+.research-quality.well_researched {
+  color: #35513f;
+  background: #e2ecdf;
+}
+
+.research-quality.limited {
+  color: #775b24;
+  background: #f4eac8;
+}
+
 .suitability-summary {
   margin: 0 0 0.9rem;
   padding: 0.75rem;

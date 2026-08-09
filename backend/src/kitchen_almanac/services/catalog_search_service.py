@@ -21,6 +21,7 @@ from kitchen_almanac.schemas import (
 )
 from kitchen_almanac.services.cultivar_service import list_cultivars
 from kitchen_almanac.services.garden_profile_service import GardenProfileNotFoundError
+from kitchen_almanac.services.research_quality_service import assess_research_quality
 from kitchen_almanac.services.suitability_service import assess_cultivar
 from kitchen_almanac.services.wishlist_resolver import normalize_term
 
@@ -254,6 +255,7 @@ def search_catalog(
                         cultivar_response,
                         cultivar_dataset_id=cultivar_dataset.id,
                     ),
+                    research_quality=assess_research_quality(cultivar_response),
                 )
             )
 
@@ -270,6 +272,7 @@ def search_catalog(
         if generic_crop_search:
             return (
                 suitability_group_rank[item.suitability.result_group],
+                -item.research_quality.score,
                 -(item.suitability.score if item.suitability.score is not None else -1),
                 item.cultivar.canonical_name.casefold(),
             )

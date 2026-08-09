@@ -138,6 +138,16 @@ type SuitabilityAssessment = {
   missing_evidence: string[];
 };
 
+type CultivarResearchQuality = {
+  algorithm_version: string;
+  score: number;
+  tier: "well_researched" | "documented" | "limited";
+  source_count: number;
+  cultivar_specific_trait_count: number;
+  strengths: string[];
+  missing_evidence: string[];
+};
+
 type CatalogSearchResults = {
   query: string;
   normalized_query: string;
@@ -153,6 +163,7 @@ type CatalogSearchResults = {
     matched_alias: string;
     match_method: string;
     suitability: SuitabilityAssessment;
+    research_quality: CultivarResearchQuality;
   }[];
   can_add_custom: boolean;
 };
@@ -860,6 +871,12 @@ export default function App() {
                             </span>
                           </div>
                           {result.cultivar.description && <p>{result.cultivar.description}</p>}
+                          <p className={`research-quality ${result.research_quality.tier}`}>
+                            Research: {humanize(result.research_quality.tier)} ·{" "}
+                            {result.research_quality.score}/100 ·{" "}
+                            {result.research_quality.source_count}{" "}
+                            {result.research_quality.source_count === 1 ? "source" : "sources"}
+                          </p>
                           {traits.length > 0 && (
                             <dl className="trait-list">
                               {traits.map((trait) => (
@@ -909,6 +926,15 @@ export default function App() {
                                   </div>
                                 ))}
                               </dl>
+                            </details>
+                            <details className="suitability-details">
+                              <summary>Why this research rating?</summary>
+                              <p>{result.research_quality.strengths.join(" ")}</p>
+                              {result.research_quality.missing_evidence.length > 0 && (
+                                <p className="missing-note">
+                                  Research gaps: {result.research_quality.missing_evidence.join("; ")}
+                                </p>
+                              )}
                             </details>
                           </div>
                           {evidence && (

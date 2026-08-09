@@ -16,3 +16,4 @@ frontend/*.tsbuildinfo
 frontend/vite.config.js
 frontend/vite.config.d.ts
 data/source/cultivars/mid-atlantic-2026-2027/*.pdf
+data/source/cultivars/research-depth/*.pdf

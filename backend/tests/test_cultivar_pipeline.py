@@ -33,8 +33,8 @@ def test_staged_evidence_is_pinned_and_fully_reviewed() -> None:
     assert validate_staged_cultivars(staged) == []
     assert validate_review_decisions(staged, decisions) == []
     report = reconcile_candidates(base, staged, decisions)
-    assert len(report) == 19
-    assert {item.decision for item in report} == {"create"}
+    assert len(report) == 24
+    assert {item.decision for item in report} == {"create", "enrich"}
     assert all(not item.exact_matches for item in report)
 
 
@@ -61,6 +61,28 @@ def test_expanded_snapshot_is_deterministic_and_covers_four_crops(tmp_path) -> N
     )
     assert maturity["normalized_value"] == {"minimum": 55, "maximum": 55, "basis": "seed"}
     assert maturity["source_key"] == "mid-atlantic-beans-2026-2027"
+    assert {item["source_key"] for item in provider["source_identifiers"]} == {
+        "mid-atlantic-beans-2026-2027",
+        "vce-home-variety-trials-2025",
+    }
+    trial_rating = next(
+        trait for trait in provider["traits"] if trait["field_name"] == "trial_overall_rating"
+    )
+    assert trial_rating["normalized_value"] == 5.97
+
+    mountain_merit = next(
+        item for item in expanded["cultivars"] if item["slug"] == "mountain-merit"
+    )
+    mountain_traits = {trait["field_name"]: trait for trait in mountain_merit["traits"]}
+    assert mountain_traits["days_to_maturity"]["normalized_value"] == {
+        "minimum": 75,
+        "maximum": 75,
+        "basis": "transplant",
+    }
+    assert mountain_traits["plant_spacing"]["normalized_value"] == {
+        "minimum": 24,
+        "maximum": 24,
+    }
 
     generated = tmp_path / "cultivars.json"
     write_expanded_snapshot(expanded, generated)
@@ -89,4 +111,21 @@ def test_create_decision_cannot_duplicate_an_existing_identity() -> None:
     decisions["staging_sha256"] = staging_sha256(staged)
 
     with pytest.raises(CultivarPipelineError, match="collides with"):
+        publish_staged_catalog(base, staged, decisions)
+
+
+def test_enrichment_decision_requires_a_matching_existing_identity() -> None:
+    base = read_json(DEFAULT_BASE)
+    staged = read_json(DEFAULT_STAGED)
+    decisions = read_json(DEFAULT_DECISIONS)
+    enrichment = next(
+        candidate
+        for candidate in staged["candidates"]
+        if candidate["id"] == "vce-2025-sun-gold-evidence"
+    )
+    enrichment["name_in_source"] = "Different Tomato"
+    enrichment["aliases"] = ["Different Tomato"]
+    decisions["staging_sha256"] = staging_sha256(staged)
+
+    with pytest.raises(CultivarPipelineError, match="does not match"):
         publish_staged_catalog(base, staged, decisions)

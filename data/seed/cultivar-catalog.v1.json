@@ -428,6 +428,11 @@
           "name_in_source": "Dunja",
           "source_identifier": "page=3;table=recommended-varieties;row=Dunja",
           "source_key": "mid-atlantic-summer-squash-2026-2027"
+        },
+        {
+          "name_in_source": "Dunja",
+          "source_identifier": "year=2025;table=summer-squash;row=Dunja",
+          "source_key": "vce-home-variety-trials-2025"
         }
       ],
       "traits": [
@@ -438,6 +443,33 @@
           "source_excerpt": "The table reports type for Dunja.",
           "source_key": "mid-atlantic-summer-squash-2026-2027",
           "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Dunja",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "trial_observed",
+            "maximum": 55,
+            "minimum": 55
+          },
+          "source_excerpt": "The trial observed an average of 55 days to harvest.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Dunja",
+          "unit": "days"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "disease_resistance",
+          "normalized_value": [
+            "papaya_ringspot_virus",
+            "powdery_mildew",
+            "watermelon_mosaic_virus",
+            "zucchini_yellow_mosaic_virus"
+          ],
+          "source_excerpt": "The trial table lists resistance to powdery mildew and three mosaic or ringspot viruses.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Dunja",
           "unit": null
         },
         {
@@ -469,6 +501,80 @@
           "source_key": "mid-atlantic-summer-squash-2026-2027",
           "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Dunja",
           "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "regional_trial",
+          "normalized_value": {
+            "context": "home_garden",
+            "region": "virginia",
+            "study_type": "community_engaged",
+            "years": [
+              2025
+            ]
+          },
+          "source_excerpt": "Dunja was evaluated in the 2025 Virginia community-engaged home-garden trial.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Dunja",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_days_to_harvest",
+          "normalized_value": {
+            "basis": "trial_observed",
+            "maximum": 55,
+            "minimum": 55,
+            "region": "virginia",
+            "year": 2025
+          },
+          "source_excerpt": "The trial observed an average of 55 days to harvest.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Dunja",
+          "unit": "days"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_disease_resistance",
+          "normalized_value": [
+            "papaya_ringspot_virus",
+            "powdery_mildew",
+            "watermelon_mosaic_virus",
+            "zucchini_yellow_mosaic_virus"
+          ],
+          "source_excerpt": "The trial table lists resistance to powdery mildew and three mosaic or ringspot viruses.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Dunja",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_overall_rating",
+          "normalized_value": 4.777,
+          "source_excerpt": "Trial participants gave Dunja a 4.777 overall rating.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Dunja",
+          "unit": "score_out_of_10"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_recommendation_rate",
+          "normalized_value": 77.5,
+          "source_excerpt": "Seventy-seven and a half percent of trial participants recommended Dunja.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Dunja",
+          "unit": "percent"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_years",
+          "normalized_value": [
+            2025
+          ],
+          "source_excerpt": "The published observation covers the 2025 trial year.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Dunja",
+          "unit": "years"
         }
       ]
     },
@@ -855,6 +961,11 @@
           "name_in_source": "Marketmore 76",
           "source_identifier": "page=3;table=recommended-varieties;row=Marketmore-76",
           "source_key": "mid-atlantic-cucumbers-2026-2027"
+        },
+        {
+          "name_in_source": "Marketmore 76",
+          "source_identifier": "year=2025;table=cucumbers;row=Marketmore-76",
+          "source_key": "vce-home-variety-trials-2025"
         }
       ],
       "traits": [
@@ -879,6 +990,19 @@
           "source_key": "mid-atlantic-cucumbers-2026-2027",
           "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
           "unit": "days"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "disease_resistance",
+          "normalized_value": [
+            "cucumber_mosaic_virus",
+            "powdery_mildew",
+            "scab"
+          ],
+          "source_excerpt": "The trial table lists CMV, powdery mildew, and scab resistance.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Marketmore 76",
+          "unit": null
         },
         {
           "confidence": "high",
@@ -909,6 +1033,79 @@
           "source_key": "mid-atlantic-cucumbers-2026-2027",
           "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
           "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "regional_trial",
+          "normalized_value": {
+            "context": "home_garden",
+            "region": "virginia",
+            "study_type": "community_engaged",
+            "years": [
+              2025
+            ]
+          },
+          "source_excerpt": "Marketmore 76 was evaluated in the 2025 Virginia community-engaged home-garden trial.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Marketmore 76",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_days_to_harvest",
+          "normalized_value": {
+            "basis": "trial_observed",
+            "maximum": 64,
+            "minimum": 64,
+            "region": "virginia",
+            "year": 2025
+          },
+          "source_excerpt": "The trial observed an average of 64 days to harvest.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Marketmore 76",
+          "unit": "days"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_disease_resistance",
+          "normalized_value": [
+            "cucumber_mosaic_virus",
+            "powdery_mildew",
+            "scab"
+          ],
+          "source_excerpt": "The trial table lists CMV, powdery mildew, and scab resistance.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Marketmore 76",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_overall_rating",
+          "normalized_value": 6.13,
+          "source_excerpt": "Trial participants gave Marketmore 76 a 6.13 overall rating.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Marketmore 76",
+          "unit": "score_out_of_10"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_recommendation_rate",
+          "normalized_value": 82,
+          "source_excerpt": "Eighty-two percent of trial participants recommended Marketmore 76.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Marketmore 76",
+          "unit": "percent"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_years",
+          "normalized_value": [
+            2025
+          ],
+          "source_excerpt": "The published observation covers the 2025 trial year.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Marketmore 76",
+          "unit": "years"
         },
         {
           "confidence": "high",
@@ -1028,6 +1225,11 @@
       "source_identifiers": [
         {
           "name_in_source": "Mountain Merit",
+          "source_identifier": "winner=Mountain-Merit;year=2014;region=Heartland",
+          "source_key": "aas-mountain-merit-2014"
+        },
+        {
+          "name_in_source": "Mountain Merit",
           "source_identifier": "page=3;table=market-tomatoes;row=Mountain-Merit",
           "source_key": "mid-atlantic-tomatoes-2026-2027"
         }
@@ -1041,6 +1243,19 @@
           "source_key": "mid-atlantic-tomatoes-2026-2027",
           "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
           "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "transplant",
+            "maximum": 75,
+            "minimum": 75
+          },
+          "source_excerpt": "AAS reports 75 days from transplant to harvest.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": "days"
         },
         {
           "confidence": "high",
@@ -1068,6 +1283,30 @@
         },
         {
           "confidence": "high",
+          "field_name": "fruit_dimensions",
+          "normalized_value": {
+            "diameter_maximum": 3.5,
+            "diameter_minimum": 3
+          },
+          "source_excerpt": "AAS reports fruit 3 to 3.5 inches in diameter.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_weight",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 10
+          },
+          "source_excerpt": "AAS reports fruit weighing 10 to 12 ounces.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": "ounces"
+        },
+        {
+          "confidence": "high",
           "field_name": "growth_habit",
           "normalized_value": "determinate",
           "source_excerpt": "The table reports growth habit for Mountain Merit.",
@@ -1077,11 +1316,73 @@
         },
         {
           "confidence": "high",
+          "field_name": "harvest_pattern",
+          "normalized_value": {
+            "window_maximum": 5,
+            "window_minimum": 4
+          },
+          "source_excerpt": "AAS reports harvest over a four- to five-week period.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": "weeks"
+        },
+        {
+          "confidence": "high",
           "field_name": "hybrid",
           "normalized_value": true,
           "source_excerpt": "The table reports hybrid status for Mountain Merit.",
           "source_key": "mid-atlantic-tomatoes-2026-2027",
           "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "plant_height",
+          "normalized_value": {
+            "maximum": 60,
+            "minimum": 48
+          },
+          "source_excerpt": "AAS reports plants four to five feet tall.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 24,
+            "minimum": 24
+          },
+          "source_excerpt": "AAS recommends two feet between plants.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "plant_spread",
+          "normalized_value": {
+            "maximum": 36,
+            "minimum": 24
+          },
+          "source_excerpt": "AAS reports plants two to three feet wide.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_award",
+          "normalized_value": {
+            "award": "regional_winner",
+            "program": "all_america_selections",
+            "region": "heartland",
+            "year": 2014
+          },
+          "source_excerpt": "Mountain Merit was the 2014 AAS Heartland regional winner.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
           "unit": null
         },
         {
@@ -1103,6 +1404,39 @@
           "source_excerpt": "The table reports maturity season for Mountain Merit.",
           "source_key": "mid-atlantic-tomatoes-2026-2027",
           "source_locator": "PDF page 4 (publication page 453) > Market Tomatoes > Mountain Merit",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "source_reported_disease_resistance",
+          "normalized_value": {
+            "moderate_resistance": [
+              "early_blight",
+              "root_knot_nematode"
+            ],
+            "resistant": [
+              "fusarium_wilt_races_1_2_3",
+              "late_blight",
+              "tomato_spotted_wilt_virus",
+              "verticillium_wilt"
+            ]
+          },
+          "source_excerpt": "AAS lists resistance and moderate resistance to six disease or nematode concerns.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh",
+            "sandwiches",
+            "slicing"
+          ],
+          "source_excerpt": "AAS recommends the fruit for slicing and sandwiches.",
+          "source_key": "aas-mountain-merit-2014",
+          "source_locator": "AAS Winner Data > Mountain Merit F1",
           "unit": null
         }
       ]
@@ -1206,6 +1540,11 @@
           "name_in_source": "Provider",
           "source_identifier": "page=3;table=recommended-snap-bean-varieties;row=Provider",
           "source_key": "mid-atlantic-beans-2026-2027"
+        },
+        {
+          "name_in_source": "Provider",
+          "source_identifier": "year=2025;table=beans;row=Provider",
+          "source_key": "vce-home-variety-trials-2025"
         }
       ],
       "traits": [
@@ -1269,6 +1608,75 @@
           "source_key": "mid-atlantic-beans-2026-2027",
           "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
           "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "regional_trial",
+          "normalized_value": {
+            "context": "home_garden",
+            "region": "virginia",
+            "study_type": "community_engaged",
+            "years": [
+              2025
+            ]
+          },
+          "source_excerpt": "Provider was evaluated in the 2025 Virginia community-engaged home-garden trial.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Provider",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_days_to_harvest",
+          "normalized_value": {
+            "basis": "trial_observed",
+            "maximum": 59,
+            "minimum": 59,
+            "region": "virginia",
+            "year": 2025
+          },
+          "source_excerpt": "The trial observed an average of 59 days to harvest.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Provider",
+          "unit": "days"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_disease_resistance",
+          "normalized_value": [],
+          "source_excerpt": "The trial table lists no known disease resistance for Provider.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Provider",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_overall_rating",
+          "normalized_value": 5.97,
+          "source_excerpt": "Trial participants gave Provider a 5.97 overall rating.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Provider",
+          "unit": "score_out_of_10"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_recommendation_rate",
+          "normalized_value": 78,
+          "source_excerpt": "Seventy-eight percent of trial participants recommended Provider.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Provider",
+          "unit": "percent"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_years",
+          "normalized_value": [
+            2025
+          ],
+          "source_excerpt": "The published observation covers the 2025 trial year.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 2 > Table 1 > Provider",
+          "unit": "years"
         },
         {
           "confidence": "high",
@@ -1529,6 +1937,11 @@
           "name_in_source": "Sun Gold",
           "source_identifier": "page=4;table=cherry-grape-plum-cluster;row=Sun-Gold",
           "source_key": "mid-atlantic-tomatoes-2026-2027"
+        },
+        {
+          "name_in_source": "Sun Gold",
+          "source_identifier": "year=2025;table=tomatoes;row=Sun-Gold",
+          "source_key": "vce-home-variety-trials-2025"
         }
       ],
       "traits": [
@@ -1540,6 +1953,19 @@
           "source_key": "mid-atlantic-tomatoes-2026-2027",
           "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Sun Gold",
           "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "trial_observed",
+            "maximum": 73,
+            "minimum": 73
+          },
+          "source_excerpt": "The trial observed an average of 73 days to harvest.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 3 > Table 1 > Sun Gold",
+          "unit": "days"
         },
         {
           "confidence": "high",
@@ -1591,6 +2017,78 @@
           "source_key": "mid-atlantic-tomatoes-2026-2027",
           "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Sun Gold",
           "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "regional_trial",
+          "normalized_value": {
+            "context": "home_garden",
+            "region": "virginia",
+            "study_type": "community_engaged",
+            "years": [
+              2025
+            ]
+          },
+          "source_excerpt": "Sun Gold was evaluated in the 2025 Virginia community-engaged home-garden trial.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 3 > Table 1 > Sun Gold",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_days_to_harvest",
+          "normalized_value": {
+            "basis": "trial_observed",
+            "maximum": 73,
+            "minimum": 73,
+            "region": "virginia",
+            "year": 2025
+          },
+          "source_excerpt": "The trial observed an average of 73 days to harvest.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 3 > Table 1 > Sun Gold",
+          "unit": "days"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_disease_resistance",
+          "normalized_value": [
+            "tobacco_mosaic_virus",
+            "verticillium_wilt"
+          ],
+          "source_excerpt": "The trial table lists tobacco mosaic virus and Verticillium resistance.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 3 > Table 1 > Sun Gold",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_overall_rating",
+          "normalized_value": 6.987,
+          "source_excerpt": "Trial participants gave Sun Gold a 6.987 overall rating.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 3 > Table 1 > Sun Gold",
+          "unit": "score_out_of_10"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_recommendation_rate",
+          "normalized_value": 84.4,
+          "source_excerpt": "Eighty-four point four percent of trial participants recommended Sun Gold.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 3 > Table 1 > Sun Gold",
+          "unit": "percent"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "trial_years",
+          "normalized_value": [
+            2025
+          ],
+          "source_excerpt": "The published observation covers the 2025 trial year.",
+          "source_key": "vce-home-variety-trials-2025",
+          "source_locator": "PDF page 3 > Table 1 > Sun Gold",
+          "unit": "years"
         }
       ]
     },
@@ -1741,6 +2239,18 @@
   "schema_version": "1.0.0",
   "sources": [
     {
+      "key": "aas-mountain-merit-2014",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "All-America Selections",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Cultivar-specific AAS regional winner data; trial region is Heartland, not Mid-Atlantic",
+      "sha256": "7a59b50dbca4aa2c50848e3863728af7212b2f55c999c07c86b924fd0c354142",
+      "source_path": "data/source/cultivars/research-depth/mountain-merit-aas-2014.pdf",
+      "title": "AAS Winner Data: Tomato, Mountain Merit F1",
+      "url": "https://all-americaselections.org/wp-content/uploads/2016/10/AAS-Winner-data-sign-8-x-10-Tomato-Mountain-Merit-2014-Regional.pdf"
+    },
+    {
       "key": "cornell-san-marzano-1515",
       "license": null,
       "publisher": "Cornell Cooperative Extension",
@@ -1819,6 +2329,18 @@
       "retrieved_at": "2026-08-08T00:00:00Z",
       "title": "Growing Tomatoes in a Home Garden",
       "url": "https://www.extension.umd.edu/resource/growing-tomatoes-home-garden"
+    },
+    {
+      "key": "vce-home-variety-trials-2025",
+      "license": "May be used, reprinted, or cited with attribution to Virginia Cooperative Extension and Virginia Tech.",
+      "media_type": "application/pdf",
+      "publisher": "Virginia Cooperative Extension",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "First-year 2025 Virginia community-engaged home-garden variety trial; observed results, not a multi-year replicated cultivar specification",
+      "sha256": "dd65b59fef71e6c4c3766c02ae8c84a937ec8675b38c1a38ac79d0a0ca22849e",
+      "source_path": "data/source/cultivars/research-depth/virginia-home-vegetable-trials-2025.pdf",
+      "title": "Vegetables Recommended for Virginia",
+      "url": "https://www.pubs.ext.vt.edu/content/dam/pubs_ext_vt_edu/426/426-480/SPES-757.pdf"
     }
   ]
 }

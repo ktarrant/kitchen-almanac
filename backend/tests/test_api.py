@@ -210,7 +210,7 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
+    assert payload["dataset_id"] == "cultivar-catalog-v1-d1174b4713991872"
     assert payload["crop_dataset_id"] == "kitchen-almanac-v1-f76ca812f62c8c39"
     assert [item["canonical_name"] for item in payload["cultivars"]] == [
         "San Marzano",
@@ -256,7 +256,7 @@ def test_cultivar_alias_and_type_queries_are_supported(catalog_client: TestClien
 @pytest.mark.parametrize(
     ("query", "expected_slugs"),
     [
-        ("cucumbers", ["eureka", "marketmore-76", "tasty-green", "corinto", "picolino"]),
+        ("cucumbers", ["marketmore-76", "eureka", "tasty-green", "corinto", "picolino"]),
         ("zucchini", ["dunja", "eight-ball", "gentry", "sunburst"]),
         ("Provider", ["provider"]),
     ],
@@ -333,6 +333,24 @@ def test_catalog_search_returns_crop_and_related_cultivars(
     assert {item["match_method"] for item in results["cultivars"]} == {"related_crop"}
     assert results["cultivars"][0]["suitability"]["result_group"] == "best_documented_fit"
     assert results["cultivars"][0]["suitability"]["score"] == 80
+    assert results["cultivars"][0]["research_quality"] == {
+        "algorithm_version": "research-quality-v1.0.0",
+        "score": 95,
+        "tier": "well_researched",
+        "source_count": 2,
+        "cultivar_specific_trait_count": 17,
+        "strengths": [
+            "At least one reviewed source documents this cultivar.",
+            "Two or more independent reviewed sources document this cultivar.",
+            "Cultivar-specific maturity evidence is available.",
+            "Growth or flowering habit is documented.",
+            "Plant size or spacing is documented.",
+            "Harvest characteristics or uses are documented.",
+            "Disease-resistance evidence is documented.",
+            "Regional recommendation, award, or trial evidence is available.",
+        ],
+        "missing_evidence": [],
+    }
 
 
 def test_catalog_search_ranks_specific_cultivars_without_auto_selecting(
@@ -448,7 +466,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     assessment = first.json()
     assert second.json() == assessment
     assert assessment["algorithm_version"] == "suitability-v1.1.0"
-    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
+    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-d1174b4713991872"
     assert assessment["input_fingerprint"].startswith("sha256:")
     assert assessment["status"] == "suitable"
     assert assessment["score"] == 80
@@ -457,7 +475,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     factors = {factor["code"]: factor for factor in assessment["factors"]}
     assert factors["maturity_window"]["points"] == 20
     assert {item["origin"] for item in factors["maturity_window"]["evidence"]} == {
-        "crop_baseline",
+        "cultivar_catalog",
         "climate_normal",
     }
     regional = factors["regional_evidence"]
@@ -867,7 +885,7 @@ def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
     wishlist = created_response.json()
     assert wishlist["name"] == "Summer ideas"
     assert wishlist["entries"] == []
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-d1174b4713991872"
 
     selections = [
         {
@@ -946,7 +964,7 @@ def test_quick_import_preserves_cultivar_and_crop_type_intent(
 
     assert response.status_code == 201
     wishlist = response.json()
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-ee57671abbf353bd"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-d1174b4713991872"
     san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
 
     assert san_marzano["original_text"] == "San Marzano tomatoes"

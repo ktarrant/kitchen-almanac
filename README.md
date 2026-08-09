@@ -54,7 +54,7 @@ publication workflow uses:
 - `data/source/cultivars/staged-mid-atlantic.v1.json` for normalized records
   extracted from pinned source documents.
 - `data/source/cultivars/review-decisions.v1.json` for explicit create, link,
-  or reject decisions tied to the exact staging checksum.
+  enrich, or reject decisions tied to the exact staging checksum.
 - `data/seed/cultivar-catalog.v1.json` as the deterministic published artifact
   loaded by the application.
 
@@ -67,7 +67,9 @@ then activates that immutable catalog version idempotently. The initial
 expanded cohort contains 21 cultivars across tomatoes, cucumbers, string beans,
 and summer squash. Its Mid-Atlantic source tables are commercial-production
 recommendations; that scope is retained in the evidence rather than silently
-presented as home-garden trial data.
+presented as home-garden trial data. A research-depth cohort supplements five
+cultivars with AAS cultivar data or observed 2025 Virginia home-garden trial
+results. The app keeps those evidence contexts distinct.
 
 The API includes:
 
@@ -78,7 +80,9 @@ The API includes:
 - `GET /api/catalog/search` for deterministic one-at-a-time crop and cultivar
   discovery within a garden profile. Exact, prefix, commercial listing, and
   fuzzy matches are labeled in the response; generic crop results include a
-  versioned, evidence-backed suitability assessment and are ranked by it.
+  versioned, evidence-backed suitability assessment and a separate research-
+  quality assessment. Results are grouped by garden fit and then prefer the
+  better-documented cultivars within each group.
 - `GET /api/suitability` for the complete cited assessment of one cultivar
   against one garden profile, including its algorithm version, input
   fingerprint, constraints, assumptions, and missing evidence.

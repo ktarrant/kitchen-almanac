@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from datetime import date, datetime
 from enum import StrEnum
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -150,12 +151,23 @@ class CatalogCropSearchResult(BaseModel):
     match_method: str
 
 
+class CultivarResearchQualityResponse(BaseModel):
+    algorithm_version: str
+    score: int = Field(ge=0, le=100)
+    tier: Literal["well_researched", "documented", "limited"]
+    source_count: int = Field(ge=0)
+    cultivar_specific_trait_count: int = Field(ge=0)
+    strengths: list[str]
+    missing_evidence: list[str]
+
+
 class CatalogCultivarSearchResult(BaseModel):
     cultivar: CultivarResponse
     score: float = Field(ge=0, le=1)
     matched_alias: str
     match_method: str
     suitability: SuitabilityAssessmentResponse
+    research_quality: CultivarResearchQualityResponse
 
 
 class CatalogSearchResponse(BaseModel):

@@ -138,7 +138,9 @@ def validate_staged_cultivars(
     if len(candidate_ids) != len(candidates) or len(candidate_ids) != len(set(candidate_ids)):
         errors.append("Candidate IDs must be present and unique.")
     proposed_slugs = [
-        item.get("proposed_slug") for item in candidates if isinstance(item, dict)
+        item.get("proposed_slug")
+        for item in candidates
+        if isinstance(item, dict) and item.get("record_kind", "identity") == "identity"
     ]
     if len(proposed_slugs) != len(set(proposed_slugs)):
         errors.append("Proposed cultivar slugs must be unique.")
@@ -167,10 +169,13 @@ def validate_staged_cultivars(
             continue
         if candidate["source_key"] not in source_keys:
             errors.append(f"Candidate {candidate['id']!r} references an unknown source.")
+        record_kind = candidate.get("record_kind", "identity")
+        if record_kind not in {"identity", "enrichment"}:
+            errors.append(f"Candidate {candidate['id']!r} has an invalid record kind.")
         aliases = candidate["aliases"]
         if not isinstance(aliases, list) or aliases != sorted(set(aliases), key=str.casefold):
             errors.append(f"Candidate {candidate['id']!r} aliases must be sorted and unique.")
-        else:
+        elif record_kind == "identity":
             for alias in {candidate["name_in_source"], *aliases}:
                 normalized_alias = normalize_term(alias)
                 owner = normalized_alias_owners.setdefault(normalized_alias, candidate["id"])
@@ -188,6 +193,39 @@ def validate_staged_cultivars(
                     f"Candidate {candidate['id']!r} has unsupported attributes "
                     f"{sorted(unsupported)!r}."
                 )
+        manual_traits = candidate.get("traits", [])
+        if not isinstance(manual_traits, list):
+            errors.append(f"Candidate {candidate['id']!r} traits must be a list.")
+        else:
+            manual_fields = [
+                trait.get("field_name") for trait in manual_traits if isinstance(trait, dict)
+            ]
+            if len(manual_fields) != len(manual_traits) or len(manual_fields) != len(
+                set(manual_fields)
+            ):
+                errors.append(
+                    f"Candidate {candidate['id']!r} manual trait fields must be present and unique."
+                )
+            for trait in manual_traits:
+                if not isinstance(trait, dict):
+                    continue
+                required_trait = {
+                    "field_name",
+                    "normalized_value",
+                    "unit",
+                    "confidence",
+                    "source_excerpt",
+                }
+                missing_trait = required_trait - trait.keys()
+                if missing_trait:
+                    errors.append(
+                        f"Candidate {candidate['id']!r} trait is missing "
+                        f"{sorted(missing_trait)!r}."
+                    )
+                if trait.get("confidence") not in {"low", "medium", "high"}:
+                    errors.append(
+                        f"Candidate {candidate['id']!r} trait has invalid confidence."
+                    )
     return errors
 
 
@@ -223,7 +261,7 @@ def validate_review_decisions(staged: dict[str, Any], decisions: object) -> list
             errors.append("Every review decision must be an object.")
             continue
         action = decision.get("action")
-        if action not in {"create", "link", "reject"}:
+        if action not in {"create", "link", "enrich", "reject"}:
             errors.append(f"Candidate {decision.get('candidate_id')!r} has an invalid action.")
         if action == "create" and not decision.get("canonical_slug"):
             errors.append(
@@ -231,6 +269,10 @@ def validate_review_decisions(staged: dict[str, Any], decisions: object) -> list
             )
         if action == "link" and not decision.get("canonical_slug"):
             errors.append(f"Link decision {decision.get('candidate_id')!r} needs a target slug.")
+        if action == "enrich" and not decision.get("canonical_slug"):
+            errors.append(
+                f"Enrichment decision {decision.get('candidate_id')!r} needs a target slug."
+            )
     return errors
 
 
@@ -307,17 +349,19 @@ def _trait(
 def _candidate_traits(candidate: dict[str, Any]) -> list[dict[str, Any]]:
     name = candidate["name_in_source"]
     values = candidate["attributes"]
-    traits: list[dict[str, Any]] = [
-        _trait(
-            field_name="regional_recommendation",
-            value={"region": "mid_atlantic", "production_context": "commercial"},
-            unit=None,
-            candidate=candidate,
-            excerpt=(
-                f"The regional Extension table includes {name} among its recommended varieties."
-            ),
+    traits: list[dict[str, Any]] = []
+    if candidate.get("include_regional_recommendation", True):
+        traits.append(
+            _trait(
+                field_name="regional_recommendation",
+                value={"region": "mid_atlantic", "production_context": "commercial"},
+                unit=None,
+                candidate=candidate,
+                excerpt=(
+                    f"The regional Extension table includes {name} among its recommended varieties."
+                ),
+            )
         )
-    ]
     simple_fields = {
         "crop_type": (None, "type"),
         "growth_habit": (None, "growth habit"),
@@ -366,6 +410,18 @@ def _candidate_traits(candidate: dict[str, Any]) -> list[dict[str, Any]]:
                 candidate=candidate,
                 excerpt=f"The table reports the characteristic fruit length for {name}.",
             )
+        )
+    for manual in candidate.get("traits", []):
+        traits.append(
+            {
+                "field_name": manual["field_name"],
+                "normalized_value": manual["normalized_value"],
+                "unit": manual["unit"],
+                "confidence": manual["confidence"],
+                "source_key": candidate["source_key"],
+                "source_excerpt": manual["source_excerpt"],
+                "source_locator": manual.get("source_locator", candidate["source_locator"]),
+            }
         )
     return sorted(traits, key=lambda trait: trait["field_name"])
 
@@ -438,7 +494,7 @@ def publish_staged_catalog(
                 "traits": [],
             }
             cultivars[slug] = cultivar
-        else:
+        elif decision["action"] == "link":
             cultivar = cultivars.get(slug)
             if cultivar is None:
                 raise CultivarPipelineError(f"Link decision targets unknown cultivar {slug!r}.")
@@ -454,6 +510,28 @@ def publish_staged_catalog(
                 },
                 key=str.casefold,
             )
+        else:
+            cultivar = cultivars.get(slug)
+            if cultivar is None:
+                raise CultivarPipelineError(
+                    f"Enrichment decision targets unknown cultivar {slug!r}."
+                )
+            if candidate.get("record_kind") != "enrichment":
+                raise CultivarPipelineError(
+                    f"Enrichment decision for {candidate['id']!r} needs an enrichment record."
+                )
+            candidate_names = {
+                normalize_term(candidate["name_in_source"]),
+                *(normalize_term(alias) for alias in candidate["aliases"]),
+            }
+            cultivar_names = {
+                normalize_term(cultivar["canonical_name"]),
+                *(normalize_term(alias) for alias in cultivar["aliases"]),
+            }
+            if not candidate_names & cultivar_names:
+                raise CultivarPipelineError(
+                    f"Enrichment candidate {candidate['id']!r} does not match {slug!r}."
+                )
 
         cultivar["source_identifiers"].append(
             {
