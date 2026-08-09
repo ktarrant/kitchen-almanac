@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 type GrowingMethod = "in_ground" | "raised_bed" | "containers" | "protected";
 type IntendedUse = "fresh" | "snacking" | "sauce" | "canning" | "pickling" | "processing";
@@ -238,6 +238,23 @@ function humanize(value: string) {
   return value.replaceAll("_", " ");
 }
 
+function wishlistEntryName(entry: WishlistEntry) {
+  return (
+    entry.resolved_cultivar?.canonical_name ??
+    entry.resolved_crop?.canonical_name ??
+    entry.original_text
+  );
+}
+
+function wishlistEntryKind(entry: WishlistEntry) {
+  if (entry.status === "custom") {
+    return entry.resolved_crop ? "Custom cultivar" : "Custom crop";
+  }
+  if (entry.resolved_cultivar) return "Cultivar";
+  if (entry.resolved_crop) return "Crop · cultivar undecided";
+  return humanize(entry.status);
+}
+
 function traitSummary(trait: CultivarTrait): string {
   const value = trait.normalized_value;
   if (Array.isArray(value)) return value.join(", ");
@@ -313,9 +330,12 @@ export default function App() {
   const [searching, setSearching] = useState(false);
   const [addingSelection, setAddingSelection] = useState<string | null>(null);
   const [matchingWishlist, setMatchingWishlist] = useState(false);
+  const [loadingWishlist, setLoadingWishlist] = useState(false);
   const [updatingEntry, setUpdatingEntry] = useState<string | null>(null);
+  const [removingEntry, setRemovingEntry] = useState<string | null>(null);
   const [addedNotice, setAddedNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const wishlistRequestId = useRef(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -327,7 +347,7 @@ export default function App() {
         setSavedProfiles(profiles);
         const rememberedId = window.localStorage.getItem("kitchen-almanac-profile-id");
         const remembered = profiles.find((item) => item.id === rememberedId);
-        if (remembered) setProfile(remembered);
+        if (remembered) void chooseGardenProfile(remembered);
       } catch (caught) {
         if (caught instanceof DOMException && caught.name === "AbortError") return;
         setError(caught instanceof Error ? caught.message : "Could not load saved gardens.");
@@ -336,7 +356,10 @@ export default function App() {
       }
     }
     void loadProfiles();
-    return () => controller.abort();
+    return () => {
+      controller.abort();
+      wishlistRequestId.current += 1;
+    };
   }, []);
 
   const reviewCount = useMemo(
@@ -378,19 +401,34 @@ export default function App() {
     );
   }
 
-  function chooseGardenProfile(selected: GardenProfile) {
+  async function chooseGardenProfile(selected: GardenProfile) {
+    const requestId = ++wishlistRequestId.current;
     setProfile(selected);
     setWishlist(null);
+    setLoadingWishlist(true);
     setSearchResults(null);
     setSearchQuery("");
     setAddedNotice(null);
     setError(null);
     window.localStorage.setItem("kitchen-almanac-profile-id", selected.id);
+    try {
+      const response = await fetch(`/api/garden-profiles/${selected.id}/wishlists/active`);
+      if (!response.ok) throw new Error(await responseMessage(response));
+      const restored = (await response.json()) as Wishlist | null;
+      if (wishlistRequestId.current === requestId) setWishlist(restored);
+    } catch (caught) {
+      if (wishlistRequestId.current !== requestId) return;
+      setError(caught instanceof Error ? caught.message : "Could not load saved plants.");
+    } finally {
+      if (wishlistRequestId.current === requestId) setLoadingWishlist(false);
+    }
   }
 
   function switchGardenProfile() {
+    wishlistRequestId.current += 1;
     setProfile(null);
     setWishlist(null);
+    setLoadingWishlist(false);
     setSearchResults(null);
     setAddedNotice(null);
     setCreatingProfile(false);
@@ -427,7 +465,7 @@ export default function App() {
       const created = (await response.json()) as GardenProfile;
       setSavedProfiles((profiles) => [created, ...profiles]);
       setCreatingProfile(false);
-      chooseGardenProfile(created);
+      void chooseGardenProfile(created);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not save your garden.");
     } finally {
@@ -483,6 +521,7 @@ export default function App() {
   async function wishlistForSelection(): Promise<Wishlist> {
     if (wishlist) return wishlist;
     if (!profile) throw new Error("Save your garden before adding plants.");
+    if (loadingWishlist) throw new Error("Your saved plants are still loading.");
     const response = await fetch("/api/wishlists/builder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -531,6 +570,25 @@ export default function App() {
       setError(caught instanceof Error ? caught.message : "Could not update this crop.");
     } finally {
       setUpdatingEntry(null);
+    }
+  }
+
+  async function removeEntry(entry: WishlistEntry) {
+    if (!wishlist) return;
+    setRemovingEntry(entry.id);
+    setError(null);
+    setAddedNotice(null);
+    try {
+      const response = await fetch(`/api/wishlists/${wishlist.id}/entries/${entry.id}`, {
+        method: "DELETE"
+      });
+      if (!response.ok) throw new Error(await responseMessage(response));
+      setWishlist((await response.json()) as Wishlist);
+      setAddedNotice(`${wishlistEntryName(entry)} removed from your selected plants.`);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not remove this plant.");
+    } finally {
+      setRemovingEntry(null);
     }
   }
 
@@ -866,6 +924,55 @@ export default function App() {
                 </dd>
               </div>
             </dl>
+            <section className="selected-plants" aria-labelledby="selected-plants-heading">
+              <div className="selected-plants-heading">
+                <div>
+                  <p className="section-kicker">Current wishlist</p>
+                  <h3 id="selected-plants-heading">Selected plants</h3>
+                </div>
+                {!loadingWishlist && wishlist && (
+                  <span>
+                    {wishlist.entries.length} {wishlist.entries.length === 1 ? "plant" : "plants"}
+                  </span>
+                )}
+              </div>
+              {loadingWishlist ? (
+                <p className="selected-plants-empty">Loading saved plants…</p>
+              ) : wishlist?.entries.length ? (
+                <ul className="selected-plant-list">
+                  {wishlist.entries.map((entry) => (
+                    <li key={entry.id}>
+                      <div>
+                        <strong>{wishlistEntryName(entry)}</strong>
+                        <span>{wishlistEntryKind(entry)}</span>
+                      </div>
+                      <button
+                        type="button"
+                        disabled={removingEntry !== null}
+                        onClick={() => void removeEntry(entry)}
+                        aria-label={`Remove ${wishlistEntryName(entry)}`}
+                      >
+                        {removingEntry === entry.id ? "Removing…" : "Remove"}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="selected-plants-empty">
+                  No plants selected yet. Search the catalog to start this garden’s wishlist.
+                </p>
+              )}
+              {reviewCount > 0 && (
+                <a className="review-link" href="#wishlist-review">
+                  Review {reviewCount} uncertain {reviewCount === 1 ? "entry" : "entries"} below
+                </a>
+              )}
+              {addedNotice && (
+                <p className="selection-notice" role="status">
+                  {addedNotice}
+                </p>
+              )}
+            </section>
             <button className="text-button" type="button" onClick={switchGardenProfile}>
               Switch garden
             </button>
@@ -932,7 +1039,7 @@ export default function App() {
                         <button
                           className="secondary-button"
                           type="button"
-                          disabled={addingSelection !== null}
+                          disabled={addingSelection !== null || loadingWishlist}
                           onClick={() =>
                             addSearchSelection(
                               `crop-${result.crop.slug}`,
@@ -1061,7 +1168,7 @@ export default function App() {
                           <button
                             className="secondary-button"
                             type="button"
-                            disabled={addingSelection !== null}
+                            disabled={addingSelection !== null || loadingWishlist}
                             onClick={() =>
                               addSearchSelection(
                                 `cultivar-${result.cultivar.slug}`,
@@ -1103,7 +1210,7 @@ export default function App() {
                       <button
                         className="text-button"
                         type="button"
-                        disabled={addingSelection !== null}
+                        disabled={addingSelection !== null || loadingWishlist}
                         onClick={() =>
                           addSearchSelection(
                             "custom-cultivar",
@@ -1123,7 +1230,7 @@ export default function App() {
                     <button
                       className="text-button"
                       type="button"
-                      disabled={addingSelection !== null}
+                      disabled={addingSelection !== null || loadingWishlist}
                       onClick={() =>
                         addSearchSelection(
                           "custom-crop",
@@ -1143,12 +1250,6 @@ export default function App() {
             </section>
           )}
 
-          {addedNotice && (
-            <p className="success-message" role="status">
-              {addedNotice}
-            </p>
-          )}
-
           <details className="quick-import">
             <summary>Have a list already? Use Quick Import</summary>
             <form className="wishlist-form" onSubmit={submitWishlist}>
@@ -1165,7 +1266,7 @@ export default function App() {
                 <span>Up to 100 entries · uncertain matches require confirmation</span>
                 <button
                   className="primary-button"
-                  disabled={matchingWishlist || !text.trim()}
+                  disabled={matchingWishlist || loadingWishlist || !text.trim()}
                   type="submit"
                 >
                   {matchingWishlist ? "Matching…" : "Match my list"}
@@ -1182,8 +1283,8 @@ export default function App() {
         </p>
       )}
 
-      {profile && wishlist && (
-        <section className="results" aria-live="polite">
+      {profile && wishlist && wishlist.entries.length > 0 && (
+        <section className="results" id="wishlist-review" aria-live="polite">
           <div className="results-heading">
             <div>
               <p className="section-kicker">Wishlist review</p>
@@ -1204,7 +1305,17 @@ export default function App() {
                 <div className="entry-content">
                   <div className="entry-title-row">
                     <h3>{entry.original_text}</h3>
-                    <span className="status-label">{entry.status.replace("_", " ")}</span>
+                    <div className="entry-actions">
+                      <span className="status-label">{entry.status.replace("_", " ")}</span>
+                      <button
+                        className="text-button"
+                        type="button"
+                        disabled={removingEntry !== null}
+                        onClick={() => void removeEntry(entry)}
+                      >
+                        {removingEntry === entry.id ? "Removing…" : "Remove"}
+                      </button>
+                    </div>
                   </div>
 
                   {entry.status === "resolved" && entry.resolved_cultivar && (

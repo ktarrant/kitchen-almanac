@@ -275,6 +275,44 @@ def get_wishlist(session: Session, wishlist_id: str) -> Wishlist:
     return wishlist
 
 
+def get_active_wishlist_for_profile(
+    session: Session,
+    garden_profile_id: str,
+) -> Wishlist | None:
+    if session.get(GardenProfile, garden_profile_id) is None:
+        raise GardenProfileNotFoundError(garden_profile_id)
+    return session.scalar(
+        select(Wishlist)
+        .where(Wishlist.garden_profile_id == garden_profile_id)
+        .options(*WISHLIST_LOAD_OPTIONS)
+        .order_by(Wishlist.updated_at.desc(), Wishlist.created_at.desc(), Wishlist.id)
+    )
+
+
+def remove_wishlist_entry(
+    session: Session,
+    *,
+    wishlist_id: str,
+    entry_id: str,
+) -> Wishlist:
+    wishlist = get_wishlist(session, wishlist_id)
+    entry = next((item for item in wishlist.entries if item.id == entry_id), None)
+    if entry is None:
+        raise WishlistNotFoundError(entry_id)
+
+    session.delete(entry)
+    session.flush()
+    remaining = [item for item in wishlist.entries if item.id != entry_id]
+    for temporary_position, item in enumerate(remaining, start=1):
+        item.position = -temporary_position
+    session.flush()
+    for position, item in enumerate(remaining, start=1):
+        item.position = position
+    wishlist.updated_at = datetime.now(UTC)
+    session.commit()
+    return get_wishlist(session, wishlist.id)
+
+
 def update_wishlist_entry(
     session: Session,
     *,

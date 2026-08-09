@@ -311,9 +311,9 @@ h1 {
 }
 
 .profile-summary {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(190px, 0.7fr) minmax(0, 1.3fr) auto;
+  align-items: start;
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -362,6 +362,109 @@ h1 {
   color: #32473a;
   font-size: 0.88rem;
   text-transform: capitalize;
+}
+
+.profile-summary > .text-button {
+  margin-top: 0;
+}
+
+.selected-plants {
+  grid-column: 1 / -1;
+  padding-top: 1.25rem;
+  border-top: 1px solid #c9ccbe;
+}
+
+.selected-plants-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.selected-plants-heading h3 {
+  margin: 0.25rem 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+}
+
+.selected-plants-heading > span {
+  color: #68756c;
+  font-size: 0.76rem;
+  font-weight: 720;
+}
+
+.selected-plant-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.selected-plant-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #d5d7ca;
+  border-radius: 10px;
+  background: #fffdf6;
+}
+
+.selected-plant-list li > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.selected-plant-list strong {
+  overflow: hidden;
+  color: #294331;
+  font-size: 0.86rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected-plant-list span {
+  color: #778077;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.selected-plant-list button {
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid currentcolor;
+  color: #8b4e32;
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 720;
+}
+
+.selected-plants-empty,
+.selection-notice {
+  margin: 0.8rem 0 0;
+  color: #68756c;
+  font-size: 0.78rem;
+}
+
+.selection-notice {
+  color: #295339;
+  font-weight: 700;
+}
+
+.review-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: #76533d;
+  font-size: 0.78rem;
+  font-weight: 720;
 }
 
 .catalog-search {
@@ -863,6 +966,16 @@ textarea:focus {
   font-weight: 500;
 }
 
+.entry-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.entry-actions .text-button {
+  margin-top: 0;
+}
+
 .status-label {
   color: #607067;
   font-size: 0.7rem;
@@ -959,7 +1072,9 @@ textarea:focus {
 
   .field-grid,
   .method-options,
-  .saved-profile-list {
+  .saved-profile-list,
+  .profile-summary,
+  .selected-plant-list {
     grid-template-columns: 1fr;
   }
 
@@ -971,6 +1086,12 @@ textarea:focus {
   .profile-summary dl {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .selected-plants-heading,
+  .entry-title-row {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .primary-button {

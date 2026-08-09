@@ -93,11 +93,15 @@ The API includes:
 - `POST /api/garden-profiles` to save location and growing context.
 - `GET /api/garden-profiles` to list saved garden contexts newest-first.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
+- `GET /api/garden-profiles/{id}/wishlists/active` to restore its most recently
+  updated wishlist without creating or merging records.
 - `POST /api/wishlists/builder` to create an empty, catalog-pinned wishlist.
 - `POST /api/wishlists/{id}/entries` to explicitly add a documented crop,
   documented cultivar, custom cultivar beneath a known crop, or custom crop.
 - `POST /api/wishlists` to preserve and resolve a multiline Quick Import list
   for a garden profile, including cultivar and crop-type intent.
+- `DELETE /api/wishlists/{id}/entries/{entry_id}` to remove one selection and
+  deterministically compact the remaining positions.
 - `GET /api/wishlists/{id}` to retrieve its current resolution state.
 - `PATCH /api/wishlists/{id}/entries/{entry_id}` to confirm a crop or keep a
   cultivar or crop, or keep a custom entry.

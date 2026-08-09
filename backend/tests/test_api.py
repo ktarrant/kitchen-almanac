@@ -846,6 +846,109 @@ def test_wishlist_resolves_aliases_and_preserves_uncertain_entries(
     assert entries[4]["original_text"] == "Tomato"
 
 
+def test_active_wishlist_is_restored_per_profile(catalog_client: TestClient) -> None:
+    first_profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={"name": "First", "postal_code": "20910", "growing_methods": ["containers"]},
+    ).json()
+    second_profile = catalog_client.post(
+        "/api/garden-profiles",
+        json={"name": "Second", "postal_code": "20851", "growing_methods": ["in_ground"]},
+    ).json()
+
+    empty = catalog_client.get(
+        f"/api/garden-profiles/{first_profile['id']}/wishlists/active"
+    )
+    assert empty.status_code == 200
+    assert empty.json() is None
+
+    older = catalog_client.post(
+        "/api/wishlists/builder",
+        json={"garden_profile_id": first_profile["id"], "name": "Older"},
+    ).json()
+    newer = catalog_client.post(
+        "/api/wishlists/builder",
+        json={"garden_profile_id": first_profile["id"], "name": "Newer"},
+    ).json()
+
+    active = catalog_client.get(
+        f"/api/garden-profiles/{first_profile['id']}/wishlists/active"
+    )
+    assert active.status_code == 200
+    assert active.json()["id"] == newer["id"]
+
+    updated = catalog_client.post(
+        f"/api/wishlists/{older['id']}/entries",
+        json={
+            "original_text": "tomatoes",
+            "selection_kind": "crop",
+            "crop_slug": "tomatoes",
+        },
+    )
+    assert updated.status_code == 201
+    active = catalog_client.get(
+        f"/api/garden-profiles/{first_profile['id']}/wishlists/active"
+    )
+    assert active.json()["id"] == older["id"]
+    assert active.json()["entries"][0]["resolved_crop"]["slug"] == "tomatoes"
+
+    second_empty = catalog_client.get(
+        f"/api/garden-profiles/{second_profile['id']}/wishlists/active"
+    )
+    assert second_empty.status_code == 200
+    assert second_empty.json() is None
+
+    missing = catalog_client.get(
+        "/api/garden-profiles/00000000-0000-0000-0000-000000000000/wishlists/active"
+    )
+    assert missing.status_code == 404
+
+
+def test_wishlist_entries_can_be_removed_and_reindexed(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    wishlist = catalog_client.post(
+        "/api/wishlists",
+        json={
+            "text": "beans\nTomato\nDragon fruit",
+            "garden_profile_id": garden_profile["id"],
+        },
+    ).json()
+    beans, tomato, dragon_fruit = wishlist["entries"]
+    assert beans["candidates"]
+
+    removed = catalog_client.delete(
+        f"/api/wishlists/{wishlist['id']}/entries/{beans['id']}"
+    )
+    assert removed.status_code == 200
+    assert [entry["id"] for entry in removed.json()["entries"]] == [
+        tomato["id"],
+        dragon_fruit["id"],
+    ]
+    assert [entry["position"] for entry in removed.json()["entries"]] == [1, 2]
+
+    other = catalog_client.post(
+        "/api/wishlists/builder",
+        json={"garden_profile_id": garden_profile["id"]},
+    ).json()
+    wrong_wishlist = catalog_client.delete(
+        f"/api/wishlists/{other['id']}/entries/{tomato['id']}"
+    )
+    assert wrong_wishlist.status_code == 404
+    assert [entry["id"] for entry in catalog_client.get(
+        f"/api/wishlists/{wishlist['id']}"
+    ).json()["entries"]] == [tomato["id"], dragon_fruit["id"]]
+
+    removed = catalog_client.delete(
+        f"/api/wishlists/{wishlist['id']}/entries/{tomato['id']}"
+    ).json()
+    removed = catalog_client.delete(
+        f"/api/wishlists/{wishlist['id']}/entries/{dragon_fruit['id']}"
+    ).json()
+    assert removed["entries"] == []
+
+
 def test_wishlist_entries_can_be_confirmed_or_kept_custom(
     catalog_client: TestClient,
     garden_profile: dict[str, object],

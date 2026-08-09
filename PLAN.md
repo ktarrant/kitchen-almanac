@@ -233,6 +233,12 @@ evidence publisher. The Step 6 model now supplies location-specific result
 groups, suitability reasons, constraints, and evidence gaps rather than
 implying recommendation from text matching alone.
 
+The active wishlist is restored when a saved garden is selected, using the
+most recently updated wishlist without merging separate lists. Selected crops,
+cultivars, and custom entries remain visible in the top garden card, where they
+can be removed. Entry removal atomically deletes dependent match candidates,
+compacts positions, and preserves the empty wishlist for later additions.
+
 Broad crop searches also expose a versioned research-quality score based on
 independent reviewed sources and coverage of maturity, habit, space, harvest,
 disease, regional, and home-garden trial facts. Within each suitability group,

@@ -59,7 +59,9 @@ from kitchen_almanac.services.wishlist_service import (
     add_wishlist_entry,
     create_wishlist,
     create_wishlist_builder,
+    get_active_wishlist_for_profile,
     get_wishlist,
+    remove_wishlist_entry,
     update_wishlist_entry,
 )
 
@@ -392,6 +394,24 @@ def get_garden_profile_endpoint(
     return _garden_profile_response(profile)
 
 
+@app.get(
+    "/api/garden-profiles/{profile_id}/wishlists/active",
+    response_model=WishlistResponse | None,
+)
+def get_active_profile_wishlist_endpoint(
+    profile_id: str,
+    session: Annotated[Session, Depends(get_session)],
+) -> WishlistResponse | None:
+    try:
+        wishlist = get_active_wishlist_for_profile(session, profile_id)
+    except GardenProfileNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Garden profile not found.",
+        ) from error
+    return _wishlist_response(wishlist) if wishlist else None
+
+
 @app.post(
     "/api/wishlists",
     response_model=WishlistResponse,
@@ -524,5 +544,28 @@ def update_wishlist_entry_endpoint(
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail="The selected crop or cultivar is not in this wishlist's catalog.",
+        ) from error
+    return _wishlist_response(wishlist)
+
+
+@app.delete(
+    "/api/wishlists/{wishlist_id}/entries/{entry_id}",
+    response_model=WishlistResponse,
+)
+def remove_wishlist_entry_endpoint(
+    wishlist_id: str,
+    entry_id: str,
+    session: Annotated[Session, Depends(get_session)],
+) -> WishlistResponse:
+    try:
+        wishlist = remove_wishlist_entry(
+            session,
+            wishlist_id=wishlist_id,
+            entry_id=entry_id,
+        )
+    except WishlistNotFoundError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Wishlist entry not found.",
         ) from error
     return _wishlist_response(wishlist)
