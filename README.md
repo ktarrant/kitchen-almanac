@@ -63,6 +63,8 @@ publication workflow uses:
   extracted from pinned source documents.
 - `data/source/cultivars/review-decisions.v1.json` for explicit create, link,
   enrich, or reject decisions tied to the exact staging checksum.
+- `data/source/cultivars/reviewed-commercial-listings.v1.json` for separately
+  reviewed Reimer Seeds and Seed Savers Exchange listing observations.
 - `data/seed/cultivar-catalog.v1.json` as the deterministic published artifact
   loaded by the application.
 
@@ -71,16 +73,20 @@ publication workflow uses:
 approved checksums; copyrighted source binaries are intentionally not
 redistributed in the repository. `cultivars publish` verifies the local source
 snapshots and review coverage before building the artifact. `cultivars load`
-then activates that immutable catalog version idempotently. The initial
-expanded cohort contains 21 cultivars across tomatoes, cucumbers, string beans,
-and summer squash. Its Mid-Atlantic source tables are commercial-production
+then activates that immutable catalog version idempotently. The catalog now
+contains 30 cultivars across tomatoes, cucumbers, string beans, summer squash,
+and beets. Twenty-two have a reviewed commercial listing and are eligible for
+user-facing search. A temporarily out-of-stock listing remains discoverable;
+retired listings do not. Cultivars without an identity-reviewed listing remain
+in the evidence catalog but are withheld from search until a selected vendor
+confirms the exact cultivar. Its Mid-Atlantic source tables are commercial-production
 recommendations; that scope is retained in the evidence rather than silently
 presented as home-garden trial data. A research-depth cohort supplements five
 cultivars with AAS cultivar data or observed 2025 Virginia home-garden trial
 results. The app keeps those evidence contexts distinct.
 
 Rutgers is the primary corpus for the next grow-guide evidence pass. Its
-manifest pins the general production, soil and nutrient, irrigation, and four
+manifest pins the general production, soil and nutrient, irrigation, and five
 initial commodity sections by URL and SHA-256 digest. `rutgers fetch` restores
 the locally retained PDFs, `rutgers inventory` builds a deterministic page-level
 coverage report, and `rutgers extract` reproduces structured candidates from

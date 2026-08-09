@@ -1,12 +1,267 @@
 {
   "commercial_listings": [
     {
-      "cultivar_slug": "san-marzano-2",
-      "id": "reimer-tm660-20",
-      "listing_name": "San Marzano 2 Tomato Seeds",
+      "availability_status": "in_stock",
+      "cultivar_slug": "roma-ii",
+      "id": "reimer-bn11-50",
+      "identity_match_method": "exact_name",
+      "listing_name": "Roma II Bean Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
       "review_status": "approved",
-      "source_identifier": "TM660-20",
-      "source_key": "reimer-san-marzano-2-tm660-20",
+      "source_identifier": "BN11-50",
+      "source_key": "reimer-roma-ii-bean-bn11-50",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "maxibel",
+      "id": "reimer-bn84-50",
+      "identity_match_method": "exact_name",
+      "listing_name": "Maxibel Bean Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BN84-50",
+      "source_key": "reimer-maxibel-bean-bn84-50",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "provider",
+      "id": "reimer-bn9-50",
+      "identity_match_method": "exact_name",
+      "listing_name": "Provider Bean Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BN9-50",
+      "source_key": "reimer-provider-bean-bn9-50",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "cylindra",
+      "id": "reimer-bt12-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Cylindra Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT12-100",
+      "source_key": "reimer-cylindra-beet-bt12-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "bulls-blood",
+      "id": "reimer-bt13-100",
+      "identity_match_method": "reviewed_alias",
+      "listing_name": "Bull's Blood Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT13-100",
+      "source_key": "reimer-bulls-blood-beet-bt13-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "red-ace",
+      "id": "reimer-bt26-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Red Ace Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT26-100",
+      "source_key": "reimer-red-ace-beet-bt26-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "green-top-bunching",
+      "id": "reimer-bt27-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Green Top Bunching Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT27-100",
+      "source_key": "reimer-green-top-bunching-beet-bt27-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "merlin",
+      "id": "reimer-bt28-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Merlin Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT28-100",
+      "source_key": "reimer-merlin-beet-bt28-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "pablo",
+      "id": "reimer-bt29-100",
+      "identity_match_method": "reviewed_alias",
+      "listing_name": "Pablo Baby Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT29-100",
+      "source_key": "reimer-pablo-beet-bt29-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "chioggia-guardsmark",
+      "id": "reimer-bt31-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Chioggia Guardsmark Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT31-100",
+      "source_key": "reimer-chioggia-guardsmark-beet-bt31-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "avalanche",
+      "id": "reimer-bt32-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Avalanche Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT32-100",
+      "source_key": "reimer-avalanche-beet-bt32-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "early-wonder",
+      "id": "reimer-bt4-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Early Wonder Beet Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BT4-100",
+      "source_key": "reimer-early-wonder-beet-bt4-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "marketmore-76",
+      "id": "reimer-cu13-20",
+      "identity_match_method": "exact_name",
+      "listing_name": "Marketmore 76 Cucumber Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CU13-20",
+      "source_key": "reimer-marketmore-76-cucumber-cu13-20",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "tasty-green",
+      "id": "reimer-cu3-10",
+      "identity_match_method": "exact_name",
+      "listing_name": "Tasty Green Cucumber Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CU3-10",
+      "source_key": "reimer-tasty-green-cucumber-cu3-10",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "eureka",
+      "id": "reimer-cu89-10",
+      "identity_match_method": "exact_name",
+      "listing_name": "Eureka Cucumber Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CU89-10",
+      "source_key": "reimer-eureka-cucumber-cu89-10",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "eight-ball",
+      "id": "reimer-sq34-10",
+      "identity_match_method": "exact_name",
+      "listing_name": "Eight Ball Squash Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "SQ34-10",
+      "source_key": "reimer-eight-ball-squash-sq34-10",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "sun-gold",
+      "id": "reimer-tm127-10",
+      "identity_match_method": "reviewed_alias",
+      "listing_name": "Sungold Tomato Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "TM127-10",
+      "source_key": "reimer-sungold-tomato-tm127-10",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "cherokee-purple",
+      "id": "reimer-tm34-20",
+      "identity_match_method": "exact_name",
+      "listing_name": "Cherokee Purple Tomato Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "TM34-20",
+      "source_key": "reimer-cherokee-purple-tomato-tm34-20",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "green-zebra",
+      "id": "reimer-tm57-20",
+      "identity_match_method": "exact_name",
+      "listing_name": "Green Zebra Tomato Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "TM57-20",
+      "source_key": "reimer-green-zebra-tomato-tm57-20",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "san-marzano-2",
+      "id": "reimer-tm660-10",
+      "identity_match_method": "reviewed_alias",
+      "listing_name": "San Marzano II Tomato Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "TM660-10",
+      "source_key": "reimer-san-marzano-ii-tomato-tm660-10",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "juliet",
+      "id": "reimer-tm71-10",
+      "identity_match_method": "exact_name",
+      "listing_name": "Juliet Tomato Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "TM71-10",
+      "source_key": "reimer-juliet-tomato-tm71-10",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "mountain-merit",
+      "id": "reimer-tm830-10",
+      "identity_match_method": "exact_name",
+      "listing_name": "Mountain Merit Tomato Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "TM830-10",
+      "source_key": "reimer-mountain-merit-tomato-tm830-10",
       "vendor": "Reimer Seeds"
     }
   ],
@@ -366,6 +621,99 @@
   "cultivars": [
     {
       "aliases": [
+        "Avalanche"
+      ],
+      "canonical_name": "Avalanche",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A white, round beet listed by Rutgers for roots and bunching.",
+      "review_status": "approved",
+      "slug": "avalanche",
+      "source_identifiers": [
+        {
+          "name_in_source": "Avalanche",
+          "source_identifier": "page=4;table=recommended-varieties;row=Avalanche",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Avalanche.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Avalanche",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 50,
+            "minimum": 50
+          },
+          "source_excerpt": "The table reports 50 days for Avalanche.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Avalanche",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "white",
+          "source_excerpt": "The table reports fruit color for Avalanche.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Avalanche",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "round",
+          "source_excerpt": "The table reports fruit shape for Avalanche.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Avalanche",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Avalanche.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Avalanche",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Avalanche among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Avalanche",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "bunching",
+            "roots"
+          ],
+          "source_excerpt": "The table reports listed uses for Avalanche.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Avalanche",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
         "Brandywine Red"
       ],
       "canonical_name": "Brandywine Red",
@@ -452,6 +800,100 @@
     },
     {
       "aliases": [
+        "Bull's Blood",
+        "Bulls Blood"
+      ],
+      "canonical_name": "Bulls Blood",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A red-zoned globe beet listed by Rutgers for roots and red tops.",
+      "review_status": "approved",
+      "slug": "bulls-blood",
+      "source_identifiers": [
+        {
+          "name_in_source": "Bulls Blood",
+          "source_identifier": "page=4;table=recommended-varieties;row=Bulls-Blood",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Bulls Blood.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 58,
+            "minimum": 58
+          },
+          "source_excerpt": "The table reports 58 days for Bulls Blood.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red_with_white_zones",
+          "source_excerpt": "The table reports fruit color for Bulls Blood.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "globe",
+          "source_excerpt": "The table reports fruit shape for Bulls Blood.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Bulls Blood.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Bulls Blood among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "red_tops",
+            "roots"
+          ],
+          "source_excerpt": "The table reports listed uses for Bulls Blood.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
         "Cherokee Purple"
       ],
       "canonical_name": "Cherokee Purple",
@@ -523,6 +965,98 @@
           "source_excerpt": "The table reports maturity season for Cherokee Purple.",
           "source_key": "mid-atlantic-tomatoes-2026-2027",
           "source_locator": "PDF page 4 (publication page 453) > Heirloom Tomatoes > Cherokee Purple",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Chioggia Guardsmark"
+      ],
+      "canonical_name": "Chioggia Guardsmark",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A purple-and-white-zoned globe beet listed by Rutgers for roots.",
+      "review_status": "approved",
+      "slug": "chioggia-guardsmark",
+      "source_identifiers": [
+        {
+          "name_in_source": "Chioggia Guardsmark",
+          "source_identifier": "page=4;table=recommended-varieties;row=Chioggia-Guardsmark",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Chioggia Guardsmark.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Chioggia Guardsmark",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 60,
+            "minimum": 60
+          },
+          "source_excerpt": "The table reports 60 days for Chioggia Guardsmark.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Chioggia Guardsmark",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "purple_with_white_zones",
+          "source_excerpt": "The table reports fruit color for Chioggia Guardsmark.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Chioggia Guardsmark",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "globe",
+          "source_excerpt": "The table reports fruit shape for Chioggia Guardsmark.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Chioggia Guardsmark",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Chioggia Guardsmark.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Chioggia Guardsmark",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Chioggia Guardsmark among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Chioggia Guardsmark",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "roots"
+          ],
+          "source_excerpt": "The table reports listed uses for Chioggia Guardsmark.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Chioggia Guardsmark",
           "unit": null
         }
       ]
@@ -713,6 +1247,99 @@
     },
     {
       "aliases": [
+        "Cylindra"
+      ],
+      "canonical_name": "Cylindra",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A cylindrical red beet listed by Rutgers for roots and bunching.",
+      "review_status": "approved",
+      "slug": "cylindra",
+      "source_identifiers": [
+        {
+          "name_in_source": "Cylindra",
+          "source_identifier": "page=4;table=recommended-varieties;row=Cylindra",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Cylindra.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 54,
+            "minimum": 54
+          },
+          "source_excerpt": "The table reports 54 days for Cylindra.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Cylindra.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "cylindrical",
+          "source_excerpt": "The table reports fruit shape for Cylindra.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Cylindra.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Cylindra among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "bunching",
+            "roots"
+          ],
+          "source_excerpt": "The table reports listed uses for Cylindra.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
         "Dunja"
       ],
       "canonical_name": "Dunja",
@@ -873,6 +1500,99 @@
           "source_key": "vce-home-variety-trials-2025",
           "source_locator": "PDF page 2 > Table 1 > Dunja",
           "unit": "years"
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Early Wonder"
+      ],
+      "canonical_name": "Early Wonder",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A red globe beet listed by Rutgers for greens and bunching.",
+      "review_status": "approved",
+      "slug": "early-wonder",
+      "source_identifiers": [
+        {
+          "name_in_source": "Early Wonder",
+          "source_identifier": "page=4;table=recommended-varieties;row=Early-Wonder",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Early Wonder.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Early Wonder",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 52,
+            "minimum": 52
+          },
+          "source_excerpt": "The table reports 52 days for Early Wonder.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Early Wonder",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Early Wonder.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Early Wonder",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "globe",
+          "source_excerpt": "The table reports fruit shape for Early Wonder.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Early Wonder",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Early Wonder.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Early Wonder",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Early Wonder among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Early Wonder",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "bunching",
+            "greens"
+          ],
+          "source_excerpt": "The table reports listed uses for Early Wonder.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Early Wonder",
+          "unit": null
         }
       ]
     },
@@ -1083,6 +1803,99 @@
           "source_excerpt": "The regional Extension table includes Gentry among its recommended varieties.",
           "source_key": "mid-atlantic-summer-squash-2026-2027",
           "source_locator": "PDF page 4 (publication page 416) > Recommended Varieties > Gentry",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Green Top Bunching"
+      ],
+      "canonical_name": "Green Top Bunching",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A round red beet listed by Rutgers for greens and bunching.",
+      "review_status": "approved",
+      "slug": "green-top-bunching",
+      "source_identifiers": [
+        {
+          "name_in_source": "Green Top Bunching",
+          "source_identifier": "page=4;table=recommended-varieties;row=Green-Top-Bunching",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Green Top Bunching.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Green Top Bunching",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 58,
+            "minimum": 58
+          },
+          "source_excerpt": "The table reports 58 days for Green Top Bunching.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Green Top Bunching",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Green Top Bunching.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Green Top Bunching",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "round",
+          "source_excerpt": "The table reports fruit shape for Green Top Bunching.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Green Top Bunching",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Green Top Bunching.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Green Top Bunching",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Green Top Bunching among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Green Top Bunching",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "bunching",
+            "greens"
+          ],
+          "source_excerpt": "The table reports listed uses for Green Top Bunching.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Green Top Bunching",
           "unit": null
         }
       ]
@@ -1512,6 +2325,98 @@
     },
     {
       "aliases": [
+        "Merlin"
+      ],
+      "canonical_name": "Merlin",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A red hybrid globe beet listed by Rutgers for roots.",
+      "review_status": "approved",
+      "slug": "merlin",
+      "source_identifiers": [
+        {
+          "name_in_source": "Merlin",
+          "source_identifier": "page=4;table=recommended-varieties;row=Merlin",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Merlin.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Merlin",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 55,
+            "minimum": 55
+          },
+          "source_excerpt": "The table reports 55 days for Merlin.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Merlin",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Merlin.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Merlin",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "globe",
+          "source_excerpt": "The table reports fruit shape for Merlin.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Merlin",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Merlin.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Merlin",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Merlin among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Merlin",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "roots"
+          ],
+          "source_excerpt": "The table reports listed uses for Merlin.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Merlin",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
         "Mountain Merit"
       ],
       "canonical_name": "Mountain Merit",
@@ -1735,6 +2640,100 @@
           "source_excerpt": "AAS recommends the fruit for slicing and sandwiches.",
           "source_key": "aas-mountain-merit-2014",
           "source_locator": "AAS Winner Data > Mountain Merit F1",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Pablo",
+        "Pablo Baby"
+      ],
+      "canonical_name": "Pablo",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A red hybrid beet listed by Rutgers for roots and baby beets.",
+      "review_status": "approved",
+      "slug": "pablo",
+      "source_identifiers": [
+        {
+          "name_in_source": "Pablo",
+          "source_identifier": "page=4;table=recommended-varieties;row=Pablo",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Pablo.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Pablo",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 60,
+            "minimum": 60
+          },
+          "source_excerpt": "The table reports 60 days for Pablo.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Pablo",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Pablo.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Pablo",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "round",
+          "source_excerpt": "The table reports fruit shape for Pablo.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Pablo",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Pablo.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Pablo",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Pablo among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Pablo",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "baby_beets",
+            "roots"
+          ],
+          "source_excerpt": "The table reports listed uses for Pablo.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Pablo",
           "unit": null
         }
       ]
@@ -1985,6 +2984,99 @@
           "source_excerpt": "The table reports listed uses for Provider.",
           "source_key": "mid-atlantic-beans-2026-2027",
           "source_locator": "PDF page 4 (publication page 171) > Recommended Snap Bean Varieties > Provider",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Red Ace"
+      ],
+      "canonical_name": "Red Ace",
+      "crop_slug": "beets",
+      "crop_type": "root_beet",
+      "description": "A red hybrid globe beet listed by Rutgers for roots and bunching.",
+      "review_status": "approved",
+      "slug": "red-ace",
+      "source_identifiers": [
+        {
+          "name_in_source": "Red Ace",
+          "source_identifier": "page=4;table=recommended-varieties;row=Red-Ace",
+          "source_key": "mid-atlantic-beets-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "root_beet",
+          "source_excerpt": "The table reports type for Red Ace.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "days_to_maturity",
+          "normalized_value": {
+            "basis": "seed",
+            "maximum": 53,
+            "minimum": 53
+          },
+          "source_excerpt": "The table reports 53 days for Red Ace.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
+          "unit": "days"
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "red",
+          "source_excerpt": "The table reports fruit color for Red Ace.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "globe",
+          "source_excerpt": "The table reports fruit shape for Red Ace.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Red Ace.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Red Ace among its recommended varieties.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "bunching",
+            "roots"
+          ],
+          "source_excerpt": "The table reports listed uses for Red Ace.",
+          "source_key": "mid-atlantic-beets-2026-2027",
+          "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
           "unit": null
         }
       ]
@@ -2577,6 +3669,18 @@
       "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/beans-snap-lima.pdf"
     },
     {
+      "key": "mid-atlantic-beets-2026-2027",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current regional commercial recommendation; not written specifically for home gardeners",
+      "sha256": "6dc2bd82118ad84e08edd91fa2b63f4d88e111fa454a4308aad84dec2fafdb49",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/beets-garden.pdf",
+      "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Beets (Garden)",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/beets-garden.pdf"
+    },
+    {
       "key": "mid-atlantic-cucumbers-2026-2027",
       "license": null,
       "media_type": "application/pdf",
@@ -2637,12 +3741,202 @@
       "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/tomatoes.pdf"
     },
     {
-      "key": "reimer-san-marzano-2-tm660-20",
+      "key": "reimer-avalanche-beet-bt32-100",
       "license": null,
       "publisher": "Reimer Seeds",
-      "retrieved_at": "2026-08-08T00:00:00Z",
-      "title": "San Marzano 2 Tomato Seeds",
-      "url": "https://www.reimerseeds.com/san-marzano-2-tomato-seeds"
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Avalanche Beet Seeds",
+      "url": "https://www.reimerseeds.com/avalanche-beet-seeds"
+    },
+    {
+      "key": "reimer-bulls-blood-beet-bt13-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Bull's Blood Beet Seeds",
+      "url": "https://www.reimerseeds.com/bulls-blood-beet-seeds"
+    },
+    {
+      "key": "reimer-cherokee-purple-tomato-tm34-20",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Cherokee Purple Tomato Seeds",
+      "url": "https://www.reimerseeds.com/cherokee-purple-tomato-seeds"
+    },
+    {
+      "key": "reimer-chioggia-guardsmark-beet-bt31-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Chioggia Guardsmark Beet Seeds",
+      "url": "https://www.reimerseeds.com/chioggia-guardsmark-beet-seeds"
+    },
+    {
+      "key": "reimer-cylindra-beet-bt12-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Cylindra Beet Seeds",
+      "url": "https://www.reimerseeds.com/cylindra-beet-seeds"
+    },
+    {
+      "key": "reimer-early-wonder-beet-bt4-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Early Wonder Beet Seeds",
+      "url": "https://www.reimerseeds.com/early-wonder-beet-seeds"
+    },
+    {
+      "key": "reimer-eight-ball-squash-sq34-10",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Eight Ball Squash Seeds",
+      "url": "https://www.reimerseeds.com/eight-ball-squash-seeds"
+    },
+    {
+      "key": "reimer-eureka-cucumber-cu89-10",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Eureka Cucumber Seeds",
+      "url": "https://www.reimerseeds.com/eureka-cucumber-seeds"
+    },
+    {
+      "key": "reimer-green-top-bunching-beet-bt27-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Green Top Bunching Beet Seeds",
+      "url": "https://www.reimerseeds.com/green-top-bunching-beet-seeds"
+    },
+    {
+      "key": "reimer-green-zebra-tomato-tm57-20",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Green Zebra Tomato Seeds",
+      "url": "https://www.reimerseeds.com/green-zebra-tomato-seeds"
+    },
+    {
+      "key": "reimer-juliet-tomato-tm71-10",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Juliet Tomato Seeds",
+      "url": "https://www.reimerseeds.com/juliet-tomato-seeds"
+    },
+    {
+      "key": "reimer-marketmore-76-cucumber-cu13-20",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Marketmore 76 Cucumber Seeds",
+      "url": "https://www.reimerseeds.com/marketmore-76-cucumber-seeds"
+    },
+    {
+      "key": "reimer-maxibel-bean-bn84-50",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Maxibel Bean Seeds",
+      "url": "https://www.reimerseeds.com/maxibel-bean-seeds"
+    },
+    {
+      "key": "reimer-merlin-beet-bt28-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Merlin Beet Seeds",
+      "url": "https://www.reimerseeds.com/merlin-beet-seeds"
+    },
+    {
+      "key": "reimer-mountain-merit-tomato-tm830-10",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Mountain Merit Tomato Seeds",
+      "url": "https://www.reimerseeds.com/mountain-merit-tomato-seeds"
+    },
+    {
+      "key": "reimer-pablo-beet-bt29-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Pablo Baby Beet Seeds",
+      "url": "https://www.reimerseeds.com/pablo-beet-seeds"
+    },
+    {
+      "key": "reimer-provider-bean-bn9-50",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Provider Bean Seeds",
+      "url": "https://www.reimerseeds.com/provider-bean-seeds"
+    },
+    {
+      "key": "reimer-red-ace-beet-bt26-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Red Ace Beet Seeds",
+      "url": "https://www.reimerseeds.com/red-ace-beet-seeds"
+    },
+    {
+      "key": "reimer-roma-ii-bean-bn11-50",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Roma II Bean Seeds",
+      "url": "https://www.reimerseeds.com/roma-ii-bean-seeds"
+    },
+    {
+      "key": "reimer-san-marzano-ii-tomato-tm660-10",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "San Marzano II Tomato Seeds",
+      "url": "https://www.reimerseeds.com/san-marzano-ii-tomato-seeds"
+    },
+    {
+      "key": "reimer-sungold-tomato-tm127-10",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Sungold Tomato Seeds",
+      "url": "https://www.reimerseeds.com/sungold-tomato-seeds"
+    },
+    {
+      "key": "reimer-tasty-green-cucumber-cu3-10",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Tasty Green Cucumber Seeds",
+      "url": "https://www.reimerseeds.com/tasty-green-cucumber-seeds"
     },
     {
       "key": "umd-tomatoes-2025",

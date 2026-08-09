@@ -192,6 +192,9 @@ class CommercialSeedListing(Base):
     vendor: Mapped[str] = mapped_column(String(255))
     listing_name: Mapped[str] = mapped_column(String(255))
     source_identifier: Mapped[str] = mapped_column(String(255))
+    availability_status: Mapped[str] = mapped_column(String(30))
+    observed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    identity_match_method: Mapped[str] = mapped_column(String(30))
     review_status: Mapped[str] = mapped_column(String(20))
 
     source_document: Mapped[SourceDocument] = relationship()

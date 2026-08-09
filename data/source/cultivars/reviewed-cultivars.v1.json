@@ -26,14 +26,6 @@
       "url": "https://vegvariety.cce.cornell.edu/main/detail.php?filterBy=0&variety_id=3146",
       "retrieved_at": "2026-08-08T00:00:00Z",
       "license": null
-    },
-    {
-      "key": "reimer-san-marzano-2-tm660-20",
-      "title": "San Marzano 2 Tomato Seeds",
-      "publisher": "Reimer Seeds",
-      "url": "https://www.reimerseeds.com/san-marzano-2-tomato-seeds",
-      "retrieved_at": "2026-08-08T00:00:00Z",
-      "license": null
     }
   ],
   "crop_baselines": [
@@ -189,15 +181,5 @@
       ]
     }
   ],
-  "commercial_listings": [
-    {
-      "id": "reimer-tm660-20",
-      "cultivar_slug": "san-marzano-2",
-      "source_key": "reimer-san-marzano-2-tm660-20",
-      "vendor": "Reimer Seeds",
-      "listing_name": "San Marzano 2 Tomato Seeds",
-      "source_identifier": "TM660-20",
-      "review_status": "approved"
-    }
-  ]
+  "commercial_listings": []
 }

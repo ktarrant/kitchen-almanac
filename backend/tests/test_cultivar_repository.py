@@ -32,20 +32,25 @@ def test_cultivar_catalog_load_is_idempotent_and_keeps_listings_separate() -> No
         )
         assert active is not None
         assert active.id == catalog.id
-        assert session.scalar(select(func.count()).select_from(Cultivar)) == 21
-        assert session.scalar(select(func.count()).select_from(CultivarEvidenceClaim)) == 190
+        assert session.scalar(select(func.count()).select_from(Cultivar)) == 30
+        assert session.scalar(select(func.count()).select_from(CultivarEvidenceClaim)) == 253
+        assert session.scalar(select(func.count()).select_from(CommercialSeedListing)) == 22
 
-        listing = session.scalar(select(CommercialSeedListing))
+        listing = session.scalar(
+            select(CommercialSeedListing).where(
+                CommercialSeedListing.source_identifier == "TM660-10"
+            )
+        )
         assert listing is not None
-        assert listing.listing_name == "San Marzano 2 Tomato Seeds"
-        assert listing.source_identifier == "TM660-20"
+        assert listing.listing_name == "San Marzano II Tomato Seeds"
+        assert listing.source_identifier == "TM660-10"
         assert listing.cultivar_id == f"{catalog.id}:san-marzano-2"
+        assert listing.availability_status == "in_stock"
+        assert listing.identity_match_method == "reviewed_alias"
 
         regional_source = session.scalar(
             select(SourceDocument).where(
-                SourceDocument.source_path.like(
-                    "data/source/cultivars/mid-atlantic-2026-2027/%"
-                )
+                SourceDocument.source_path.like("data/source/cultivars/mid-atlantic-2026-2027/%")
             )
         )
         assert regional_source is not None

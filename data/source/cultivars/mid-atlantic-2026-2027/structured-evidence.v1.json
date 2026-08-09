@@ -612,7 +612,7 @@
   ],
   "corpus_id": "rutgers-mid-atlantic-commercial-vegetables-2026-2027",
   "extractor_version": "rutgers-structured-regex-v1.0.0",
-  "manifest_sha256": "ba0971a3be29a649b940f5eef8bede12459da2acef4219ede136e199a52a811a",
+  "manifest_sha256": "cae581d56d7fcee666d7ddf7ddeee02d6747b16c64237e5b72529fd0bda3f894",
   "publication_policy": "review_required_before_catalog_publication",
   "publication_scope": "commercial vegetable growers",
   "schema_version": "1.0.0",

@@ -17,7 +17,7 @@ def test_manifest_and_committed_report_define_review_only_corpus() -> None:
     report = _read_json(rutgers_inventory.DEFAULT_REPORT)
 
     assert rutgers_inventory.validate_manifest(manifest) == []
-    assert len(manifest["documents"]) == 7
+    assert len(manifest["documents"]) == 8
     assert {document["section_kind"] for document in manifest["documents"]} == {
         "commodity",
         "general",
@@ -32,29 +32,30 @@ def test_manifest_and_committed_report_define_review_only_corpus() -> None:
     assert report["corpus_id"] == manifest["corpus_id"]
     assert report["summary"] == {
         "category_document_counts": {
-            "chemical_controls": 7,
+            "chemical_controls": 8,
             "cultivar_recommendations": 4,
-            "disease_threats": 5,
+            "disease_threats": 6,
             "food_safety": 2,
-            "harvest_and_storage": 5,
-            "insect_threats": 5,
+            "harvest_and_storage": 6,
+            "insect_threats": 6,
             "irrigation": 5,
-            "nutrient_management": 6,
-            "planting_and_spacing": 5,
+            "nutrient_management": 7,
+            "planting_and_spacing": 6,
             "soil_ph": 5,
-            "weed_management": 5,
+            "weed_management": 6,
         },
-        "crop_count": 4,
-        "document_count": 7,
-        "page_count": 175,
+        "crop_count": 5,
+        "document_count": 8,
+        "page_count": 184,
         "status_counts": {
-            "not_detected": 23,
-            "quarantined": 7,
-            "restricted_review": 21,
-            "review_required": 26,
+            "not_detected": 27,
+            "quarantined": 8,
+            "restricted_review": 25,
+            "review_required": 28,
         },
     }
     assert {item["crop_id"] for item in report["crop_coverage"]} == {
+        "beets",
         "cucumbers",
         "string-beans",
         "summer-squash",

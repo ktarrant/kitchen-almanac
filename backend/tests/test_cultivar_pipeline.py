@@ -33,30 +33,30 @@ def test_staged_evidence_is_pinned_and_fully_reviewed() -> None:
     assert validate_staged_cultivars(staged) == []
     assert validate_review_decisions(staged, decisions) == []
     report = reconcile_candidates(base, staged, decisions)
-    assert len(report) == 24
+    assert len(report) == 33
     assert {item.decision for item in report} == {"create", "enrich"}
     assert all(not item.exact_matches for item in report)
 
 
-def test_expanded_snapshot_is_deterministic_and_covers_four_crops(tmp_path) -> None:
+def test_expanded_snapshot_is_deterministic_and_covers_five_crops(tmp_path) -> None:
     expanded = build_expanded_snapshot()
     committed = read_json(DEFAULT_SOURCE)
 
     assert expanded == committed
-    assert len(expanded["cultivars"]) == 21
+    assert len(expanded["cultivars"]) == 30
     crop_counts = {
         crop_slug: sum(item["crop_slug"] == crop_slug for item in expanded["cultivars"])
         for crop_slug in {item["crop_slug"] for item in expanded["cultivars"]}
     }
     assert crop_counts == {
+        "beets": 9,
         "cucumbers": 5,
         "string-beans": 4,
         "summer-squash": 4,
         "tomatoes": 8,
     }
     baseline_counts = {
-        baseline["crop_slug"]: len(baseline["traits"])
-        for baseline in expanded["crop_baselines"]
+        baseline["crop_slug"]: len(baseline["traits"]) for baseline in expanded["crop_baselines"]
     }
     assert baseline_counts == {
         "cucumbers": 7,

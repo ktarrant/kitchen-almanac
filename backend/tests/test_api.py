@@ -210,7 +210,7 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["dataset_id"] == "cultivar-catalog-v1-8971e569e94bd713"
+    assert payload["dataset_id"] == "cultivar-catalog-v1-105977e42590d82c"
     assert payload["crop_dataset_id"] == "kitchen-almanac-v1-f76ca812f62c8c39"
     assert [item["canonical_name"] for item in payload["cultivars"]] == [
         "San Marzano",
@@ -237,8 +237,10 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
     assert san_marzano_2["aliases"] == ["San Marzano 2", "San Marzano II"]
     listing = san_marzano_2["commercial_listings"][0]
     assert listing["record_kind"] == "commercial_seed_listing"
-    assert listing["listing_name"] == "San Marzano 2 Tomato Seeds"
-    assert listing["source_identifier"] == "TM660-20"
+    assert listing["listing_name"] == "San Marzano II Tomato Seeds"
+    assert listing["source_identifier"] == "TM660-10"
+    assert listing["availability_status"] == "in_stock"
+    assert listing["identity_match_method"] == "reviewed_alias"
     assert listing["id"] != san_marzano_2["id"]
 
 
@@ -256,8 +258,8 @@ def test_cultivar_alias_and_type_queries_are_supported(catalog_client: TestClien
 @pytest.mark.parametrize(
     ("query", "expected_slugs"),
     [
-        ("cucumbers", ["marketmore-76", "eureka", "tasty-green", "corinto", "picolino"]),
-        ("zucchini", ["dunja", "eight-ball", "gentry", "sunburst"]),
+        ("cucumbers", ["marketmore-76", "eureka", "tasty-green"]),
+        ("zucchini", ["eight-ball"]),
         ("Provider", ["provider"]),
     ],
 )
@@ -274,6 +276,53 @@ def test_expanded_catalog_is_searchable(
 
     assert response.status_code == 200
     assert [item["cultivar"]["slug"] for item in response.json()["cultivars"]] == expected_slugs
+
+
+def test_catalog_search_only_shows_cultivars_with_reviewed_seed_listings(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": "beets", "garden_profile_id": garden_profile["id"]},
+    )
+
+    assert response.status_code == 200
+    results = response.json()["cultivars"]
+    assert {item["cultivar"]["slug"] for item in results} == {
+        "avalanche",
+        "bulls-blood",
+        "chioggia-guardsmark",
+        "cylindra",
+        "early-wonder",
+        "green-top-bunching",
+        "merlin",
+        "pablo",
+        "red-ace",
+    }
+    assert all(item["cultivar"]["commercial_listings"] for item in results)
+
+    hidden_from_search = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": "Cobra", "garden_profile_id": garden_profile["id"]},
+    )
+    assert hidden_from_search.json()["cultivars"] == []
+    assert catalog_client.get("/api/cultivars?q=Cobra").json()["cultivars"][0]["slug"] == "cobra"
+
+
+def test_temporarily_unavailable_seed_listing_remains_searchable(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": "Cherokee Purple", "garden_profile_id": garden_profile["id"]},
+    )
+
+    assert response.status_code == 200
+    cultivar = response.json()["cultivars"][0]["cultivar"]
+    assert cultivar["slug"] == "cherokee-purple"
+    assert cultivar["commercial_listings"][0]["availability_status"] == "out_of_stock"
 
 
 def test_expanded_cultivar_evidence_retains_source_scope(catalog_client: TestClient) -> None:
@@ -324,10 +373,8 @@ def test_catalog_search_returns_crop_and_related_cultivars(
         "mountain-merit",
         "juliet",
         "sun-gold",
-        "brandywine-red",
         "cherokee-purple",
         "green-zebra",
-        "san-marzano",
         "san-marzano-2",
     }
     assert {item["match_method"] for item in results["cultivars"]} == {"related_crop"}
@@ -367,13 +414,8 @@ def test_catalog_search_ranks_specific_cultivars_without_auto_selecting(
 
     assert response.status_code == 200
     results = response.json()
-    assert [item["cultivar"]["slug"] for item in results["cultivars"]] == [
-        "san-marzano",
-        "san-marzano-2",
-    ]
-    assert results["cultivars"][0]["match_method"] == "exact"
-    assert results["cultivars"][0]["score"] == 1.0
-    assert results["cultivars"][1]["match_method"] == "prefix"
+    assert [item["cultivar"]["slug"] for item in results["cultivars"]] == ["san-marzano-2"]
+    assert results["cultivars"][0]["match_method"] == "prefix"
     assert results["crop_choices"][0]["crop"]["slug"] == "tomatoes"
     assert results["crop_choices"][0]["match_method"] == "crop_context"
 
@@ -391,10 +433,7 @@ def test_catalog_search_offers_fuzzy_cultivar_suggestions(
 
     assert response.status_code == 200
     results = response.json()
-    assert [item["cultivar"]["slug"] for item in results["cultivars"]] == [
-        "san-marzano",
-        "san-marzano-2",
-    ]
+    assert [item["cultivar"]["slug"] for item in results["cultivars"]] == ["san-marzano-2"]
     assert results["cultivars"][0]["match_method"] == "fuzzy"
     assert results["cultivars"][0]["score"] < 1
 
@@ -417,22 +456,18 @@ def test_catalog_search_matches_misspelled_crop_and_commercial_identifier(
         "mountain-merit",
         "juliet",
         "sun-gold",
-        "brandywine-red",
         "cherokee-purple",
         "green-zebra",
-        "san-marzano",
         "san-marzano-2",
     }
 
     listing_response = catalog_client.get(
         "/api/catalog/search",
-        params={"q": "TM660-20", "garden_profile_id": garden_profile["id"]},
+        params={"q": "TM660-10", "garden_profile_id": garden_profile["id"]},
     )
     assert listing_response.status_code == 200
     listing_results = listing_response.json()
-    assert [item["cultivar"]["slug"] for item in listing_results["cultivars"]] == [
-        "san-marzano-2"
-    ]
+    assert [item["cultivar"]["slug"] for item in listing_results["cultivars"]] == ["san-marzano-2"]
     assert listing_results["cultivars"][0]["match_method"] == "commercial_listing"
 
 
@@ -466,7 +501,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     assessment = first.json()
     assert second.json() == assessment
     assert assessment["algorithm_version"] == "suitability-v1.1.0"
-    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-8971e569e94bd713"
+    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-105977e42590d82c"
     assert assessment["input_fingerprint"].startswith("sha256:")
     assert assessment["status"] == "suitable"
     assert assessment["score"] == 80
@@ -1176,7 +1211,7 @@ def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
     wishlist = created_response.json()
     assert wishlist["name"] == "Summer ideas"
     assert wishlist["entries"] == []
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-8971e569e94bd713"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-105977e42590d82c"
 
     selections = [
         {
@@ -1255,7 +1290,7 @@ def test_quick_import_preserves_cultivar_and_crop_type_intent(
 
     assert response.status_code == 201
     wishlist = response.json()
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-8971e569e94bd713"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-105977e42590d82c"
     san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
 
     assert san_marzano["original_text"] == "San Marzano tomatoes"

@@ -230,6 +230,9 @@ def validate_cultivar_catalog(data: object) -> list[str]:
             "vendor",
             "listing_name",
             "source_identifier",
+            "availability_status",
+            "observed_at",
+            "identity_match_method",
             "review_status",
         }
         if listing_required - listing.keys():
@@ -240,6 +243,19 @@ def validate_cultivar_catalog(data: object) -> list[str]:
             errors.append(f"Listing {listing.get('id')!r} references an unknown source.")
         if listing.get("review_status") != "approved":
             errors.append(f"Listing {listing.get('id')!r} is not approved.")
+        if listing.get("availability_status") not in {
+            "in_stock",
+            "out_of_stock",
+            "unknown",
+            "retired",
+        }:
+            errors.append(f"Listing {listing.get('id')!r} has invalid availability.")
+        if listing.get("identity_match_method") not in {"exact_name", "reviewed_alias"}:
+            errors.append(f"Listing {listing.get('id')!r} has invalid identity matching.")
+        try:
+            datetime.fromisoformat(str(listing.get("observed_at", "")).replace("Z", "+00:00"))
+        except ValueError:
+            errors.append(f"Listing {listing.get('id')!r} has an invalid observation time.")
     return errors
 
 

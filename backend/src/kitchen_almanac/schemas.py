@@ -66,6 +66,9 @@ class CommercialSeedListingResponse(BaseModel):
     vendor: str
     listing_name: str
     source_identifier: str
+    availability_status: Literal["in_stock", "out_of_stock", "unknown", "retired"]
+    observed_at: datetime
+    identity_match_method: Literal["exact_name", "reviewed_alias"]
     review_status: str
     source: CatalogEvidenceSourceResponse
 
@@ -472,6 +475,7 @@ class WishlistEntryCreateRequest(BaseModel):
         ):
             raise ValueError("A custom crop cannot reference a catalog selection.")
         return self
+
 
 class WishlistEntryUpdateRequest(BaseModel):
     crop_slug: str | None = Field(default=None, max_length=100)

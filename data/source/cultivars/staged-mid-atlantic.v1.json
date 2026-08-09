@@ -15,6 +15,18 @@
       "scope": "Current regional commercial recommendation; not written specifically for home gardeners"
     },
     {
+      "key": "mid-atlantic-beets-2026-2027",
+      "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Beets (Garden)",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/beets-garden.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/beets-garden.pdf",
+      "sha256": "6dc2bd82118ad84e08edd91fa2b63f4d88e111fa454a4308aad84dec2fafdb49",
+      "media_type": "application/pdf",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current regional commercial recommendation; not written specifically for home gardeners"
+    },
+    {
       "key": "mid-atlantic-cucumbers-2026-2027",
       "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Cucumbers",
       "publisher": "Rutgers NJAES Cooperative Extension",
@@ -763,6 +775,177 @@
           "source_excerpt": "The published observation covers the 2025 trial year."
         }
       ]
+    },
+    {
+      "id": "mid-atlantic-2026-avalanche",
+      "crop_slug": "beets",
+      "proposed_slug": "avalanche",
+      "name_in_source": "Avalanche",
+      "aliases": ["Avalanche"],
+      "description": "A white, round beet listed by Rutgers for roots and bunching.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Avalanche",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Avalanche",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 50,
+        "fruit_color": "white",
+        "fruit_shape": "round",
+        "hybrid": false,
+        "uses": ["bunching", "roots"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-bulls-blood",
+      "crop_slug": "beets",
+      "proposed_slug": "bulls-blood",
+      "name_in_source": "Bulls Blood",
+      "aliases": ["Bull's Blood", "Bulls Blood"],
+      "description": "A red-zoned globe beet listed by Rutgers for roots and red tops.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Bulls-Blood",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 58,
+        "fruit_color": "red_with_white_zones",
+        "fruit_shape": "globe",
+        "hybrid": false,
+        "uses": ["red_tops", "roots"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-chioggia-guardsmark",
+      "crop_slug": "beets",
+      "proposed_slug": "chioggia-guardsmark",
+      "name_in_source": "Chioggia Guardsmark",
+      "aliases": ["Chioggia Guardsmark"],
+      "description": "A purple-and-white-zoned globe beet listed by Rutgers for roots.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Chioggia-Guardsmark",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Chioggia Guardsmark",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 60,
+        "fruit_color": "purple_with_white_zones",
+        "fruit_shape": "globe",
+        "hybrid": false,
+        "uses": ["roots"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-cylindra",
+      "crop_slug": "beets",
+      "proposed_slug": "cylindra",
+      "name_in_source": "Cylindra",
+      "aliases": ["Cylindra"],
+      "description": "A cylindrical red beet listed by Rutgers for roots and bunching.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Cylindra",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 54,
+        "fruit_color": "red",
+        "fruit_shape": "cylindrical",
+        "hybrid": false,
+        "uses": ["bunching", "roots"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-early-wonder",
+      "crop_slug": "beets",
+      "proposed_slug": "early-wonder",
+      "name_in_source": "Early Wonder",
+      "aliases": ["Early Wonder"],
+      "description": "A red globe beet listed by Rutgers for greens and bunching.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Early-Wonder",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Early Wonder",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 52,
+        "fruit_color": "red",
+        "fruit_shape": "globe",
+        "hybrid": false,
+        "uses": ["bunching", "greens"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-green-top-bunching",
+      "crop_slug": "beets",
+      "proposed_slug": "green-top-bunching",
+      "name_in_source": "Green Top Bunching",
+      "aliases": ["Green Top Bunching"],
+      "description": "A round red beet listed by Rutgers for greens and bunching.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Green-Top-Bunching",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Green Top Bunching",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 58,
+        "fruit_color": "red",
+        "fruit_shape": "round",
+        "hybrid": false,
+        "uses": ["bunching", "greens"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-merlin",
+      "crop_slug": "beets",
+      "proposed_slug": "merlin",
+      "name_in_source": "Merlin",
+      "aliases": ["Merlin"],
+      "description": "A red hybrid globe beet listed by Rutgers for roots.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Merlin",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Merlin",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 55,
+        "fruit_color": "red",
+        "fruit_shape": "globe",
+        "hybrid": true,
+        "uses": ["roots"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-pablo",
+      "crop_slug": "beets",
+      "proposed_slug": "pablo",
+      "name_in_source": "Pablo",
+      "aliases": ["Pablo", "Pablo Baby"],
+      "description": "A red hybrid beet listed by Rutgers for roots and baby beets.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Pablo",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Pablo",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 60,
+        "fruit_color": "red",
+        "fruit_shape": "round",
+        "hybrid": true,
+        "uses": ["baby_beets", "roots"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-red-ace",
+      "crop_slug": "beets",
+      "proposed_slug": "red-ace",
+      "name_in_source": "Red Ace",
+      "aliases": ["Red Ace"],
+      "description": "A red hybrid globe beet listed by Rutgers for roots and bunching.",
+      "source_key": "mid-atlantic-beets-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;row=Red-Ace",
+      "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
+      "attributes": {
+        "crop_type": "root_beet",
+        "days_to_maturity": 53,
+        "fruit_color": "red",
+        "fruit_shape": "globe",
+        "hybrid": true,
+        "uses": ["bunching", "roots"]
+      }
     }
   ]
 }

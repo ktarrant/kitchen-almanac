@@ -62,6 +62,18 @@
       ]
     },
     {
+      "key": "mid-atlantic-beets-2026-2027",
+      "title": "Beets (Garden)",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/beets-garden.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/beets-garden.pdf",
+      "sha256": "6dc2bd82118ad84e08edd91fa2b63f4d88e111fa454a4308aad84dec2fafdb49",
+      "media_type": "application/pdf",
+      "section_kind": "commodity",
+      "crop_ids": [
+        "beets"
+      ]
+    },
+    {
       "key": "mid-atlantic-cucumbers-2026-2027",
       "title": "Cucumbers",
       "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cucumbers.pdf",

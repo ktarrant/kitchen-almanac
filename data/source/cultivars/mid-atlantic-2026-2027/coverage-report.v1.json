@@ -2,6 +2,78 @@
   "corpus_id": "rutgers-mid-atlantic-commercial-vegetables-2026-2027",
   "crop_coverage": [
     {
+      "commodity_source": "mid-atlantic-beets-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "beets",
+      "detected_fields": [
+        {
+          "field": "nutrient_management",
+          "pages": [
+            4
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            5
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            5
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            6
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            7
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
       "commodity_source": "mid-atlantic-cucumbers-2026-2027",
       "corpus_wide_context_sources": [
         "mid-atlantic-general-production-2026-2027",
@@ -1215,6 +1287,162 @@
       "coverage": [
         {
           "field": "cultivar_recommendations",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {
+            "nutrient management": [
+              4
+            ],
+            "recommended nutrients based on soil tests": [
+              4
+            ]
+          },
+          "pages": [
+            4
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {
+            "space rows": [
+              4
+            ]
+          },
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {
+            "harvest and post-harvest considerations": [
+              5
+            ]
+          },
+          "pages": [
+            5
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {
+            "weed control": [
+              5
+            ]
+          },
+          "pages": [
+            5
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {
+            "insect control": [
+              6
+            ]
+          },
+          "pages": [
+            6
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {
+            "disease control": [
+              7
+            ]
+          },
+          "pages": [
+            7
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fungicide": [
+              7,
+              8
+            ],
+            "herbicide": [
+              5,
+              6
+            ],
+            "insecticide": [
+              6
+            ],
+            "pesticide": [
+              1,
+              3,
+              5,
+              6,
+              7
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [
+        "beets"
+      ],
+      "extracted_text_sha256": "9f00bef8f35dfd3d10d11aecb0966a83a86e5d462185826d99e00b9cc087346e",
+      "key": "mid-atlantic-beets-2026-2027",
+      "page_count": 9,
+      "section_kind": "commodity",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/beets-garden.pdf",
+      "source_sha256": "6dc2bd82118ad84e08edd91fa2b63f4d88e111fa454a4308aad84dec2fafdb49",
+      "title": "Beets (Garden)"
+    },
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
           "matched_markers": {
             "recommended varieties": [
               4
@@ -1863,26 +2091,26 @@
   "schema_version": "1.0.0",
   "summary": {
     "category_document_counts": {
-      "chemical_controls": 7,
+      "chemical_controls": 8,
       "cultivar_recommendations": 4,
-      "disease_threats": 5,
+      "disease_threats": 6,
       "food_safety": 2,
-      "harvest_and_storage": 5,
-      "insect_threats": 5,
+      "harvest_and_storage": 6,
+      "insect_threats": 6,
       "irrigation": 5,
-      "nutrient_management": 6,
-      "planting_and_spacing": 5,
+      "nutrient_management": 7,
+      "planting_and_spacing": 6,
       "soil_ph": 5,
-      "weed_management": 5
+      "weed_management": 6
     },
-    "crop_count": 4,
-    "document_count": 7,
-    "page_count": 175,
+    "crop_count": 5,
+    "document_count": 8,
+    "page_count": 184,
     "status_counts": {
-      "not_detected": 23,
-      "quarantined": 7,
-      "restricted_review": 21,
-      "review_required": 26
+      "not_detected": 27,
+      "quarantined": 8,
+      "restricted_review": 25,
+      "review_required": 28
     }
   }
 }

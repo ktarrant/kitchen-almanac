@@ -107,6 +107,12 @@ type CatalogCultivar = CultivarMatch & {
     vendor: string;
     listing_name: string;
     source_identifier: string;
+    availability_status: "in_stock" | "out_of_stock" | "unknown" | "retired";
+    observed_at: string;
+    identity_match_method: "exact_name" | "reviewed_alias";
+    source: {
+      source_url: string | null;
+    };
   }[];
 };
 
@@ -1536,6 +1542,7 @@ export default function App() {
                   <div className="cultivar-result-list">
                     {group.results.map((result) => {
                       const traits = featuredTraits(result.cultivar);
+                      const seedListing = result.cultivar.commercial_listings[0];
                       const evidence =
                         result.cultivar.traits.find((trait) => trait.source.scope)?.source ??
                         traits[0]?.source;
@@ -1564,6 +1571,28 @@ export default function App() {
                             {result.research_quality.source_count}{" "}
                             {result.research_quality.source_count === 1 ? "source" : "sources"}
                           </p>
+                          {seedListing && (
+                            <p className="evidence-note">
+                              Seed listing: {seedListing.vendor} ·{" "}
+                              {seedListing.availability_status === "in_stock"
+                                ? "in stock"
+                                : seedListing.availability_status === "out_of_stock"
+                                  ? "currently out of stock"
+                                  : "availability not confirmed"}
+                              {seedListing.source.source_url && (
+                                <>
+                                  {" · "}
+                                  <a
+                                    href={seedListing.source.source_url}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                  >
+                                    View listing
+                                  </a>
+                                </>
+                              )}
+                            </p>
+                          )}
                           {traits.length > 0 && (
                             <dl className="trait-list">
                               {traits.map((trait) => (

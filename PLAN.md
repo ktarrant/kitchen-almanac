@@ -175,11 +175,11 @@ Acceptance criteria:
 
 Status: **In progress**
 
-Current progress: the reviewed catalog now contains 21 canonical cultivars
-across tomatoes, cucumbers, string beans, and summer squash, with 160 direct
-field-level evidence claims from ten retained sources. Four current 2026–2027
-Mid-Atlantic Extension commodity PDFs retain explicit commercial-production
-scope. A depth cohort adds cultivar-specific AAS evidence for Mountain Merit
+Current progress: the reviewed catalog now contains 30 canonical cultivars
+across tomatoes, cucumbers, string beans, summer squash, and beets, with 223
+direct field-level evidence claims. Five current 2026–2027 Mid-Atlantic
+Extension commodity PDFs retain explicit commercial-production scope. A depth
+cohort adds cultivar-specific AAS evidence for Mountain Merit
 and a 2025 Virginia home-garden trial for Provider, Marketmore 76, Dunja, and
 Sun Gold. Trial observations, regional awards, and catalog claims remain
 separate facts with their own context and confidence.
@@ -194,11 +194,16 @@ seed listings separate. Quick Import extracts exact, fuzzy, crop-qualified,
 and crop-type cultivar intent while preserving the original wording; unknown
 cultivars remain linked to their recognized crop as custom intent.
 
-The next catalog cohort should split broad lettuce/greens and pepper/chile crop
-groups into concrete crop identities before attaching cultivars. Additional
-home-garden and trial evidence should supplement the current regional
-commercial recommendations before suitability scoring treats them as directly
-equivalent.
+The first Rutgers-to-retail intersection is published for beets. Commercial
+listings are a separate, observation-dated source: 22 cultivars have an
+identity-reviewed Reimer listing and are eligible for user-facing search,
+including temporarily out-of-stock listings. Retired listings and cultivars
+without a reviewed listing remain hidden from search. The next catalog cohorts
+should repeat this intersection for additional Rutgers commodity tables and
+split broad lettuce/greens and pepper/chile crop groups into concrete crop
+identities before attaching cultivars. Additional home-garden and trial
+evidence should supplement regional commercial recommendations before
+suitability scoring treats them as directly equivalent.
 
 - Add canonical cultivars beneath each crop and keep cultivar identity separate
   from commercial seed listings.
@@ -334,7 +339,8 @@ instruction enters a guide.
 The first evidence-expansion pass establishes the 2026/2027 Rutgers Mid-Atlantic
 manual as the primary corpus. A checksum-pinned manifest now covers its general
 production, soil and nutrient, irrigation, beans, cucumbers, summer squash, and
-tomatoes sections. A deterministic page-level inventory maps the corpus to grow-
+tomatoes sections, plus the beets commodity table used by the catalog expansion
+workflow. A deterministic page-level inventory maps the corpus to grow-
 guide evidence fields while quarantining chemical controls, retaining commercial
 rates as context only, and prohibiting database publication without review.
 The inventory is the review queue foundation, not itself gardening advice. The

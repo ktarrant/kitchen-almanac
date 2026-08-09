@@ -161,9 +161,7 @@ def search_catalog(
     }
     if exact_crop_ids:
         crop_results = {
-            crop_id: result
-            for crop_id, result in crop_results.items()
-            if crop_id in exact_crop_ids
+            crop_id: result for crop_id, result in crop_results.items() if crop_id in exact_crop_ids
         }
     elif crop_results:
         best_crop_score = max(result.score for result in crop_results.values())
@@ -198,6 +196,14 @@ def search_catalog(
             cultivar.slug: cultivar for cultivar in list_cultivars(session).cultivars
         }
         for cultivar in cultivars:
+            eligible_listings = [
+                listing
+                for listing in cultivar.commercial_listings
+                if listing.review_status == "approved"
+                and listing.availability_status in {"in_stock", "out_of_stock", "unknown"}
+            ]
+            if not eligible_listings:
+                continue
             if context is not None and cultivar.crop_id != context.crop.id:
                 continue
             aliases = {
@@ -212,8 +218,7 @@ def search_catalog(
                 type_method = "crop_type"
             listing_matches = [
                 (*_score(normalized_query, listing.listing_name), listing.listing_name, listing)
-                for listing in cultivar.commercial_listings
-                if listing.review_status == "approved"
+                for listing in eligible_listings
             ]
             listing_identifier_matches = [
                 (
@@ -221,8 +226,7 @@ def search_catalog(
                     listing.source_identifier,
                     listing,
                 )
-                for listing in cultivar.commercial_listings
-                if listing.review_status == "approved"
+                for listing in eligible_listings
             ]
             listing_score, listing_method, listing_alias = 0.0, "none", ""
             if listing_matches or listing_identifier_matches:
@@ -258,6 +262,14 @@ def search_catalog(
                     research_quality=assess_research_quality(cultivar_response),
                 )
             )
+
+    exact_listing_results = [
+        result
+        for result in cultivar_results
+        if result.match_method == "commercial_listing" and result.score == 1.0
+    ]
+    if exact_listing_results:
+        cultivar_results = exact_listing_results
 
     generic_crop_search = context is not None and not context.intent
     suitability_group_rank = {

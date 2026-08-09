@@ -114,8 +114,7 @@ def validate_staged_cultivars(
         missing_source = required_source - source.keys()
         if missing_source:
             errors.append(
-                f"Staged source {source.get('key')!r} is missing "
-                f"{sorted(missing_source)!r}."
+                f"Staged source {source.get('key')!r} is missing {sorted(missing_source)!r}."
             )
             continue
         if len(source["sha256"]) != 64:
@@ -220,13 +219,10 @@ def validate_staged_cultivars(
                 missing_trait = required_trait - trait.keys()
                 if missing_trait:
                     errors.append(
-                        f"Candidate {candidate['id']!r} trait is missing "
-                        f"{sorted(missing_trait)!r}."
+                        f"Candidate {candidate['id']!r} trait is missing {sorted(missing_trait)!r}."
                     )
                 if trait.get("confidence") not in {"low", "medium", "high"}:
-                    errors.append(
-                        f"Candidate {candidate['id']!r} trait has invalid confidence."
-                    )
+                    errors.append(f"Candidate {candidate['id']!r} trait has invalid confidence.")
     return errors
 
 
@@ -299,9 +295,7 @@ def reconcile_candidates(
             normalize_term(candidate["name_in_source"]),
             *(normalize_term(alias) for alias in candidate["aliases"]),
         }
-        exact = tuple(
-            sorted(slug for slug, aliases in aliases_by_slug.items() if names & aliases)
-        )
+        exact = tuple(sorted(slug for slug, aliases in aliases_by_slug.items() if names & aliases))
         scored = [
             (
                 max(
@@ -570,12 +564,17 @@ def build_expanded_snapshot(
     base = load_and_apply_reviewed_crop_baselines(
         read_pipeline_json(base_path, "base cultivar catalog")
     )
-    return publish_staged_catalog(
+    expanded = publish_staged_catalog(
         base,
         read_pipeline_json(staged_path, "staged cultivar data"),
         read_pipeline_json(decisions_path, "cultivar review decisions"),
         verify_snapshots=verify_snapshots,
     )
+    from kitchen_almanac.commercial_listing_pipeline import (
+        load_and_apply_reviewed_commercial_listings,
+    )
+
+    return load_and_apply_reviewed_commercial_listings(expanded)
 
 
 def write_expanded_snapshot(data: dict[str, Any], output_path: Path = DEFAULT_OUTPUT) -> None:

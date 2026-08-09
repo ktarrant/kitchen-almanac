@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "staging_sha256": "a8ac88329a8b964fdade14fd34ca01f85552c253cf030105d319a37f13b4532a",
+  "staging_sha256": "04cb9fc9028256f16bdbe74511901a14ead11b0bbc0fdbf51e8c53a5e2bac7f6",
   "reviewed_at": "2026-08-09T00:00:00Z",
   "reviewer": "Kitchen Almanac data review",
   "decisions": [
@@ -123,6 +123,51 @@
       "candidate_id": "vce-2025-sun-gold-evidence",
       "action": "enrich",
       "canonical_slug": "sun-gold"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-avalanche",
+      "action": "create",
+      "canonical_slug": "avalanche"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-bulls-blood",
+      "action": "create",
+      "canonical_slug": "bulls-blood"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-chioggia-guardsmark",
+      "action": "create",
+      "canonical_slug": "chioggia-guardsmark"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-cylindra",
+      "action": "create",
+      "canonical_slug": "cylindra"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-early-wonder",
+      "action": "create",
+      "canonical_slug": "early-wonder"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-green-top-bunching",
+      "action": "create",
+      "canonical_slug": "green-top-bunching"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-merlin",
+      "action": "create",
+      "canonical_slug": "merlin"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-pablo",
+      "action": "create",
+      "canonical_slug": "pablo"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-red-ace",
+      "action": "create",
+      "canonical_slug": "red-ace"
     }
   ]
 }

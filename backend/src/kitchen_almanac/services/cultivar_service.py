@@ -183,6 +183,9 @@ def list_cultivars(
                         vendor=listing.vendor,
                         listing_name=listing.listing_name,
                         source_identifier=listing.source_identifier,
+                        availability_status=listing.availability_status,
+                        observed_at=listing.observed_at,
+                        identity_match_method=listing.identity_match_method,
                         review_status=listing.review_status,
                         source=_source_response(
                             listing.source_document,

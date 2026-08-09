@@ -171,6 +171,9 @@ def load_cultivar_catalog(session: Session, catalog: CultivarCatalog) -> bool:
                 vendor=listing["vendor"],
                 listing_name=listing["listing_name"],
                 source_identifier=listing["source_identifier"],
+                availability_status=listing["availability_status"],
+                observed_at=datetime.fromisoformat(listing["observed_at"].replace("Z", "+00:00")),
+                identity_match_method=listing["identity_match_method"],
                 review_status=listing["review_status"],
             )
         )
