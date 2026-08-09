@@ -843,6 +843,14 @@ export default function App() {
         </>
       ) : (
         <>
+          <section className="hero compact-hero">
+            <h1>What do you want to grow?</h1>
+            <p>
+              Search one plant at a time. Choose a documented cultivar, keep the variety
+              undecided, or save your own wording for later research.
+            </p>
+          </section>
+
           <section className="profile-summary" aria-label="Garden context">
             <div>
               <p className="section-kicker">Garden saved</p>
@@ -976,14 +984,6 @@ export default function App() {
             <button className="text-button" type="button" onClick={switchGardenProfile}>
               Switch garden
             </button>
-          </section>
-
-          <section className="hero compact-hero">
-            <h1>What do you want to grow?</h1>
-            <p>
-              Search one plant at a time. Choose a documented cultivar, keep the variety
-              undecided, or save your own wording for later research.
-            </p>
           </section>
 
           <form className="catalog-search" onSubmit={submitCatalogSearch}>
