@@ -66,10 +66,18 @@ def test_expanded_snapshot_is_deterministic_and_covers_twelve_crops(tmp_path) ->
         baseline["crop_slug"]: len(baseline["traits"]) for baseline in expanded["crop_baselines"]
     }
     assert baseline_counts == {
-        "cucumbers": 7,
-        "snap-beans": 6,
-        "summer-squash": 7,
-        "tomatoes": 10,
+        "beets": 5,
+        "broccoli": 4,
+        "brussels-sprouts": 4,
+        "cabbage": 4,
+        "cauliflower": 4,
+        "collards": 5,
+        "cucumbers": 10,
+        "kale": 5,
+        "kohlrabi": 4,
+        "snap-beans": 7,
+        "summer-squash": 10,
+        "tomatoes": 12,
     }
 
     provider = next(item for item in expanded["cultivars"] if item["slug"] == "provider")

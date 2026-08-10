@@ -459,6 +459,330 @@
   ],
   "crop_baselines": [
     {
+      "crop_slug": "beets",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 3,
+            "minimum": 3
+          },
+          "source_excerpt": "The home-garden table gives 3 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 15,
+            "minimum": 15
+          },
+          "source_excerpt": "The home-garden table gives 15 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "starting_method",
+          "normalized_value": "direct_sow",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "sun_hours",
+          "normalized_value": {
+            "minimum": 5,
+            "preferred_condition": "full_sun"
+          },
+          "source_excerpt": "FS129 supports at least 5 direct-sun hours through its root-vegetable category.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+          "unit": "hours_per_day"
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 14,
+            "minimum": 14
+          },
+          "source_excerpt": "The home-garden table estimates 14 lb per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+          "unit": "pounds_per_10ft_row"
+        }
+      ]
+    },
+    {
+      "crop_slug": "broccoli",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 15,
+            "minimum": 15
+          },
+          "source_excerpt": "The home-garden table gives 15 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 30,
+            "minimum": 30
+          },
+          "source_excerpt": "The home-garden table gives 30 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "starting_method",
+          "normalized_value": "transplant",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 8,
+            "minimum": 8
+          },
+          "source_excerpt": "The home-garden table estimates 8 heads per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+          "unit": "heads_per_10ft_row"
+        }
+      ]
+    },
+    {
+      "crop_slug": "brussels-sprouts",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 18,
+            "minimum": 18
+          },
+          "source_excerpt": "The home-garden table gives 18 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 30,
+            "minimum": 30
+          },
+          "source_excerpt": "The home-garden table gives 30 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "starting_method",
+          "normalized_value": "transplant",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 5,
+            "minimum": 5
+          },
+          "source_excerpt": "The home-garden table estimates 5 lb per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+          "unit": "pounds_per_10ft_row"
+        }
+      ]
+    },
+    {
+      "crop_slug": "cabbage",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 18,
+            "minimum": 18
+          },
+          "source_excerpt": "The home-garden table gives 18 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 24,
+            "minimum": 24
+          },
+          "source_excerpt": "The home-garden table gives 24 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "starting_method",
+          "normalized_value": "transplant",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 7,
+            "minimum": 7
+          },
+          "source_excerpt": "The home-garden table estimates 7 heads per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+          "unit": "heads_per_10ft_row"
+        }
+      ]
+    },
+    {
+      "crop_slug": "cauliflower",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 24,
+            "minimum": 24
+          },
+          "source_excerpt": "The home-garden table gives 24 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 30,
+            "minimum": 30
+          },
+          "source_excerpt": "The home-garden table gives 30 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "starting_method",
+          "normalized_value": "transplant",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 5,
+            "minimum": 5
+          },
+          "source_excerpt": "The home-garden table estimates 5 heads per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+          "unit": "heads_per_10ft_row"
+        }
+      ]
+    },
+    {
+      "crop_slug": "collards",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 18,
+            "minimum": 18
+          },
+          "source_excerpt": "The home-garden table gives 18 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 24,
+            "minimum": 24
+          },
+          "source_excerpt": "The home-garden table gives 24 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "starting_method",
+          "normalized_value": "direct_sow",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "sun_hours",
+          "normalized_value": {
+            "minimum": 4,
+            "preferred_condition": "full_sun"
+          },
+          "source_excerpt": "FS129 supports at least 4 direct-sun hours through its leafy-vegetable category.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+          "unit": "hours_per_day"
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 10,
+            "minimum": 10
+          },
+          "source_excerpt": "The home-garden table estimates 10 lb per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+          "unit": "pounds_per_10ft_row"
+        }
+      ]
+    },
+    {
       "crop_slug": "cucumbers",
       "traits": [
         {
@@ -495,15 +819,27 @@
           "unit": null
         },
         {
-          "confidence": "medium",
+          "confidence": "high",
           "field_name": "plant_spacing",
           "normalized_value": {
-            "maximum": 12,
-            "minimum": 6
+            "maximum": 36,
+            "minimum": 36
           },
-          "source_excerpt": "In-row spacing spans 6–12 inches depending on cucumber type.",
-          "source_key": "mid-atlantic-cucumbers-2026-2027",
-          "source_locator": "PDF page 6 (manual p. 225), Spacing",
+          "source_excerpt": "The home-garden table gives 36 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 30,
+            "minimum": 30
+          },
+          "source_excerpt": "The home-garden table gives 30 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
           "unit": "inches"
         },
         {
@@ -516,16 +852,28 @@
           "unit": null
         },
         {
-          "confidence": "medium",
+          "confidence": "high",
           "field_name": "starting_method",
           "normalized_value": [
             "direct_sow",
             "transplant"
           ],
-          "source_excerpt": "The section covers both direct seeding and container-grown transplants.",
-          "source_key": "mid-atlantic-cucumbers-2026-2027",
-          "source_locator": "PDF page 5 (manual p. 224), Planting Dates",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
           "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "sun_hours",
+          "normalized_value": {
+            "minimum": 8,
+            "preferred_condition": "full_sun"
+          },
+          "source_excerpt": "FS129 supports at least 8 direct-sun hours through its explicit cucumber example.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+          "unit": "hours_per_day"
         },
         {
           "confidence": "medium",
@@ -538,6 +886,133 @@
           "source_key": "mid-atlantic-cucumbers-2026-2027",
           "source_locator": "PDF page 6 (manual p. 225), Irrigation",
           "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 8,
+            "minimum": 8
+          },
+          "source_excerpt": "The home-garden table estimates 8 lb per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
+          "unit": "pounds_per_10ft_row"
+        }
+      ]
+    },
+    {
+      "crop_slug": "kale",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 15,
+            "minimum": 15
+          },
+          "source_excerpt": "The home-garden table gives 15 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 18,
+            "minimum": 18
+          },
+          "source_excerpt": "The home-garden table gives 18 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "starting_method",
+          "normalized_value": "direct_sow",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+          "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "sun_hours",
+          "normalized_value": {
+            "minimum": 4,
+            "preferred_condition": "full_sun"
+          },
+          "source_excerpt": "FS129 supports at least 4 direct-sun hours through its leafy-vegetable category.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+          "unit": "hours_per_day"
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 24,
+            "minimum": 24
+          },
+          "source_excerpt": "The home-garden table estimates 24 lb per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+          "unit": "pounds_per_10ft_row"
+        }
+      ]
+    },
+    {
+      "crop_slug": "kohlrabi",
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "plant_spacing",
+          "normalized_value": {
+            "maximum": 4,
+            "minimum": 4
+          },
+          "source_excerpt": "The home-garden table gives 4 inches within the row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 15,
+            "minimum": 15
+          },
+          "source_excerpt": "The home-garden table gives 15 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "starting_method",
+          "normalized_value": [
+            "direct_sow",
+            "transplant"
+          ],
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 20,
+            "minimum": 20
+          },
+          "source_excerpt": "The home-garden table estimates 20 bulb per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+          "unit": "bulbs_per_10ft_row"
         }
       ]
     },
@@ -569,6 +1044,48 @@
         },
         {
           "confidence": "high",
+          "field_name": "home_garden_profiles",
+          "normalized_value": [
+            {
+              "growth_habit": "bush",
+              "plant_spacing": {
+                "maximum": 4,
+                "minimum": 4
+              },
+              "row_spacing": {
+                "maximum": 24,
+                "minimum": 24
+              },
+              "yield_per_10ft_row": {
+                "maximum": 6,
+                "minimum": 6
+              },
+              "yield_unit": "pounds_per_10ft_row"
+            },
+            {
+              "growth_habit": "pole",
+              "plant_spacing": {
+                "maximum": 36,
+                "minimum": 36
+              },
+              "row_spacing": {
+                "maximum": 24,
+                "minimum": 24
+              },
+              "yield_per_10ft_row": {
+                "maximum": 7,
+                "minimum": 7
+              },
+              "yield_unit": "pounds_per_10ft_row"
+            }
+          ],
+          "source_excerpt": "The home-garden table distinguishes bush and pole spacing and row-yield profiles.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Snap beans, bush and pole",
+          "unit": null
+        },
+        {
+          "confidence": "high",
           "field_name": "lime_below_ph",
           "normalized_value": 6.0,
           "source_excerpt": "The crop table marks pH 6.0 as the threshold below which to lime.",
@@ -586,12 +1103,12 @@
           "unit": null
         },
         {
-          "confidence": "medium",
+          "confidence": "high",
           "field_name": "starting_method",
           "normalized_value": "direct_sow",
-          "source_excerpt": "The snap-bean directions specify sowing seed directly in prepared rows.",
-          "source_key": "mid-atlantic-beans-2026-2027",
-          "source_locator": "PDF page 6 (manual p. 173), Spacing > Snap Beans",
+          "source_excerpt": "Both snap-bean growth habits are listed as seed-started.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Snap beans, bush and pole",
           "unit": null
         },
         {
@@ -646,15 +1163,27 @@
           "unit": null
         },
         {
-          "confidence": "medium",
+          "confidence": "high",
           "field_name": "plant_spacing",
           "normalized_value": {
             "maximum": 36,
             "minimum": 24
           },
-          "source_excerpt": "The in-row recommendation is two to three feet between plants.",
-          "source_key": "mid-atlantic-summer-squash-2026-2027",
-          "source_locator": "PDF page 5 (manual p. 417), Seeding, Transplanting, and Spacing",
+          "source_excerpt": "The table gives 24 inches for bush squash and 36 inches for vine squash.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 72,
+            "minimum": 48
+          },
+          "source_excerpt": "The table gives 48–72 inches between bush and vine squash rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
           "unit": "inches"
         },
         {
@@ -667,16 +1196,28 @@
           "unit": null
         },
         {
-          "confidence": "medium",
+          "confidence": "high",
           "field_name": "starting_method",
           "normalized_value": [
             "direct_sow",
             "transplant"
           ],
-          "source_excerpt": "The section provides both seeding and transplanting directions.",
-          "source_key": "mid-atlantic-summer-squash-2026-2027",
-          "source_locator": "PDF page 5 (manual p. 417), Seeding, Transplanting, and Spacing",
+          "source_excerpt": "The table supports seed or transplant starts for both squash habits.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
           "unit": null
+        },
+        {
+          "confidence": "medium",
+          "field_name": "sun_hours",
+          "normalized_value": {
+            "minimum": 8,
+            "preferred_condition": "full_sun"
+          },
+          "source_excerpt": "FS129 supports at least 8 direct-sun hours through its zucchini example.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+          "unit": "hours_per_day"
         },
         {
           "confidence": "medium",
@@ -689,6 +1230,18 @@
           "source_key": "mid-atlantic-irrigation-2026-2027",
           "source_locator": "PDF page 5, Basic Principles of Irrigation Management",
           "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 25,
+            "minimum": 20
+          },
+          "source_excerpt": "The table estimates 20–25 squash fruit per ten feet of row by habit.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
+          "unit": "fruit_per_10ft_row"
         }
       ]
     },
@@ -765,6 +1318,18 @@
         },
         {
           "confidence": "high",
+          "field_name": "row_spacing",
+          "normalized_value": {
+            "maximum": 36,
+            "minimum": 36
+          },
+          "source_excerpt": "The home-garden table gives 36 inches between rows.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Tomatoes",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
           "field_name": "soil_ph",
           "normalized_value": 6.5,
           "source_excerpt": "The crop table gives tomatoes a target soil pH of 6.5.",
@@ -773,12 +1338,12 @@
           "unit": null
         },
         {
-          "confidence": "medium",
+          "confidence": "high",
           "field_name": "starting_method",
           "normalized_value": "transplant",
-          "source_excerpt": "The fresh-market production section establishes tomatoes as transplants.",
-          "source_key": "mid-atlantic-tomatoes-2026-2027",
-          "source_locator": "PDF page 8 (manual p. 457), Fresh Market Tomatoes",
+          "source_excerpt": "The home-garden table identifies the supported starting method.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Tomatoes",
           "unit": null
         },
         {
@@ -805,6 +1370,18 @@
           "source_key": "mid-atlantic-tomatoes-2026-2027",
           "source_locator": "PDF page 6 (manual p. 455), Irrigation",
           "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "yield_per_10ft_row",
+          "normalized_value": {
+            "maximum": 50,
+            "minimum": 50
+          },
+          "source_excerpt": "The home-garden table estimates 50 lb per ten feet of row.",
+          "source_key": "rutgers-fs129-home-garden-2020",
+          "source_locator": "FS129 > Vegetable Planting Guide > Tomatoes",
+          "unit": "pounds_per_10ft_row"
         }
       ]
     }
@@ -5437,6 +6014,18 @@
       "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
       "title": "Vates Collards Seeds",
       "url": "https://www.reimerseeds.com/vates-collards-seeds"
+    },
+    {
+      "key": "rutgers-fs129-home-garden-2020",
+      "license": null,
+      "media_type": "text/html",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Rutgers Cooperative Extension home-vegetable-garden planning guidance; planting months are New Jersey-specific",
+      "sha256": "4a594c1f8b72bf4685d536cdb5ef231c4ffa4f1144a04d7155535af92383bdf6",
+      "source_path": "data/source/cultivars/rutgers-home-garden/fs129.html",
+      "title": "Planning a Vegetable Garden",
+      "url": "https://njaes.rutgers.edu/fs129/"
     },
     {
       "key": "umd-tomatoes-2025",

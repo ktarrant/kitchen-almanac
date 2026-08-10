@@ -33,7 +33,7 @@ def test_cultivar_catalog_load_is_idempotent_and_keeps_listings_separate() -> No
         assert active is not None
         assert active.id == catalog.id
         assert session.scalar(select(func.count()).select_from(Cultivar)) == 46
-        assert session.scalar(select(func.count()).select_from(CultivarEvidenceClaim)) == 336
+        assert session.scalar(select(func.count()).select_from(CultivarEvidenceClaim)) == 380
         assert session.scalar(select(func.count()).select_from(CommercialSeedListing)) == 38
 
         listing = session.scalar(
@@ -57,3 +57,10 @@ def test_cultivar_catalog_load_is_idempotent_and_keeps_listings_separate() -> No
         )
         assert regional_source is not None
         assert regional_source.source_scope == expected_scope
+
+        home_garden_source = session.scalar(
+            select(SourceDocument).where(SourceDocument.title == "Planning a Vegetable Garden")
+        )
+        assert home_garden_source is not None
+        assert home_garden_source.publisher == "Rutgers NJAES Cooperative Extension"
+        assert "home-vegetable-garden" in (home_garden_source.source_scope or "")

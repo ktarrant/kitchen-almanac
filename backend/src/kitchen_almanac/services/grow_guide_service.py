@@ -30,7 +30,7 @@ from kitchen_almanac.services.suitability_service import (
     assess_cultivar,
 )
 
-GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.3.1"
+GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.4.0"
 
 
 def _trait(cultivar: CultivarResponse, field_name: str) -> CultivarTraitResponse | None:
@@ -287,9 +287,12 @@ def _build_sections(
         minimum = value.get("minimum")
         preferred_minimum = value.get("preferred_minimum")
         preferred_maximum = value.get("preferred_maximum")
+        preferred_condition = value.get("preferred_condition")
         preferred = (
             f"; {preferred_minimum}–{preferred_maximum} hours is preferred"
             if preferred_minimum is not None and preferred_maximum is not None
+            else "; full sun is preferred"
+            if preferred_condition == "full_sun"
             else ""
         )
         instruction = f"Provide at least {minimum} hours of direct sun per day{preferred}."
@@ -322,17 +325,24 @@ def _build_sections(
     )
 
     spacing = _trait(cultivar, "plant_spacing")
+    row_spacing = _trait(cultivar, "row_spacing")
     if spacing:
         spacing_text = _range_text(spacing.normalized_value, unit=spacing.unit)
         instruction = f"Space plants {spacing_text} apart."
+        instructions = [instruction]
+        spacing_traits = [spacing]
+        if row_spacing:
+            row_spacing_text = _range_text(row_spacing.normalized_value, unit=row_spacing.unit)
+            instructions.append(f"Allow {row_spacing_text} between rows.")
+            spacing_traits.append(row_spacing)
         sections.append(
             _section(
                 code="spacing",
                 title="Spacing",
                 status="documented",
                 summary=instruction,
-                instructions=[instruction],
-                traits=[spacing],
+                instructions=instructions,
+                traits=spacing_traits,
             )
         )
     else:

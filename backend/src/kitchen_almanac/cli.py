@@ -15,6 +15,7 @@ from kitchen_almanac import (
     location_data,
     noaa_normals_data,
     rutgers_extraction,
+    rutgers_home_garden,
     rutgers_inventory,
     rutgers_taxonomy,
 )
@@ -310,9 +311,7 @@ def cultivar_reconcile(
     try:
         base_data = cultivar_pipeline.read_pipeline_json(base, "base cultivar catalog")
         staged_data = cultivar_pipeline.read_pipeline_json(staged, "staged cultivar data")
-        decision_data = cultivar_pipeline.read_pipeline_json(
-            decisions, "cultivar review decisions"
-        )
+        decision_data = cultivar_pipeline.read_pipeline_json(decisions, "cultivar review decisions")
         errors = [
             *cultivar_pipeline.validate_staged_cultivars(staged_data),
             *cultivar_pipeline.validate_review_decisions(staged_data, decision_data),
@@ -400,10 +399,17 @@ def rutgers_fetch(
 
     try:
         fetched, present = rutgers_inventory.fetch_sources(manifest)
-    except rutgers_inventory.RutgersInventoryError as error:
+        home_fetched, home_present = rutgers_home_garden.fetch_source()
+    except (
+        rutgers_inventory.RutgersInventoryError,
+        rutgers_home_garden.RutgersHomeGardenError,
+    ) as error:
         typer.echo(f"Rutgers source fetch failed: {error}", err=True)
         raise typer.Exit(code=1) from error
-    typer.echo(f"Fetched {fetched} Rutgers source snapshots; {present} already verified.")
+    typer.echo(
+        f"Fetched {fetched + home_fetched} Rutgers source snapshots; "
+        f"{present + home_present} already verified."
+    )
 
 
 @rutgers_app.command("inventory")
@@ -445,13 +451,20 @@ def rutgers_extract_evidence(
     try:
         staged = rutgers_extraction.build_structured_evidence(manifest)
         rutgers_extraction.write_structured_evidence(staged, output)
+        home_staged = rutgers_home_garden.build_structured_evidence()
+        rutgers_home_garden.write_structured_evidence(home_staged)
     except (
         rutgers_inventory.RutgersInventoryError,
         rutgers_extraction.RutgersExtractionError,
+        rutgers_home_garden.RutgersHomeGardenError,
     ) as error:
         typer.echo(f"Rutgers structured extraction failed: {error}", err=True)
         raise typer.Exit(code=1) from error
     typer.echo(f"Extracted {len(staged['candidates'])} review candidates to {output}")
+    typer.echo(
+        f"Extracted {len(home_staged['candidates'])} FS129 home-garden candidates to "
+        f"{rutgers_home_garden.DEFAULT_STAGED}"
+    )
 
 
 @rutgers_app.command("taxonomy")
@@ -505,11 +518,13 @@ def rutgers_validate_inventory(
         errors = [
             *rutgers_inventory.validate_coverage_report(report, manifest),
             *rutgers_extraction.validate_committed_extraction(manifest_path=manifest),
+            *rutgers_home_garden.validate_committed_extraction(),
             *rutgers_taxonomy.validate_committed_taxonomy_report(manifest_path=manifest),
         ]
     except (
         rutgers_inventory.RutgersInventoryError,
         rutgers_extraction.RutgersExtractionError,
+        rutgers_home_garden.RutgersHomeGardenError,
         rutgers_taxonomy.RutgersTaxonomyError,
     ) as error:
         typer.echo(f"Rutgers inventory validation failed: {error}", err=True)
@@ -519,8 +534,8 @@ def rutgers_validate_inventory(
             typer.echo(f"- {error}", err=True)
         raise typer.Exit(code=1)
     typer.echo(
-        "Rutgers corpus, page coverage, taxonomy coverage, structured evidence, and review "
-        "are valid."
+        "Rutgers commercial and home-garden corpora, coverage, structured evidence, and "
+        "review are valid."
     )
 
 

@@ -183,11 +183,11 @@
           "status": "partial"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -211,10 +211,14 @@
       "published_crop_trait_fields": [
         "critical_watering_stages",
         "harvest_guidance",
+        "home_garden_profiles",
         "lime_below_ph",
+        "plant_spacing",
+        "row_spacing",
         "soil_ph",
         "starting_method",
-        "water_management_guidance"
+        "water_management_guidance",
+        "yield_per_10ft_row"
       ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "snap-beans",
@@ -389,11 +393,12 @@
         },
         "planting": {
           "missing": [
-            "relative_planting_rule",
+            "relative_planting_rule"
+          ],
+          "present": [
             "starting_method"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "partial"
         },
         "rutgers_source": {
           "missing": [],
@@ -411,11 +416,11 @@
           "status": "absent"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -435,7 +440,13 @@
           "status": "absent"
         }
       },
-      "published_crop_trait_fields": [],
+      "published_crop_trait_fields": [
+        "plant_spacing",
+        "row_spacing",
+        "starting_method",
+        "sun_hours",
+        "yield_per_10ft_row"
+      ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "beets",
       "rutgers_crop_name": "Beets",
@@ -697,11 +708,12 @@
         },
         "planting": {
           "missing": [
-            "relative_planting_rule",
+            "relative_planting_rule"
+          ],
+          "present": [
             "starting_method"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "partial"
         },
         "rutgers_source": {
           "missing": [],
@@ -719,11 +731,11 @@
           "status": "absent"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -743,7 +755,12 @@
           "status": "absent"
         }
       },
-      "published_crop_trait_fields": [],
+      "published_crop_trait_fields": [
+        "plant_spacing",
+        "row_spacing",
+        "starting_method",
+        "yield_per_10ft_row"
+      ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "broccoli",
       "rutgers_crop_name": "Broccoli",
@@ -805,11 +822,12 @@
         },
         "planting": {
           "missing": [
-            "relative_planting_rule",
+            "relative_planting_rule"
+          ],
+          "present": [
             "starting_method"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "partial"
         },
         "rutgers_source": {
           "missing": [],
@@ -827,11 +845,11 @@
           "status": "absent"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -851,7 +869,12 @@
           "status": "absent"
         }
       },
-      "published_crop_trait_fields": [],
+      "published_crop_trait_fields": [
+        "plant_spacing",
+        "row_spacing",
+        "starting_method",
+        "yield_per_10ft_row"
+      ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "brussels-sprouts",
       "rutgers_crop_name": "Brussels Sprouts",
@@ -911,11 +934,12 @@
         },
         "planting": {
           "missing": [
-            "relative_planting_rule",
+            "relative_planting_rule"
+          ],
+          "present": [
             "starting_method"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "partial"
         },
         "rutgers_source": {
           "missing": [],
@@ -933,11 +957,11 @@
           "status": "absent"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -957,7 +981,12 @@
           "status": "absent"
         }
       },
-      "published_crop_trait_fields": [],
+      "published_crop_trait_fields": [
+        "plant_spacing",
+        "row_spacing",
+        "starting_method",
+        "yield_per_10ft_row"
+      ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "cabbage",
       "rutgers_crop_name": "Cabbage",
@@ -1117,11 +1146,12 @@
         },
         "planting": {
           "missing": [
-            "relative_planting_rule",
+            "relative_planting_rule"
+          ],
+          "present": [
             "starting_method"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "partial"
         },
         "rutgers_source": {
           "missing": [],
@@ -1139,11 +1169,11 @@
           "status": "absent"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -1163,7 +1193,12 @@
           "status": "absent"
         }
       },
-      "published_crop_trait_fields": [],
+      "published_crop_trait_fields": [
+        "plant_spacing",
+        "row_spacing",
+        "starting_method",
+        "yield_per_10ft_row"
+      ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "cauliflower",
       "rutgers_crop_name": "Cauliflower",
@@ -1223,11 +1258,12 @@
         },
         "planting": {
           "missing": [
-            "relative_planting_rule",
+            "relative_planting_rule"
+          ],
+          "present": [
             "starting_method"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "partial"
         },
         "rutgers_source": {
           "missing": [],
@@ -1245,11 +1281,11 @@
           "status": "absent"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -1269,7 +1305,13 @@
           "status": "absent"
         }
       },
-      "published_crop_trait_fields": [],
+      "published_crop_trait_fields": [
+        "plant_spacing",
+        "row_spacing",
+        "starting_method",
+        "sun_hours",
+        "yield_per_10ft_row"
+      ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "collards",
       "rutgers_crop_name": "Collards",
@@ -1329,11 +1371,12 @@
         },
         "planting": {
           "missing": [
-            "relative_planting_rule",
+            "relative_planting_rule"
+          ],
+          "present": [
             "starting_method"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "partial"
         },
         "rutgers_source": {
           "missing": [],
@@ -1351,11 +1394,11 @@
           "status": "absent"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -1375,7 +1418,13 @@
           "status": "absent"
         }
       },
-      "published_crop_trait_fields": [],
+      "published_crop_trait_fields": [
+        "plant_spacing",
+        "row_spacing",
+        "starting_method",
+        "sun_hours",
+        "yield_per_10ft_row"
+      ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "kale",
       "rutgers_crop_name": "Kale",
@@ -1435,11 +1484,12 @@
         },
         "planting": {
           "missing": [
-            "relative_planting_rule",
+            "relative_planting_rule"
+          ],
+          "present": [
             "starting_method"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "partial"
         },
         "rutgers_source": {
           "missing": [],
@@ -1457,11 +1507,11 @@
           "status": "absent"
         },
         "spacing": {
-          "missing": [
+          "missing": [],
+          "present": [
             "plant_spacing"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "threats": {
           "missing": [
@@ -1481,7 +1531,12 @@
           "status": "absent"
         }
       },
-      "published_crop_trait_fields": [],
+      "published_crop_trait_fields": [
+        "plant_spacing",
+        "row_spacing",
+        "starting_method",
+        "yield_per_10ft_row"
+      ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "kohlrabi",
       "rutgers_crop_name": "Kohlrabi",
@@ -1600,9 +1655,12 @@
         "harvest_guidance",
         "lime_below_ph",
         "plant_spacing",
+        "row_spacing",
         "soil_ph",
         "starting_method",
-        "water_management_guidance"
+        "sun_hours",
+        "water_management_guidance",
+        "yield_per_10ft_row"
       ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "cucumbers",
@@ -4419,9 +4477,12 @@
         "harvest_guidance",
         "lime_below_ph",
         "plant_spacing",
+        "row_spacing",
         "soil_ph",
         "starting_method",
-        "water_management_guidance"
+        "sun_hours",
+        "water_management_guidance",
+        "yield_per_10ft_row"
       ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "summer-squash",
@@ -4752,10 +4813,12 @@
         "harvest_guidance",
         "lime_below_ph",
         "plant_spacing",
+        "row_spacing",
         "soil_ph",
         "starting_method",
         "sun_hours",
-        "water_management_guidance"
+        "water_management_guidance",
+        "yield_per_10ft_row"
       ],
       "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "tomatoes",
@@ -11998,8 +12061,8 @@
         "supported": 47
       },
       "planting": {
-        "absent": 43,
-        "partial": 4
+        "absent": 35,
+        "partial": 12
       },
       "rutgers_source": {
         "supported": 47
@@ -12009,8 +12072,8 @@
         "partial": 4
       },
       "spacing": {
-        "absent": 44,
-        "supported": 3
+        "absent": 35,
+        "supported": 12
       },
       "threats": {
         "absent": 47

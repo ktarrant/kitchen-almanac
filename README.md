@@ -105,6 +105,17 @@ management and critical-growth-stage guidance for beans, cucumbers, summer
 squash, and tomatoes; it deliberately does not turn commercial daily rates into
 universal home-garden schedules.
 
+Rutgers FS129, *Planning a Vegetable Garden*, is a separate first-class
+home-garden baseline source. Its checksum-pinned HTML snapshot is extracted and
+reviewed alongside the commercial corpus. The published catalog uses its
+home-scale light, in-row spacing, row spacing, starting-method, and average
+yield-per-ten-feet facts across the 12 crops with documented cultivars. Bush and
+pole snap-bean profiles remain distinct and are selected using the cultivar's
+reviewed growth habit. New Jersey planting months remain staged but unpublished
+until a location and climate adapter can translate them safely. More specific
+UMD tomato light and spacing guidance remains active instead of being replaced
+by FS129's generic tomato row.
+
 `rutgers taxonomy` verifies the full manual's table of contents and builds a
 deterministic registry of all 31 commodity sections and 47 individual crop
 concepts. All 47 concepts are now canonical catalog identities; the former 9
@@ -180,7 +191,7 @@ fingerprint and ranking.
 ## Grow guides
 
 Documented cultivars on a garden wishlist expose a grow guide in the saved
-garden card. The `grow-guide-v1.3.1` generator organizes reviewed actions into
+garden card. The `grow-guide-v1.4.0` generator organizes reviewed actions into
 Plan and plant, Tend the plants, Harvest, and a conditional Finish the season
 phase. Each action carries an exact date or range when the evidence supports
 one and an honest relative or recurring **When** label otherwise. The API still

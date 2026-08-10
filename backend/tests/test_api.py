@@ -197,7 +197,7 @@ def test_crop_list_uses_active_catalog(catalog_client: TestClient) -> None:
     assert response.status_code == 200
     payload = response.json()
     assert payload["dataset_id"].startswith("kitchen-almanac-v2-")
-    assert payload["cultivar_dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
+    assert payload["cultivar_dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
     assert [crop["canonical_name"] for crop in payload["crops"]] == [
         "Asparagus",
         "Horseradish",
@@ -245,7 +245,7 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
+    assert payload["dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
     assert payload["crop_dataset_id"] == "kitchen-almanac-v2-5f182b9189b06b80"
     assert [item["canonical_name"] for item in payload["cultivars"]] == [
         "San Marzano",
@@ -380,6 +380,32 @@ def test_expanded_cultivar_evidence_retains_source_scope(catalog_client: TestCli
     assert regional_claim["source"]["sha256"] == (
         "174b0596cf199e757e8253ee64b049bba6789fcfe0745a540193a451c37dfeff"
     )
+
+
+def test_home_garden_profiles_resolve_by_cultivar_growth_habit(
+    catalog_client: TestClient,
+) -> None:
+    provider = catalog_client.get("/api/cultivars?q=Provider").json()["cultivars"][0]
+    cobra = catalog_client.get("/api/cultivars?q=Cobra").json()["cultivars"][0]
+
+    provider_traits = {trait["field_name"]: trait for trait in provider["traits"]}
+    cobra_traits = {trait["field_name"]: trait for trait in cobra["traits"]}
+    assert provider_traits["plant_spacing"]["normalized_value"] == {
+        "minimum": 4,
+        "maximum": 4,
+    }
+    assert cobra_traits["plant_spacing"]["normalized_value"] == {
+        "minimum": 36,
+        "maximum": 36,
+    }
+    assert provider_traits["row_spacing"]["normalized_value"] == {
+        "minimum": 24,
+        "maximum": 24,
+    }
+    assert provider_traits["yield_per_10ft_row"]["unit"] == "pounds_per_10ft_row"
+    assert provider_traits["plant_spacing"]["inherited_from_crop"] is True
+    assert provider_traits["plant_spacing"]["source"]["title"] == ("Planning a Vegetable Garden")
+    assert "home_garden_profiles" not in provider_traits
 
 
 def test_catalog_search_returns_crop_and_related_cultivars(
@@ -530,9 +556,7 @@ def test_cole_crop_search_handles_crop_and_cultivar_misspellings(
         params={"q": "lacinto kale", "garden_profile_id": garden_profile["id"]},
     )
     cultivar_results = cultivar_response.json()
-    assert [item["cultivar"]["slug"] for item in cultivar_results["cultivars"]] == [
-        "lacinato"
-    ]
+    assert [item["cultivar"]["slug"] for item in cultivar_results["cultivars"]] == ["lacinato"]
     assert cultivar_results["cultivars"][0]["match_method"] == "fuzzy"
 
 
@@ -566,7 +590,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     assessment = first.json()
     assert second.json() == assessment
     assert assessment["algorithm_version"] == "suitability-v1.1.0"
-    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
+    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
     assert assessment["input_fingerprint"].startswith("sha256:")
     assert assessment["status"] == "suitable"
     assert assessment["score"] == 80
@@ -674,9 +698,10 @@ def test_suitability_enforces_support_and_space_constraints(
     assert any("cannot provide" in constraint for constraint in climbing["constraints"])
     assert compact["status"] == "not_recommended"
     assert any("12-inch" in constraint for constraint in compact["constraints"])
-    assert next(item for item in compact["dimensions"] if item["code"] == "space")[
-        "status"
-    ] == "constraint"
+    assert (
+        next(item for item in compact["dimensions"] if item["code"] == "space")["status"]
+        == "constraint"
+    )
 
 
 def test_suitability_matches_protected_culture_intended_use_and_disease_concern(
@@ -696,9 +721,10 @@ def test_suitability_matches_protected_culture_intended_use_and_disease_concern(
         params={"garden_profile_id": protected_profile["id"], "cultivar_slug": "corinto"},
     ).json()
     assert protected["status"] == "suitable"
-    assert next(item for item in protected["dimensions"] if item["code"] == "growing_method")[
-        "status"
-    ] == "fit"
+    assert (
+        next(item for item in protected["dimensions"] if item["code"] == "growing_method")["status"]
+        == "fit"
+    )
 
     priority_profile = catalog_client.post(
         "/api/garden-profiles",
@@ -716,9 +742,12 @@ def test_suitability_matches_protected_culture_intended_use_and_disease_concern(
     ).json()
     factor_codes = {factor["code"] for factor in priority["factors"]}
     assert {"disease_pressure", "intended_use"} <= factor_codes
-    assert next(
-        item for item in priority["dimensions"] if item["code"] == "disease_pressure"
-    )["status"] == "fit"
+    assert (
+        next(item for item in priority["dimensions"] if item["code"] == "disease_pressure")[
+            "status"
+        ]
+        == "fit"
+    )
 
 
 def test_suitability_reports_container_and_preference_evidence_gaps(
@@ -745,9 +774,12 @@ def test_suitability_reports_container_and_preference_evidence_gaps(
     assert assessment["status"] == "conditional"
     assert "A minimum container volume" in " ".join(assessment["missing_evidence"])
     assert "Use evidence for: pickling" in assessment["missing_evidence"]
-    assert next(
-        item for item in assessment["dimensions"] if item["code"] == "disease_pressure"
-    )["status"] == "not_applicable"
+    assert (
+        next(item for item in assessment["dimensions"] if item["code"] == "disease_pressure")[
+            "status"
+        ]
+        == "not_applicable"
+    )
 
 
 def test_garden_profile_captures_location_and_growing_context(
@@ -895,7 +927,7 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     guide = response.json()
     assert guide["cultivar_name"] == "Mountain Merit"
     assert guide["crop_name"] == "Tomatoes"
-    assert guide["algorithm_version"] == "grow-guide-v1.3.1"
+    assert guide["algorithm_version"] == "grow-guide-v1.4.0"
     assert len(guide["input_fingerprint"]) == 64
     assert [section["code"] for section in guide["sections"]] == [
         "light",
@@ -913,16 +945,17 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     sections = {section["code"]: section for section in guide["sections"]}
     assert sections["light"]["provenance"] == "crop_baseline"
     assert sections["light"]["evidence"][0]["publisher"] == "University of Maryland Extension"
-    assert sections["spacing"]["provenance"] == "cultivar"
+    assert sections["spacing"]["provenance"] == "mixed"
     assert sections["spacing"]["summary"] == "Space plants 24 inches apart."
+    assert sections["spacing"]["instructions"] == [
+        "Space plants 24 inches apart.",
+        "Allow 36 inches between rows.",
+    ]
     assert sections["soil"]["status"] == "documented"
     assert sections["soil"]["summary"] == (
-        "Aim for a soil pH of 6.5. Use a soil test to determine lime needs when pH falls "
-        "below 6.0."
+        "Aim for a soil pH of 6.5. Use a soil test to determine lime needs when pH falls below 6.0."
     )
-    assert sections["soil"]["evidence"][0]["publisher"] == (
-        "Rutgers NJAES Cooperative Extension"
-    )
+    assert sections["soil"]["evidence"][0]["publisher"] == ("Rutgers NJAES Cooperative Extension")
     assert sections["water"]["status"] == "partial"
     assert sections["water"]["summary"] == (
         "Use soil texture and root-zone moisture—not a fixed schedule—to guide watering "
@@ -946,29 +979,27 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
         "Seed-start production instructions (follow-up #13)"
     ]
     assert sections["planting"]["status"] == "documented"
-    assert "Expect the harvest window to last 4–5 weeks." in sections["harvest"][
-        "instructions"
-    ]
+    assert "Expect the harvest window to last 4–5 weeks." in sections["harvest"]["instructions"]
     assert sections["harvest"]["instructions"][-2:] == [
         "Choose harvest ripeness for the intended use; fully ripe is appropriate for direct use.",
         "Handle fruit carefully and harvest often during peak production.",
     ]
     assert all(
-        section["evidence"]
-        for section in guide["sections"]
-        if section["status"] == "documented"
+        section["evidence"] for section in guide["sections"] if section["status"] == "documented"
     )
 
     target_year = int(garden_profile["target_year"])
     planting_date = date(target_year, 3, 24)
     events = {event["code"]: event for event in guide["timeline"]}
     assert events["outdoor_planting_boundary"]["start_date"] == planting_date.isoformat()
-    assert events["estimated_first_harvest"]["start_date"] == (
-        planting_date + timedelta(days=75)
-    ).isoformat()
-    assert events["estimated_first_harvest"]["end_date"] == (
-        planting_date + timedelta(days=75)
-    ).isoformat()
+    assert (
+        events["estimated_first_harvest"]["start_date"]
+        == (planting_date + timedelta(days=75)).isoformat()
+    )
+    assert (
+        events["estimated_first_harvest"]["end_date"]
+        == (planting_date + timedelta(days=75)).isoformat()
+    )
     assert len(events["estimated_first_harvest"]["evidence"]) == 2
     assert "Soil pH or soil-condition guidance" not in guide["missing_evidence"]
 
@@ -1008,9 +1039,7 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
         "End-of-season cleanup or winterization guidance (follow-up #14)"
     ]
     assert all(
-        action["code"] != "companions"
-        for phase in guide["phases"]
-        for action in phase["actions"]
+        action["code"] != "companions" for phase in guide["phases"] for action in phase["actions"]
     )
 
     repeated = catalog_client.get(
@@ -1036,6 +1065,28 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
         if section["code"] == "harvest"
     )
     assert "Expect fruit in clusters of 5–6." in san_marzano_harvest["instructions"]
+
+    marketmore_response = catalog_client.get(
+        "/api/grow-guides",
+        params={
+            "garden_profile_id": garden_profile["id"],
+            "cultivar_slug": "marketmore-76",
+        },
+    )
+    assert marketmore_response.status_code == 200
+    marketmore_sections = {
+        section["code"]: section for section in marketmore_response.json()["sections"]
+    }
+    assert marketmore_sections["light"]["summary"] == (
+        "Provide at least 8 hours of direct sun per day; full sun is preferred."
+    )
+    assert marketmore_sections["light"]["evidence"][0]["publisher"] == (
+        "Rutgers NJAES Cooperative Extension"
+    )
+    assert marketmore_sections["spacing"]["instructions"] == [
+        "Space plants 36 inches apart.",
+        "Allow 30 inches between rows.",
+    ]
 
 
 def test_grow_guide_reports_missing_context_and_unknown_records(
@@ -1195,9 +1246,7 @@ def test_active_wishlist_is_restored_per_profile(catalog_client: TestClient) -> 
         json={"name": "Second", "postal_code": "20851", "growing_methods": ["in_ground"]},
     ).json()
 
-    empty = catalog_client.get(
-        f"/api/garden-profiles/{first_profile['id']}/wishlists/active"
-    )
+    empty = catalog_client.get(f"/api/garden-profiles/{first_profile['id']}/wishlists/active")
     assert empty.status_code == 200
     assert empty.json() is None
 
@@ -1210,9 +1259,7 @@ def test_active_wishlist_is_restored_per_profile(catalog_client: TestClient) -> 
         json={"garden_profile_id": first_profile["id"], "name": "Newer"},
     ).json()
 
-    active = catalog_client.get(
-        f"/api/garden-profiles/{first_profile['id']}/wishlists/active"
-    )
+    active = catalog_client.get(f"/api/garden-profiles/{first_profile['id']}/wishlists/active")
     assert active.status_code == 200
     assert active.json()["id"] == newer["id"]
 
@@ -1225,9 +1272,7 @@ def test_active_wishlist_is_restored_per_profile(catalog_client: TestClient) -> 
         },
     )
     assert updated.status_code == 201
-    active = catalog_client.get(
-        f"/api/garden-profiles/{first_profile['id']}/wishlists/active"
-    )
+    active = catalog_client.get(f"/api/garden-profiles/{first_profile['id']}/wishlists/active")
     assert active.json()["id"] == older["id"]
     assert active.json()["entries"][0]["resolved_crop"]["slug"] == "tomatoes"
 
@@ -1257,9 +1302,7 @@ def test_wishlist_entries_can_be_removed_and_reindexed(
     beans, tomato, dragon_fruit = wishlist["entries"]
     assert beans["candidates"]
 
-    removed = catalog_client.delete(
-        f"/api/wishlists/{wishlist['id']}/entries/{beans['id']}"
-    )
+    removed = catalog_client.delete(f"/api/wishlists/{wishlist['id']}/entries/{beans['id']}")
     assert removed.status_code == 200
     assert [entry["id"] for entry in removed.json()["entries"]] == [
         tomato["id"],
@@ -1271,13 +1314,12 @@ def test_wishlist_entries_can_be_removed_and_reindexed(
         "/api/wishlists/builder",
         json={"garden_profile_id": garden_profile["id"]},
     ).json()
-    wrong_wishlist = catalog_client.delete(
-        f"/api/wishlists/{other['id']}/entries/{tomato['id']}"
-    )
+    wrong_wishlist = catalog_client.delete(f"/api/wishlists/{other['id']}/entries/{tomato['id']}")
     assert wrong_wishlist.status_code == 404
-    assert [entry["id"] for entry in catalog_client.get(
-        f"/api/wishlists/{wishlist['id']}"
-    ).json()["entries"]] == [tomato["id"], dragon_fruit["id"]]
+    assert [
+        entry["id"]
+        for entry in catalog_client.get(f"/api/wishlists/{wishlist['id']}").json()["entries"]
+    ] == [tomato["id"], dragon_fruit["id"]]
 
     removed = catalog_client.delete(
         f"/api/wishlists/{wishlist['id']}/entries/{tomato['id']}"
@@ -1348,7 +1390,7 @@ def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
     wishlist = created_response.json()
     assert wishlist["name"] == "Summer ideas"
     assert wishlist["entries"] == []
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
 
     selections = [
         {
@@ -1427,7 +1469,7 @@ def test_quick_import_preserves_cultivar_and_crop_type_intent(
 
     assert response.status_code == 201
     wishlist = response.json()
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
     san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
 
     assert san_marzano["original_text"] == "San Marzano tomatoes"

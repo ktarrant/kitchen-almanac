@@ -340,7 +340,7 @@ Acceptance criteria:
 
 Status: **In progress**
 
-Current progress: `grow-guide-v1.3.1` provides a structured API and chronological
+Current progress: `grow-guide-v1.4.0` provides a structured API and chronological
 frontend walkthrough for every selected documented cultivar. It deterministically
 merges approved cultivar overrides with crop baselines and organizes the retained
 atomic evidence sections into Plan and plant, Tend the plants, Harvest, and a
@@ -377,6 +377,15 @@ crop baselines, including qualitative water-management practices and critical
 watering stages. It retains UMD as the primary corroborated tomato-spacing
 source and holds regional calendar windows, commercial density, and commercial
 daily water targets until suitable location and home-scale adapters exist.
+
+Rutgers FS129 is now elevated as a checksum-pinned home-garden baseline source.
+Its reviewed facts publish home-scale light, in-row and row spacing, starting
+methods, and average yield per ten feet of row across all 12 crops that currently
+have documented cultivars. Contextual bush and pole snap-bean profiles remain
+distinct. New Jersey planting months are retained as reviewed candidates but
+held out of the catalog until a location adapter exists; the pipeline also keeps
+the more specific UMD tomato light and spacing values rather than replacing them
+with FS129's generic tomato row.
 
 Remaining work is primarily evidence expansion: reviewed soil-condition,
 container, support, starting, and maintenance rules for the initial crop cohort,

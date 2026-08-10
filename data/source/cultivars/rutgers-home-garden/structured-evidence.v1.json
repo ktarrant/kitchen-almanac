@@ -1,0 +1,1122 @@
+{
+  "candidates": [
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "beets",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-beets-new-jersey-planting-months",
+      "normalized_value": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+      "source_span_sha256": "24d03d38315bef7401d22703a40296bc70a13a5a91390a84acd5e28d7170ee8c",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "beets",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-beets-plant-spacing",
+      "normalized_value": {
+        "maximum": 3,
+        "minimum": 3
+      },
+      "source_excerpt": "The home-garden table gives 3 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+      "source_span_sha256": "24d03d38315bef7401d22703a40296bc70a13a5a91390a84acd5e28d7170ee8c",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "beets",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-beets-row-spacing",
+      "normalized_value": {
+        "maximum": 15,
+        "minimum": 15
+      },
+      "source_excerpt": "The home-garden table gives 15 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+      "source_span_sha256": "24d03d38315bef7401d22703a40296bc70a13a5a91390a84acd5e28d7170ee8c",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "beets",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-beets-starting-method",
+      "normalized_value": "direct_sow",
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+      "source_span_sha256": "24d03d38315bef7401d22703a40296bc70a13a5a91390a84acd5e28d7170ee8c",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "beets",
+      "extraction_method": "deterministic_regex",
+      "field_name": "sun_hours",
+      "id": "rutgers-fs129-beets-sun-hours",
+      "normalized_value": {
+        "minimum": 5,
+        "preferred_condition": "full_sun"
+      },
+      "source_excerpt": "FS129 supports at least 5 direct-sun hours through its root-vegetable category.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+      "source_span_sha256": "a2e3f55a0bd51716f58296195818019fe98904def055f5546e95661fd4d27487",
+      "unit": "hours_per_day"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "beets",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-beets-yield-per-row",
+      "normalized_value": {
+        "maximum": 14,
+        "minimum": 14
+      },
+      "source_excerpt": "The home-garden table estimates 14 lb per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Beets",
+      "source_span_sha256": "24d03d38315bef7401d22703a40296bc70a13a5a91390a84acd5e28d7170ee8c",
+      "unit": "pounds_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "broccoli",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-broccoli-new-jersey-planting-months",
+      "normalized_value": [
+        4,
+        5,
+        7,
+        8
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+      "source_span_sha256": "5691ba957f8c9af4c649ae378d593f7114883cd2c8d1b73e65c8bce0dbc48569",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "broccoli",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-broccoli-plant-spacing",
+      "normalized_value": {
+        "maximum": 15,
+        "minimum": 15
+      },
+      "source_excerpt": "The home-garden table gives 15 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+      "source_span_sha256": "5691ba957f8c9af4c649ae378d593f7114883cd2c8d1b73e65c8bce0dbc48569",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "broccoli",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-broccoli-row-spacing",
+      "normalized_value": {
+        "maximum": 30,
+        "minimum": 30
+      },
+      "source_excerpt": "The home-garden table gives 30 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+      "source_span_sha256": "5691ba957f8c9af4c649ae378d593f7114883cd2c8d1b73e65c8bce0dbc48569",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "broccoli",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-broccoli-starting-method",
+      "normalized_value": "transplant",
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+      "source_span_sha256": "5691ba957f8c9af4c649ae378d593f7114883cd2c8d1b73e65c8bce0dbc48569",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "broccoli",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-broccoli-yield-per-row",
+      "normalized_value": {
+        "maximum": 8,
+        "minimum": 8
+      },
+      "source_excerpt": "The home-garden table estimates 8 heads per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Broccoli",
+      "source_span_sha256": "5691ba957f8c9af4c649ae378d593f7114883cd2c8d1b73e65c8bce0dbc48569",
+      "unit": "heads_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "brussels-sprouts",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-brussels-sprouts-new-jersey-planting-months",
+      "normalized_value": [
+        7
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+      "source_span_sha256": "1ad570ccd757c08d0ac8152977d6481f391bb8caeb9e9fe9c7a13ef5bef7ef5b",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "brussels-sprouts",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-brussels-sprouts-plant-spacing",
+      "normalized_value": {
+        "maximum": 18,
+        "minimum": 18
+      },
+      "source_excerpt": "The home-garden table gives 18 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+      "source_span_sha256": "1ad570ccd757c08d0ac8152977d6481f391bb8caeb9e9fe9c7a13ef5bef7ef5b",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "brussels-sprouts",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-brussels-sprouts-row-spacing",
+      "normalized_value": {
+        "maximum": 30,
+        "minimum": 30
+      },
+      "source_excerpt": "The home-garden table gives 30 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+      "source_span_sha256": "1ad570ccd757c08d0ac8152977d6481f391bb8caeb9e9fe9c7a13ef5bef7ef5b",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "brussels-sprouts",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-brussels-sprouts-starting-method",
+      "normalized_value": "transplant",
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+      "source_span_sha256": "1ad570ccd757c08d0ac8152977d6481f391bb8caeb9e9fe9c7a13ef5bef7ef5b",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "brussels-sprouts",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-brussels-sprouts-yield-per-row",
+      "normalized_value": {
+        "maximum": 5,
+        "minimum": 5
+      },
+      "source_excerpt": "The home-garden table estimates 5 lb per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Brussels Sprouts",
+      "source_span_sha256": "1ad570ccd757c08d0ac8152977d6481f391bb8caeb9e9fe9c7a13ef5bef7ef5b",
+      "unit": "pounds_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "cabbage",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-cabbage-new-jersey-planting-months",
+      "normalized_value": [
+        4,
+        7
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+      "source_span_sha256": "542a334402ee25ee183d16a07d5812544781c517d6fa0a01ab450bec054badcc",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cabbage",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-cabbage-plant-spacing",
+      "normalized_value": {
+        "maximum": 18,
+        "minimum": 18
+      },
+      "source_excerpt": "The home-garden table gives 18 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+      "source_span_sha256": "542a334402ee25ee183d16a07d5812544781c517d6fa0a01ab450bec054badcc",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cabbage",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-cabbage-row-spacing",
+      "normalized_value": {
+        "maximum": 24,
+        "minimum": 24
+      },
+      "source_excerpt": "The home-garden table gives 24 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+      "source_span_sha256": "542a334402ee25ee183d16a07d5812544781c517d6fa0a01ab450bec054badcc",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cabbage",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-cabbage-starting-method",
+      "normalized_value": "transplant",
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+      "source_span_sha256": "542a334402ee25ee183d16a07d5812544781c517d6fa0a01ab450bec054badcc",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cabbage",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-cabbage-yield-per-row",
+      "normalized_value": {
+        "maximum": 7,
+        "minimum": 7
+      },
+      "source_excerpt": "The home-garden table estimates 7 heads per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cabbage",
+      "source_span_sha256": "542a334402ee25ee183d16a07d5812544781c517d6fa0a01ab450bec054badcc",
+      "unit": "heads_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "cauliflower",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-cauliflower-new-jersey-planting-months",
+      "normalized_value": [
+        7
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+      "source_span_sha256": "29413f6fd24bbf21931f4ab30b63f9fd9a19988c9e98ff8be2e8c2dbe6d9b3b0",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cauliflower",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-cauliflower-plant-spacing",
+      "normalized_value": {
+        "maximum": 24,
+        "minimum": 24
+      },
+      "source_excerpt": "The home-garden table gives 24 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+      "source_span_sha256": "29413f6fd24bbf21931f4ab30b63f9fd9a19988c9e98ff8be2e8c2dbe6d9b3b0",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cauliflower",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-cauliflower-row-spacing",
+      "normalized_value": {
+        "maximum": 30,
+        "minimum": 30
+      },
+      "source_excerpt": "The home-garden table gives 30 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+      "source_span_sha256": "29413f6fd24bbf21931f4ab30b63f9fd9a19988c9e98ff8be2e8c2dbe6d9b3b0",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cauliflower",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-cauliflower-starting-method",
+      "normalized_value": "transplant",
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+      "source_span_sha256": "29413f6fd24bbf21931f4ab30b63f9fd9a19988c9e98ff8be2e8c2dbe6d9b3b0",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cauliflower",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-cauliflower-yield-per-row",
+      "normalized_value": {
+        "maximum": 5,
+        "minimum": 5
+      },
+      "source_excerpt": "The home-garden table estimates 5 heads per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cauliflower",
+      "source_span_sha256": "29413f6fd24bbf21931f4ab30b63f9fd9a19988c9e98ff8be2e8c2dbe6d9b3b0",
+      "unit": "heads_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "collards",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-collards-new-jersey-planting-months",
+      "normalized_value": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+      "source_span_sha256": "89251eb749c3b8fe0a7f6790ae7f64f41cddf8ff71e69df0c0b40d9b00514fea",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "collards",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-collards-plant-spacing",
+      "normalized_value": {
+        "maximum": 18,
+        "minimum": 18
+      },
+      "source_excerpt": "The home-garden table gives 18 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+      "source_span_sha256": "89251eb749c3b8fe0a7f6790ae7f64f41cddf8ff71e69df0c0b40d9b00514fea",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "collards",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-collards-row-spacing",
+      "normalized_value": {
+        "maximum": 24,
+        "minimum": 24
+      },
+      "source_excerpt": "The home-garden table gives 24 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+      "source_span_sha256": "89251eb749c3b8fe0a7f6790ae7f64f41cddf8ff71e69df0c0b40d9b00514fea",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "collards",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-collards-starting-method",
+      "normalized_value": "direct_sow",
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+      "source_span_sha256": "89251eb749c3b8fe0a7f6790ae7f64f41cddf8ff71e69df0c0b40d9b00514fea",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "collards",
+      "extraction_method": "deterministic_regex",
+      "field_name": "sun_hours",
+      "id": "rutgers-fs129-collards-sun-hours",
+      "normalized_value": {
+        "minimum": 4,
+        "preferred_condition": "full_sun"
+      },
+      "source_excerpt": "FS129 supports at least 4 direct-sun hours through its leafy-vegetable category.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+      "source_span_sha256": "a2e3f55a0bd51716f58296195818019fe98904def055f5546e95661fd4d27487",
+      "unit": "hours_per_day"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "collards",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-collards-yield-per-row",
+      "normalized_value": {
+        "maximum": 10,
+        "minimum": 10
+      },
+      "source_excerpt": "The home-garden table estimates 10 lb per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Collards",
+      "source_span_sha256": "89251eb749c3b8fe0a7f6790ae7f64f41cddf8ff71e69df0c0b40d9b00514fea",
+      "unit": "pounds_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-cucumbers-new-jersey-planting-months",
+      "normalized_value": [
+        6,
+        7
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
+      "source_span_sha256": "861bf0a52572601ac9308aa6cae47bfa97c8ce58d236faea0d6ca0c053bea162",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-cucumbers-plant-spacing",
+      "normalized_value": {
+        "maximum": 36,
+        "minimum": 36
+      },
+      "source_excerpt": "The home-garden table gives 36 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
+      "source_span_sha256": "861bf0a52572601ac9308aa6cae47bfa97c8ce58d236faea0d6ca0c053bea162",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-cucumbers-row-spacing",
+      "normalized_value": {
+        "maximum": 30,
+        "minimum": 30
+      },
+      "source_excerpt": "The home-garden table gives 30 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
+      "source_span_sha256": "861bf0a52572601ac9308aa6cae47bfa97c8ce58d236faea0d6ca0c053bea162",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-cucumbers-starting-method",
+      "normalized_value": [
+        "direct_sow",
+        "transplant"
+      ],
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
+      "source_span_sha256": "861bf0a52572601ac9308aa6cae47bfa97c8ce58d236faea0d6ca0c053bea162",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "sun_hours",
+      "id": "rutgers-fs129-cucumbers-sun-hours",
+      "normalized_value": {
+        "minimum": 8,
+        "preferred_condition": "full_sun"
+      },
+      "source_excerpt": "FS129 supports at least 8 direct-sun hours through its explicit cucumber example.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+      "source_span_sha256": "a2e3f55a0bd51716f58296195818019fe98904def055f5546e95661fd4d27487",
+      "unit": "hours_per_day"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "cucumbers",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-cucumbers-yield-per-row",
+      "normalized_value": {
+        "maximum": 8,
+        "minimum": 8
+      },
+      "source_excerpt": "The home-garden table estimates 8 lb per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
+      "source_span_sha256": "861bf0a52572601ac9308aa6cae47bfa97c8ce58d236faea0d6ca0c053bea162",
+      "unit": "pounds_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "kale",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-kale-new-jersey-planting-months",
+      "normalized_value": [
+        7,
+        8
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+      "source_span_sha256": "7c1eb7fbb0ef7aaa81c23136319ed2dd1730d71bd13d902399197c707f222a4c",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "kale",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-kale-plant-spacing",
+      "normalized_value": {
+        "maximum": 15,
+        "minimum": 15
+      },
+      "source_excerpt": "The home-garden table gives 15 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+      "source_span_sha256": "7c1eb7fbb0ef7aaa81c23136319ed2dd1730d71bd13d902399197c707f222a4c",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "kale",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-kale-row-spacing",
+      "normalized_value": {
+        "maximum": 18,
+        "minimum": 18
+      },
+      "source_excerpt": "The home-garden table gives 18 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+      "source_span_sha256": "7c1eb7fbb0ef7aaa81c23136319ed2dd1730d71bd13d902399197c707f222a4c",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "kale",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-kale-starting-method",
+      "normalized_value": "direct_sow",
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+      "source_span_sha256": "7c1eb7fbb0ef7aaa81c23136319ed2dd1730d71bd13d902399197c707f222a4c",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "kale",
+      "extraction_method": "deterministic_regex",
+      "field_name": "sun_hours",
+      "id": "rutgers-fs129-kale-sun-hours",
+      "normalized_value": {
+        "minimum": 4,
+        "preferred_condition": "full_sun"
+      },
+      "source_excerpt": "FS129 supports at least 4 direct-sun hours through its leafy-vegetable category.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+      "source_span_sha256": "a2e3f55a0bd51716f58296195818019fe98904def055f5546e95661fd4d27487",
+      "unit": "hours_per_day"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "kale",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-kale-yield-per-row",
+      "normalized_value": {
+        "maximum": 24,
+        "minimum": 24
+      },
+      "source_excerpt": "The home-garden table estimates 24 lb per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kale",
+      "source_span_sha256": "7c1eb7fbb0ef7aaa81c23136319ed2dd1730d71bd13d902399197c707f222a4c",
+      "unit": "pounds_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "kohlrabi",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-kohlrabi-new-jersey-planting-months",
+      "normalized_value": [
+        4,
+        5,
+        7,
+        8
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+      "source_span_sha256": "43f037e76000f2f5e6ee85e5d4d3c5a416c5a1677d05cef31301eedf508f8a40",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "kohlrabi",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-kohlrabi-plant-spacing",
+      "normalized_value": {
+        "maximum": 4,
+        "minimum": 4
+      },
+      "source_excerpt": "The home-garden table gives 4 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+      "source_span_sha256": "43f037e76000f2f5e6ee85e5d4d3c5a416c5a1677d05cef31301eedf508f8a40",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "kohlrabi",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-kohlrabi-row-spacing",
+      "normalized_value": {
+        "maximum": 15,
+        "minimum": 15
+      },
+      "source_excerpt": "The home-garden table gives 15 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+      "source_span_sha256": "43f037e76000f2f5e6ee85e5d4d3c5a416c5a1677d05cef31301eedf508f8a40",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "kohlrabi",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-kohlrabi-starting-method",
+      "normalized_value": [
+        "direct_sow",
+        "transplant"
+      ],
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+      "source_span_sha256": "43f037e76000f2f5e6ee85e5d4d3c5a416c5a1677d05cef31301eedf508f8a40",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "kohlrabi",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-kohlrabi-yield-per-row",
+      "normalized_value": {
+        "maximum": 20,
+        "minimum": 20
+      },
+      "source_excerpt": "The home-garden table estimates 20 bulb per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Kohlrabi",
+      "source_span_sha256": "43f037e76000f2f5e6ee85e5d4d3c5a416c5a1677d05cef31301eedf508f8a40",
+      "unit": "bulbs_per_10ft_row"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "snap-beans",
+      "extraction_method": "deterministic_regex",
+      "field_name": "home_garden_profiles",
+      "id": "rutgers-fs129-snap-beans-home-garden-profiles",
+      "normalized_value": [
+        {
+          "growth_habit": "bush",
+          "plant_spacing": {
+            "maximum": 4,
+            "minimum": 4
+          },
+          "row_spacing": {
+            "maximum": 24,
+            "minimum": 24
+          },
+          "yield_per_10ft_row": {
+            "maximum": 6,
+            "minimum": 6
+          },
+          "yield_unit": "pounds_per_10ft_row"
+        },
+        {
+          "growth_habit": "pole",
+          "plant_spacing": {
+            "maximum": 36,
+            "minimum": 36
+          },
+          "row_spacing": {
+            "maximum": 24,
+            "minimum": 24
+          },
+          "yield_per_10ft_row": {
+            "maximum": 7,
+            "minimum": 7
+          },
+          "yield_unit": "pounds_per_10ft_row"
+        }
+      ],
+      "source_excerpt": "The home-garden table distinguishes bush and pole spacing and row-yield profiles.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Snap beans, bush and pole",
+      "source_span_sha256": "ef272f05823b724b800dd956acfde130b41862b0f668506ac625f1d76107f026",
+      "unit": null
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "snap-beans",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-snap-beans-new-jersey-planting-months",
+      "normalized_value": [
+        5,
+        6,
+        7
+      ],
+      "source_excerpt": "The New Jersey table lists May through July for snap beans.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Snap beans, bush and pole",
+      "source_span_sha256": "ef272f05823b724b800dd956acfde130b41862b0f668506ac625f1d76107f026",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "snap-beans",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-snap-beans-starting-method",
+      "normalized_value": "direct_sow",
+      "source_excerpt": "Both snap-bean growth habits are listed as seed-started.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Snap beans, bush and pole",
+      "source_span_sha256": "ef272f05823b724b800dd956acfde130b41862b0f668506ac625f1d76107f026",
+      "unit": null
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "summer-squash",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-summer-squash-new-jersey-planting-months",
+      "normalized_value": [
+        6,
+        7
+      ],
+      "source_excerpt": "The New Jersey table lists June and July across squash habits.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
+      "source_span_sha256": "66822414beda3938286f070df2ff595240070e9be7c600e20516a13970de4f3d",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "summer-squash",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-summer-squash-plant-spacing",
+      "normalized_value": {
+        "maximum": 36,
+        "minimum": 24
+      },
+      "source_excerpt": "The table gives 24 inches for bush squash and 36 inches for vine squash.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
+      "source_span_sha256": "66822414beda3938286f070df2ff595240070e9be7c600e20516a13970de4f3d",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "summer-squash",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-summer-squash-row-spacing",
+      "normalized_value": {
+        "maximum": 72,
+        "minimum": 48
+      },
+      "source_excerpt": "The table gives 48–72 inches between bush and vine squash rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
+      "source_span_sha256": "66822414beda3938286f070df2ff595240070e9be7c600e20516a13970de4f3d",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "summer-squash",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-summer-squash-starting-method",
+      "normalized_value": [
+        "direct_sow",
+        "transplant"
+      ],
+      "source_excerpt": "The table supports seed or transplant starts for both squash habits.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
+      "source_span_sha256": "66822414beda3938286f070df2ff595240070e9be7c600e20516a13970de4f3d",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "medium",
+      "crop_id": "summer-squash",
+      "extraction_method": "deterministic_regex",
+      "field_name": "sun_hours",
+      "id": "rutgers-fs129-summer-squash-sun-hours",
+      "normalized_value": {
+        "minimum": 8,
+        "preferred_condition": "full_sun"
+      },
+      "source_excerpt": "FS129 supports at least 8 direct-sun hours through its zucchini example.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+      "source_span_sha256": "a2e3f55a0bd51716f58296195818019fe98904def055f5546e95661fd4d27487",
+      "unit": "hours_per_day"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "summer-squash",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-summer-squash-yield-per-row",
+      "normalized_value": {
+        "maximum": 25,
+        "minimum": 20
+      },
+      "source_excerpt": "The table estimates 20–25 squash fruit per ten feet of row by habit.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Squash, bush and vine",
+      "source_span_sha256": "66822414beda3938286f070df2ff595240070e9be7c600e20516a13970de4f3d",
+      "unit": "fruit_per_10ft_row"
+    },
+    {
+      "applicability": "requires_location_adaptation",
+      "confidence": "high",
+      "crop_id": "tomatoes",
+      "extraction_method": "deterministic_regex",
+      "field_name": "new_jersey_planting_months",
+      "id": "rutgers-fs129-tomatoes-new-jersey-planting-months",
+      "normalized_value": [
+        5,
+        6
+      ],
+      "source_excerpt": "The table provides New Jersey planting months that require a location adapter.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Tomatoes",
+      "source_span_sha256": "ee78a1f49facf07be211bc03f3ec8db66f28f862e8fed60065debadcb3a40746",
+      "unit": "calendar_month"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "tomatoes",
+      "extraction_method": "deterministic_regex",
+      "field_name": "plant_spacing",
+      "id": "rutgers-fs129-tomatoes-plant-spacing",
+      "normalized_value": {
+        "maximum": 24,
+        "minimum": 24
+      },
+      "source_excerpt": "The home-garden table gives 24 inches within the row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Tomatoes",
+      "source_span_sha256": "ee78a1f49facf07be211bc03f3ec8db66f28f862e8fed60065debadcb3a40746",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "tomatoes",
+      "extraction_method": "deterministic_regex",
+      "field_name": "row_spacing",
+      "id": "rutgers-fs129-tomatoes-row-spacing",
+      "normalized_value": {
+        "maximum": 36,
+        "minimum": 36
+      },
+      "source_excerpt": "The home-garden table gives 36 inches between rows.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Tomatoes",
+      "source_span_sha256": "ee78a1f49facf07be211bc03f3ec8db66f28f862e8fed60065debadcb3a40746",
+      "unit": "inches"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "tomatoes",
+      "extraction_method": "deterministic_regex",
+      "field_name": "starting_method",
+      "id": "rutgers-fs129-tomatoes-starting-method",
+      "normalized_value": "transplant",
+      "source_excerpt": "The home-garden table identifies the supported starting method.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Tomatoes",
+      "source_span_sha256": "ee78a1f49facf07be211bc03f3ec8db66f28f862e8fed60065debadcb3a40746",
+      "unit": null
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "tomatoes",
+      "extraction_method": "deterministic_regex",
+      "field_name": "sun_hours",
+      "id": "rutgers-fs129-tomatoes-sun-hours",
+      "normalized_value": {
+        "minimum": 8,
+        "preferred_condition": "full_sun"
+      },
+      "source_excerpt": "FS129 supports at least 8 direct-sun hours through its explicit tomato example.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Planning a Vegetable Garden > Location and sunlight",
+      "source_span_sha256": "a2e3f55a0bd51716f58296195818019fe98904def055f5546e95661fd4d27487",
+      "unit": "hours_per_day"
+    },
+    {
+      "applicability": "home_garden_candidate",
+      "confidence": "high",
+      "crop_id": "tomatoes",
+      "extraction_method": "deterministic_regex",
+      "field_name": "yield_per_10ft_row",
+      "id": "rutgers-fs129-tomatoes-yield-per-row",
+      "normalized_value": {
+        "maximum": 50,
+        "minimum": 50
+      },
+      "source_excerpt": "The home-garden table estimates 50 lb per ten feet of row.",
+      "source_key": "rutgers-fs129-home-garden-2020",
+      "source_locator": "FS129 > Vegetable Planting Guide > Tomatoes",
+      "source_span_sha256": "ee78a1f49facf07be211bc03f3ec8db66f28f862e8fed60065debadcb3a40746",
+      "unit": "pounds_per_10ft_row"
+    }
+  ],
+  "corpus_id": "rutgers-home-garden-fact-sheets-v1",
+  "extractor_version": "rutgers-fs129-html-regex-v1.0.0",
+  "manifest_sha256": "1c3dbe8cb32655ba06fa8273e899fcd23888a5f3f64cb7f707a73ab294267124",
+  "publication_policy": "review_required_before_catalog_publication",
+  "publication_scope": "home vegetable gardeners",
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "key": "rutgers-fs129-home-garden-2020",
+      "license": null,
+      "media_type": "text/html",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Rutgers Cooperative Extension home-vegetable-garden planning guidance; planting months are New Jersey-specific",
+      "sha256": "4a594c1f8b72bf4685d536cdb5ef231c4ffa4f1144a04d7155535af92383bdf6",
+      "source_path": "data/source/cultivars/rutgers-home-garden/fs129.html",
+      "title": "Planning a Vegetable Garden",
+      "url": "https://njaes.rutgers.edu/fs129/"
+    }
+  ]
+}

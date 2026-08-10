@@ -137,6 +137,71 @@ def list_cultivars(
             ),
         ]
         effective_claims.sort(key=lambda item: (item[0].field_name, item[1]))
+        trait_responses = [
+            CultivarTraitResponse(
+                field_name=claim.field_name,
+                normalized_value=claim.normalized_value,
+                unit=claim.unit,
+                confidence=claim.confidence,
+                inherited_from_crop=inherited,
+                review_status=claim.review_status,
+                source_excerpt=claim.source_excerpt,
+                extraction_method=claim.extraction_method,
+                extractor_version=claim.extractor_version,
+                source=_source_response(claim.source_document, claim.source_locator),
+            )
+            for claim, inherited in effective_claims
+            if claim.field_name != "home_garden_profiles"
+        ]
+        profile_claim = next(
+            (
+                claim
+                for claim, inherited in effective_claims
+                if inherited and claim.field_name == "home_garden_profiles"
+            ),
+            None,
+        )
+        habit_claim = next(
+            (claim for claim, _ in effective_claims if claim.field_name == "growth_habit"),
+            None,
+        )
+        effective_fields = {trait.field_name for trait in trait_responses}
+        if profile_claim and habit_claim and isinstance(profile_claim.normalized_value, list):
+            profile = next(
+                (
+                    item
+                    for item in profile_claim.normalized_value
+                    if isinstance(item, dict)
+                    and item.get("growth_habit") == habit_claim.normalized_value
+                ),
+                None,
+            )
+            if profile:
+                for field_name, unit in (
+                    ("plant_spacing", "inches"),
+                    ("row_spacing", "inches"),
+                    ("yield_per_10ft_row", profile.get("yield_unit")),
+                ):
+                    if field_name in effective_fields or field_name not in profile:
+                        continue
+                    trait_responses.append(
+                        CultivarTraitResponse(
+                            field_name=field_name,
+                            normalized_value=profile[field_name],
+                            unit=unit,
+                            confidence=profile_claim.confidence,
+                            inherited_from_crop=True,
+                            review_status=profile_claim.review_status,
+                            source_excerpt=profile_claim.source_excerpt,
+                            extraction_method=profile_claim.extraction_method,
+                            extractor_version=profile_claim.extractor_version,
+                            source=_source_response(
+                                profile_claim.source_document,
+                                profile_claim.source_locator,
+                            ),
+                        )
+                    )
+        trait_responses.sort(key=lambda trait: trait.field_name)
         responses.append(
             CultivarResponse(
                 id=cultivar.id,
@@ -148,21 +213,7 @@ def list_cultivars(
                 description=cultivar.description,
                 review_status=cultivar.review_status,
                 aliases=sorted(alias.alias for alias in cultivar.aliases),
-                traits=[
-                    CultivarTraitResponse(
-                        field_name=claim.field_name,
-                        normalized_value=claim.normalized_value,
-                        unit=claim.unit,
-                        confidence=claim.confidence,
-                        inherited_from_crop=inherited,
-                        review_status=claim.review_status,
-                        source_excerpt=claim.source_excerpt,
-                        extraction_method=claim.extraction_method,
-                        extractor_version=claim.extractor_version,
-                        source=_source_response(claim.source_document, claim.source_locator),
-                    )
-                    for claim, inherited in effective_claims
-                ],
+                traits=trait_responses,
                 source_identifiers=[
                     CultivarSourceIdentifierResponse(
                         source_identifier=identifier.source_identifier,

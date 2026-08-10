@@ -311,6 +311,21 @@ def build_taxonomy_coverage_report(
         crop_id = baseline["crop_slug"]
         for trait in baseline["traits"]:
             traits_by_crop[crop_id].add(trait["field_name"])
+            if trait["field_name"] == "home_garden_profiles":
+                profiles = trait.get("normalized_value")
+                if isinstance(profiles, list):
+                    traits_by_crop[crop_id].update(
+                        field_name
+                        for field_name in (
+                            "plant_spacing",
+                            "row_spacing",
+                            "yield_per_10ft_row",
+                        )
+                        if any(
+                            isinstance(profile, dict) and field_name in profile
+                            for profile in profiles
+                        )
+                    )
             source = source_by_key[trait["source_key"]]
             if source.get("publisher"):
                 publishers_by_crop[crop_id].add(source["publisher"])

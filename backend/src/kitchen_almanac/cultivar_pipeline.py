@@ -17,6 +17,12 @@ from kitchen_almanac.cultivar_catalog import (
     validate_cultivar_catalog,
 )
 from kitchen_almanac.rutgers_extraction import load_and_apply_reviewed_crop_baselines
+from kitchen_almanac.rutgers_home_garden import (
+    load_and_apply_reviewed_crop_baselines as apply_home_garden_baselines,
+)
+from kitchen_almanac.rutgers_home_garden import (
+    validate_committed_extraction as validate_home_garden_extraction,
+)
 from kitchen_almanac.services.wishlist_resolver import normalize_term
 
 STAGING_SCHEMA_VERSION = "1.0.0"
@@ -561,6 +567,10 @@ def build_expanded_snapshot(
     *,
     verify_snapshots: bool = False,
 ) -> dict[str, Any]:
+    if verify_snapshots:
+        home_garden_errors = validate_home_garden_extraction()
+        if home_garden_errors:
+            raise CultivarPipelineError(" ".join(home_garden_errors))
     base = load_and_apply_reviewed_crop_baselines(
         read_pipeline_json(base_path, "base cultivar catalog")
     )
@@ -574,7 +584,8 @@ def build_expanded_snapshot(
         load_and_apply_reviewed_commercial_listings,
     )
 
-    return load_and_apply_reviewed_commercial_listings(expanded)
+    expanded = load_and_apply_reviewed_commercial_listings(expanded)
+    return apply_home_garden_baselines(expanded)
 
 
 def write_expanded_snapshot(data: dict[str, Any], output_path: Path = DEFAULT_OUTPUT) -> None:

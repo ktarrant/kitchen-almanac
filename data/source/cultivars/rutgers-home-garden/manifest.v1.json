@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "corpus_id": "rutgers-home-garden-fact-sheets-v1",
+  "source": {
+    "key": "rutgers-fs129-home-garden-2020",
+    "title": "Planning a Vegetable Garden",
+    "publisher": "Rutgers NJAES Cooperative Extension",
+    "publication_number": "FS129",
+    "published_at": "2020-04-27",
+    "retrieved_at": "2026-08-09T00:00:00Z",
+    "audience": "home vegetable gardeners",
+    "region": "New Jersey",
+    "url": "https://njaes.rutgers.edu/fs129/",
+    "source_path": "data/source/cultivars/rutgers-home-garden/fs129.html",
+    "sha256": "4a594c1f8b72bf4685d536cdb5ef231c4ffa4f1144a04d7155535af92383bdf6",
+    "media_type": "text/html",
+    "license": null,
+    "scope": "Rutgers Cooperative Extension home-vegetable-garden planning guidance; planting months are New Jersey-specific"
+  },
+  "extraction_policy": {
+    "default": "review_required",
+    "crop_group_mapping": "review_required",
+    "new_jersey_planting_months": "hold_for_location_adapter",
+    "database_publication": "prohibited_without_review"
+  }
+}
