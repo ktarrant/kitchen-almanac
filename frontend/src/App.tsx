@@ -417,6 +417,7 @@ export default function App() {
   const createGardenDialogRef = useRef<HTMLDialogElement>(null);
   const deleteGardenDialogRef = useRef<HTMLDialogElement>(null);
   const growGuideRef = useRef<HTMLElement>(null);
+  const catalogQueryRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -707,6 +708,11 @@ export default function App() {
     setSearchQuery(query);
     setSearchResults(null);
     setSearching(false);
+  }
+
+  function clearCatalogSearch() {
+    updateCatalogQuery("");
+    catalogQueryRef.current?.focus();
   }
 
   async function wishlistForSelection(): Promise<Wishlist> {
@@ -1518,6 +1524,7 @@ export default function App() {
               <div className="search-row">
                 <input
                   id="catalog-query"
+                  ref={catalogQueryRef}
                   type="search"
                   maxLength={120}
                   placeholder="Try tomatoes or San Marzano"
@@ -1573,16 +1580,25 @@ export default function App() {
 
             {searchQuery.trim() && searchResults && (
               <div className="search-results" aria-live="polite">
-              <div className="search-results-heading">
-                <div>
-                  <p className="section-kicker">Catalog matches</p>
-                  <h2>Results for “{searchResults.query}”</h2>
+                <div className="search-results-heading">
+                  <div>
+                    <p className="section-kicker">Catalog matches</p>
+                    <h2>Results for “{searchResults.query}”</h2>
+                  </div>
+                  <div className="search-results-summary">
+                    <p>
+                      {searchResults.crop_choices.length + searchResults.cultivars.length}{" "}
+                      documented choices
+                    </p>
+                    <button
+                      className="secondary-button"
+                      type="button"
+                      onClick={clearCatalogSearch}
+                    >
+                      Clear search
+                    </button>
+                  </div>
                 </div>
-                <p>
-                  {searchResults.crop_choices.length + searchResults.cultivars.length} documented
-                  choices
-                </p>
-              </div>
 
               {searchResults.crop_choices.length > 0 && (
                 <div className="result-group">

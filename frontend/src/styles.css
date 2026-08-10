@@ -974,11 +974,18 @@ h1 {
   font-size: clamp(2rem, 5vw, 3rem);
 }
 
-.search-results-heading > p,
+.search-results-summary p,
 .result-group-heading p {
   margin: 0;
   color: #6a756d;
   font-size: 0.78rem;
+}
+
+.search-results-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
 .result-group {
