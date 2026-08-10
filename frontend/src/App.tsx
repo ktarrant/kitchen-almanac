@@ -67,6 +67,11 @@ type CropMatch = {
   planning_category: string;
 };
 
+type CropListResponse = {
+  dataset_id: string | null;
+  crops: CropMatch[];
+};
+
 type Candidate = CropMatch & {
   score: number;
   matched_alias: string;
@@ -391,6 +396,9 @@ export default function App() {
   const [wishlist, setWishlist] = useState<Wishlist | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<CatalogSearchResults | null>(null);
+  const [browseCrops, setBrowseCrops] = useState<CropMatch[]>([]);
+  const [loadingBrowseCrops, setLoadingBrowseCrops] = useState(true);
+  const [browseCropsError, setBrowseCropsError] = useState<string | null>(null);
   const [savingProfile, setSavingProfile] = useState(false);
   const [searching, setSearching] = useState(false);
   const [addingSelection, setAddingSelection] = useState<string | null>(null);
@@ -404,6 +412,7 @@ export default function App() {
   const [addedNotice, setAddedNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const wishlistRequestId = useRef(0);
+  const catalogSearchRequestId = useRef(0);
   const growGuideRequestId = useRef(0);
   const createGardenDialogRef = useRef<HTMLDialogElement>(null);
   const deleteGardenDialogRef = useRef<HTMLDialogElement>(null);
@@ -432,6 +441,31 @@ export default function App() {
       controller.abort();
       wishlistRequestId.current += 1;
     };
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    async function loadBrowseCrops() {
+      try {
+        const response = await fetch("/api/crops", { signal: controller.signal });
+        if (!response.ok) throw new Error(await responseMessage(response));
+        const payload = (await response.json()) as CropListResponse;
+        setBrowseCrops(
+          [...payload.crops].sort((left, right) =>
+            left.canonical_name.localeCompare(right.canonical_name)
+          )
+        );
+      } catch (caught) {
+        if (caught instanceof DOMException && caught.name === "AbortError") return;
+        setBrowseCropsError(
+          caught instanceof Error ? caught.message : "Could not load crop choices."
+        );
+      } finally {
+        if (!controller.signal.aborted) setLoadingBrowseCrops(false);
+      }
+    }
+    void loadBrowseCrops();
+    return () => controller.abort();
   }, []);
 
   useEffect(() => {
@@ -485,6 +519,8 @@ export default function App() {
     setProfile(selected);
     setWishlist(null);
     setLoadingWishlist(true);
+    catalogSearchRequestId.current += 1;
+    setSearching(false);
     setSearchResults(null);
     setSearchQuery("");
     setGuideCultivarSlug(null);
@@ -511,7 +547,10 @@ export default function App() {
     setProfile(null);
     setWishlist(null);
     setLoadingWishlist(false);
+    catalogSearchRequestId.current += 1;
+    setSearching(false);
     setSearchResults(null);
+    setSearchQuery("");
     setGuideCultivarSlug(null);
     setGrowGuide(null);
     setAddedNotice(null);
@@ -630,27 +669,44 @@ export default function App() {
     }
   }
 
-  async function submitCatalogSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!profile || !searchQuery.trim()) return;
+  async function searchCatalog(query: string) {
+    const normalizedQuery = query.trim();
+    if (!profile || !normalizedQuery) return;
+    const requestId = ++catalogSearchRequestId.current;
+    setSearchQuery(normalizedQuery);
+    setSearchResults(null);
     setSearching(true);
     setError(null);
     setAddedNotice(null);
     try {
       const parameters = new URLSearchParams({
-        q: searchQuery.trim(),
+        q: normalizedQuery,
         garden_profile_id: profile.id
       });
       const response = await fetch(`/api/catalog/search?${parameters}`);
       if (!response.ok) {
         throw new Error(await responseMessage(response));
       }
-      setSearchResults((await response.json()) as CatalogSearchResults);
+      const results = (await response.json()) as CatalogSearchResults;
+      if (catalogSearchRequestId.current === requestId) setSearchResults(results);
     } catch (caught) {
+      if (catalogSearchRequestId.current !== requestId) return;
       setError(caught instanceof Error ? caught.message : "Could not search the catalog.");
     } finally {
-      setSearching(false);
+      if (catalogSearchRequestId.current === requestId) setSearching(false);
     }
+  }
+
+  async function submitCatalogSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await searchCatalog(searchQuery);
+  }
+
+  function updateCatalogQuery(query: string) {
+    catalogSearchRequestId.current += 1;
+    setSearchQuery(query);
+    setSearchResults(null);
+    setSearching(false);
   }
 
   async function wishlistForSelection(): Promise<Wishlist> {
@@ -1467,7 +1523,7 @@ export default function App() {
                   placeholder="Try tomatoes or San Marzano"
                   autoComplete="off"
                   value={searchQuery}
-                  onChange={(event) => setSearchQuery(event.target.value)}
+                  onChange={(event) => updateCatalogQuery(event.target.value)}
                 />
                 <button
                   className="primary-button"
@@ -1480,7 +1536,42 @@ export default function App() {
               <p>Names, aliases, types, and spelling variations are supported.</p>
             </form>
 
-            {searchResults && (
+            {!searchQuery.trim() && (
+              <section className="crop-browser" aria-labelledby="crop-browser-heading">
+                <div className="crop-browser-heading">
+                  <div>
+                    <p className="section-kicker">Browse the catalog</p>
+                    <h2 id="crop-browser-heading">Choose a crop to see its cultivars</h2>
+                  </div>
+                  {!loadingBrowseCrops && !browseCropsError && (
+                    <p>{browseCrops.length} crop types</p>
+                  )}
+                </div>
+                {loadingBrowseCrops && <p className="crop-browser-status">Loading crops…</p>}
+                {browseCropsError && (
+                  <p className="crop-browser-status" role="alert">
+                    {browseCropsError} You can still search by name above.
+                  </p>
+                )}
+                {!loadingBrowseCrops && !browseCropsError && (
+                  <div className="crop-browser-list">
+                    {browseCrops.map((crop) => (
+                      <button
+                        className="crop-browser-button"
+                        type="button"
+                        key={crop.slug}
+                        disabled={searching}
+                        onClick={() => void searchCatalog(crop.canonical_name)}
+                      >
+                        {crop.canonical_name}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </section>
+            )}
+
+            {searchQuery.trim() && searchResults && (
               <div className="search-results" aria-live="polite">
               <div className="search-results-heading">
                 <div>
