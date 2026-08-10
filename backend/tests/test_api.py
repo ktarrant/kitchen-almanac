@@ -197,6 +197,7 @@ def test_crop_list_uses_active_catalog(catalog_client: TestClient) -> None:
     assert response.status_code == 200
     payload = response.json()
     assert payload["dataset_id"].startswith("kitchen-almanac-v2-")
+    assert payload["cultivar_dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
     assert [crop["canonical_name"] for crop in payload["crops"]] == [
         "Asparagus",
         "Horseradish",
@@ -209,6 +210,32 @@ def test_crop_list_uses_active_catalog(catalog_client: TestClient) -> None:
         "perennial-crops",
         "perennial-crops",
     ]
+    assert [crop["documented_cultivar_count"] for crop in payload["crops"]] == [0, 0, 0]
+    assert [crop["searchable_cultivar_count"] for crop in payload["crops"]] == [0, 0, 0]
+
+
+def test_crop_list_reports_version_consistent_cultivar_availability(
+    catalog_client: TestClient,
+) -> None:
+    response = catalog_client.get("/api/crops")
+
+    assert response.status_code == 200
+    payload = response.json()
+    crops = {crop["canonical_name"]: crop for crop in payload["crops"]}
+    assert sum(crop["documented_cultivar_count"] for crop in crops.values()) == 46
+    assert sum(crop["searchable_cultivar_count"] for crop in crops.values()) == 38
+    assert (
+        crops["Tomatoes"]["documented_cultivar_count"],
+        crops["Tomatoes"]["searchable_cultivar_count"],
+    ) == (8, 6)
+    assert (
+        crops["Cucumbers"]["documented_cultivar_count"],
+        crops["Cucumbers"]["searchable_cultivar_count"],
+    ) == (5, 3)
+    assert (
+        crops["Asparagus"]["documented_cultivar_count"],
+        crops["Asparagus"]["searchable_cultivar_count"],
+    ) == (0, 0)
 
 
 def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(

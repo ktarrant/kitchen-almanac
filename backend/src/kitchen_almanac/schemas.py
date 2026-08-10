@@ -26,12 +26,15 @@ class CropSummary(BaseModel):
     browse_category_key: str
     browse_category_title: str
     browse_category_position: int
+    documented_cultivar_count: int
+    searchable_cultivar_count: int
     aliases: list[str]
     seasons: list[str]
 
 
 class CropListResponse(BaseModel):
     dataset_id: str | None
+    cultivar_dataset_id: str | None
     crops: list[CropSummary]
 
 

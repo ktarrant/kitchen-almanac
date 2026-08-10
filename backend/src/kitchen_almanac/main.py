@@ -4,13 +4,21 @@ from typing import Annotated
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Response, status
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
 from kitchen_almanac import __version__
 from kitchen_almanac.config import get_settings
 from kitchen_almanac.database import get_session
-from kitchen_almanac.db_models import Crop, DatasetVersion, GardenProfile, Wishlist
+from kitchen_almanac.db_models import (
+    CommercialSeedListing,
+    Crop,
+    Cultivar,
+    CultivarDatasetVersion,
+    DatasetVersion,
+    GardenProfile,
+    Wishlist,
+)
 from kitchen_almanac.schemas import (
     CatalogSearchResponse,
     ClimateNormalsResponse,
@@ -94,7 +102,46 @@ def list_crops(
 ) -> CropListResponse:
     active_dataset = session.scalar(select(DatasetVersion).where(DatasetVersion.active.is_(True)))
     if active_dataset is None:
-        return CropListResponse(dataset_id=None, crops=[])
+        return CropListResponse(dataset_id=None, cultivar_dataset_id=None, crops=[])
+
+    cultivar_dataset = session.scalar(
+        select(CultivarDatasetVersion).where(
+            CultivarDatasetVersion.active.is_(True),
+            CultivarDatasetVersion.crop_dataset_version_id == active_dataset.id,
+        )
+    )
+    documented_counts: dict[str, int] = {}
+    searchable_counts: dict[str, int] = {}
+    if cultivar_dataset is not None:
+        documented_counts = dict(
+            session.execute(
+                select(Cultivar.crop_id, func.count(Cultivar.id))
+                .where(
+                    Cultivar.cultivar_dataset_version_id == cultivar_dataset.id,
+                    Cultivar.review_status == "approved",
+                )
+                .group_by(Cultivar.crop_id)
+            ).all()
+        )
+        searchable_counts = dict(
+            session.execute(
+                select(Cultivar.crop_id, func.count(func.distinct(Cultivar.id)))
+                .join(
+                    CommercialSeedListing,
+                    CommercialSeedListing.cultivar_id == Cultivar.id,
+                )
+                .where(
+                    Cultivar.cultivar_dataset_version_id == cultivar_dataset.id,
+                    Cultivar.review_status == "approved",
+                    CommercialSeedListing.cultivar_dataset_version_id == cultivar_dataset.id,
+                    CommercialSeedListing.review_status == "approved",
+                    CommercialSeedListing.availability_status.in_(
+                        {"in_stock", "out_of_stock", "unknown"}
+                    ),
+                )
+                .group_by(Cultivar.crop_id)
+            ).all()
+        )
 
     query = (
         select(Crop)
@@ -108,6 +155,7 @@ def list_crops(
     crops = session.scalars(query).all()
     return CropListResponse(
         dataset_id=active_dataset.id,
+        cultivar_dataset_id=cultivar_dataset.id if cultivar_dataset else None,
         crops=[
             CropSummary(
                 slug=crop.slug,
@@ -119,6 +167,8 @@ def list_crops(
                 browse_category_key=crop.browse_category_key,
                 browse_category_title=crop.browse_category_title,
                 browse_category_position=crop.browse_category_position,
+                documented_cultivar_count=documented_counts.get(crop.id, 0),
+                searchable_cultivar_count=searchable_counts.get(crop.id, 0),
                 aliases=sorted(alias.alias for alias in crop.aliases),
                 seasons=sorted({appearance.season for appearance in crop.appearances}),
             )

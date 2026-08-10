@@ -991,6 +991,10 @@ h1 {
 }
 
 .crop-browser-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.28rem;
   min-height: 50px;
   padding: 0.7rem 0.85rem;
   border: 1px solid #a8b09f;
@@ -1015,6 +1019,21 @@ h1 {
 .crop-browser-button:disabled {
   cursor: wait;
   opacity: 0.62;
+}
+
+.crop-browser-button-name {
+  display: block;
+}
+
+.crop-browser-availability {
+  display: block;
+  color: #5e7163;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.crop-browser-availability.empty {
+  color: #8a7468;
 }
 
 .search-results {

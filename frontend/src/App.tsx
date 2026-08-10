@@ -1,5 +1,7 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
+import CropBrowser, { type BrowseCrop } from "./CropBrowser";
+
 type GrowingMethod = "in_ground" | "raised_bed" | "containers" | "protected";
 type IntendedUse = "fresh" | "snacking" | "sauce" | "canning" | "pickling" | "processing";
 type DiseaseConcern =
@@ -67,17 +69,9 @@ type CropMatch = {
   planning_category: string;
 };
 
-type BrowseCrop = CropMatch & {
-  commodity_section_key: string;
-  commodity_section_title: string;
-  commodity_section_position: number;
-  browse_category_key: string;
-  browse_category_title: string;
-  browse_category_position: number;
-};
-
 type CropListResponse = {
   dataset_id: string | null;
+  cultivar_dataset_id: string | null;
   crops: BrowseCrop[];
 };
 
@@ -406,7 +400,6 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<CatalogSearchResults | null>(null);
   const [browseCrops, setBrowseCrops] = useState<BrowseCrop[]>([]);
-  const [browseCategoryKey, setBrowseCategoryKey] = useState("all");
   const [loadingBrowseCrops, setLoadingBrowseCrops] = useState(true);
   const [browseCropsError, setBrowseCropsError] = useState<string | null>(null);
   const [savingProfile, setSavingProfile] = useState(false);
@@ -491,42 +484,6 @@ export default function App() {
         (entry) => entry.status === "needs_confirmation" || entry.status === "unresolved"
       ).length ?? 0,
     [wishlist]
-  );
-  const browseCategories = useMemo(() => {
-    const categories = new Map<
-      string,
-      { key: string; title: string; position: number; crops: BrowseCrop[] }
-    >();
-    for (const crop of browseCrops) {
-      const category = categories.get(crop.browse_category_key) ?? {
-        key: crop.browse_category_key,
-        title: crop.browse_category_title,
-        position: crop.browse_category_position,
-        crops: []
-      };
-      category.crops.push(crop);
-      categories.set(category.key, category);
-    }
-    return [...categories.values()]
-      .sort((left, right) => left.position - right.position)
-      .map((category) => ({
-        ...category,
-        crops: category.crops.sort((left, right) =>
-          left.canonical_name.localeCompare(right.canonical_name)
-        )
-      }));
-  }, [browseCrops]);
-  const selectedBrowseCategory = browseCategories.find(
-    (category) => category.key === browseCategoryKey
-  );
-  const visibleBrowseCrops = useMemo(
-    () =>
-      browseCategoryKey === "all"
-        ? [...browseCrops].sort((left, right) =>
-            left.canonical_name.localeCompare(right.canonical_name)
-          )
-        : (selectedBrowseCategory?.crops ?? []),
-    [browseCategoryKey, browseCrops, selectedBrowseCategory]
   );
   const groupedCultivars = suitabilityGroups
     .map((group) => ({
@@ -1590,69 +1547,13 @@ export default function App() {
             </form>
 
             {!searchQuery.trim() && (
-              <section className="crop-browser" aria-labelledby="crop-browser-heading">
-                <div className="crop-browser-heading">
-                  <div>
-                    <p className="section-kicker">Browse the catalog</p>
-                    <h2 id="crop-browser-heading">Choose a crop to see its cultivars</h2>
-                  </div>
-                  {!loadingBrowseCrops && !browseCropsError && (
-                    <p>{browseCrops.length} crops</p>
-                  )}
-                </div>
-                {loadingBrowseCrops && <p className="crop-browser-status">Loading crops…</p>}
-                {browseCropsError && (
-                  <p className="crop-browser-status" role="alert">
-                    {browseCropsError} You can still search by name above.
-                  </p>
-                )}
-                {!loadingBrowseCrops && !browseCropsError && (
-                  <>
-                    <div
-                      className="crop-browser-filters"
-                      role="group"
-                      aria-label="Filter crops by category"
-                    >
-                      <button
-                        className="crop-browser-filter"
-                        type="button"
-                        aria-pressed={browseCategoryKey === "all"}
-                        onClick={() => setBrowseCategoryKey("all")}
-                      >
-                        All crops <span>{browseCrops.length}</span>
-                      </button>
-                      {browseCategories.map((category) => (
-                        <button
-                          className="crop-browser-filter"
-                          type="button"
-                          key={category.key}
-                          aria-pressed={browseCategoryKey === category.key}
-                          onClick={() => setBrowseCategoryKey(category.key)}
-                        >
-                          {category.title} <span>{category.crops.length}</span>
-                        </button>
-                      ))}
-                    </div>
-                    <div className="crop-browser-list-heading">
-                      <h3>{selectedBrowseCategory?.title ?? "All crops"}</h3>
-                      <p>Alphabetical · {visibleBrowseCrops.length} crops</p>
-                    </div>
-                    <div className="crop-browser-list">
-                      {visibleBrowseCrops.map((crop) => (
-                        <button
-                          className="crop-browser-button"
-                          type="button"
-                          key={crop.slug}
-                          disabled={searching}
-                          onClick={() => void searchCatalog(crop.canonical_name)}
-                        >
-                          {crop.canonical_name}
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </section>
+              <CropBrowser
+                crops={browseCrops}
+                loading={loadingBrowseCrops}
+                error={browseCropsError}
+                searching={searching}
+                onSelectCrop={(cropName) => void searchCatalog(cropName)}
+              />
             )}
 
             {searchQuery.trim() && searchResults && (

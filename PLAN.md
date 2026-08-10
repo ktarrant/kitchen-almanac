@@ -27,8 +27,9 @@ a US ZIP code or coordinates rather than assuming a particular climate.
   maintenance.
 - Optimization: OR-Tools CP-SAT with fixed seeds, stable candidate ordering,
   and deterministic tie-breaking.
-- Verification: pytest for backend and data pipelines; Playwright for browser
-  workflows.
+- Verification: pytest for backend and data pipelines, Vitest and Testing
+  Library for focused frontend workflows, and Playwright for later end-to-end
+  browser coverage.
 
 The repository is organized as a small monorepo:
 
@@ -250,6 +251,13 @@ Result cards expose concise effective traits, inherited crop baselines, and an
 evidence publisher. The Step 6 model now supplies location-specific result
 groups, suitability reasons, constraints, and evidence gaps rather than
 implying recommendation from text matching alone.
+
+When search is empty, the catalog defaults to all 47 crops alphabetically and
+offers seven versioned gardener-oriented category filters. Each crop shows its
+documented cultivar count separately from cultivars eligible for catalog search,
+so crops with no documented cultivars remain useful crop-level choices without
+appearing to promise cultivar results. The crop API pins these counts to the
+active compatible crop and cultivar dataset versions.
 
 The active wishlist is restored when a saved garden is selected, using the
 most recently updated wishlist without merging separate lists. Selected crops,

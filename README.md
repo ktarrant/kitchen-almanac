@@ -122,7 +122,8 @@ review candidate rather than automatically becoming gardening guidance.
 The API includes:
 
 - `GET /health` for service health.
-- `GET /api/crops` for the active crop catalog.
+- `GET /api/crops` for the active crop catalog, its compatible cultivar-dataset
+  version, and per-crop documented and searchable cultivar counts.
 - `GET /api/cultivars` for approved cultivar identities, effective traits,
   source identifiers, and separately modeled commercial listings.
 - `GET /api/catalog/search` for deterministic one-at-a-time crop and cultivar
