@@ -30,7 +30,7 @@ from kitchen_almanac.services.suitability_service import (
     assess_cultivar,
 )
 
-GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.4.0"
+GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.5.0"
 
 
 def _trait(cultivar: CultivarResponse, field_name: str) -> CultivarTraitResponse | None:
@@ -267,6 +267,89 @@ def _water_section(cultivar: CultivarResponse) -> GrowGuideSectionResponse:
     )
 
 
+def _container_section(cultivar: CultivarResponse) -> GrowGuideSectionResponse:
+    volume = _trait(cultivar, "container_volume_gallons")
+    depth = _trait(cultivar, "container_depth_inches")
+    plants = _trait(cultivar, "plants_per_container")
+    traits = [trait for trait in (volume, depth, plants) if trait is not None]
+    if volume is None:
+        return _section(
+            code="containers",
+            title="Containers",
+            status="missing",
+            summary="No reviewed minimum container size is available yet.",
+            missing_evidence=["Minimum container volume and depth"],
+        )
+
+    instructions = [
+        f"Use {_range_text(volume.normalized_value, unit=volume.unit)} of growing media."
+    ]
+    missing_evidence: list[str] = []
+    if depth:
+        instructions.append(
+            f"Choose a container {_range_text(depth.normalized_value, unit=depth.unit)} deep."
+        )
+    else:
+        missing_evidence.append("Minimum container depth")
+    if plants:
+        if plants.normalized_value == 1:
+            instructions.append("Grow one plant per container.")
+        else:
+            count = _range_text(plants.normalized_value, unit=plants.unit)
+            instructions.append(f"Allow {count} per container.")
+
+    return _section(
+        code="containers",
+        title="Containers",
+        status="partial" if missing_evidence else "documented",
+        summary=" ".join(instructions),
+        instructions=instructions,
+        traits=traits,
+        missing_evidence=missing_evidence,
+    )
+
+
+def _support_section(cultivar: CultivarResponse) -> GrowGuideSectionResponse:
+    support = _trait(cultivar, "support_required")
+    habit = _trait(cultivar, "growth_habit")
+    if support:
+        required = support.normalized_value
+        if required is True:
+            instruction = "Install a cage, stake, or trellis before the plant becomes large."
+        elif required is False:
+            instruction = "This crop does not usually need a cage, stake, or trellis."
+        else:
+            instruction = f"Support guidance: {_range_text(required)}."
+        return _section(
+            code="trellising",
+            title="Trellising and support",
+            status="documented",
+            summary=instruction,
+            instructions=[instruction],
+            traits=[support, *([habit] if habit else [])],
+        )
+    if habit:
+        habit_text = _range_text(habit.normalized_value)
+        return _section(
+            code="trellising",
+            title="Trellising and support",
+            status="partial",
+            summary=(
+                f"The documented growth habit is {habit_text}, but support needs are not sourced."
+            ),
+            instructions=[f"Plan around a {habit_text} growth habit."],
+            traits=[habit],
+            missing_evidence=["Support or trellising requirement"],
+        )
+    return _section(
+        code="trellising",
+        title="Trellising and support",
+        status="missing",
+        summary="No reviewed growth-habit or support requirement is available yet.",
+        missing_evidence=["Growth habit and support requirement"],
+    )
+
+
 def _parse_normal_date(value: str, year: int) -> date:
     month, day = (int(part) for part in value.split("/", maxsplit=1))
     return date(year, month, day)
@@ -356,57 +439,8 @@ def _build_sections(
             )
         )
 
-    sections.append(
-        _simple_trait_section(
-            cultivar,
-            code="containers",
-            title="Containers",
-            field_name="container_volume_gallons",
-            missing_label="minimum container volume",
-            instruction_prefix="Use a container of at least",
-        )
-    )
-
-    support = _trait(cultivar, "support_required")
-    habit = _trait(cultivar, "growth_habit")
-    if support:
-        instruction = f"Support required: {_range_text(support.normalized_value)}."
-        sections.append(
-            _section(
-                code="trellising",
-                title="Trellising and support",
-                status="documented",
-                summary=instruction,
-                instructions=[instruction],
-                traits=[support, *([habit] if habit else [])],
-            )
-        )
-    elif habit:
-        habit_text = _range_text(habit.normalized_value)
-        sections.append(
-            _section(
-                code="trellising",
-                title="Trellising and support",
-                status="partial",
-                summary=(
-                    f"The documented growth habit is {habit_text}, but support needs are not "
-                    "sourced."
-                ),
-                instructions=[f"Plan around a {habit_text} growth habit."],
-                traits=[habit],
-                missing_evidence=["Support or trellising requirement"],
-            )
-        )
-    else:
-        sections.append(
-            _section(
-                code="trellising",
-                title="Trellising and support",
-                status="missing",
-                summary="No reviewed growth-habit or support requirement is available yet.",
-                missing_evidence=["Growth habit and support requirement"],
-            )
-        )
+    sections.append(_container_section(cultivar))
+    sections.append(_support_section(cultivar))
 
     starting_method = _trait(cultivar, "starting_method")
     maturity = _trait(cultivar, "days_to_maturity")
@@ -696,6 +730,72 @@ def _guide_action(
     )
 
 
+def _combined_action(
+    sections: list[tuple[str, GrowGuideSectionResponse]],
+    *,
+    code: str,
+    title: str,
+    when: str,
+    summary: str,
+) -> GrowGuideActionResponse:
+    statuses = {section.status for _, section in sections}
+    if "conflict" in statuses:
+        status = "conflict"
+    elif statuses == {"missing"}:
+        status = "missing"
+    elif statuses & {"missing", "partial"}:
+        status = "partial"
+    else:
+        status = "documented"
+
+    confidence_values = [section.confidence for _, section in sections if section.confidence]
+    confidence = None
+    if confidence_values:
+        rank = {"low": 0, "medium": 1, "high": 2}
+        confidence = min(confidence_values, key=lambda item: rank.get(item, -1))
+
+    provenances = {
+        section.provenance for _, section in sections if section.provenance != "none"
+    }
+    provenance = "none"
+    if "mixed" in provenances or len(provenances) > 1:
+        provenance = "mixed"
+    elif provenances:
+        provenance = provenances.pop()
+
+    evidence: list[SuitabilityEvidenceReference] = []
+    evidence_keys: set[tuple[object, ...]] = set()
+    for _, section in sections:
+        for item in section.evidence:
+            key = (
+                item.field_name,
+                item.source_document_id,
+                item.source_locator,
+                item.origin,
+            )
+            if key not in evidence_keys:
+                evidence.append(item)
+                evidence_keys.add(key)
+
+    return GrowGuideActionResponse(
+        code=code,
+        title=title,
+        when=when,
+        status=status,
+        summary=summary,
+        instructions=[f"{label}: {section.summary}" for label, section in sections],
+        confidence=confidence,
+        provenance=provenance,
+        evidence=evidence,
+        missing_evidence=[
+            f"{label}: {gap}"
+            for label, section in sections
+            for gap in section.missing_evidence
+        ],
+        timeline=[],
+    )
+
+
 def _build_phases(
     sections: list[GrowGuideSectionResponse],
     timeline: list[GrowGuideTimelineEventResponse],
@@ -717,6 +817,19 @@ def _build_phases(
             timeline=[event] if event else [],
         )
 
+    preparation = _combined_action(
+        [
+            ("Soil", section_by_code["soil"]),
+            ("Container", section_by_code["containers"]),
+            ("Spacing", section_by_code["spacing"]),
+            ("Support", section_by_code["trellising"]),
+        ],
+        code="prepare_space",
+        title="Prepare the growing space",
+        when="Before planting",
+        summary="Prepare the soil and lay out the container, spacing, and support together.",
+    )
+
     phases = [
         GrowGuidePhaseResponse(
             code="plan_and_plant",
@@ -728,10 +841,7 @@ def _build_phases(
             ),
             actions=[
                 action("light", "Choose the growing location", "Before planting"),
-                action("soil", "Prepare the soil", "Before planting"),
-                action("containers", "Choose a container", "Before planting"),
-                action("spacing", "Plan plant spacing", "Before planting"),
-                action("trellising", "Set up support", "Before planting"),
+                preparation,
                 action(
                     "starting_method",
                     "Decide how to start the plants",

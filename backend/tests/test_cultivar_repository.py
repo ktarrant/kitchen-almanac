@@ -33,7 +33,7 @@ def test_cultivar_catalog_load_is_idempotent_and_keeps_listings_separate() -> No
         assert active is not None
         assert active.id == catalog.id
         assert session.scalar(select(func.count()).select_from(Cultivar)) == 46
-        assert session.scalar(select(func.count()).select_from(CultivarEvidenceClaim)) == 380
+        assert session.scalar(select(func.count()).select_from(CultivarEvidenceClaim)) == 406
         assert session.scalar(select(func.count()).select_from(CommercialSeedListing)) == 38
 
         listing = session.scalar(

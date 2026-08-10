@@ -116,6 +116,14 @@ until a location and climate adapter can translate them safely. More specific
 UMD tomato light and spacing guidance remains active instead of being replaced
 by FS129's generic tomato row.
 
+A reviewed University of Maryland Extension home-container pass adds gallon and
+depth bands for 11 of those crop baselines. These are sourced crop-size classes,
+not estimates derived from plant spacing; snap beans remain unfilled because the
+source places beans in two different size classes without separating growth
+habits. UMD's home-garden layout guidance also supplies explicit support needs
+for tomatoes and cucumbers. Unknown support needs remain unknown rather than
+being converted to "no support needed" from a lack of evidence.
+
 `rutgers taxonomy` verifies the full manual's table of contents and builds a
 deterministic registry of all 31 commodity sections and 47 individual crop
 concepts. All 47 concepts are now canonical catalog identities; the former 9

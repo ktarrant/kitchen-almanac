@@ -197,7 +197,7 @@ def test_crop_list_uses_active_catalog(catalog_client: TestClient) -> None:
     assert response.status_code == 200
     payload = response.json()
     assert payload["dataset_id"].startswith("kitchen-almanac-v2-")
-    assert payload["cultivar_dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
+    assert payload["cultivar_dataset_id"] == "cultivar-catalog-v1-399e4da80df35ab8"
     assert [crop["canonical_name"] for crop in payload["crops"]] == [
         "Asparagus",
         "Horseradish",
@@ -245,7 +245,7 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
+    assert payload["dataset_id"] == "cultivar-catalog-v1-399e4da80df35ab8"
     assert payload["crop_dataset_id"] == "kitchen-almanac-v2-5f182b9189b06b80"
     assert [item["canonical_name"] for item in payload["cultivars"]] == [
         "San Marzano",
@@ -590,7 +590,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     assessment = first.json()
     assert second.json() == assessment
     assert assessment["algorithm_version"] == "suitability-v1.1.0"
-    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
+    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-399e4da80df35ab8"
     assert assessment["input_fingerprint"].startswith("sha256:")
     assert assessment["status"] == "suitable"
     assert assessment["score"] == 80
@@ -927,7 +927,7 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     guide = response.json()
     assert guide["cultivar_name"] == "Mountain Merit"
     assert guide["crop_name"] == "Tomatoes"
-    assert guide["algorithm_version"] == "grow-guide-v1.4.0"
+    assert guide["algorithm_version"] == "grow-guide-v1.5.0"
     assert len(guide["input_fingerprint"]) == 64
     assert [section["code"] for section in guide["sections"]] == [
         "light",
@@ -970,7 +970,16 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
         "water_management_guidance",
     }
     assert sections["water"]["missing_evidence"] == ["Reviewed watering quantity"]
-    assert sections["trellising"]["status"] == "partial"
+    assert sections["containers"]["status"] == "documented"
+    assert sections["containers"]["instructions"] == [
+        "Use 8–10 gallons of growing media.",
+        "Choose a container 12–16 inches deep.",
+        "Grow one plant per container.",
+    ]
+    assert sections["trellising"]["status"] == "documented"
+    assert sections["trellising"]["summary"] == (
+        "Install a cage, stake, or trellis before the plant becomes large."
+    )
     assert sections["starting_method"]["summary"] == (
         "Use transplant as the documented starting method."
     )
@@ -1012,12 +1021,22 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     phases = {phase["code"]: phase for phase in guide["phases"]}
     assert [action["code"] for action in phases["plan_and_plant"]["actions"]] == [
         "light",
-        "soil",
-        "containers",
-        "spacing",
-        "trellising",
+        "prepare_space",
         "starting_method",
         "planting",
+    ]
+    preparation_action = phases["plan_and_plant"]["actions"][1]
+    assert preparation_action["title"] == "Prepare the growing space"
+    assert preparation_action["status"] == "documented"
+    preparation_labels = [
+        instruction.split(":", maxsplit=1)[0]
+        for instruction in preparation_action["instructions"]
+    ]
+    assert preparation_labels == [
+        "Soil",
+        "Container",
+        "Spacing",
+        "Support",
     ]
     planting_action = phases["plan_and_plant"]["actions"][-1]
     assert planting_action["title"] == "Plant outdoors"
@@ -1390,7 +1409,7 @@ def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
     wishlist = created_response.json()
     assert wishlist["name"] == "Summer ideas"
     assert wishlist["entries"] == []
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-399e4da80df35ab8"
 
     selections = [
         {
@@ -1469,7 +1488,7 @@ def test_quick_import_preserves_cultivar_and_crop_type_intent(
 
     assert response.status_code == 201
     wishlist = response.json()
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-c88154d2004b570c"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-399e4da80df35ab8"
     san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
 
     assert san_marzano["original_text"] == "San Marzano tomatoes"

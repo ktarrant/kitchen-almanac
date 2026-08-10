@@ -334,7 +334,8 @@
       "commodity_source": "mid-atlantic-beets-2026-2027",
       "cultivar_count": 9,
       "evidence_publishers": [
-        "Rutgers NJAES Cooperative Extension"
+        "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension"
       ],
       "mapping_status": "exact",
       "minimum_useful": false,
@@ -441,6 +442,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "plant_spacing",
         "row_spacing",
         "starting_method",
@@ -661,7 +664,8 @@
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 3,
       "evidence_publishers": [
-        "Rutgers NJAES Cooperative Extension"
+        "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension"
       ],
       "mapping_status": "exact",
       "minimum_useful": false,
@@ -756,6 +760,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "plant_spacing",
         "row_spacing",
         "starting_method",
@@ -775,7 +781,8 @@
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 3,
       "evidence_publishers": [
-        "Rutgers NJAES Cooperative Extension"
+        "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension"
       ],
       "mapping_status": "exact",
       "minimum_useful": false,
@@ -870,6 +877,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "plant_spacing",
         "row_spacing",
         "starting_method",
@@ -889,7 +898,8 @@
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 2,
       "evidence_publishers": [
-        "Rutgers NJAES Cooperative Extension"
+        "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension"
       ],
       "mapping_status": "exact",
       "minimum_useful": false,
@@ -982,6 +992,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "plant_spacing",
         "row_spacing",
         "starting_method",
@@ -1101,7 +1113,8 @@
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 2,
       "evidence_publishers": [
-        "Rutgers NJAES Cooperative Extension"
+        "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension"
       ],
       "mapping_status": "exact",
       "minimum_useful": false,
@@ -1194,6 +1207,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "plant_spacing",
         "row_spacing",
         "starting_method",
@@ -1213,7 +1228,8 @@
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 2,
       "evidence_publishers": [
-        "Rutgers NJAES Cooperative Extension"
+        "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension"
       ],
       "mapping_status": "exact",
       "minimum_useful": false,
@@ -1306,6 +1322,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "plant_spacing",
         "row_spacing",
         "starting_method",
@@ -1326,7 +1344,8 @@
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 2,
       "evidence_publishers": [
-        "Rutgers NJAES Cooperative Extension"
+        "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension"
       ],
       "mapping_status": "exact",
       "minimum_useful": false,
@@ -1419,6 +1438,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "plant_spacing",
         "row_spacing",
         "starting_method",
@@ -1439,7 +1460,8 @@
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 2,
       "evidence_publishers": [
-        "Rutgers NJAES Cooperative Extension"
+        "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension"
       ],
       "mapping_status": "exact",
       "minimum_useful": false,
@@ -1532,6 +1554,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "plant_spacing",
         "row_spacing",
         "starting_method",
@@ -1552,6 +1576,7 @@
       "cultivar_count": 5,
       "evidence_publishers": [
         "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension",
         "Virginia Cooperative Extension"
       ],
       "mapping_status": "exact",
@@ -1651,14 +1676,18 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "critical_watering_stages",
         "harvest_guidance",
         "lime_below_ph",
         "plant_spacing",
+        "plants_per_container",
         "row_spacing",
         "soil_ph",
         "starting_method",
         "sun_hours",
+        "support_required",
         "water_management_guidance",
         "yield_per_10ft_row"
       ],
@@ -4377,6 +4406,7 @@
       "cultivar_count": 4,
       "evidence_publishers": [
         "Rutgers NJAES Cooperative Extension",
+        "University of Maryland Extension",
         "Virginia Cooperative Extension"
       ],
       "mapping_status": "exact",
@@ -4473,6 +4503,8 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "critical_watering_stages",
         "harvest_guidance",
         "lime_below_ph",
@@ -4807,16 +4839,20 @@
         }
       },
       "published_crop_trait_fields": [
+        "container_depth_inches",
+        "container_volume_gallons",
         "critical_watering_stages",
         "days_to_maturity",
         "frost_tender",
         "harvest_guidance",
         "lime_below_ph",
         "plant_spacing",
+        "plants_per_container",
         "row_spacing",
         "soil_ph",
         "starting_method",
         "sun_hours",
+        "support_required",
         "water_management_guidance",
         "yield_per_10ft_row"
       ],

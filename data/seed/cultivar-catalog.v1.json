@@ -463,6 +463,30 @@
       "traits": [
         {
           "confidence": "high",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Beets are listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
+        {
+          "confidence": "high",
           "field_name": "plant_spacing",
           "normalized_value": {
             "maximum": 3,
@@ -524,6 +548,30 @@
       "crop_slug": "broccoli",
       "traits": [
         {
+          "confidence": "medium",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Cole crops are listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
+        {
           "confidence": "high",
           "field_name": "plant_spacing",
           "normalized_value": {
@@ -573,6 +621,30 @@
     {
       "crop_slug": "brussels-sprouts",
       "traits": [
+        {
+          "confidence": "medium",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Cole crops are listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
         {
           "confidence": "high",
           "field_name": "plant_spacing",
@@ -625,6 +697,30 @@
       "traits": [
         {
           "confidence": "high",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Cabbage is listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
+        {
+          "confidence": "high",
           "field_name": "plant_spacing",
           "normalized_value": {
             "maximum": 18,
@@ -673,6 +769,30 @@
     {
       "crop_slug": "cauliflower",
       "traits": [
+        {
+          "confidence": "medium",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Cole crops are listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
         {
           "confidence": "high",
           "field_name": "plant_spacing",
@@ -723,6 +843,30 @@
     {
       "crop_slug": "collards",
       "traits": [
+        {
+          "confidence": "medium",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Cole crops are listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
         {
           "confidence": "high",
           "field_name": "plant_spacing",
@@ -787,6 +931,30 @@
       "traits": [
         {
           "confidence": "high",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 16,
+            "minimum": 12
+          },
+          "source_excerpt": "The large-vegetable class calls for a container depth of 12–16 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Large Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 10,
+            "minimum": 8
+          },
+          "source_excerpt": "Cucumbers are listed in the large-vegetable class, which calls for 8–10 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Large Vegetables",
+          "unit": "gallons"
+        },
+        {
+          "confidence": "high",
           "field_name": "critical_watering_stages",
           "normalized_value": [
             "flowering",
@@ -829,6 +997,15 @@
           "source_key": "rutgers-fs129-home-garden-2020",
           "source_locator": "FS129 > Vegetable Planting Guide > Cucumbers",
           "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "plants_per_container",
+          "normalized_value": 1,
+          "source_excerpt": "The large-vegetable class recommends one plant per container.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Large Vegetables",
+          "unit": "plants"
         },
         {
           "confidence": "high",
@@ -876,6 +1053,15 @@
           "unit": "hours_per_day"
         },
         {
+          "confidence": "high",
+          "field_name": "support_required",
+          "normalized_value": true,
+          "source_excerpt": "The home-garden planning guide says cucumbers climb or need to grow up a trellis.",
+          "source_key": "umd-planning-vegetable-garden-2026",
+          "source_locator": "Laying out a vegetable garden > Go vertical to save space",
+          "unit": null
+        },
+        {
           "confidence": "medium",
           "field_name": "water_management_guidance",
           "normalized_value": [
@@ -904,6 +1090,30 @@
     {
       "crop_slug": "kale",
       "traits": [
+        {
+          "confidence": "medium",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Cole crops are listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
         {
           "confidence": "high",
           "field_name": "plant_spacing",
@@ -966,6 +1176,30 @@
     {
       "crop_slug": "kohlrabi",
       "traits": [
+        {
+          "confidence": "medium",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "medium",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Cole crops are listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
         {
           "confidence": "high",
           "field_name": "plant_spacing",
@@ -1130,6 +1364,30 @@
       "crop_slug": "summer-squash",
       "traits": [
         {
+          "confidence": "high",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 12,
+            "minimum": 8
+          },
+          "source_excerpt": "The medium-vegetable class calls for a container depth of 8–12 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 6,
+            "minimum": 4
+          },
+          "source_excerpt": "Summer squash is listed in the medium-vegetable class, which calls for 4–6 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Medium Vegetables",
+          "unit": "gallons"
+        },
+        {
           "confidence": "medium",
           "field_name": "critical_watering_stages",
           "normalized_value": [
@@ -1249,6 +1507,30 @@
       "crop_slug": "tomatoes",
       "traits": [
         {
+          "confidence": "high",
+          "field_name": "container_depth_inches",
+          "normalized_value": {
+            "maximum": 16,
+            "minimum": 12
+          },
+          "source_excerpt": "The large-vegetable class calls for a container depth of 12–16 inches.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Large Vegetables",
+          "unit": "inches"
+        },
+        {
+          "confidence": "high",
+          "field_name": "container_volume_gallons",
+          "normalized_value": {
+            "maximum": 10,
+            "minimum": 8
+          },
+          "source_excerpt": "Tomatoes are listed in the large-vegetable class, which calls for 8–10 gallons of growing media.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Large Vegetables",
+          "unit": "gallons"
+        },
+        {
           "confidence": "medium",
           "field_name": "critical_watering_stages",
           "normalized_value": [
@@ -1318,6 +1600,15 @@
         },
         {
           "confidence": "high",
+          "field_name": "plants_per_container",
+          "normalized_value": 1,
+          "source_excerpt": "The large-vegetable class recommends one plant per container.",
+          "source_key": "umd-container-sizes-2023",
+          "source_locator": "Choose the right container size > Large Vegetables",
+          "unit": "plants"
+        },
+        {
+          "confidence": "high",
           "field_name": "row_spacing",
           "normalized_value": {
             "maximum": 36,
@@ -1358,6 +1649,15 @@
           "source_key": "umd-tomatoes-2025",
           "source_locator": "About tomatoes > Planting",
           "unit": "hours_per_day"
+        },
+        {
+          "confidence": "high",
+          "field_name": "support_required",
+          "normalized_value": true,
+          "source_excerpt": "The home-garden planning guide says tomato plants are tall and need support.",
+          "source_key": "umd-planning-vegetable-garden-2026",
+          "source_locator": "Laying out a vegetable garden > Go vertical to save space",
+          "unit": null
         },
         {
           "confidence": "medium",
@@ -6026,6 +6326,24 @@
       "source_path": "data/source/cultivars/rutgers-home-garden/fs129.html",
       "title": "Planning a Vegetable Garden",
       "url": "https://njaes.rutgers.edu/fs129/"
+    },
+    {
+      "key": "umd-container-sizes-2023",
+      "license": null,
+      "publisher": "University of Maryland Extension",
+      "retrieved_at": "2026-08-10T00:00:00Z",
+      "scope": "Home-garden container volume and depth classes based on crop size",
+      "title": "Types of Containers for Growing Vegetables",
+      "url": "https://extension.umd.edu/resource/types-containers-growing-vegetables"
+    },
+    {
+      "key": "umd-planning-vegetable-garden-2026",
+      "license": null,
+      "publisher": "University of Maryland Extension",
+      "retrieved_at": "2026-08-10T00:00:00Z",
+      "scope": "Home-garden layout and crop support guidance",
+      "title": "Planning a Vegetable Garden",
+      "url": "https://www.extension.umd.edu/resource/planning-vegetable-garden-0"
     },
     {
       "key": "umd-tomatoes-2025",
