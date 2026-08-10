@@ -150,6 +150,16 @@ class SuitabilityAssessmentResponse(BaseModel):
     missing_evidence: list[str]
 
 
+class GrowGuideTimelineEventResponse(BaseModel):
+    code: str
+    title: str
+    start_date: date
+    end_date: date | None = None
+    summary: str
+    confidence: str
+    evidence: list[SuitabilityEvidenceReference]
+
+
 class GrowGuideSectionResponse(BaseModel):
     code: str
     title: str
@@ -162,14 +172,26 @@ class GrowGuideSectionResponse(BaseModel):
     missing_evidence: list[str]
 
 
-class GrowGuideTimelineEventResponse(BaseModel):
+class GrowGuideActionResponse(BaseModel):
     code: str
     title: str
-    start_date: date
-    end_date: date | None = None
+    when: str
+    status: Literal["documented", "partial", "missing", "conflict"]
     summary: str
-    confidence: str
+    instructions: list[str]
+    confidence: str | None
+    provenance: Literal["cultivar", "crop_baseline", "mixed", "climate", "none"]
     evidence: list[SuitabilityEvidenceReference]
+    missing_evidence: list[str]
+    timeline: list[GrowGuideTimelineEventResponse]
+
+
+class GrowGuidePhaseResponse(BaseModel):
+    code: Literal["plan_and_plant", "tend", "harvest", "finish_season"]
+    position: int
+    title: str
+    summary: str
+    actions: list[GrowGuideActionResponse]
 
 
 class GrowGuideResponse(BaseModel):
@@ -185,6 +207,7 @@ class GrowGuideResponse(BaseModel):
     algorithm_version: str
     input_fingerprint: str
     summary: str
+    phases: list[GrowGuidePhaseResponse]
     sections: list[GrowGuideSectionResponse]
     timeline: list[GrowGuideTimelineEventResponse]
     conflicts: list[str]

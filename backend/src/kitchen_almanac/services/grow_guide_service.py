@@ -15,6 +15,8 @@ from kitchen_almanac.db_models import (
 from kitchen_almanac.schemas import (
     CultivarResponse,
     CultivarTraitResponse,
+    GrowGuideActionResponse,
+    GrowGuidePhaseResponse,
     GrowGuideResponse,
     GrowGuideSectionResponse,
     GrowGuideTimelineEventResponse,
@@ -28,7 +30,7 @@ from kitchen_almanac.services.suitability_service import (
     assess_cultivar,
 )
 
-GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.2.0"
+GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.3.0"
 
 
 def _trait(cultivar: CultivarResponse, field_name: str) -> CultivarTraitResponse | None:
@@ -370,15 +372,25 @@ def _build_sections(
     starting_method = _trait(cultivar, "starting_method")
     maturity = _trait(cultivar, "days_to_maturity")
     if starting_method:
-        instruction = f"Starting method: {_range_text(starting_method.normalized_value)}."
+        method = _range_text(starting_method.normalized_value)
+        instructions = [f"Use {method} as the documented starting method."]
+        missing_evidence: list[str] = []
+        status = "documented"
+        if method == "transplant":
+            instructions.append(
+                "Reviewed instructions for producing transplants from seed are not available yet."
+            )
+            missing_evidence.append("Seed-start production instructions (follow-up #13)")
+            status = "partial"
         sections.append(
             _section(
                 code="starting_method",
                 title="Starting method",
-                status="documented",
-                summary=instruction,
-                instructions=[instruction],
+                status=status,
+                summary=instructions[0],
+                instructions=instructions,
                 traits=[starting_method],
+                missing_evidence=missing_evidence,
             )
         )
     elif maturity and isinstance(maturity.normalized_value, dict):
@@ -601,6 +613,159 @@ def _build_sections(
     return sections, timeline, assumptions
 
 
+def _guide_action(
+    section: GrowGuideSectionResponse,
+    *,
+    title: str,
+    when: str,
+    timeline: list[GrowGuideTimelineEventResponse] | None = None,
+) -> GrowGuideActionResponse:
+    action_timeline = timeline or []
+    evidence = list(section.evidence)
+    evidence_keys = {
+        (
+            item.field_name,
+            item.source_document_id,
+            item.source_locator,
+            item.origin,
+        )
+        for item in evidence
+    }
+    for event in action_timeline:
+        for item in event.evidence:
+            key = (
+                item.field_name,
+                item.source_document_id,
+                item.source_locator,
+                item.origin,
+            )
+            if key not in evidence_keys:
+                evidence.append(item)
+                evidence_keys.add(key)
+    return GrowGuideActionResponse(
+        code=section.code,
+        title=title,
+        when=when,
+        status=section.status,
+        summary=section.summary,
+        instructions=section.instructions,
+        confidence=section.confidence,
+        provenance=section.provenance,
+        evidence=evidence,
+        missing_evidence=section.missing_evidence,
+        timeline=action_timeline,
+    )
+
+
+def _build_phases(
+    sections: list[GrowGuideSectionResponse],
+    timeline: list[GrowGuideTimelineEventResponse],
+) -> list[GrowGuidePhaseResponse]:
+    section_by_code = {section.code: section for section in sections}
+    event_by_code = {event.code: event for event in timeline}
+
+    def action(
+        code: str,
+        title: str,
+        when: str,
+        event_code: str | None = None,
+    ) -> GrowGuideActionResponse:
+        event = event_by_code.get(event_code) if event_code else None
+        return _guide_action(
+            section_by_code[code],
+            title=title,
+            when=event.title if event else when,
+            timeline=[event] if event else [],
+        )
+
+    phases = [
+        GrowGuidePhaseResponse(
+            code="plan_and_plant",
+            position=1,
+            title="Plan and plant",
+            summary=(
+                "Choose the growing space, prepare it, and work through starting and planting "
+                "in order."
+            ),
+            actions=[
+                action("light", "Choose the growing location", "Before planting"),
+                action("soil", "Prepare the soil", "Before planting"),
+                action("containers", "Choose a container", "Before planting"),
+                action("spacing", "Plan plant spacing", "Before planting"),
+                action("trellising", "Set up support", "Before planting"),
+                action(
+                    "starting_method",
+                    "Decide how to start the plants",
+                    "Before outdoor planting",
+                ),
+                action(
+                    "planting",
+                    "Plant outdoors",
+                    "At the supported planting stage",
+                    "outdoor_planting_boundary",
+                ),
+            ],
+        ),
+        GrowGuidePhaseResponse(
+            code="tend",
+            position=2,
+            title="Tend the plants",
+            summary="Use the reviewed watering and maintenance guidance as the plants grow.",
+            actions=[
+                action("water", "Water with the crop's growth stages in mind", "During growth"),
+                action("maintenance", "Maintain plant health", "Throughout the season"),
+            ],
+        ),
+        GrowGuidePhaseResponse(
+            code="harvest",
+            position=3,
+            title="Harvest",
+            summary="Use the maturity basis and harvest guidance to decide when and how to pick.",
+            actions=[
+                action(
+                    "harvest",
+                    "Harvest at the right stage",
+                    "At documented maturity",
+                    "estimated_first_harvest",
+                )
+            ],
+        ),
+    ]
+
+    fall_event = event_by_code.get("fall_frost_boundary")
+    if fall_event:
+        phases.append(
+            GrowGuidePhaseResponse(
+                code="finish_season",
+                position=4,
+                title="Finish the season",
+                summary=(
+                    "Use the local climate boundary for planning; cleanup and winterization "
+                    "guidance still requires reviewed evidence."
+                ),
+                actions=[
+                    GrowGuideActionResponse(
+                        code="finish_season",
+                        title="Watch the typical fall frost boundary",
+                        when=fall_event.title,
+                        status="partial",
+                        summary=fall_event.summary,
+                        instructions=[],
+                        confidence=fall_event.confidence,
+                        provenance="climate",
+                        evidence=fall_event.evidence,
+                        missing_evidence=[
+                            "End-of-season cleanup or winterization guidance (follow-up #14)"
+                        ],
+                        timeline=[fall_event],
+                    )
+                ],
+            )
+        )
+
+    return phases
+
+
 def _fingerprint(payload: object) -> str:
     encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"), default=str).encode()
     return hashlib.sha256(encoded).hexdigest()
@@ -645,14 +810,18 @@ def get_grow_guide(
     sections, timeline, guide_assumptions = _build_sections(
         cultivar, climate_claim, profile.target_year
     )
+    phases = _build_phases(sections, timeline)
     suitability = assess_cultivar(profile, cultivar, cultivar_dataset_id=dataset.id)
     missing_evidence = sorted(
         {item for section in sections for item in section.missing_evidence}, key=str.casefold
     )
-    documented_count = sum(section.status == "documented" for section in sections)
+    actions = [action for phase in phases for action in phase.actions]
+    supported_count = sum(action.status in {"documented", "partial"} for action in actions)
     summary = (
-        f"{documented_count} of {len(sections)} guide sections have reviewed instructions. "
-        "Unsupported sections remain visible as evidence gaps."
+        f"Follow {len(phases)} phases from planning through harvest"
+        f"{' and the season boundary' if len(phases) == 4 else ''}. "
+        f"{supported_count} of {len(actions)} actions include reviewed guidance; "
+        "remaining gaps are called out rather than guessed."
     )
     fingerprint_payload = {
         "algorithm_version": GROW_GUIDE_ALGORITHM_VERSION,
@@ -688,6 +857,7 @@ def get_grow_guide(
         algorithm_version=GROW_GUIDE_ALGORITHM_VERSION,
         input_fingerprint=_fingerprint(fingerprint_payload),
         summary=summary,
+        phases=phases,
         sections=sections,
         timeline=timeline,
         conflicts=suitability.constraints,

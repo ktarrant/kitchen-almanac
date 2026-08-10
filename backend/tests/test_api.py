@@ -895,7 +895,7 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     guide = response.json()
     assert guide["cultivar_name"] == "Mountain Merit"
     assert guide["crop_name"] == "Tomatoes"
-    assert guide["algorithm_version"] == "grow-guide-v1.2.0"
+    assert guide["algorithm_version"] == "grow-guide-v1.3.0"
     assert len(guide["input_fingerprint"]) == 64
     assert [section["code"] for section in guide["sections"]] == [
         "light",
@@ -938,7 +938,13 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     }
     assert sections["water"]["missing_evidence"] == ["Reviewed watering quantity"]
     assert sections["trellising"]["status"] == "partial"
-    assert sections["starting_method"]["summary"] == "Starting method: transplant."
+    assert sections["starting_method"]["summary"] == (
+        "Use transplant as the documented starting method."
+    )
+    assert sections["starting_method"]["status"] == "partial"
+    assert sections["starting_method"]["missing_evidence"] == [
+        "Seed-start production instructions (follow-up #13)"
+    ]
     assert sections["planting"]["status"] == "documented"
     assert sections["harvest"]["instructions"][-2:] == [
         "Choose harvest ripeness for the intended use; fully ripe is appropriate for direct use.",
@@ -962,6 +968,47 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     ).isoformat()
     assert len(events["estimated_first_harvest"]["evidence"]) == 2
     assert "Soil pH or soil-condition guidance" not in guide["missing_evidence"]
+
+    assert [phase["code"] for phase in guide["phases"]] == [
+        "plan_and_plant",
+        "tend",
+        "harvest",
+        "finish_season",
+    ]
+    phases = {phase["code"]: phase for phase in guide["phases"]}
+    assert [action["code"] for action in phases["plan_and_plant"]["actions"]] == [
+        "light",
+        "soil",
+        "containers",
+        "spacing",
+        "trellising",
+        "starting_method",
+        "planting",
+    ]
+    planting_action = phases["plan_and_plant"]["actions"][-1]
+    assert planting_action["title"] == "Plant outdoors"
+    assert planting_action["timeline"][0]["code"] == "outdoor_planting_boundary"
+    assert [action["code"] for action in phases["tend"]["actions"]] == [
+        "water",
+        "maintenance",
+    ]
+    harvest_action = phases["harvest"]["actions"][0]
+    assert harvest_action["timeline"][0]["code"] == "estimated_first_harvest"
+    assert {item["origin"] for item in harvest_action["evidence"]} >= {
+        "cultivar_catalog",
+        "climate_normal",
+    }
+    finish_action = phases["finish_season"]["actions"][0]
+    assert finish_action["provenance"] == "climate"
+    assert finish_action["timeline"][0]["code"] == "fall_frost_boundary"
+    assert finish_action["missing_evidence"] == [
+        "End-of-season cleanup or winterization guidance (follow-up #14)"
+    ]
+    assert all(
+        action["code"] != "companions"
+        for phase in guide["phases"]
+        for action in phase["actions"]
+    )
 
     repeated = catalog_client.get(
         "/api/grow-guides",
@@ -988,6 +1035,14 @@ def test_grow_guide_reports_missing_context_and_unknown_records(
     assert response.status_code == 200
     guide = response.json()
     assert guide["timeline"] == []
+    assert [phase["code"] for phase in guide["phases"]] == [
+        "plan_and_plant",
+        "tend",
+        "harvest",
+    ]
+    planting_action = guide["phases"][0]["actions"][-1]
+    assert planting_action["when"] == "At the supported planting stage"
+    assert planting_action["timeline"] == []
     planting = next(section for section in guide["sections"] if section["code"] == "planting")
     assert planting["status"] == "partial"
     assert planting["missing_evidence"] == ["Local probable last-spring-freeze date"]

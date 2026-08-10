@@ -340,18 +340,27 @@ Acceptance criteria:
 
 Status: **In progress**
 
-Current progress: `grow-guide-v1.2.0` provides a structured API and frontend
-guide for every selected documented cultivar. It deterministically merges
-approved cultivar overrides with crop baselines, renders all eleven guide
-sections with documented, partial, or missing states, carries citations and
-confidence into the UI, and surfaces suitability conflicts. For frost-tender
-crops with reviewed transplant maturity and NOAA normals, it calculates a
-target-year planting boundary and first-harvest range while labeling climate
-normals as planning inputs rather than forecasts. Identical catalog, garden,
-climate, and algorithm inputs produce the same SHA-256 fingerprint. The
-existing reviewed-catalog pipeline supplies immutable source snapshots,
-checksums, extraction metadata, and approval gates; no unreviewed or LLM-made
-instruction enters a guide.
+Current progress: `grow-guide-v1.3.0` provides a structured API and chronological
+frontend walkthrough for every selected documented cultivar. It deterministically
+merges approved cultivar overrides with crop baselines and organizes the retained
+atomic evidence sections into Plan and plant, Tend the plants, Harvest, and a
+conditional Finish the season phase. Contextual **When** labels use an exact
+date or range when supported and honest relative or recurring labels otherwise.
+The existing outdoor planting, first-harvest, and fall-frost events now appear
+beside the actions they inform; the standalone frontend timeline is gone, while
+the underlying event API remains available for reproducibility and the future
+task calendar. Evidence, confidence, inheritance, missing fields, and suitability
+conflicts remain visible without dominating the walkthrough.
+
+For frost-tender crops with reviewed transplant maturity and NOAA normals, the
+guide calculates a target-year planting boundary and first-harvest range while
+labeling climate normals as planning inputs rather than forecasts. A transplant
+recommendation now explicitly reports that producing starts from seed still
+needs evidence rather than pretending the starting-method fact is a complete
+procedure. Identical catalog, garden, climate, and algorithm inputs produce the
+same SHA-256 fingerprint. The reviewed-catalog pipeline supplies immutable source
+snapshots, checksums, extraction metadata, and approval gates; no unreviewed or
+LLM-made instruction enters a guide.
 
 The first evidence-expansion pass establishes the 2026/2027 Rutgers Mid-Atlantic
 manual as the primary corpus. A checksum-pinned manifest now covers its general
@@ -374,7 +383,9 @@ container, support, starting, and maintenance rules for the initial crop cohort,
 plus additional relative planting rules and provider-specific ingestion
 automation. Companion considerations are explicitly deferred to GitHub issue
 #12 because they require a separate, stricter evidence review and do not block
-the core grow-guide work.
+the core grow-guide work. Producing recommended transplants from seed is tracked
+in issue #13, and end-of-season cleanup and winterization evidence is tracked in
+issue #14.
 
 - Define a structured grow-guide schema covering light, soil, water, spacing,
   container size, trellising, starting method, planting, maintenance, companion

@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 import CropBrowser, { type BrowseCrop } from "./CropBrowser";
+import GrowGuideWalkthrough, { type GuidePhase } from "./GrowGuideWalkthrough";
 
 type GrowingMethod = "in_ground" | "raised_bed" | "containers" | "protected";
 type IntendedUse = "fresh" | "snacking" | "sauce" | "canning" | "pickling" | "processing";
@@ -235,6 +236,7 @@ type GrowGuide = {
   algorithm_version: string;
   input_fingerprint: string;
   summary: string;
+  phases: GuidePhase[];
   sections: {
     code: string;
     title: string;
@@ -301,12 +303,6 @@ async function responseMessage(response: Response): Promise<string> {
 
 function humanize(value: string) {
   return value.replaceAll("_", " ");
-}
-
-function formatGuideDate(value: string) {
-  return new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" }).format(
-    new Date(`${value}T12:00:00`)
-  );
 }
 
 function wishlistEntryName(entry: WishlistEntry) {
@@ -1383,114 +1379,7 @@ export default function App() {
                     </div>
                   )}
 
-                  <section className="guide-timeline" aria-labelledby="guide-timeline-heading">
-                    <div>
-                      <p className="section-kicker">Local timeline</p>
-                      <h3 id="guide-timeline-heading">Planning dates</h3>
-                    </div>
-                    {growGuide.timeline.length > 0 ? (
-                      <ol>
-                        {growGuide.timeline.map((event) => (
-                          <li key={event.code}>
-                            <time dateTime={event.start_date}>
-                              {formatGuideDate(event.start_date)}
-                              {event.end_date && event.end_date !== event.start_date
-                                ? ` – ${formatGuideDate(event.end_date)}`
-                                : ""}
-                            </time>
-                            <div>
-                              <strong>{event.title}</strong>
-                              <p>{event.summary}</p>
-                              <details className="guide-sources">
-                                <summary>
-                                  {event.evidence.length} evidence {event.evidence.length === 1 ? "record" : "records"}
-                                </summary>
-                                <ul>
-                                  {event.evidence.map((evidence, index) => (
-                                    <li key={`${event.code}-${evidence.field_name}-${index}`}>
-                                      {evidence.source_url ? (
-                                        <a href={evidence.source_url} target="_blank" rel="noreferrer">
-                                          {evidence.publisher ?? evidence.title ?? humanize(evidence.origin)}
-                                        </a>
-                                      ) : (
-                                        <strong>
-                                          {evidence.publisher ?? evidence.title ?? humanize(evidence.origin)}
-                                        </strong>
-                                      )}
-                                      {evidence.source_locator && <span>{evidence.source_locator}</span>}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </details>
-                            </div>
-                          </li>
-                        ))}
-                      </ol>
-                    ) : (
-                      <p className="guide-empty">
-                        A local timeline needs both a reviewed relative planting rule and climate
-                        normals for this garden.
-                      </p>
-                    )}
-                  </section>
-
-                  <div className="guide-section-grid">
-                    {growGuide.sections.map((section) => (
-                      <article className={`guide-section ${section.status}`} key={section.code}>
-                        <div className="guide-section-heading">
-                          <h3>{section.title}</h3>
-                          <span>{humanize(section.status)}</span>
-                        </div>
-                        <p>{section.summary}</p>
-                        {section.instructions.length > 1 && (
-                          <ul>
-                            {section.instructions.map((instruction) => (
-                              <li key={instruction}>{instruction}</li>
-                            ))}
-                          </ul>
-                        )}
-                        <p className="guide-provenance">
-                          {section.provenance === "crop_baseline"
-                            ? "Inherited crop guidance"
-                            : section.provenance === "cultivar"
-                              ? "Cultivar-specific guidance"
-                              : section.provenance === "mixed"
-                                ? "Crop and cultivar evidence"
-                                : "Evidence needed"}
-                          {section.confidence ? ` · ${humanize(section.confidence)} confidence` : ""}
-                        </p>
-                        {section.missing_evidence.length > 0 && (
-                          <p className="guide-gap">
-                            Missing: {section.missing_evidence.join("; ")}
-                          </p>
-                        )}
-                        {section.evidence.length > 0 && (
-                          <details className="guide-sources">
-                            <summary>
-                              {section.evidence.length} evidence {section.evidence.length === 1 ? "record" : "records"}
-                            </summary>
-                            <ul>
-                              {section.evidence.map((evidence, index) => (
-                                <li key={`${evidence.field_name}-${evidence.source_document_id}-${index}`}>
-                                  {evidence.source_url ? (
-                                    <a href={evidence.source_url} target="_blank" rel="noreferrer">
-                                      {evidence.publisher ?? evidence.title ?? humanize(evidence.origin)}
-                                    </a>
-                                  ) : (
-                                    <strong>
-                                      {evidence.publisher ?? evidence.title ?? humanize(evidence.origin)}
-                                    </strong>
-                                  )}
-                                  {evidence.source_locator && <span>{evidence.source_locator}</span>}
-                                  {evidence.inherited_from_crop && <span>Inherited from crop baseline</span>}
-                                </li>
-                              ))}
-                            </ul>
-                          </details>
-                        )}
-                      </article>
-                    ))}
-                  </div>
+                  <GrowGuideWalkthrough phases={growGuide.phases} />
 
                   <details className="guide-audit">
                     <summary>Guide assumptions and reproducibility</summary>

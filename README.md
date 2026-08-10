@@ -136,8 +136,8 @@ The API includes:
   against one garden profile, including its algorithm version, input
   fingerprint, constraints, assumptions, and missing evidence.
 - `GET /api/grow-guides` to combine reviewed crop baselines, cultivar
-  overrides, and local climate normals into a cited, reproducible guide and
-  planting timeline.
+  overrides, and local climate normals into a cited, reproducible chronological
+  walkthrough while retaining its underlying planning events.
 - `POST /api/garden-profiles` to save location and growing context.
 - `GET /api/garden-profiles` to list saved garden contexts newest-first.
 - `GET /api/garden-profiles/{id}` to retrieve that context.
@@ -180,14 +180,19 @@ fingerprint and ranking.
 ## Grow guides
 
 Documented cultivars on a garden wishlist expose a grow guide in the saved
-garden card. The `grow-guide-v1.2.0` generator renders light, soil, water,
-spacing, containers, support, starting, planting, maintenance, companions, and
-harvest as separate evidence states. Cultivar claims override crop baselines
-field by field; each instruction identifies its origin, confidence, source, and
-source locator. Unsupported guidance remains visible as missing evidence rather
-than being filled with generic advice. Water guidance includes reviewed
-management practices and critical growth stages while continuing to show
-numeric quantity as missing unless a suitable reviewed source supports it.
+garden card. The `grow-guide-v1.3.0` generator organizes reviewed actions into
+Plan and plant, Tend the plants, Harvest, and a conditional Finish the season
+phase. Each action carries an exact date or range when the evidence supports
+one and an honest relative or recurring **When** label otherwise. The API still
+retains atomic evidence sections and planning events for reproducibility and the
+future task calendar.
+
+Cultivar claims override crop baselines field by field; each instruction
+identifies its origin, confidence, source, and source locator. Unsupported
+guidance remains visible as missing evidence rather than being filled with
+generic advice. Water guidance includes reviewed management practices and
+critical growth stages while continuing to show numeric quantity as missing
+unless a suitable reviewed source supports it.
 
 When reviewed frost sensitivity, transplant-based maturity, and NOAA freeze
 normals are all available, the guide generates a target-year outdoor planting

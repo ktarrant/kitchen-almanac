@@ -629,101 +629,132 @@ h1 {
 }
 
 .guide-conflicts ul,
-.guide-section ul,
+.guide-action-body ul,
 .guide-audit ul {
   margin: 0.6rem 0 0;
   padding-left: 1.25rem;
 }
 
-.guide-timeline {
+.guide-walkthrough {
   display: grid;
-  grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 2rem 0;
-  padding: 1.25rem;
-  border: 1px solid #b6bead;
-  border-radius: 14px;
-  background: #fffdf6;
 }
 
-.guide-timeline h3 {
-  margin: 0.3rem 0 0;
-  font-size: 1.65rem;
-}
-
-.guide-timeline ol {
+.guide-phase {
   display: grid;
-  gap: 0.9rem;
+  grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #aeb6a7;
+}
+
+.guide-phase-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.guide-phase-heading > span {
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #fffdf6;
+  background: #42684e;
+  font-size: 0.82rem;
+  font-weight: 800;
+  place-items: center;
+}
+
+.guide-phase-heading h3 {
+  margin: 0.2rem 0 0;
+  color: #263e30;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+}
+
+.guide-phase-heading > div > p:last-child {
+  margin: 0.4rem 0 0;
+  color: #68756c;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.guide-action-list {
+  display: grid;
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.guide-timeline li {
+.guide-action {
   display: grid;
-  grid-template-columns: minmax(100px, 0.25fr) minmax(0, 1fr);
-  gap: 1rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid #e0dfd5;
+  grid-template-columns: minmax(130px, 0.28fr) minmax(0, 1fr);
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #dcddd3;
 }
 
-.guide-timeline li:last-child {
+.guide-action:first-child {
+  padding-top: 0;
+}
+
+.guide-action:last-child {
   padding-bottom: 0;
   border-bottom: 0;
 }
 
-.guide-timeline time {
+.guide-action-when > span {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #8b4e32;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-action-when strong,
+.guide-action-when time {
+  display: block;
   color: #315b3d;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 800;
 }
 
-.guide-timeline strong {
-  color: #263e30;
+.guide-action-when small {
+  display: block;
+  margin-top: 0.2rem;
+  color: #59675e;
+  font-size: 0.68rem;
+  line-height: 1.35;
 }
 
-.guide-timeline li p {
-  margin: 0.25rem 0 0;
-  color: #68756c;
-  font-size: 0.78rem;
-  line-height: 1.5;
+.guide-action-when p {
+  margin: 0.35rem 0 0;
+  color: #778178;
+  font-size: 0.67rem;
+  line-height: 1.4;
 }
 
-.guide-section-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.guide-section {
-  padding: 1rem;
-  border: 1px solid #bec3b4;
-  border-radius: 12px;
-  background: #fffdf6;
-}
-
-.guide-section.missing {
-  border-style: dashed;
-  background: rgb(255 253 246 / 58%);
-}
-
-.guide-section.partial {
-  border-color: #c7aa7b;
-}
-
-.guide-section-heading {
+.guide-action-heading {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 0.75rem;
 }
 
-.guide-section-heading h3 {
+.guide-action-heading h4 {
   margin: 0;
-  font-size: 1.35rem;
+  color: #263e30;
+  font-size: 1.05rem;
 }
 
-.guide-section-heading span {
+.guide-action-heading span {
   color: #647267;
   font-size: 0.64rem;
   font-weight: 800;
@@ -731,21 +762,30 @@ h1 {
   text-transform: uppercase;
 }
 
-.guide-section > p,
-.guide-section li {
+.guide-action.missing .guide-action-heading span,
+.guide-action.missing .guide-provenance {
+  color: #8a7468;
+}
+
+.guide-action.partial .guide-action-heading span {
+  color: #946129;
+}
+
+.guide-action-body > p,
+.guide-action-body li {
   color: #536159;
   font-size: 0.8rem;
   line-height: 1.55;
 }
 
-.guide-section .guide-provenance {
+.guide-action-body .guide-provenance {
   margin-bottom: 0;
   color: #315b3d;
   font-size: 0.7rem;
   font-weight: 750;
 }
 
-.guide-section .guide-gap {
+.guide-action-body .guide-gap {
   margin: 0.45rem 0 0;
   color: #8b4e32;
   font-size: 0.7rem;
@@ -1666,9 +1706,12 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .guide-timeline,
-  .guide-timeline li,
-  .guide-section-grid {
+  .guide-phase,
+  .guide-action {
     grid-template-columns: 1fr;
+  }
+
+  .guide-action {
+    gap: 0.65rem;
   }
 }
