@@ -895,7 +895,7 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
     guide = response.json()
     assert guide["cultivar_name"] == "Mountain Merit"
     assert guide["crop_name"] == "Tomatoes"
-    assert guide["algorithm_version"] == "grow-guide-v1.3.0"
+    assert guide["algorithm_version"] == "grow-guide-v1.3.1"
     assert len(guide["input_fingerprint"]) == 64
     assert [section["code"] for section in guide["sections"]] == [
         "light",
@@ -946,6 +946,9 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
         "Seed-start production instructions (follow-up #13)"
     ]
     assert sections["planting"]["status"] == "documented"
+    assert "Expect the harvest window to last 4–5 weeks." in sections["harvest"][
+        "instructions"
+    ]
     assert sections["harvest"]["instructions"][-2:] == [
         "Choose harvest ripeness for the intended use; fully ripe is appropriate for direct use.",
         "Handle fruit carefully and harvest often during peak production.",
@@ -1018,6 +1021,21 @@ def test_grow_guide_combines_cultivar_crop_and_local_climate_evidence(
         },
     )
     assert repeated.json() == guide
+
+    san_marzano_response = catalog_client.get(
+        "/api/grow-guides",
+        params={
+            "garden_profile_id": garden_profile["id"],
+            "cultivar_slug": "san-marzano-2",
+        },
+    )
+    assert san_marzano_response.status_code == 200
+    san_marzano_harvest = next(
+        section
+        for section in san_marzano_response.json()["sections"]
+        if section["code"] == "harvest"
+    )
+    assert "Expect fruit in clusters of 5–6." in san_marzano_harvest["instructions"]
 
 
 def test_grow_guide_reports_missing_context_and_unknown_records(

@@ -340,7 +340,7 @@ Acceptance criteria:
 
 Status: **In progress**
 
-Current progress: `grow-guide-v1.3.0` provides a structured API and chronological
+Current progress: `grow-guide-v1.3.1` provides a structured API and chronological
 frontend walkthrough for every selected documented cultivar. It deterministically
 merges approved cultivar overrides with crop baselines and organizes the retained
 atomic evidence sections into Plan and plant, Tend the plants, Harvest, and a

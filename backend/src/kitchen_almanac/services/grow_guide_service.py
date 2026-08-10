@@ -30,7 +30,7 @@ from kitchen_almanac.services.suitability_service import (
     assess_cultivar,
 )
 
-GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.3.0"
+GROW_GUIDE_ALGORITHM_VERSION = "grow-guide-v1.3.1"
 
 
 def _trait(cultivar: CultivarResponse, field_name: str) -> CultivarTraitResponse | None:
@@ -103,6 +103,35 @@ def _human_list(values: list[object]) -> str:
     if len(labels) == 2:
         return " and ".join(labels)
     return f"{', '.join(labels[:-1])}, and {labels[-1]}"
+
+
+def _harvest_pattern_text(trait: CultivarTraitResponse) -> str:
+    value = trait.normalized_value
+    if isinstance(value, dict):
+        window_minimum = value.get("window_minimum")
+        window_maximum = value.get("window_maximum")
+        if window_minimum is not None and window_maximum is not None:
+            duration = (
+                str(window_minimum)
+                if window_minimum == window_maximum
+                else f"{window_minimum}–{window_maximum}"
+            )
+            unit = trait.unit or "time units"
+            if window_minimum == window_maximum == 1 and unit.endswith("s"):
+                unit = unit[:-1]
+            return f"Expect the harvest window to last {duration} {unit}."
+
+        cluster_minimum = value.get("cluster_minimum")
+        cluster_maximum = value.get("cluster_maximum")
+        if cluster_minimum is not None and cluster_maximum is not None:
+            cluster_size = (
+                str(cluster_minimum)
+                if cluster_minimum == cluster_maximum
+                else f"{cluster_minimum}–{cluster_maximum}"
+            )
+            return f"Expect fruit in clusters of {cluster_size}."
+
+    return f"Harvest pattern: {_range_text(value, unit=trait.unit)}."
 
 
 def _section(
@@ -571,7 +600,7 @@ def _build_sections(
         harvest_pattern = _trait(cultivar, "harvest_pattern")
         details = [instruction]
         if harvest_pattern:
-            details.append(f"Harvest pattern: {_range_text(harvest_pattern.normalized_value)}.")
+            details.append(_harvest_pattern_text(harvest_pattern))
         if harvest_guidance:
             guidance = harvest_guidance.normalized_value
             details.extend(guidance if isinstance(guidance, list) else [str(guidance)])

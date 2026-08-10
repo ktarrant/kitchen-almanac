@@ -180,7 +180,7 @@ fingerprint and ranking.
 ## Grow guides
 
 Documented cultivars on a garden wishlist expose a grow guide in the saved
-garden card. The `grow-guide-v1.3.0` generator organizes reviewed actions into
+garden card. The `grow-guide-v1.3.1` generator organizes reviewed actions into
 Plan and plant, Tend the plants, Harvest, and a conditional Finish the season
 phase. Each action carries an exact date or range when the evidence supports
 one and an honest relative or recurring **When** label otherwise. The API still
