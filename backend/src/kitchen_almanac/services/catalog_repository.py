@@ -64,6 +64,7 @@ def load_catalog(session: Session, catalog: dict[str, Any]) -> bool:
     for crop_data in catalog["crops"]:
         crop_id = f"{dataset_id}:{crop_data['id']}"
         taxonomy = crop_data["taxonomy"]
+        browse_category = crop_data["browse_category"]
         crop = Crop(
             id=crop_id,
             dataset_version_id=dataset_id,
@@ -73,6 +74,9 @@ def load_catalog(session: Session, catalog: dict[str, Any]) -> bool:
             commodity_section_key=taxonomy["commodity_key"],
             commodity_section_title=taxonomy["commodity_title"],
             commodity_section_position=taxonomy["commodity_position"],
+            browse_category_key=browse_category["key"],
+            browse_category_title=browse_category["title"],
+            browse_category_position=browse_category["position"],
         )
         crop.aliases = [CropAlias(alias=alias) for alias in crop_data["aliases"]]
         crop.appearances = [

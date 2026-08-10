@@ -1,4 +1,13 @@
 {
+  "browse_taxonomy": {
+    "id": "sha256:fa236d9b48512e21e274779e006d4cb56f64b3887bb8318a557af4647c14f24d",
+    "media_type": "application/json",
+    "path": "data/source/catalog/gardener-browse-taxonomy.v1.json",
+    "sha256": "fa236d9b48512e21e274779e006d4cb56f64b3887bb8318a557af4647c14f24d",
+    "source_scope": "Application navigation taxonomy for browsing canonical crops. It does not replace Rutgers crop identity or commodity provenance, and cultivar-specific growth habits remain cultivar traits.",
+    "taxonomy_id": "kitchen-almanac-gardener-browse-v1",
+    "title": "Kitchen Almanac gardener browse taxonomy"
+  },
   "corrections": [
     {
       "canonical_name": "Beets",
@@ -74,6 +83,12 @@
           "source_name": "Asparagus"
         }
       ],
+      "browse_category": {
+        "key": "perennial-crops",
+        "position": 7,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Perennial crops"
+      },
       "canonical_name": "Asparagus",
       "id": "asparagus",
       "planning_category": "perennial",
@@ -110,6 +125,12 @@
           "source_name": "Beets"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Beets",
       "id": "beets",
       "planning_category": "annual_crop",
@@ -139,6 +160,12 @@
           "source_name": "Broccoli"
         }
       ],
+      "browse_category": {
+        "key": "cabbage-family-crops",
+        "position": 2,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cabbage-family crops"
+      },
       "canonical_name": "Broccoli",
       "id": "broccoli",
       "planning_category": "annual_crop",
@@ -169,6 +196,12 @@
           "source_name": "Brussels Sprouts"
         }
       ],
+      "browse_category": {
+        "key": "cabbage-family-crops",
+        "position": 2,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cabbage-family crops"
+      },
       "canonical_name": "Brussels Sprouts",
       "id": "brussels-sprouts",
       "planning_category": "annual_crop",
@@ -198,6 +231,12 @@
           "source_name": "Cabbage"
         }
       ],
+      "browse_category": {
+        "key": "cabbage-family-crops",
+        "position": 2,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cabbage-family crops"
+      },
       "canonical_name": "Cabbage",
       "id": "cabbage",
       "planning_category": "annual_crop",
@@ -235,6 +274,12 @@
           "source_name": "Carrots (Late Season)"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Carrots",
       "id": "carrots",
       "planning_category": "annual_crop",
@@ -264,6 +309,12 @@
           "source_name": "Cauliflower"
         }
       ],
+      "browse_category": {
+        "key": "cabbage-family-crops",
+        "position": 2,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cabbage-family crops"
+      },
       "canonical_name": "Cauliflower",
       "id": "cauliflower",
       "planning_category": "annual_crop",
@@ -292,6 +343,12 @@
           "source_name": "Celery"
         }
       ],
+      "browse_category": {
+        "key": "leafy-greens-stalks-herbs",
+        "position": 3,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Leafy greens, stalks & herbs"
+      },
       "canonical_name": "Celery",
       "id": "celery",
       "planning_category": "annual_crop",
@@ -316,6 +373,12 @@
         "pak choi"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "cabbage-family-crops",
+        "position": 2,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cabbage-family crops"
+      },
       "canonical_name": "Chinese Cabbage",
       "id": "chinese-cabbage",
       "planning_category": "annual_crop",
@@ -344,6 +407,12 @@
           "source_name": "Collards"
         }
       ],
+      "browse_category": {
+        "key": "cabbage-family-crops",
+        "position": 2,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cabbage-family crops"
+      },
       "canonical_name": "Collards",
       "id": "collards",
       "planning_category": "annual_crop",
@@ -373,6 +442,12 @@
           "source_name": "Cucumbers"
         }
       ],
+      "browse_category": {
+        "key": "cucumbers-squash-melons",
+        "position": 4,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cucumbers, squash & melons"
+      },
       "canonical_name": "Cucumbers",
       "id": "cucumbers",
       "planning_category": "annual_crop",
@@ -396,6 +471,12 @@
         "vegetable soybeans"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "beans-peas-corn",
+        "position": 6,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Beans, peas & corn"
+      },
       "canonical_name": "Edamame",
       "id": "edamame",
       "planning_category": "annual_crop",
@@ -424,6 +505,12 @@
           "source_name": "Eggplant"
         }
       ],
+      "browse_category": {
+        "key": "fruiting-crops",
+        "position": 5,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Tomatoes, peppers & other fruiting crops"
+      },
       "canonical_name": "Eggplant",
       "id": "eggplant",
       "planning_category": "annual_crop",
@@ -452,6 +539,12 @@
           "source_name": "Lettuces and Early Greens"
         }
       ],
+      "browse_category": {
+        "key": "leafy-greens-stalks-herbs",
+        "position": 3,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Leafy greens, stalks & herbs"
+      },
       "canonical_name": "Endive",
       "id": "endive",
       "planning_category": "annual_crop",
@@ -480,6 +573,12 @@
           "source_name": "Lettuces and Early Greens"
         }
       ],
+      "browse_category": {
+        "key": "leafy-greens-stalks-herbs",
+        "position": 3,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Leafy greens, stalks & herbs"
+      },
       "canonical_name": "Escarole",
       "id": "escarole",
       "planning_category": "annual_crop",
@@ -508,6 +607,12 @@
           "source_name": "Onion Family (Early Season)"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Garlic",
       "id": "garlic",
       "planning_category": "annual_crop",
@@ -529,6 +634,12 @@
         "Horseradish"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "perennial-crops",
+        "position": 7,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Perennial crops"
+      },
       "canonical_name": "Horseradish",
       "id": "horseradish",
       "planning_category": "perennial",
@@ -560,6 +671,12 @@
           "source_name": "Sweet Peppers and Chiles"
         }
       ],
+      "browse_category": {
+        "key": "fruiting-crops",
+        "position": 5,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Tomatoes, peppers & other fruiting crops"
+      },
       "canonical_name": "Hot Peppers and Chiles",
       "id": "hot-peppers",
       "planning_category": "annual_crop",
@@ -588,6 +705,12 @@
           "source_name": "Kale"
         }
       ],
+      "browse_category": {
+        "key": "cabbage-family-crops",
+        "position": 2,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cabbage-family crops"
+      },
       "canonical_name": "Kale",
       "id": "kale",
       "planning_category": "annual_crop",
@@ -616,6 +739,12 @@
           "source_name": "Kohlrabi"
         }
       ],
+      "browse_category": {
+        "key": "cabbage-family-crops",
+        "position": 2,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cabbage-family crops"
+      },
       "canonical_name": "Kohlrabi",
       "id": "kohlrabi",
       "planning_category": "annual_crop",
@@ -645,6 +774,12 @@
           "source_name": "Onion Family (Early Season)"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Leeks",
       "id": "leeks",
       "planning_category": "annual_crop",
@@ -674,6 +809,12 @@
           "source_name": "Lettuces and Early Greens"
         }
       ],
+      "browse_category": {
+        "key": "leafy-greens-stalks-herbs",
+        "position": 3,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Leafy greens, stalks & herbs"
+      },
       "canonical_name": "Lettuce",
       "id": "lettuce",
       "planning_category": "annual_crop",
@@ -705,6 +846,12 @@
           "source_name": "Shell Beans"
         }
       ],
+      "browse_category": {
+        "key": "beans-peas-corn",
+        "position": 6,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Beans, peas & corn"
+      },
       "canonical_name": "Lima Beans",
       "id": "lima-beans",
       "planning_category": "annual_crop",
@@ -729,6 +876,12 @@
         "Muskmelons"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "cucumbers-squash-melons",
+        "position": 4,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cucumbers, squash & melons"
+      },
       "canonical_name": "Muskmelons",
       "id": "muskmelons",
       "planning_category": "annual_crop",
@@ -756,6 +909,12 @@
           "source_name": "Lettuces and Early Greens"
         }
       ],
+      "browse_category": {
+        "key": "leafy-greens-stalks-herbs",
+        "position": 3,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Leafy greens, stalks & herbs"
+      },
       "canonical_name": "Mustard Greens",
       "id": "mustard-greens",
       "planning_category": "annual_crop",
@@ -777,6 +936,12 @@
         "Okra"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "fruiting-crops",
+        "position": 5,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Tomatoes, peppers & other fruiting crops"
+      },
       "canonical_name": "Okra",
       "id": "okra",
       "planning_category": "annual_crop",
@@ -805,6 +970,12 @@
           "source_name": "Onions (Storage)"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Onions",
       "id": "onions",
       "planning_category": "annual_crop",
@@ -826,6 +997,12 @@
         "Parsley"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "leafy-greens-stalks-herbs",
+        "position": 3,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Leafy greens, stalks & herbs"
+      },
       "canonical_name": "Parsley",
       "id": "parsley",
       "planning_category": "annual_crop",
@@ -853,6 +1030,12 @@
           "source_name": "Parsnips"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Parsnips",
       "id": "parsnips",
       "planning_category": "annual_crop",
@@ -890,6 +1073,12 @@
           "source_name": "Potatoes (Late Season)"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Potatoes",
       "id": "potatoes",
       "planning_category": "annual_crop",
@@ -913,6 +1102,12 @@
         "Pumpkins"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "cucumbers-squash-melons",
+        "position": 4,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cucumbers, squash & melons"
+      },
       "canonical_name": "Pumpkins",
       "id": "pumpkins",
       "planning_category": "annual_crop",
@@ -940,6 +1135,12 @@
           "source_name": "Radishes"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Radishes",
       "id": "radishes",
       "planning_category": "annual_crop",
@@ -972,6 +1173,12 @@
           "source_name": "Rutabage"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Rutabagas",
       "id": "rutabagas",
       "planning_category": "annual_crop",
@@ -1005,6 +1212,12 @@
           "source_name": "String Beans"
         }
       ],
+      "browse_category": {
+        "key": "beans-peas-corn",
+        "position": 6,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Beans, peas & corn"
+      },
       "canonical_name": "Snap Beans",
       "id": "snap-beans",
       "planning_category": "annual_crop",
@@ -1027,6 +1240,12 @@
         "Specialty Melons"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "cucumbers-squash-melons",
+        "position": 4,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cucumbers, squash & melons"
+      },
       "canonical_name": "Specialty Melons",
       "id": "specialty-melons",
       "planning_category": "crop_group",
@@ -1046,6 +1265,12 @@
         "Spinach"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "leafy-greens-stalks-herbs",
+        "position": 3,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Leafy greens, stalks & herbs"
+      },
       "canonical_name": "Spinach",
       "id": "spinach",
       "planning_category": "annual_crop",
@@ -1066,6 +1291,12 @@
         "strawberry"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "perennial-crops",
+        "position": 7,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Perennial crops"
+      },
       "canonical_name": "Strawberries",
       "id": "strawberries",
       "planning_category": "perennial",
@@ -1097,6 +1328,12 @@
           "source_name": "English Peas"
         }
       ],
+      "browse_category": {
+        "key": "beans-peas-corn",
+        "position": 6,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Beans, peas & corn"
+      },
       "canonical_name": "Succulent Peas",
       "id": "succulent-peas",
       "planning_category": "annual_crop",
@@ -1128,6 +1365,12 @@
           "source_name": "Summer Squash"
         }
       ],
+      "browse_category": {
+        "key": "cucumbers-squash-melons",
+        "position": 4,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cucumbers, squash & melons"
+      },
       "canonical_name": "Summer Squash",
       "id": "summer-squash",
       "planning_category": "annual_crop",
@@ -1157,6 +1400,12 @@
           "source_name": "Corn"
         }
       ],
+      "browse_category": {
+        "key": "beans-peas-corn",
+        "position": 6,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Beans, peas & corn"
+      },
       "canonical_name": "Sweet Corn",
       "id": "sweet-corn",
       "planning_category": "annual_crop",
@@ -1188,6 +1437,12 @@
           "source_name": "Sweet Peppers and Chiles"
         }
       ],
+      "browse_category": {
+        "key": "fruiting-crops",
+        "position": 5,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Tomatoes, peppers & other fruiting crops"
+      },
       "canonical_name": "Sweet Peppers",
       "id": "sweet-peppers",
       "planning_category": "annual_crop",
@@ -1210,6 +1465,12 @@
         "Sweet Potatoes"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Sweet Potatoes",
       "id": "sweet-potatoes",
       "planning_category": "annual_crop",
@@ -1237,6 +1498,12 @@
           "source_name": "Tomatoes"
         }
       ],
+      "browse_category": {
+        "key": "fruiting-crops",
+        "position": 5,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Tomatoes, peppers & other fruiting crops"
+      },
       "canonical_name": "Tomatoes",
       "id": "tomatoes",
       "planning_category": "annual_crop",
@@ -1272,6 +1539,12 @@
           "source_name": "Turnips (Late Season)"
         }
       ],
+      "browse_category": {
+        "key": "leafy-greens-stalks-herbs",
+        "position": 3,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Leafy greens, stalks & herbs"
+      },
       "canonical_name": "Turnip Greens",
       "id": "turnip-greens",
       "planning_category": "annual_crop",
@@ -1310,6 +1583,12 @@
           "source_name": "Turnips (Late Season)"
         }
       ],
+      "browse_category": {
+        "key": "roots-tubers-alliums",
+        "position": 1,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Roots, tubers & alliums"
+      },
       "canonical_name": "Turnips",
       "id": "turnips",
       "planning_category": "annual_crop",
@@ -1333,6 +1612,12 @@
         "Watermelons"
       ],
       "appearances": [],
+      "browse_category": {
+        "key": "cucumbers-squash-melons",
+        "position": 4,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cucumbers, squash & melons"
+      },
       "canonical_name": "Watermelons",
       "id": "watermelons",
       "planning_category": "annual_crop",
@@ -1361,6 +1646,12 @@
           "source_name": "Winter Squash"
         }
       ],
+      "browse_category": {
+        "key": "cucumbers-squash-melons",
+        "position": 4,
+        "system": "kitchen-almanac-gardener-browse-v1",
+        "title": "Cucumbers, squash & melons"
+      },
       "canonical_name": "Winter Squash",
       "id": "winter-squash",
       "planning_category": "annual_crop",
@@ -1378,9 +1669,9 @@
       }
     }
   ],
-  "dataset_id": "kitchen-almanac-v2-9b565d98c0dcf2fd",
-  "parser_version": "2.1.0",
-  "schema_version": "2.1.0",
+  "dataset_id": "kitchen-almanac-v2-5f182b9189b06b80",
+  "parser_version": "2.2.0",
+  "schema_version": "2.2.0",
   "season_source": {
     "id": "sha256:6981390899702cdf71f8420963270bbfb9900be6ff091b297f997e0b18fab16e",
     "media_type": "text/markdown",

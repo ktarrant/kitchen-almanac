@@ -5,6 +5,7 @@ import copy
 import pytest
 
 from kitchen_almanac.catalog import (
+    DEFAULT_BROWSE_TAXONOMY_SOURCE,
     DEFAULT_OUTPUT,
     DEFAULT_SOURCE,
     DEFAULT_TAXONOMY_SOURCE,
@@ -25,7 +26,15 @@ def test_reference_build_has_expected_shape() -> None:
     assert len(catalog["crops"]) == 47
     assert sum(len(crop["appearances"]) for crop in catalog["crops"]) == 40
     assert len(catalog["corrections"]) == 10
-    assert validate_catalog(catalog, DEFAULT_SOURCE, DEFAULT_TAXONOMY_SOURCE) == []
+    assert (
+        validate_catalog(
+            catalog,
+            DEFAULT_SOURCE,
+            DEFAULT_TAXONOMY_SOURCE,
+            DEFAULT_BROWSE_TAXONOMY_SOURCE,
+        )
+        == []
+    )
 
 
 def test_source_corrections_are_explicit_and_original_labels_survive() -> None:
@@ -79,6 +88,27 @@ def test_catalog_identities_match_reviewed_rutgers_taxonomy() -> None:
         and crop["taxonomy"]["commodity_title"]
         for crop in catalog["crops"]
     )
+
+
+def test_every_crop_has_one_reviewed_gardener_browse_category() -> None:
+    catalog = build_catalog(DEFAULT_SOURCE)
+
+    assert {
+        crop["browse_category"]["position"] for crop in catalog["crops"]
+    } == set(range(1, 8))
+    category_counts: dict[str, int] = {}
+    for crop in catalog["crops"]:
+        key = crop["browse_category"]["key"]
+        category_counts[key] = category_counts.get(key, 0) + 1
+    assert category_counts == {
+        "beans-peas-corn": 5,
+        "cabbage-family-crops": 8,
+        "cucumbers-squash-melons": 7,
+        "fruiting-crops": 5,
+        "leafy-greens-stalks-herbs": 8,
+        "perennial-crops": 3,
+        "roots-tubers-alliums": 11,
+    }
 
 
 def test_seasonal_variants_merge_without_losing_appearances() -> None:

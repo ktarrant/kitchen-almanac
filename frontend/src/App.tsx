@@ -71,6 +71,9 @@ type BrowseCrop = CropMatch & {
   commodity_section_key: string;
   commodity_section_title: string;
   commodity_section_position: number;
+  browse_category_key: string;
+  browse_category_title: string;
+  browse_category_position: number;
 };
 
 type CropListResponse = {
@@ -403,6 +406,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<CatalogSearchResults | null>(null);
   const [browseCrops, setBrowseCrops] = useState<BrowseCrop[]>([]);
+  const [browseCategoryKey, setBrowseCategoryKey] = useState("all");
   const [loadingBrowseCrops, setLoadingBrowseCrops] = useState(true);
   const [browseCropsError, setBrowseCropsError] = useState<string | null>(null);
   const [savingProfile, setSavingProfile] = useState(false);
@@ -488,30 +492,42 @@ export default function App() {
       ).length ?? 0,
     [wishlist]
   );
-  const browseCropSections = useMemo(() => {
-    const sections = new Map<
+  const browseCategories = useMemo(() => {
+    const categories = new Map<
       string,
       { key: string; title: string; position: number; crops: BrowseCrop[] }
     >();
     for (const crop of browseCrops) {
-      const section = sections.get(crop.commodity_section_key) ?? {
-        key: crop.commodity_section_key,
-        title: crop.commodity_section_title,
-        position: crop.commodity_section_position,
+      const category = categories.get(crop.browse_category_key) ?? {
+        key: crop.browse_category_key,
+        title: crop.browse_category_title,
+        position: crop.browse_category_position,
         crops: []
       };
-      section.crops.push(crop);
-      sections.set(section.key, section);
+      category.crops.push(crop);
+      categories.set(category.key, category);
     }
-    return [...sections.values()]
+    return [...categories.values()]
       .sort((left, right) => left.position - right.position)
-      .map((section) => ({
-        ...section,
-        crops: section.crops.sort((left, right) =>
+      .map((category) => ({
+        ...category,
+        crops: category.crops.sort((left, right) =>
           left.canonical_name.localeCompare(right.canonical_name)
         )
       }));
   }, [browseCrops]);
+  const selectedBrowseCategory = browseCategories.find(
+    (category) => category.key === browseCategoryKey
+  );
+  const visibleBrowseCrops = useMemo(
+    () =>
+      browseCategoryKey === "all"
+        ? [...browseCrops].sort((left, right) =>
+            left.canonical_name.localeCompare(right.canonical_name)
+          )
+        : (selectedBrowseCategory?.crops ?? []),
+    [browseCategoryKey, browseCrops, selectedBrowseCategory]
+  );
   const groupedCultivars = suitabilityGroups
     .map((group) => ({
       ...group,
@@ -1581,9 +1597,7 @@ export default function App() {
                     <h2 id="crop-browser-heading">Choose a crop to see its cultivars</h2>
                   </div>
                   {!loadingBrowseCrops && !browseCropsError && (
-                    <p>
-                      {browseCrops.length} crops · {browseCropSections.length} Rutgers sections
-                    </p>
+                    <p>{browseCrops.length} crops</p>
                   )}
                 </div>
                 {loadingBrowseCrops && <p className="crop-browser-status">Loading crops…</p>}
@@ -1593,34 +1607,50 @@ export default function App() {
                   </p>
                 )}
                 {!loadingBrowseCrops && !browseCropsError && (
-                  <div className="crop-browser-sections">
-                    {browseCropSections.map((section) => (
-                      <article
-                        className={`crop-browser-section${
-                          section.crops.length > 3 ? " crop-browser-section-wide" : ""
-                        }`}
-                        key={section.key}
+                  <>
+                    <div
+                      className="crop-browser-filters"
+                      role="group"
+                      aria-label="Filter crops by category"
+                    >
+                      <button
+                        className="crop-browser-filter"
+                        type="button"
+                        aria-pressed={browseCategoryKey === "all"}
+                        onClick={() => setBrowseCategoryKey("all")}
                       >
-                        <div className="crop-browser-section-heading">
-                          <p>Rutgers commodity</p>
-                          <h3>{section.title}</h3>
-                        </div>
-                        <div className="crop-browser-crop-list">
-                          {section.crops.map((crop) => (
-                            <button
-                              className="crop-browser-button"
-                              type="button"
-                              key={crop.slug}
-                              disabled={searching}
-                              onClick={() => void searchCatalog(crop.canonical_name)}
-                            >
-                              {crop.canonical_name}
-                            </button>
-                          ))}
-                        </div>
-                      </article>
-                    ))}
-                  </div>
+                        All crops <span>{browseCrops.length}</span>
+                      </button>
+                      {browseCategories.map((category) => (
+                        <button
+                          className="crop-browser-filter"
+                          type="button"
+                          key={category.key}
+                          aria-pressed={browseCategoryKey === category.key}
+                          onClick={() => setBrowseCategoryKey(category.key)}
+                        >
+                          {category.title} <span>{category.crops.length}</span>
+                        </button>
+                      ))}
+                    </div>
+                    <div className="crop-browser-list-heading">
+                      <h3>{selectedBrowseCategory?.title ?? "All crops"}</h3>
+                      <p>Alphabetical · {visibleBrowseCrops.length} crops</p>
+                    </div>
+                    <div className="crop-browser-list">
+                      {visibleBrowseCrops.map((crop) => (
+                        <button
+                          className="crop-browser-button"
+                          type="button"
+                          key={crop.slug}
+                          disabled={searching}
+                          onClick={() => void searchCatalog(crop.canonical_name)}
+                        >
+                          {crop.canonical_name}
+                        </button>
+                      ))}
+                    </div>
+                  </>
                 )}
               </section>
             )}

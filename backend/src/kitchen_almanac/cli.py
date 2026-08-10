@@ -19,6 +19,7 @@ from kitchen_almanac import (
     rutgers_taxonomy,
 )
 from kitchen_almanac.catalog import (
+    DEFAULT_BROWSE_TAXONOMY_SOURCE,
     DEFAULT_OUTPUT,
     DEFAULT_SOURCE,
     DEFAULT_TAXONOMY_SOURCE,
@@ -68,11 +69,14 @@ def catalog_build(
     taxonomy: Annotated[
         Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
     ] = DEFAULT_TAXONOMY_SOURCE,
+    browse_taxonomy: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = DEFAULT_BROWSE_TAXONOMY_SOURCE,
 ) -> None:
     """Build a Rutgers-aligned catalog with retained legacy season metadata."""
 
     try:
-        catalog = build_catalog(source, taxonomy)
+        catalog = build_catalog(source, taxonomy, browse_taxonomy)
         write_catalog(catalog, output)
     except CatalogError as error:
         typer.echo(f"Catalog build failed: {error}", err=True)
@@ -92,12 +96,15 @@ def catalog_validate(
     taxonomy: Annotated[
         Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
     ] = DEFAULT_TAXONOMY_SOURCE,
+    browse_taxonomy: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = DEFAULT_BROWSE_TAXONOMY_SOURCE,
 ) -> None:
     """Validate catalog structure, provenance, and current source digest."""
 
     try:
         catalog = read_catalog(catalog_path)
-        errors = validate_catalog(catalog, source, taxonomy)
+        errors = validate_catalog(catalog, source, taxonomy, browse_taxonomy)
     except CatalogError as error:
         typer.echo(f"Catalog validation failed: {error}", err=True)
         raise typer.Exit(code=1) from error
@@ -119,12 +126,15 @@ def catalog_load(
     taxonomy: Annotated[
         Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
     ] = DEFAULT_TAXONOMY_SOURCE,
+    browse_taxonomy: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = DEFAULT_BROWSE_TAXONOMY_SOURCE,
     database_url: Annotated[str | None, typer.Option(envvar="KITCHEN_ALMANAC_DATABASE_URL")] = None,
 ) -> None:
     """Load a validated catalog into an already-migrated database."""
 
     catalog = read_catalog(catalog_path)
-    errors = validate_catalog(catalog, source, taxonomy)
+    errors = validate_catalog(catalog, source, taxonomy, browse_taxonomy)
     if errors:
         for error in errors:
             typer.echo(f"- {error}", err=True)

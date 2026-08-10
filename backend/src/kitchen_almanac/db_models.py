@@ -58,6 +58,9 @@ class Crop(Base):
     commodity_section_key: Mapped[str | None] = mapped_column(String(100), nullable=True)
     commodity_section_title: Mapped[str | None] = mapped_column(String(255), nullable=True)
     commodity_section_position: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    browse_category_key: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    browse_category_title: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    browse_category_position: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     aliases: Mapped[list[CropAlias]] = relationship(cascade="all, delete-orphan")
     appearances: Mapped[list[CropSeasonAppearance]] = relationship(cascade="all, delete-orphan")

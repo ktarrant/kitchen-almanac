@@ -913,53 +913,81 @@ h1 {
   font-size: 0.78rem;
 }
 
-.crop-browser-sections {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  align-items: start;
-  gap: 0.8rem;
+.crop-browser-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.35rem;
 }
 
-.crop-browser-section {
-  padding: 0.9rem;
-  border: 1px solid #b2b8a9;
-  border-radius: 12px;
-  background: rgb(255 253 246 / 72%);
+.crop-browser-filter {
+  min-height: 38px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #a8b09f;
+  border-radius: 999px;
+  color: #415247;
+  background: transparent;
+  font: 700 0.76rem/1.2 system-ui, sans-serif;
+  cursor: pointer;
 }
 
-.crop-browser-section-wide {
-  grid-column: span 2;
+.crop-browser-filter span {
+  margin-left: 0.28rem;
+  color: #778278;
+  font-weight: 600;
 }
 
-.crop-browser-section-heading {
-  margin-bottom: 0.75rem;
+.crop-browser-filter:hover {
+  border-color: #54705a;
+  background: #f2f3ea;
 }
 
-.crop-browser-section-heading p {
-  margin: 0 0 0.22rem;
-  color: #8b4e32;
-  font-size: 0.62rem;
-  font-weight: 760;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.crop-browser-filter[aria-pressed="true"] {
+  border-color: #42684e;
+  color: #fffdf6;
+  background: #42684e;
 }
 
-.crop-browser-section-heading h3 {
+.crop-browser-filter[aria-pressed="true"] span {
+  color: #dce5d8;
+}
+
+.crop-browser-filter:focus-visible {
+  outline: 3px solid rgb(66 104 78 / 22%);
+  outline-offset: 2px;
+}
+
+.crop-browser-list-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid #c3c8bb;
+}
+
+.crop-browser-list-heading h3,
+.crop-browser-list-heading p {
   margin: 0;
+}
+
+.crop-browser-list-heading h3 {
   color: #2d4836;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  line-height: 1.3;
 }
 
-.crop-browser-crop-list {
+.crop-browser-list-heading p {
+  color: #68756c;
+  font-size: 0.75rem;
+}
+
+.crop-browser-list {
   display: grid;
-  gap: 0.55rem;
-}
-
-.crop-browser-section-wide .crop-browser-crop-list {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.65rem;
 }
 
 .crop-browser-button {
@@ -1605,12 +1633,10 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .crop-browser-section-wide {
-    grid-column: span 1;
-  }
-
-  .crop-browser-section-wide .crop-browser-crop-list {
-    grid-template-columns: 1fr;
+  .crop-browser-list-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .custom-actions > div:last-child {

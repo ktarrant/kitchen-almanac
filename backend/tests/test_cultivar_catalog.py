@@ -13,8 +13,8 @@ from kitchen_almanac.cultivar_catalog import (
 def test_reviewed_cultivar_snapshot_is_valid_and_deterministic() -> None:
     catalog = build_cultivar_catalog()
 
-    assert catalog.id == "cultivar-catalog-v1-29d8a32d94755e3d"
-    assert catalog.crop_dataset_id == "kitchen-almanac-v2-9b565d98c0dcf2fd"
+    assert catalog.id == "cultivar-catalog-v1-52aa3a5509a399a0"
+    assert catalog.crop_dataset_id == "kitchen-almanac-v2-5f182b9189b06b80"
     assert [item["slug"] for item in catalog.data["cultivars"]] == [
         "avalanche",
         "blue-vantage",

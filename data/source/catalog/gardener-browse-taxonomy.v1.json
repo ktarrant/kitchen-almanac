@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "taxonomy_id": "kitchen-almanac-gardener-browse-v1",
+  "reviewed_at": "2026-08-09T00:00:00Z",
+  "review_scope": "Application navigation taxonomy for browsing canonical crops. It does not replace Rutgers crop identity or commodity provenance, and cultivar-specific growth habits remain cultivar traits.",
+  "categories": [
+    {
+      "position": 1,
+      "key": "roots-tubers-alliums",
+      "title": "Roots, tubers & alliums",
+      "crop_ids": [
+        "beets",
+        "carrots",
+        "garlic",
+        "leeks",
+        "onions",
+        "parsnips",
+        "potatoes",
+        "radishes",
+        "rutabagas",
+        "sweet-potatoes",
+        "turnips"
+      ]
+    },
+    {
+      "position": 2,
+      "key": "cabbage-family-crops",
+      "title": "Cabbage-family crops",
+      "crop_ids": [
+        "broccoli",
+        "brussels-sprouts",
+        "cabbage",
+        "cauliflower",
+        "chinese-cabbage",
+        "collards",
+        "kale",
+        "kohlrabi"
+      ]
+    },
+    {
+      "position": 3,
+      "key": "leafy-greens-stalks-herbs",
+      "title": "Leafy greens, stalks & herbs",
+      "crop_ids": [
+        "celery",
+        "endive",
+        "escarole",
+        "lettuce",
+        "mustard-greens",
+        "parsley",
+        "spinach",
+        "turnip-greens"
+      ]
+    },
+    {
+      "position": 4,
+      "key": "cucumbers-squash-melons",
+      "title": "Cucumbers, squash & melons",
+      "crop_ids": [
+        "cucumbers",
+        "muskmelons",
+        "pumpkins",
+        "specialty-melons",
+        "summer-squash",
+        "watermelons",
+        "winter-squash"
+      ]
+    },
+    {
+      "position": 5,
+      "key": "fruiting-crops",
+      "title": "Tomatoes, peppers & other fruiting crops",
+      "crop_ids": [
+        "eggplant",
+        "hot-peppers",
+        "okra",
+        "sweet-peppers",
+        "tomatoes"
+      ]
+    },
+    {
+      "position": 6,
+      "key": "beans-peas-corn",
+      "title": "Beans, peas & corn",
+      "crop_ids": [
+        "edamame",
+        "lima-beans",
+        "snap-beans",
+        "succulent-peas",
+        "sweet-corn"
+      ]
+    },
+    {
+      "position": 7,
+      "key": "perennial-crops",
+      "title": "Perennial crops",
+      "crop_ids": [
+        "asparagus",
+        "horseradish",
+        "strawberries"
+      ]
+    }
+  ]
+}

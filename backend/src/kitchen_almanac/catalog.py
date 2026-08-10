@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-SCHEMA_VERSION = "2.1.0"
-PARSER_VERSION = "2.1.0"
+SCHEMA_VERSION = "2.2.0"
+PARSER_VERSION = "2.2.0"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_SOURCE = REPOSITORY_ROOT / "Six Seasons Reference.md"
 DEFAULT_TAXONOMY_SOURCE = (
@@ -18,6 +18,13 @@ DEFAULT_TAXONOMY_SOURCE = (
     / "cultivars"
     / "mid-atlantic-2026-2027"
     / "commodity-crosswalk.v1.json"
+)
+DEFAULT_BROWSE_TAXONOMY_SOURCE = (
+    REPOSITORY_ROOT
+    / "data"
+    / "source"
+    / "catalog"
+    / "gardener-browse-taxonomy.v1.json"
 )
 DEFAULT_OUTPUT = REPOSITORY_ROOT / "data" / "seed" / "kitchen-almanac-catalog.v2.json"
 
@@ -321,6 +328,7 @@ def _dataset_id(payload_without_id: dict[str, Any]) -> str:
 def build_catalog(
     source_path: Path = DEFAULT_SOURCE,
     taxonomy_path: Path = DEFAULT_TAXONOMY_SOURCE,
+    browse_taxonomy_path: Path = DEFAULT_BROWSE_TAXONOMY_SOURCE,
 ) -> dict[str, Any]:
     source_bytes = source_path.read_bytes()
     source_text = source_bytes.decode("utf-8")
@@ -387,6 +395,39 @@ def build_catalog(
     if not isinstance(sections, list) or not sections:
         raise CatalogError("Rutgers crop taxonomy must contain commodity sections.")
 
+    try:
+        browse_taxonomy_bytes = browse_taxonomy_path.read_bytes()
+        browse_taxonomy = json.loads(browse_taxonomy_bytes)
+    except (OSError, json.JSONDecodeError) as error:
+        raise CatalogError(
+            f"Cannot read gardener browse taxonomy {browse_taxonomy_path}: {error}"
+        ) from error
+    browse_categories = (
+        browse_taxonomy.get("categories") if isinstance(browse_taxonomy, dict) else None
+    )
+    if not isinstance(browse_categories, list) or not browse_categories:
+        raise CatalogError("Gardener browse taxonomy must contain categories.")
+    browse_category_by_crop_id: dict[str, dict[str, Any]] = {}
+    for category in browse_categories:
+        if not all(
+            isinstance(category.get(field), expected_type)
+            for field, expected_type in (
+                ("key", str),
+                ("title", str),
+                ("position", int),
+                ("crop_ids", list),
+            )
+        ):
+            raise CatalogError(
+                "Every gardener browse category needs a key, title, position, and crop IDs."
+            )
+        for crop_id in category["crop_ids"]:
+            if crop_id in browse_category_by_crop_id:
+                raise CatalogError(
+                    f"Gardener browse crop {crop_id!r} belongs to more than one category."
+                )
+            browse_category_by_crop_id[crop_id] = category
+
     legacy_by_id = {crop["id"]: crop for crop in legacy_crops}
     crops: list[dict[str, Any]] = []
     taxonomy_ids: list[str] = []
@@ -397,6 +438,11 @@ def build_catalog(
             if not isinstance(crop_id, str) or not isinstance(canonical_name, str):
                 raise CatalogError("Every Rutgers crop concept needs an ID and name.")
             taxonomy_ids.append(crop_id)
+            browse_category = browse_category_by_crop_id.get(crop_id)
+            if browse_category is None:
+                raise CatalogError(
+                    f"Rutgers crop {crop_id!r} is missing from the gardener browse taxonomy."
+                )
             legacy_id = LEGACY_CROP_IDS.get(crop_id)
             legacy = legacy_by_id.get(legacy_id) if legacy_id else None
             aliases = [canonical_name, *RUTGERS_ALIASES.get(crop_id, ())]
@@ -419,10 +465,22 @@ def build_catalog(
                         "legacy_catalog_crop_id": legacy_id,
                         "legacy_catalog_name": legacy["canonical_name"] if legacy else None,
                     },
+                    "browse_category": {
+                        "system": browse_taxonomy["taxonomy_id"],
+                        "key": browse_category["key"],
+                        "title": browse_category["title"],
+                        "position": browse_category["position"],
+                    },
                 }
             )
     if len(taxonomy_ids) != len(set(taxonomy_ids)):
         raise CatalogError("Rutgers crop concept IDs must be unique.")
+    unknown_browse_crop_ids = set(browse_category_by_crop_id) - set(taxonomy_ids)
+    if unknown_browse_crop_ids:
+        raise CatalogError(
+            "Gardener browse taxonomy contains unknown crop IDs: "
+            f"{sorted(unknown_browse_crop_ids)!r}."
+        )
 
     payload: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
@@ -447,6 +505,15 @@ def build_catalog(
             "sha256": _sha256(source_bytes),
             "source_scope": "legacy seasonal appearance metadata",
         },
+        "browse_taxonomy": {
+            "id": f"sha256:{_sha256(browse_taxonomy_bytes)}",
+            "taxonomy_id": browse_taxonomy["taxonomy_id"],
+            "title": "Kitchen Almanac gardener browse taxonomy",
+            "path": browse_taxonomy_path.relative_to(REPOSITORY_ROOT).as_posix(),
+            "media_type": "application/json",
+            "sha256": _sha256(browse_taxonomy_bytes),
+            "source_scope": browse_taxonomy["review_scope"],
+        },
         "corrections": sorted(corrections_by_source.values(), key=lambda item: item["source_name"]),
         "crops": sorted(crops, key=lambda item: item["id"]),
     }
@@ -457,6 +524,7 @@ def validate_catalog(
     catalog: dict[str, Any],
     source_path: Path | None = None,
     taxonomy_path: Path | None = None,
+    browse_taxonomy_path: Path | None = None,
 ) -> list[str]:
     errors: list[str] = []
 
@@ -466,6 +534,7 @@ def validate_catalog(
         "parser_version",
         "source",
         "season_source",
+        "browse_taxonomy",
         "corrections",
         "crops",
     }
@@ -505,6 +574,15 @@ def validate_catalog(
             errors.append(f"Crop {canonical_name!r} needs a Rutgers commodity title.")
         if not isinstance(taxonomy.get("commodity_position"), int):
             errors.append(f"Crop {canonical_name!r} needs a Rutgers commodity position.")
+        browse_category = crop.get("browse_category", {})
+        if not isinstance(browse_category.get("system"), str):
+            errors.append(f"Crop {canonical_name!r} needs a browse taxonomy system.")
+        if not isinstance(browse_category.get("key"), str):
+            errors.append(f"Crop {canonical_name!r} needs a browse category key.")
+        if not isinstance(browse_category.get("title"), str):
+            errors.append(f"Crop {canonical_name!r} needs a browse category title.")
+        if not isinstance(browse_category.get("position"), int):
+            errors.append(f"Crop {canonical_name!r} needs a browse category position.")
         for source_name in crop.get("source_names", []):
             correction_target = legacy_name or canonical_name
             if source_name != correction_target:
@@ -535,6 +613,23 @@ def validate_catalog(
         )
         if crop_ids != expected_crop_ids:
             errors.append("Catalog crop IDs do not exactly match the Rutgers crop taxonomy.")
+
+    if browse_taxonomy_path is not None:
+        browse_taxonomy_digest = _sha256(browse_taxonomy_path.read_bytes())
+        if catalog["browse_taxonomy"].get("sha256") != browse_taxonomy_digest:
+            errors.append("Catalog browse-taxonomy digest does not match its source file.")
+        browse_taxonomy = json.loads(browse_taxonomy_path.read_text(encoding="utf-8"))
+        expected_assignments = {
+            crop_id: category["key"]
+            for category in browse_taxonomy["categories"]
+            for crop_id in category["crop_ids"]
+        }
+        actual_assignments = {
+            crop["id"]: crop.get("browse_category", {}).get("key")
+            for crop in catalog["crops"]
+        }
+        if actual_assignments != expected_assignments:
+            errors.append("Catalog crops do not exactly match the gardener browse taxonomy.")
 
     return errors
 

@@ -23,6 +23,9 @@ class CropSummary(BaseModel):
     commodity_section_key: str
     commodity_section_title: str
     commodity_section_position: int
+    browse_category_key: str
+    browse_category_title: str
+    browse_category_position: int
     aliases: list[str]
     seasons: list[str]
 

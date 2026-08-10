@@ -31,3 +31,6 @@ def test_catalog_load_is_idempotent() -> None:
         assert asparagus.commodity_section_key == "mid-atlantic-asparagus-2026-2027"
         assert asparagus.commodity_section_title == "Asparagus"
         assert asparagus.commodity_section_position == 1
+        assert asparagus.browse_category_key == "perennial-crops"
+        assert asparagus.browse_category_title == "Perennial crops"
+        assert asparagus.browse_category_position == 7

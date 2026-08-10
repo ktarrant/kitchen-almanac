@@ -204,6 +204,11 @@ def test_crop_list_uses_active_catalog(catalog_client: TestClient) -> None:
     ]
     assert [crop["commodity_section_position"] for crop in payload["crops"]] == [1, 12, 26]
     assert payload["crops"][0]["commodity_section_title"] == "Asparagus"
+    assert [crop["browse_category_key"] for crop in payload["crops"]] == [
+        "perennial-crops",
+        "perennial-crops",
+        "perennial-crops",
+    ]
 
 
 def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
@@ -213,8 +218,8 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["dataset_id"] == "cultivar-catalog-v1-29d8a32d94755e3d"
-    assert payload["crop_dataset_id"] == "kitchen-almanac-v2-9b565d98c0dcf2fd"
+    assert payload["dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
+    assert payload["crop_dataset_id"] == "kitchen-almanac-v2-5f182b9189b06b80"
     assert [item["canonical_name"] for item in payload["cultivars"]] == [
         "San Marzano",
         "San Marzano 2",
@@ -534,7 +539,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     assessment = first.json()
     assert second.json() == assessment
     assert assessment["algorithm_version"] == "suitability-v1.1.0"
-    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-29d8a32d94755e3d"
+    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
     assert assessment["input_fingerprint"].startswith("sha256:")
     assert assessment["status"] == "suitable"
     assert assessment["score"] == 80
@@ -1243,7 +1248,7 @@ def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
     wishlist = created_response.json()
     assert wishlist["name"] == "Summer ideas"
     assert wishlist["entries"] == []
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-29d8a32d94755e3d"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
 
     selections = [
         {
@@ -1322,7 +1327,7 @@ def test_quick_import_preserves_cultivar_and_crop_type_intent(
 
     assert response.status_code == 201
     wishlist = response.json()
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-29d8a32d94755e3d"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-52aa3a5509a399a0"
     san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
 
     assert san_marzano["original_text"] == "San Marzano tomatoes"
