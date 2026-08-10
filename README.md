@@ -109,6 +109,9 @@ universal home-garden schedules.
 deterministic registry of all 31 commodity sections and 47 individual crop
 concepts. All 47 concepts are now canonical catalog identities; the former 9
 overly broad mappings and 12 missing identities have been resolved. Its
+section keys, source titles, and table-of-contents order are retained in the
+crop API so the empty catalog search can browse crops in Rutgers commodity
+groups while keeping each individual crop selectable. Its
 minimum-useful coverage matrix reports published identity,
 cultivar, commercial availability, soil, water, spacing, container, planting,
 harvest, and threat evidence independently; detected PDF material remains a

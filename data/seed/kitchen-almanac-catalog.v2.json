@@ -82,6 +82,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-asparagus-2026-2027",
+        "commodity_position": 1,
+        "commodity_title": "Asparagus",
         "legacy_catalog_crop_id": "asparagus",
         "legacy_catalog_name": "Asparagus",
         "rutgers_crop_id": "asparagus",
@@ -117,6 +119,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-beets-2026-2027",
+        "commodity_position": 3,
+        "commodity_title": "Beets (Garden)",
         "legacy_catalog_crop_id": "beets",
         "legacy_catalog_name": "Beets",
         "rutgers_crop_id": "beets",
@@ -143,6 +147,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "commodity_position": 6,
+        "commodity_title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
         "legacy_catalog_crop_id": "broccoli",
         "legacy_catalog_name": "Broccoli",
         "rutgers_crop_id": "broccoli",
@@ -171,6 +177,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "commodity_position": 6,
+        "commodity_title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
         "legacy_catalog_crop_id": "brussels-sprouts",
         "legacy_catalog_name": "Brussels Sprouts",
         "rutgers_crop_id": "brussels-sprouts",
@@ -198,6 +206,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "commodity_position": 6,
+        "commodity_title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
         "legacy_catalog_crop_id": "cabbage",
         "legacy_catalog_name": "Cabbage",
         "rutgers_crop_id": "cabbage",
@@ -234,6 +244,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-carrots-2026-2027",
+        "commodity_position": 4,
+        "commodity_title": "Carrots",
         "legacy_catalog_crop_id": "carrots",
         "legacy_catalog_name": "Carrots",
         "rutgers_crop_id": "carrots",
@@ -260,6 +272,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "commodity_position": 6,
+        "commodity_title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
         "legacy_catalog_crop_id": "cauliflower",
         "legacy_catalog_name": "Cauliflower",
         "rutgers_crop_id": "cauliflower",
@@ -286,6 +300,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-celery-2026-2027",
+        "commodity_position": 5,
+        "commodity_title": "Celery",
         "legacy_catalog_crop_id": "celery",
         "legacy_catalog_name": "Celery",
         "rutgers_crop_id": "celery",
@@ -306,6 +322,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "commodity_position": 6,
+        "commodity_title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "chinese-cabbage",
@@ -334,6 +352,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "commodity_position": 6,
+        "commodity_title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
         "legacy_catalog_crop_id": "collards",
         "legacy_catalog_name": "Collards",
         "rutgers_crop_id": "collards",
@@ -361,6 +381,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cucumbers-2026-2027",
+        "commodity_position": 7,
+        "commodity_title": "Cucumbers",
         "legacy_catalog_crop_id": "cucumbers",
         "legacy_catalog_name": "Cucumbers",
         "rutgers_crop_id": "cucumbers",
@@ -380,6 +402,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-edamame-2026-2027",
+        "commodity_position": 8,
+        "commodity_title": "Edamame",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "edamame",
@@ -408,6 +432,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-eggplant-2026-2027",
+        "commodity_position": 9,
+        "commodity_title": "Eggplant",
         "legacy_catalog_crop_id": "eggplant",
         "legacy_catalog_name": "Eggplant",
         "rutgers_crop_id": "eggplant",
@@ -434,6 +460,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-lettuce-endive-escarole-2026-2027",
+        "commodity_position": 14,
+        "commodity_title": "Lettuce, Endive and Escarole",
         "legacy_catalog_crop_id": "lettuces-and-early-greens",
         "legacy_catalog_name": "Lettuces and Early Greens",
         "rutgers_crop_id": "endive",
@@ -460,6 +488,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-lettuce-endive-escarole-2026-2027",
+        "commodity_position": 14,
+        "commodity_title": "Lettuce, Endive and Escarole",
         "legacy_catalog_crop_id": "lettuces-and-early-greens",
         "legacy_catalog_name": "Lettuces and Early Greens",
         "rutgers_crop_id": "escarole",
@@ -486,6 +516,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-garlic-2026-2027",
+        "commodity_position": 10,
+        "commodity_title": "Garlic",
         "legacy_catalog_crop_id": "onion-family",
         "legacy_catalog_name": "Onion Family",
         "rutgers_crop_id": "garlic",
@@ -503,6 +535,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-horseradish-2026-2027",
+        "commodity_position": 12,
+        "commodity_title": "Horseradish",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "horseradish",
@@ -534,6 +568,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-peppers-2026-2027",
+        "commodity_position": 21,
+        "commodity_title": "Peppers",
         "legacy_catalog_crop_id": "sweet-peppers-and-chiles",
         "legacy_catalog_name": "Sweet Peppers and Chiles",
         "rutgers_crop_id": "hot-peppers",
@@ -560,6 +596,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "commodity_position": 6,
+        "commodity_title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
         "legacy_catalog_crop_id": "kale",
         "legacy_catalog_name": "Kale",
         "rutgers_crop_id": "kale",
@@ -586,6 +624,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "commodity_position": 6,
+        "commodity_title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
         "legacy_catalog_crop_id": "kohlrabi",
         "legacy_catalog_name": "Kohlrabi",
         "rutgers_crop_id": "kohlrabi",
@@ -613,6 +653,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-leeks-2026-2027",
+        "commodity_position": 13,
+        "commodity_title": "Leeks",
         "legacy_catalog_crop_id": "onion-family",
         "legacy_catalog_name": "Onion Family",
         "rutgers_crop_id": "leeks",
@@ -640,6 +682,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-lettuce-endive-escarole-2026-2027",
+        "commodity_position": 14,
+        "commodity_title": "Lettuce, Endive and Escarole",
         "legacy_catalog_crop_id": "lettuces-and-early-greens",
         "legacy_catalog_name": "Lettuces and Early Greens",
         "rutgers_crop_id": "lettuce",
@@ -669,6 +713,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-beans-2026-2027",
+        "commodity_position": 2,
+        "commodity_title": "Beans (Snap and Lima)",
         "legacy_catalog_crop_id": "shell-beans",
         "legacy_catalog_name": "Shell Beans",
         "rutgers_crop_id": "lima-beans",
@@ -689,6 +735,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-muskmelons-mixed-melons-2026-2027",
+        "commodity_position": 15,
+        "commodity_title": "Muskmelons and Mixed Melons",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "muskmelons",
@@ -716,6 +764,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-greens-mustard-turnip-2026-2027",
+        "commodity_position": 11,
+        "commodity_title": "Greens (Mustard, Turnip)",
         "legacy_catalog_crop_id": "lettuces-and-early-greens",
         "legacy_catalog_name": "Lettuces and Early Greens",
         "rutgers_crop_id": "mustard-greens",
@@ -733,6 +783,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-okra-2026-2027",
+        "commodity_position": 16,
+        "commodity_title": "Okra",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "okra",
@@ -761,6 +813,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-onions-2026-2027",
+        "commodity_position": 17,
+        "commodity_title": "Onions",
         "legacy_catalog_crop_id": "onions",
         "legacy_catalog_name": "Onions",
         "rutgers_crop_id": "onions",
@@ -778,6 +832,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-parsley-2026-2027",
+        "commodity_position": 18,
+        "commodity_title": "Parsley",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "parsley",
@@ -805,6 +861,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-parsnips-2026-2027",
+        "commodity_position": 19,
+        "commodity_title": "Parsnips",
         "legacy_catalog_crop_id": "parsnips",
         "legacy_catalog_name": "Parsnips",
         "rutgers_crop_id": "parsnips",
@@ -841,6 +899,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-potatoes-2026-2027",
+        "commodity_position": 22,
+        "commodity_title": "Potatoes",
         "legacy_catalog_crop_id": "potatoes",
         "legacy_catalog_name": "Potatoes",
         "rutgers_crop_id": "potatoes",
@@ -859,6 +919,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-pumpkins-winter-squash-2026-2027",
+        "commodity_position": 23,
+        "commodity_title": "Pumpkins and Winter Squash",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "pumpkins",
@@ -886,6 +948,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-radishes-rutabagas-turnips-2026-2027",
+        "commodity_position": 24,
+        "commodity_title": "Radishes, Rutabagas and Turnips",
         "legacy_catalog_crop_id": "radishes",
         "legacy_catalog_name": "Radishes",
         "rutgers_crop_id": "radishes",
@@ -916,6 +980,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-radishes-rutabagas-turnips-2026-2027",
+        "commodity_position": 24,
+        "commodity_title": "Radishes, Rutabagas and Turnips",
         "legacy_catalog_crop_id": "rutabaga",
         "legacy_catalog_name": "Rutabaga",
         "rutgers_crop_id": "rutabagas",
@@ -947,6 +1013,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-beans-2026-2027",
+        "commodity_position": 2,
+        "commodity_title": "Beans (Snap and Lima)",
         "legacy_catalog_crop_id": "string-beans",
         "legacy_catalog_name": "String Beans",
         "rutgers_crop_id": "snap-beans",
@@ -965,6 +1033,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-muskmelons-mixed-melons-2026-2027",
+        "commodity_position": 15,
+        "commodity_title": "Muskmelons and Mixed Melons",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "specialty-melons",
@@ -982,6 +1052,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-spinach-2026-2027",
+        "commodity_position": 25,
+        "commodity_title": "Spinach",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "spinach",
@@ -1000,6 +1072,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-strawberries-2026-2027",
+        "commodity_position": 26,
+        "commodity_title": "Strawberries",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "strawberries",
@@ -1031,6 +1105,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-peas-2026-2027",
+        "commodity_position": 20,
+        "commodity_title": "Peas (Succulent)",
         "legacy_catalog_crop_id": "english-peas",
         "legacy_catalog_name": "English Peas",
         "rutgers_crop_id": "succulent-peas",
@@ -1060,6 +1136,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-summer-squash-2026-2027",
+        "commodity_position": 27,
+        "commodity_title": "Summer Squash",
         "legacy_catalog_crop_id": "summer-squash",
         "legacy_catalog_name": "Summer Squash",
         "rutgers_crop_id": "summer-squash",
@@ -1087,6 +1165,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-sweet-corn-2026-2027",
+        "commodity_position": 28,
+        "commodity_title": "Sweet Corn",
         "legacy_catalog_crop_id": "corn",
         "legacy_catalog_name": "Corn",
         "rutgers_crop_id": "sweet-corn",
@@ -1116,6 +1196,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-peppers-2026-2027",
+        "commodity_position": 21,
+        "commodity_title": "Peppers",
         "legacy_catalog_crop_id": "sweet-peppers-and-chiles",
         "legacy_catalog_name": "Sweet Peppers and Chiles",
         "rutgers_crop_id": "sweet-peppers",
@@ -1134,6 +1216,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-sweet-potatoes-2026-2027",
+        "commodity_position": 29,
+        "commodity_title": "Sweet Potatoes",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "sweet-potatoes",
@@ -1161,6 +1245,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-tomatoes-2026-2027",
+        "commodity_position": 30,
+        "commodity_title": "Tomatoes",
         "legacy_catalog_crop_id": "tomatoes",
         "legacy_catalog_name": "Tomatoes",
         "rutgers_crop_id": "tomatoes",
@@ -1195,6 +1281,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-greens-mustard-turnip-2026-2027",
+        "commodity_position": 11,
+        "commodity_title": "Greens (Mustard, Turnip)",
         "legacy_catalog_crop_id": "turnips",
         "legacy_catalog_name": "Turnips",
         "rutgers_crop_id": "turnip-greens",
@@ -1231,6 +1319,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-radishes-rutabagas-turnips-2026-2027",
+        "commodity_position": 24,
+        "commodity_title": "Radishes, Rutabagas and Turnips",
         "legacy_catalog_crop_id": "turnips",
         "legacy_catalog_name": "Turnips",
         "rutgers_crop_id": "turnips",
@@ -1249,6 +1339,8 @@
       "source_names": [],
       "taxonomy": {
         "commodity_key": "mid-atlantic-watermelons-2026-2027",
+        "commodity_position": 31,
+        "commodity_title": "Watermelons",
         "legacy_catalog_crop_id": null,
         "legacy_catalog_name": null,
         "rutgers_crop_id": "watermelons",
@@ -1277,6 +1369,8 @@
       ],
       "taxonomy": {
         "commodity_key": "mid-atlantic-pumpkins-winter-squash-2026-2027",
+        "commodity_position": 23,
+        "commodity_title": "Pumpkins and Winter Squash",
         "legacy_catalog_crop_id": "winter-squash",
         "legacy_catalog_name": "Winter Squash",
         "rutgers_crop_id": "winter-squash",
@@ -1284,9 +1378,9 @@
       }
     }
   ],
-  "dataset_id": "kitchen-almanac-v2-c1e82a4b00502686",
-  "parser_version": "2.0.0",
-  "schema_version": "2.0.0",
+  "dataset_id": "kitchen-almanac-v2-9b565d98c0dcf2fd",
+  "parser_version": "2.1.0",
+  "schema_version": "2.1.0",
   "season_source": {
     "id": "sha256:6981390899702cdf71f8420963270bbfb9900be6ff091b297f997e0b18fab16e",
     "media_type": "text/markdown",

@@ -62,11 +62,22 @@ def test_catalog_contains_reviewed_wishlist_aliases() -> None:
 def test_catalog_identities_match_reviewed_rutgers_taxonomy() -> None:
     catalog = build_catalog(DEFAULT_SOURCE)
 
-    assert crop_named(catalog, "Chinese Cabbage")["id"] == "chinese-cabbage"
+    chinese_cabbage = crop_named(catalog, "Chinese Cabbage")
+    assert chinese_cabbage["id"] == "chinese-cabbage"
+    assert chinese_cabbage["taxonomy"]["commodity_position"] == 6
+    assert chinese_cabbage["taxonomy"]["commodity_title"].startswith("Cole Crops:")
     assert crop_named(catalog, "Hot Peppers and Chiles")["id"] == "hot-peppers"
     assert crop_named(catalog, "Watermelons")["id"] == "watermelons"
     assert all(
         crop["taxonomy"]["rutgers_crop_id"] == crop["id"] for crop in catalog["crops"]
+    )
+    assert {
+        crop["taxonomy"]["commodity_position"] for crop in catalog["crops"]
+    } == set(range(1, 32))
+    assert all(
+        crop["taxonomy"]["commodity_key"]
+        and crop["taxonomy"]["commodity_title"]
+        for crop in catalog["crops"]
     )
 
 

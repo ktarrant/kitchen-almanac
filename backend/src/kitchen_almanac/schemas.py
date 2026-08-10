@@ -20,6 +20,9 @@ class CropSummary(BaseModel):
     slug: str
     canonical_name: str
     planning_category: str
+    commodity_section_key: str
+    commodity_section_title: str
+    commodity_section_position: int
     aliases: list[str]
     seasons: list[str]
 

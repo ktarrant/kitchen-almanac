@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "staging_sha256": "74e6b42fb7690f2cd9c11aa40fc69d436711afdb5860323073707db0a67cf151",
+  "staging_sha256": "0d21034aaa4461917ec8fbaa0d5cfaf2d1a74ef612649dafcad6770f8b48c267",
   "reviewed_at": "2026-08-09T00:00:00Z",
   "reviewer": "Kitchen Almanac data review",
   "decisions": [

@@ -113,6 +113,9 @@ def list_crops(
                 slug=crop.slug,
                 canonical_name=crop.canonical_name,
                 planning_category=crop.planning_category,
+                commodity_section_key=crop.commodity_section_key,
+                commodity_section_title=crop.commodity_section_title,
+                commodity_section_position=crop.commodity_section_position,
                 aliases=sorted(alias.alias for alias in crop.aliases),
                 seasons=sorted({appearance.season for appearance in crop.appearances}),
             )

@@ -21,3 +21,13 @@ def test_catalog_load_is_idempotent() -> None:
         active = session.scalar(select(DatasetVersion).where(DatasetVersion.active.is_(True)))
         assert active is not None
         assert active.id == catalog["dataset_id"]
+        asparagus = session.scalar(
+            select(Crop).where(
+                Crop.dataset_version_id == active.id,
+                Crop.slug == "asparagus",
+            )
+        )
+        assert asparagus is not None
+        assert asparagus.commodity_section_key == "mid-atlantic-asparagus-2026-2027"
+        assert asparagus.commodity_section_title == "Asparagus"
+        assert asparagus.commodity_section_position == 1

@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-SCHEMA_VERSION = "2.0.0"
-PARSER_VERSION = "2.0.0"
+SCHEMA_VERSION = "2.1.0"
+PARSER_VERSION = "2.1.0"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_SOURCE = REPOSITORY_ROOT / "Six Seasons Reference.md"
 DEFAULT_TAXONOMY_SOURCE = (
@@ -413,6 +413,8 @@ def build_catalog(
                     "taxonomy": {
                         "system": "rutgers_mid_atlantic_commodity",
                         "commodity_key": section["key"],
+                        "commodity_title": section["title"],
+                        "commodity_position": section["position"],
                         "rutgers_crop_id": crop_id,
                         "legacy_catalog_crop_id": legacy_id,
                         "legacy_catalog_name": legacy["canonical_name"] if legacy else None,
@@ -497,6 +499,12 @@ def validate_catalog(
         legacy_name = taxonomy.get("legacy_catalog_name")
         if taxonomy.get("rutgers_crop_id") != crop.get("id"):
             errors.append(f"Crop {canonical_name!r} is not aligned to its Rutgers crop ID.")
+        if not isinstance(taxonomy.get("commodity_key"), str):
+            errors.append(f"Crop {canonical_name!r} needs a Rutgers commodity key.")
+        if not isinstance(taxonomy.get("commodity_title"), str):
+            errors.append(f"Crop {canonical_name!r} needs a Rutgers commodity title.")
+        if not isinstance(taxonomy.get("commodity_position"), int):
+            errors.append(f"Crop {canonical_name!r} needs a Rutgers commodity position.")
         for source_name in crop.get("source_names", []):
             correction_target = legacy_name or canonical_name
             if source_name != correction_target:

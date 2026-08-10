@@ -913,10 +913,53 @@ h1 {
   font-size: 0.78rem;
 }
 
-.crop-browser-list {
+.crop-browser-sections {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  align-items: start;
+  gap: 0.8rem;
+}
+
+.crop-browser-section {
+  padding: 0.9rem;
+  border: 1px solid #b2b8a9;
+  border-radius: 12px;
+  background: rgb(255 253 246 / 72%);
+}
+
+.crop-browser-section-wide {
+  grid-column: span 2;
+}
+
+.crop-browser-section-heading {
+  margin-bottom: 0.75rem;
+}
+
+.crop-browser-section-heading p {
+  margin: 0 0 0.22rem;
+  color: #8b4e32;
+  font-size: 0.62rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.crop-browser-section-heading h3 {
+  margin: 0;
+  color: #2d4836;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.crop-browser-crop-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.crop-browser-section-wide .crop-browser-crop-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .crop-browser-button {
@@ -1559,6 +1602,14 @@ textarea:focus {
   .search-row,
   .crop-result-list,
   .cultivar-result-list {
+    grid-template-columns: 1fr;
+  }
+
+  .crop-browser-section-wide {
+    grid-column: span 1;
+  }
+
+  .crop-browser-section-wide .crop-browser-crop-list {
     grid-template-columns: 1fr;
   }
 

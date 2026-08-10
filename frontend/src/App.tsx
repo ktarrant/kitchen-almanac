@@ -67,9 +67,15 @@ type CropMatch = {
   planning_category: string;
 };
 
+type BrowseCrop = CropMatch & {
+  commodity_section_key: string;
+  commodity_section_title: string;
+  commodity_section_position: number;
+};
+
 type CropListResponse = {
   dataset_id: string | null;
-  crops: CropMatch[];
+  crops: BrowseCrop[];
 };
 
 type Candidate = CropMatch & {
@@ -396,7 +402,7 @@ export default function App() {
   const [wishlist, setWishlist] = useState<Wishlist | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<CatalogSearchResults | null>(null);
-  const [browseCrops, setBrowseCrops] = useState<CropMatch[]>([]);
+  const [browseCrops, setBrowseCrops] = useState<BrowseCrop[]>([]);
   const [loadingBrowseCrops, setLoadingBrowseCrops] = useState(true);
   const [browseCropsError, setBrowseCropsError] = useState<string | null>(null);
   const [savingProfile, setSavingProfile] = useState(false);
@@ -482,6 +488,30 @@ export default function App() {
       ).length ?? 0,
     [wishlist]
   );
+  const browseCropSections = useMemo(() => {
+    const sections = new Map<
+      string,
+      { key: string; title: string; position: number; crops: BrowseCrop[] }
+    >();
+    for (const crop of browseCrops) {
+      const section = sections.get(crop.commodity_section_key) ?? {
+        key: crop.commodity_section_key,
+        title: crop.commodity_section_title,
+        position: crop.commodity_section_position,
+        crops: []
+      };
+      section.crops.push(crop);
+      sections.set(section.key, section);
+    }
+    return [...sections.values()]
+      .sort((left, right) => left.position - right.position)
+      .map((section) => ({
+        ...section,
+        crops: section.crops.sort((left, right) =>
+          left.canonical_name.localeCompare(right.canonical_name)
+        )
+      }));
+  }, [browseCrops]);
   const groupedCultivars = suitabilityGroups
     .map((group) => ({
       ...group,
@@ -1551,7 +1581,9 @@ export default function App() {
                     <h2 id="crop-browser-heading">Choose a crop to see its cultivars</h2>
                   </div>
                   {!loadingBrowseCrops && !browseCropsError && (
-                    <p>{browseCrops.length} crop types</p>
+                    <p>
+                      {browseCrops.length} crops · {browseCropSections.length} Rutgers sections
+                    </p>
                   )}
                 </div>
                 {loadingBrowseCrops && <p className="crop-browser-status">Loading crops…</p>}
@@ -1561,17 +1593,32 @@ export default function App() {
                   </p>
                 )}
                 {!loadingBrowseCrops && !browseCropsError && (
-                  <div className="crop-browser-list">
-                    {browseCrops.map((crop) => (
-                      <button
-                        className="crop-browser-button"
-                        type="button"
-                        key={crop.slug}
-                        disabled={searching}
-                        onClick={() => void searchCatalog(crop.canonical_name)}
+                  <div className="crop-browser-sections">
+                    {browseCropSections.map((section) => (
+                      <article
+                        className={`crop-browser-section${
+                          section.crops.length > 3 ? " crop-browser-section-wide" : ""
+                        }`}
+                        key={section.key}
                       >
-                        {crop.canonical_name}
-                      </button>
+                        <div className="crop-browser-section-heading">
+                          <p>Rutgers commodity</p>
+                          <h3>{section.title}</h3>
+                        </div>
+                        <div className="crop-browser-crop-list">
+                          {section.crops.map((crop) => (
+                            <button
+                              className="crop-browser-button"
+                              type="button"
+                              key={crop.slug}
+                              disabled={searching}
+                              onClick={() => void searchCatalog(crop.canonical_name)}
+                            >
+                              {crop.canonical_name}
+                            </button>
+                          ))}
+                        </div>
+                      </article>
                     ))}
                   </div>
                 )}
