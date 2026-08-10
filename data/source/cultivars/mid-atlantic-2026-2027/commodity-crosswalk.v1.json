@@ -187,6 +187,13 @@
           "review_note": "Direct canonical crop match."
         },
         {
+          "id": "chinese-cabbage",
+          "name": "Chinese Cabbage",
+          "mapping_status": "missing_catalog_identity",
+          "catalog_crop_id": null,
+          "review_note": "The cultivar table includes Napa and pak choi types, which must not be attached to the current head-cabbage identity."
+        },
+        {
           "id": "cauliflower",
           "name": "Cauliflower",
           "mapping_status": "exact",

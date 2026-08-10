@@ -38,6 +38,78 @@
     },
     {
       "availability_status": "in_stock",
+      "cultivar_slug": "de-cicco",
+      "id": "reimer-br10-250",
+      "identity_match_method": "reviewed_alias",
+      "listing_name": "De Cicco Broccoli Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BR10-250",
+      "source_key": "reimer-de-cicco-broccoli-br10-250",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "green-magic-broccoli",
+      "id": "reimer-br20-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Green Magic Broccoli Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BR20-100",
+      "source_key": "reimer-green-magic-broccoli-br20-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "gypsy-broccoli",
+      "id": "reimer-br34-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Gypsy Broccoli Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BR34-100",
+      "source_key": "reimer-gypsy-broccoli-br34-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "dagan",
+      "id": "reimer-bs12-25",
+      "identity_match_method": "exact_name",
+      "listing_name": "Dagan Brussels Sprouts Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BS12-25",
+      "source_key": "reimer-dagan-brussels-sprouts-bs12-25",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "marte",
+      "id": "reimer-bs13-50",
+      "identity_match_method": "exact_name",
+      "listing_name": "Marte Brussels Sprouts Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BS13-50",
+      "source_key": "reimer-marte-brussels-sprouts-bs13-50",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "silvia-brussels-sprouts",
+      "id": "reimer-bs16-50",
+      "identity_match_method": "exact_name",
+      "listing_name": "Silvia Brussels Sprouts Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "BS16-50",
+      "source_key": "reimer-silvia-brussels-sprouts-bs16-50",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
       "cultivar_slug": "cylindra",
       "id": "reimer-bt12-100",
       "identity_match_method": "exact_name",
@@ -145,6 +217,78 @@
       "vendor": "Reimer Seeds"
     },
     {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "caraflex",
+      "id": "reimer-cb54-50",
+      "identity_match_method": "exact_name",
+      "listing_name": "Caraflex Cabbage Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CB54-50",
+      "source_key": "reimer-caraflex-cabbage-cb54-50",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "blue-vantage",
+      "id": "reimer-cb63-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Blue Vantage Cabbage Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CB63-100",
+      "source_key": "reimer-blue-vantage-cabbage-cb63-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "champion-collards",
+      "id": "reimer-cd2-250",
+      "identity_match_method": "exact_name",
+      "listing_name": "Champion Collards Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CD2-250",
+      "source_key": "reimer-champion-collards-cd2-250",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "vates-collards",
+      "id": "reimer-cd3-250",
+      "identity_match_method": "exact_name",
+      "listing_name": "Vates Collards Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CD3-250",
+      "source_key": "reimer-vates-collards-cd3-250",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "cheddar-cauliflower",
+      "id": "reimer-cf13-25",
+      "identity_match_method": "exact_name",
+      "listing_name": "Cheddar Cauliflower Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CF13-25",
+      "source_key": "reimer-cheddar-cauliflower-cf13-25",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "graffiti-cauliflower",
+      "id": "reimer-cf16-25",
+      "identity_match_method": "exact_name",
+      "listing_name": "Graffiti Cauliflower Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "CF16-25",
+      "source_key": "reimer-graffiti-cauliflower-cf16-25",
+      "vendor": "Reimer Seeds"
+    },
+    {
       "availability_status": "in_stock",
       "cultivar_slug": "marketmore-76",
       "id": "reimer-cu13-20",
@@ -178,6 +322,54 @@
       "review_status": "approved",
       "source_identifier": "CU89-10",
       "source_key": "reimer-eureka-cucumber-cu89-10",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "lacinato",
+      "id": "reimer-kl11-750",
+      "identity_match_method": "exact_name",
+      "listing_name": "Lacinato Kale Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "KL11-750",
+      "source_key": "reimer-lacinato-kale-kl11-750",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "in_stock",
+      "cultivar_slug": "red-russian-kale",
+      "id": "reimer-kl2-750",
+      "identity_match_method": "exact_name",
+      "listing_name": "Red Russian Kale Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "KL2-750",
+      "source_key": "reimer-red-russian-kale-kl2-750",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "quickstar-kohlrabi",
+      "id": "reimer-ko13-100",
+      "identity_match_method": "exact_name",
+      "listing_name": "Quickstar Kohlrabi Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "KO13-100",
+      "source_key": "reimer-quickstar-kohlrabi-ko13-100",
+      "vendor": "Reimer Seeds"
+    },
+    {
+      "availability_status": "out_of_stock",
+      "cultivar_slug": "kolibri-kohlrabi",
+      "id": "reimer-ko8-50",
+      "identity_match_method": "exact_name",
+      "listing_name": "Kolibri Kohlrabi Seeds",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "review_status": "approved",
+      "source_identifier": "KO8-50",
+      "source_key": "reimer-kolibri-kohlrabi-ko8-50",
       "vendor": "Reimer Seeds"
     },
     {
@@ -714,6 +906,98 @@
     },
     {
       "aliases": [
+        "Blue Vantage",
+        "Blue Vantage Cabbage"
+      ],
+      "canonical_name": "Blue Vantage",
+      "crop_slug": "cabbage",
+      "crop_type": "green_cabbage",
+      "description": "A round, midseason hybrid green cabbage listed by Rutgers for fresh use.",
+      "review_status": "approved",
+      "slug": "blue-vantage",
+      "source_identifiers": [
+        {
+          "name_in_source": "Blue Vantage",
+          "source_identifier": "page=3;table=recommended-varieties;crop=Green-Cabbage;row=Blue-Vantage",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "green_cabbage",
+          "source_excerpt": "The table reports type for Blue Vantage.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Blue Vantage",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "round",
+          "source_excerpt": "The table reports fruit shape for Blue Vantage.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Blue Vantage",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "head_weight",
+          "normalized_value": {
+            "maximum": 4,
+            "minimum": 4
+          },
+          "source_excerpt": "The table reports a four-pound head for Blue Vantage.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Blue Vantage",
+          "unit": "pounds"
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Blue Vantage.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Blue Vantage",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Blue Vantage among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Blue Vantage",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "midseason",
+          "source_excerpt": "The table reports maturity season for Blue Vantage.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Blue Vantage",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh"
+          ],
+          "source_excerpt": "The table reports listed uses for Blue Vantage.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Blue Vantage",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
         "Brandywine Red"
       ],
       "canonical_name": "Brandywine Red",
@@ -888,6 +1172,256 @@
           "source_excerpt": "The table reports listed uses for Bulls Blood.",
           "source_key": "mid-atlantic-beets-2026-2027",
           "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Bulls Blood",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Caraflex",
+        "Caraflex Cabbage"
+      ],
+      "canonical_name": "Caraflex",
+      "crop_slug": "cabbage",
+      "crop_type": "green_cabbage",
+      "description": "An early hybrid green cabbage with pointed heads, listed by Rutgers for fresh use.",
+      "review_status": "approved",
+      "slug": "caraflex",
+      "source_identifiers": [
+        {
+          "name_in_source": "Caraflex",
+          "source_identifier": "page=3;table=recommended-varieties;crop=Green-Cabbage;row=Caraflex",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "green_cabbage",
+          "source_excerpt": "The table reports type for Caraflex.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Caraflex",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_shape",
+          "normalized_value": "pointed",
+          "source_excerpt": "The table reports fruit shape for Caraflex.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Caraflex",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "head_weight",
+          "normalized_value": {
+            "maximum": 3,
+            "minimum": 2
+          },
+          "source_excerpt": "The table reports a two- to three-pound head for Caraflex.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Caraflex",
+          "unit": "pounds"
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Caraflex.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Caraflex",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Caraflex among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Caraflex",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "early",
+          "source_excerpt": "The table reports maturity season for Caraflex.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Caraflex",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "uses",
+          "normalized_value": [
+            "fresh"
+          ],
+          "source_excerpt": "The table reports listed uses for Caraflex.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Caraflex",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Champion",
+        "Champion Collards"
+      ],
+      "canonical_name": "Champion",
+      "crop_slug": "collards",
+      "crop_type": "collards",
+      "description": "An open-pollinated deep-green collard with flat to lightly waved leaves, recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "champion-collards",
+      "source_identifiers": [
+        {
+          "name_in_source": "Champion",
+          "source_identifier": "page=5;table=recommended-varieties;crop=Collards;row=Champion",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "collards",
+          "source_excerpt": "The table reports type for Champion.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Champion",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Champion.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Champion",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_color",
+          "normalized_value": "deep_green",
+          "source_excerpt": "The table describes Champion leaves as deep green.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Champion",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_type",
+          "normalized_value": "flat_to_lightly_waved",
+          "source_excerpt": "The table reports leaf type for Champion.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Champion",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Champion among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Champion",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cheddar",
+        "Cheddar Cauliflower"
+      ],
+      "canonical_name": "Cheddar",
+      "crop_slug": "cauliflower",
+      "crop_type": "orange_cauliflower",
+      "description": "A late hybrid orange cauliflower recommended by Rutgers for fall production.",
+      "review_status": "approved",
+      "slug": "cheddar-cauliflower",
+      "source_identifiers": [
+        {
+          "name_in_source": "Cheddar",
+          "source_identifier": "page=4;table=recommended-varieties;crop=Cauliflower;row=Cheddar",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "orange_cauliflower",
+          "source_excerpt": "The table reports type for Cheddar.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Cheddar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "orange",
+          "source_excerpt": "The table reports fruit color for Cheddar.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Cheddar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Cheddar.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Cheddar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": [
+            "fall"
+          ],
+          "source_excerpt": "The regional table recommends Cheddar for fall production.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Cheddar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Cheddar among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Cheddar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "late",
+          "source_excerpt": "The table reports maturity season for Cheddar.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Cheddar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "self_wrapping",
+          "normalized_value": false,
+          "source_excerpt": "The table identifies Cheddar as not self-wrapping.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Cheddar",
           "unit": null
         }
       ]
@@ -1334,6 +1868,137 @@
           "source_excerpt": "The table reports listed uses for Cylindra.",
           "source_key": "mid-atlantic-beets-2026-2027",
           "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Cylindra",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Dagan",
+        "Dagan Brussels Sprouts"
+      ],
+      "canonical_name": "Dagan",
+      "crop_slug": "brussels-sprouts",
+      "crop_type": "brussels_sprouts",
+      "description": "A midseason hybrid Brussels sprouts cultivar recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "dagan",
+      "source_identifiers": [
+        {
+          "name_in_source": "Dagan",
+          "source_identifier": "page=3;table=recommended-varieties;crop=Brussels-Sprouts;row=Dagan",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "brussels_sprouts",
+          "source_excerpt": "The table reports type for Dagan.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Dagan",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Dagan.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Dagan",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Dagan among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Dagan",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "midseason",
+          "source_excerpt": "The table reports maturity season for Dagan.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Dagan",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "De Cicco",
+        "DeCicco"
+      ],
+      "canonical_name": "DeCicco",
+      "crop_slug": "broccoli",
+      "crop_type": "sprouting_broccoli",
+      "description": "An open-pollinated, midseason sprouting broccoli recommended by Rutgers for fall production.",
+      "review_status": "approved",
+      "slug": "de-cicco",
+      "source_identifiers": [
+        {
+          "name_in_source": "DeCicco",
+          "source_identifier": "page=3;table=recommended-varieties;crop=Broccoli;row=DeCicco",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "sprouting_broccoli",
+          "source_excerpt": "The table reports type for DeCicco.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > DeCicco",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for DeCicco.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > DeCicco",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": [
+            "fall"
+          ],
+          "source_excerpt": "The regional table recommends DeCicco for fall production.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > DeCicco",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes DeCicco among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > DeCicco",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "midseason",
+          "source_excerpt": "The table reports maturity season for DeCicco.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > DeCicco",
           "unit": null
         }
       ]
@@ -1809,6 +2474,167 @@
     },
     {
       "aliases": [
+        "Graffiti",
+        "Graffiti Cauliflower"
+      ],
+      "canonical_name": "Graffiti",
+      "crop_slug": "cauliflower",
+      "crop_type": "purple_cauliflower",
+      "description": "A late hybrid purple cauliflower recommended by Rutgers for fall production.",
+      "review_status": "approved",
+      "slug": "graffiti-cauliflower",
+      "source_identifiers": [
+        {
+          "name_in_source": "Graffiti",
+          "source_identifier": "page=4;table=recommended-varieties;crop=Cauliflower;row=Graffiti",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "purple_cauliflower",
+          "source_excerpt": "The table reports type for Graffiti.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Graffiti",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "purple",
+          "source_excerpt": "The table reports fruit color for Graffiti.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Graffiti",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Graffiti.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Graffiti",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": [
+            "fall"
+          ],
+          "source_excerpt": "The regional table recommends Graffiti for fall production.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Graffiti",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Graffiti among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Graffiti",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "late",
+          "source_excerpt": "The table reports maturity season for Graffiti.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Graffiti",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "self_wrapping",
+          "normalized_value": false,
+          "source_excerpt": "The table identifies Graffiti as not self-wrapping.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Graffiti",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Green Magic",
+        "Green Magic Broccoli"
+      ],
+      "canonical_name": "Green Magic",
+      "crop_slug": "broccoli",
+      "crop_type": "heading_broccoli",
+      "description": "An early hybrid heading broccoli recommended by Rutgers for spring and fall production.",
+      "review_status": "approved",
+      "slug": "green-magic-broccoli",
+      "source_identifiers": [
+        {
+          "name_in_source": "Green Magic",
+          "source_identifier": "page=3;table=recommended-varieties;crop=Broccoli;row=Green-Magic",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "heading_broccoli",
+          "source_excerpt": "The table reports type for Green Magic.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Green Magic",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Green Magic.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Green Magic",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": [
+            "spring",
+            "fall"
+          ],
+          "source_excerpt": "The regional table recommends Green Magic for spring and fall production.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Green Magic",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Green Magic among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Green Magic",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "early",
+          "source_excerpt": "The table reports maturity season for Green Magic.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Green Magic",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
         "Green Top Bunching"
       ],
       "canonical_name": "Green Top Bunching",
@@ -1979,6 +2805,77 @@
     },
     {
       "aliases": [
+        "Gypsy",
+        "Gypsy Broccoli"
+      ],
+      "canonical_name": "Gypsy",
+      "crop_slug": "broccoli",
+      "crop_type": "heading_broccoli",
+      "description": "A midseason hybrid heading broccoli recommended by Rutgers for fall production.",
+      "review_status": "approved",
+      "slug": "gypsy-broccoli",
+      "source_identifiers": [
+        {
+          "name_in_source": "Gypsy",
+          "source_identifier": "page=3;table=recommended-varieties;crop=Broccoli;row=Gypsy",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "heading_broccoli",
+          "source_excerpt": "The table reports type for Gypsy.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Gypsy",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Gypsy.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Gypsy",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": [
+            "fall"
+          ],
+          "source_excerpt": "The regional table recommends Gypsy for fall production.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Gypsy",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Gypsy among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Gypsy",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "midseason",
+          "source_excerpt": "The table reports maturity season for Gypsy.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Gypsy",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
         "Juliet"
       ],
       "canonical_name": "Juliet",
@@ -2053,6 +2950,135 @@
           "source_excerpt": "The regional Extension table includes Juliet among its recommended varieties.",
           "source_key": "mid-atlantic-tomatoes-2026-2027",
           "source_locator": "PDF page 5 (publication page 454) > Cherry, Grape, Plum, and Cluster Tomatoes > Juliet",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Kolibri",
+        "Kolibri Kohlrabi"
+      ],
+      "canonical_name": "Kolibri",
+      "crop_slug": "kohlrabi",
+      "crop_type": "kohlrabi",
+      "description": "A deep-purple hybrid kohlrabi cultivar recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "kolibri-kohlrabi",
+      "source_identifiers": [
+        {
+          "name_in_source": "Kolibri",
+          "source_identifier": "page=5;table=recommended-varieties;crop=Kohlrabi;row=Kolibri",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "kohlrabi",
+          "source_excerpt": "The table reports type for Kolibri.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Kolibri",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "deep_purple",
+          "source_excerpt": "The table reports fruit color for Kolibri.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Kolibri",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Kolibri.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Kolibri",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Kolibri among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Kolibri",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Lacinato",
+        "Lacinato Kale"
+      ],
+      "canonical_name": "Lacinato",
+      "crop_slug": "kale",
+      "crop_type": "kale",
+      "description": "An open-pollinated blue-green kale with puckered, strap-like lance leaves, recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "lacinato",
+      "source_identifiers": [
+        {
+          "name_in_source": "Lacinato",
+          "source_identifier": "page=5;table=recommended-varieties;crop=Kale;row=Lacinato",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "kale",
+          "source_excerpt": "The table reports type for Lacinato.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Lacinato",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Lacinato.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Lacinato",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_color",
+          "normalized_value": "blue_green",
+          "source_excerpt": "The table describes Lacinato leaves as blue green.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Lacinato",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_type",
+          "normalized_value": "puckered_strap_like_lance",
+          "source_excerpt": "The table reports leaf type for Lacinato.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Lacinato",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Lacinato among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Lacinato",
           "unit": null
         }
       ]
@@ -2227,6 +3253,66 @@
           "source_excerpt": "The table reports listed uses for Marketmore 76.",
           "source_key": "mid-atlantic-cucumbers-2026-2027",
           "source_locator": "PDF page 4 (publication page 223) > Recommended Varieties > Marketmore 76",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Marte",
+        "Marte Brussels Sprouts"
+      ],
+      "canonical_name": "Marte",
+      "crop_slug": "brussels-sprouts",
+      "crop_type": "brussels_sprouts",
+      "description": "An early hybrid Brussels sprouts cultivar recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "marte",
+      "source_identifiers": [
+        {
+          "name_in_source": "Marte",
+          "source_identifier": "page=3;table=recommended-varieties;crop=Brussels-Sprouts;row=Marte",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "brussels_sprouts",
+          "source_excerpt": "The table reports type for Marte.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Marte",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Marte.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Marte",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Marte among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Marte",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "early",
+          "source_excerpt": "The table reports maturity season for Marte.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Marte",
           "unit": null
         }
       ]
@@ -2990,6 +4076,66 @@
     },
     {
       "aliases": [
+        "Quickstar",
+        "Quickstar Kohlrabi"
+      ],
+      "canonical_name": "Quickstar",
+      "crop_slug": "kohlrabi",
+      "crop_type": "kohlrabi",
+      "description": "A light-green hybrid kohlrabi cultivar recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "quickstar-kohlrabi",
+      "source_identifiers": [
+        {
+          "name_in_source": "Quickstar",
+          "source_identifier": "page=5;table=recommended-varieties;crop=Kohlrabi;row=Quickstar",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "kohlrabi",
+          "source_excerpt": "The table reports type for Quickstar.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Quickstar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "fruit_color",
+          "normalized_value": "light_green",
+          "source_excerpt": "The table reports fruit color for Quickstar.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Quickstar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Quickstar.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Quickstar",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Quickstar among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Quickstar",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
         "Red Ace"
       ],
       "canonical_name": "Red Ace",
@@ -3077,6 +4223,75 @@
           "source_excerpt": "The table reports listed uses for Red Ace.",
           "source_key": "mid-atlantic-beets-2026-2027",
           "source_locator": "PDF page 4 (publication page 186) > Recommended Varieties > Red Ace",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Red Russian",
+        "Red Russian Kale"
+      ],
+      "canonical_name": "Red Russian",
+      "crop_slug": "kale",
+      "crop_type": "kale",
+      "description": "An open-pollinated kale with flat, toothed blue-green leaves and red midribs, recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "red-russian-kale",
+      "source_identifiers": [
+        {
+          "name_in_source": "Red Russian",
+          "source_identifier": "page=5;table=recommended-varieties;crop=Kale;row=Red-Russian",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "kale",
+          "source_excerpt": "The table reports type for Red Russian.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Red Russian",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Red Russian.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Red Russian",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_color",
+          "normalized_value": "blue_green_with_red_midrib",
+          "source_excerpt": "The table describes Red Russian leaves as blue green with red midribs.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Red Russian",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_type",
+          "normalized_value": "flat_toothed",
+          "source_excerpt": "The table reports leaf type for Red Russian.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Red Russian",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Red Russian among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Red Russian",
           "unit": null
         }
       ]
@@ -3308,6 +4523,66 @@
           "source_key": "cornell-san-marzano-2-3146",
           "source_locator": "Variety details > Description",
           "unit": "fruit_per_cluster"
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Silvia",
+        "Silvia Brussels Sprouts"
+      ],
+      "canonical_name": "Silvia",
+      "crop_slug": "brussels-sprouts",
+      "crop_type": "brussels_sprouts",
+      "description": "A midseason hybrid Brussels sprouts cultivar recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "silvia-brussels-sprouts",
+      "source_identifiers": [
+        {
+          "name_in_source": "Silvia",
+          "source_identifier": "page=3;table=recommended-varieties;crop=Brussels-Sprouts;row=Silvia",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "brussels_sprouts",
+          "source_excerpt": "The table reports type for Silvia.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Silvia",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": true,
+          "source_excerpt": "The table reports hybrid status for Silvia.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Silvia",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Silvia among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Silvia",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "season_class",
+          "normalized_value": "midseason",
+          "source_excerpt": "The table reports maturity season for Silvia.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Silvia",
+          "unit": null
         }
       ]
     },
@@ -3623,6 +4898,75 @@
           "unit": null
         }
       ]
+    },
+    {
+      "aliases": [
+        "Vates",
+        "Vates Collards"
+      ],
+      "canonical_name": "Vates",
+      "crop_slug": "collards",
+      "crop_type": "collards",
+      "description": "An open-pollinated deep-green collard with flat to lightly waved leaves, recommended by Rutgers.",
+      "review_status": "approved",
+      "slug": "vates-collards",
+      "source_identifiers": [
+        {
+          "name_in_source": "Vates",
+          "source_identifier": "page=5;table=recommended-varieties;crop=Collards;row=Vates",
+          "source_key": "mid-atlantic-cole-crops-2026-2027"
+        }
+      ],
+      "traits": [
+        {
+          "confidence": "high",
+          "field_name": "crop_type",
+          "normalized_value": "collards",
+          "source_excerpt": "The table reports type for Vates.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Vates",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "hybrid",
+          "normalized_value": false,
+          "source_excerpt": "The table reports hybrid status for Vates.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Vates",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_color",
+          "normalized_value": "deep_green",
+          "source_excerpt": "The table describes Vates leaves as deep green.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Vates",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "leaf_type",
+          "normalized_value": "flat_to_lightly_waved",
+          "source_excerpt": "The table reports leaf type for Vates.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Vates",
+          "unit": null
+        },
+        {
+          "confidence": "high",
+          "field_name": "regional_recommendation",
+          "normalized_value": {
+            "production_context": "commercial",
+            "region": "mid_atlantic"
+          },
+          "source_excerpt": "The regional Extension table includes Vates among its recommended varieties.",
+          "source_key": "mid-atlantic-cole-crops-2026-2027",
+          "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Vates",
+          "unit": null
+        }
+      ]
     }
   ],
   "review_status": "approved",
@@ -3679,6 +5023,18 @@
       "source_path": "data/source/cultivars/mid-atlantic-2026-2027/beets-garden.pdf",
       "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Beets (Garden)",
       "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/beets-garden.pdf"
+    },
+    {
+      "key": "mid-atlantic-cole-crops-2026-2027",
+      "license": null,
+      "media_type": "application/pdf",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current regional commercial recommendation; not written specifically for home gardeners",
+      "sha256": "b8dff99225911ffaf62dcc7060456d2a49c6161ffe502147e01aa5d9c474367d",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cole-crops.pdf",
+      "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Cole Crops",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cole-crops.pdf"
     },
     {
       "key": "mid-atlantic-cucumbers-2026-2027",
@@ -3750,6 +5106,15 @@
       "url": "https://www.reimerseeds.com/avalanche-beet-seeds"
     },
     {
+      "key": "reimer-blue-vantage-cabbage-cb63-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Blue Vantage Cabbage Seeds",
+      "url": "https://www.reimerseeds.com/blue-vantage-cabbage-seeds"
+    },
+    {
       "key": "reimer-bulls-blood-beet-bt13-100",
       "license": null,
       "publisher": "Reimer Seeds",
@@ -3757,6 +5122,33 @@
       "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
       "title": "Bull's Blood Beet Seeds",
       "url": "https://www.reimerseeds.com/bulls-blood-beet-seeds"
+    },
+    {
+      "key": "reimer-caraflex-cabbage-cb54-50",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Caraflex Cabbage Seeds",
+      "url": "https://www.reimerseeds.com/caraflex-cabbage-seeds"
+    },
+    {
+      "key": "reimer-champion-collards-cd2-250",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Champion Collards Seeds",
+      "url": "https://www.reimerseeds.com/champion-collards-seeds"
+    },
+    {
+      "key": "reimer-cheddar-cauliflower-cf13-25",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Cheddar Cauliflower Seeds",
+      "url": "https://www.reimerseeds.com/cheddar-cauliflower-seeds"
     },
     {
       "key": "reimer-cherokee-purple-tomato-tm34-20",
@@ -3786,6 +5178,24 @@
       "url": "https://www.reimerseeds.com/cylindra-beet-seeds"
     },
     {
+      "key": "reimer-dagan-brussels-sprouts-bs12-25",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Dagan Brussels Sprouts Seeds",
+      "url": "https://www.reimerseeds.com/dagan-brussels-sprouts-seeds"
+    },
+    {
+      "key": "reimer-de-cicco-broccoli-br10-250",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "De Cicco Broccoli Seeds",
+      "url": "https://www.reimerseeds.com/de-cicco-broccoli-seeds"
+    },
+    {
       "key": "reimer-early-wonder-beet-bt4-100",
       "license": null,
       "publisher": "Reimer Seeds",
@@ -3813,6 +5223,24 @@
       "url": "https://www.reimerseeds.com/eureka-cucumber-seeds"
     },
     {
+      "key": "reimer-graffiti-cauliflower-cf16-25",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Graffiti Cauliflower Seeds",
+      "url": "https://www.reimerseeds.com/graffiti-cauliflower-seeds"
+    },
+    {
+      "key": "reimer-green-magic-broccoli-br20-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Green Magic Broccoli Seeds",
+      "url": "https://www.reimerseeds.com/green-magic-broccoli-seeds"
+    },
+    {
       "key": "reimer-green-top-bunching-beet-bt27-100",
       "license": null,
       "publisher": "Reimer Seeds",
@@ -3831,6 +5259,15 @@
       "url": "https://www.reimerseeds.com/green-zebra-tomato-seeds"
     },
     {
+      "key": "reimer-gypsy-broccoli-br34-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Gypsy Broccoli Seeds",
+      "url": "https://www.reimerseeds.com/gypsy-broccoli-seeds"
+    },
+    {
       "key": "reimer-juliet-tomato-tm71-10",
       "license": null,
       "publisher": "Reimer Seeds",
@@ -3840,6 +5277,24 @@
       "url": "https://www.reimerseeds.com/juliet-tomato-seeds"
     },
     {
+      "key": "reimer-kolibri-kohlrabi-ko8-50",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Kolibri Kohlrabi Seeds",
+      "url": "https://www.reimerseeds.com/kolibri-kohlrabi-seeds"
+    },
+    {
+      "key": "reimer-lacinato-kale-kl11-750",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Lacinato Kale Seeds",
+      "url": "https://www.reimerseeds.com/lacinato-kale-seeds"
+    },
+    {
       "key": "reimer-marketmore-76-cucumber-cu13-20",
       "license": null,
       "publisher": "Reimer Seeds",
@@ -3847,6 +5302,15 @@
       "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
       "title": "Marketmore 76 Cucumber Seeds",
       "url": "https://www.reimerseeds.com/marketmore-76-cucumber-seeds"
+    },
+    {
+      "key": "reimer-marte-brussels-sprouts-bs13-50",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Marte Brussels Sprouts Seeds",
+      "url": "https://www.reimerseeds.com/marte-brussels-sprouts-seeds"
     },
     {
       "key": "reimer-maxibel-bean-bn84-50",
@@ -3894,6 +5358,15 @@
       "url": "https://www.reimerseeds.com/provider-bean-seeds"
     },
     {
+      "key": "reimer-quickstar-kohlrabi-ko13-100",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Quickstar Kohlrabi Seeds",
+      "url": "https://www.reimerseeds.com/quickstar-kohlrabi-seeds"
+    },
+    {
       "key": "reimer-red-ace-beet-bt26-100",
       "license": null,
       "publisher": "Reimer Seeds",
@@ -3901,6 +5374,15 @@
       "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
       "title": "Red Ace Beet Seeds",
       "url": "https://www.reimerseeds.com/red-ace-beet-seeds"
+    },
+    {
+      "key": "reimer-red-russian-kale-kl2-750",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Red Russian Kale Seeds",
+      "url": "https://www.reimerseeds.com/red-russian-kale-seeds"
     },
     {
       "key": "reimer-roma-ii-bean-bn11-50",
@@ -3921,6 +5403,15 @@
       "url": "https://www.reimerseeds.com/san-marzano-ii-tomato-seeds"
     },
     {
+      "key": "reimer-silvia-brussels-sprouts-bs16-50",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Silvia Brussels Sprouts Seeds",
+      "url": "https://www.reimerseeds.com/silvia-brussels-sprouts-seeds"
+    },
+    {
       "key": "reimer-sungold-tomato-tm127-10",
       "license": null,
       "publisher": "Reimer Seeds",
@@ -3937,6 +5428,15 @@
       "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
       "title": "Tasty Green Cucumber Seeds",
       "url": "https://www.reimerseeds.com/tasty-green-cucumber-seeds"
+    },
+    {
+      "key": "reimer-vates-collards-cd3-250",
+      "license": null,
+      "publisher": "Reimer Seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence",
+      "title": "Vates Collards Seeds",
+      "url": "https://www.reimerseeds.com/vates-collards-seeds"
     },
     {
       "key": "umd-tomatoes-2025",

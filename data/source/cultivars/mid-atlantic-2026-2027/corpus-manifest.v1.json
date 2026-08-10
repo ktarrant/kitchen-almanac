@@ -88,6 +88,24 @@
       ]
     },
     {
+      "key": "mid-atlantic-cole-crops-2026-2027",
+      "title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cole-crops.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cole-crops.pdf",
+      "sha256": "b8dff99225911ffaf62dcc7060456d2a49c6161ffe502147e01aa5d9c474367d",
+      "media_type": "application/pdf",
+      "section_kind": "commodity",
+      "crop_ids": [
+        "broccoli",
+        "brussels-sprouts",
+        "cabbage",
+        "cauliflower",
+        "collards",
+        "kale",
+        "kohlrabi"
+      ]
+    },
+    {
       "key": "mid-atlantic-cucumbers-2026-2027",
       "title": "Cucumbers",
       "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cucumbers.pdf",

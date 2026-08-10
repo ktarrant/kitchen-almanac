@@ -74,6 +74,491 @@
       ]
     },
     {
+      "commodity_source": "mid-atlantic-cole-crops-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "broccoli",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            19
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            6,
+            7,
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            10
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            17
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-cole-crops-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "brussels-sprouts",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            19
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            6,
+            7,
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            10
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            17
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-cole-crops-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "cabbage",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            19
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            6,
+            7,
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            10
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            17
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-cole-crops-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "cauliflower",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            19
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            6,
+            7,
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            10
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            17
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-cole-crops-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "collards",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            19
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            6,
+            7,
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            10
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            17
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
       "commodity_source": "mid-atlantic-cucumbers-2026-2027",
       "corpus_wide_context_sources": [
         "mid-atlantic-general-production-2026-2027",
@@ -165,6 +650,200 @@
             16,
             17,
             18
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-cole-crops-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "kale",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            19
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            6,
+            7,
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            10
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            17
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ]
+    },
+    {
+      "commodity_source": "mid-atlantic-cole-crops-2026-2027",
+      "corpus_wide_context_sources": [
+        "mid-atlantic-general-production-2026-2027",
+        "mid-atlantic-soil-nutrient-2026-2027",
+        "mid-atlantic-irrigation-2026-2027"
+      ],
+      "crop_id": "kohlrabi",
+      "detected_fields": [
+        {
+          "field": "cultivar_recommendations",
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
+          "pages": [
+            19
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "pages": [
+            6,
+            7,
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "pages": [
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "pages": [
+            10
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "pages": [
+            17
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "chemical_controls",
+          "pages": [
+            1,
+            3,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
           ],
           "status": "quarantined",
           "use_policy": "never_publish_to_beginner_guidance"
@@ -1456,6 +2135,206 @@
         },
         {
           "field": "soil_ph",
+          "matched_markers": {
+            "soil pH": [
+              19
+            ]
+          },
+          "pages": [
+            19
+          ],
+          "status": "review_required",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "nutrient_management",
+          "matched_markers": {
+            "nutrient management": [
+              6,
+              8
+            ],
+            "plant tissue testing": [
+              7
+            ],
+            "recommended nutrients based on soil tests": [
+              6
+            ]
+          },
+          "pages": [
+            6,
+            7,
+            8
+          ],
+          "status": "restricted_review",
+          "use_policy": "principles_may_be_adapted; commercial_rates_are_context_only"
+        },
+        {
+          "field": "planting_and_spacing",
+          "matched_markers": {
+            "space rows": [
+              8
+            ]
+          },
+          "pages": [
+            8
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_units_and_context_after_review"
+        },
+        {
+          "field": "irrigation",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "adapt_to_home_garden_methods_after_review"
+        },
+        {
+          "field": "harvest_and_storage",
+          "matched_markers": {
+            "harvest and post-harvest considerations": [
+              9
+            ]
+          },
+          "pages": [
+            9
+          ],
+          "status": "review_required",
+          "use_policy": "adapt_to_home_garden_scale_after_review"
+        },
+        {
+          "field": "weed_management",
+          "matched_markers": {
+            "weed control": [
+              10
+            ]
+          },
+          "pages": [
+            10
+          ],
+          "status": "restricted_review",
+          "use_policy": "cultural_and_manual_methods_only"
+        },
+        {
+          "field": "insect_threats",
+          "matched_markers": {
+            "insect control": [
+              13
+            ]
+          },
+          "pages": [
+            13
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_and_nonchemical_practices_only"
+        },
+        {
+          "field": "disease_threats",
+          "matched_markers": {
+            "disease control": [
+              17
+            ]
+          },
+          "pages": [
+            17
+          ],
+          "status": "restricted_review",
+          "use_policy": "threat_names_resistance_and_nonchemical_practices_only"
+        },
+        {
+          "field": "food_safety",
+          "matched_markers": {},
+          "pages": [],
+          "status": "not_detected",
+          "use_policy": "home_garden_candidate_after_review"
+        },
+        {
+          "field": "chemical_controls",
+          "matched_markers": {
+            "fumigant": [
+              17
+            ],
+            "fungicide": [
+              17,
+              19,
+              20
+            ],
+            "herbicide": [
+              8,
+              10,
+              11,
+              12,
+              13,
+              15
+            ],
+            "insecticide": [
+              13,
+              14,
+              15,
+              16,
+              17
+            ],
+            "pesticide": [
+              1,
+              3,
+              10,
+              12,
+              13,
+              17
+            ]
+          },
+          "pages": [
+            1,
+            3,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "status": "quarantined",
+          "use_policy": "never_publish_to_beginner_guidance"
+        }
+      ],
+      "crop_ids": [
+        "broccoli",
+        "brussels-sprouts",
+        "cabbage",
+        "cauliflower",
+        "collards",
+        "kale",
+        "kohlrabi"
+      ],
+      "extracted_text_sha256": "4143681274e8b456b471c22f457d16f0ee0de0c8730a791a354364e7b8c7193b",
+      "key": "mid-atlantic-cole-crops-2026-2027",
+      "page_count": 21,
+      "section_kind": "commodity",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cole-crops.pdf",
+      "source_sha256": "b8dff99225911ffaf62dcc7060456d2a49c6161ffe502147e01aa5d9c474367d",
+      "title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi"
+    },
+    {
+      "coverage": [
+        {
+          "field": "cultivar_recommendations",
+          "matched_markers": {
+            "recommended varieties": [
+              4
+            ]
+          },
+          "pages": [
+            4
+          ],
+          "status": "review_required",
+          "use_policy": "identity_and_traits_after_review"
+        },
+        {
+          "field": "soil_ph",
           "matched_markers": {},
           "pages": [],
           "status": "not_detected",
@@ -2091,26 +2970,26 @@
   "schema_version": "1.0.0",
   "summary": {
     "category_document_counts": {
-      "chemical_controls": 8,
-      "cultivar_recommendations": 4,
-      "disease_threats": 6,
+      "chemical_controls": 9,
+      "cultivar_recommendations": 5,
+      "disease_threats": 7,
       "food_safety": 2,
-      "harvest_and_storage": 6,
-      "insect_threats": 6,
+      "harvest_and_storage": 7,
+      "insect_threats": 7,
       "irrigation": 5,
-      "nutrient_management": 7,
-      "planting_and_spacing": 6,
-      "soil_ph": 5,
-      "weed_management": 6
+      "nutrient_management": 8,
+      "planting_and_spacing": 7,
+      "soil_ph": 6,
+      "weed_management": 7
     },
-    "crop_count": 5,
-    "document_count": 8,
-    "page_count": 184,
+    "crop_count": 12,
+    "document_count": 9,
+    "page_count": 205,
     "status_counts": {
-      "not_detected": 27,
-      "quarantined": 8,
-      "restricted_review": 25,
-      "review_required": 28
+      "not_detected": 29,
+      "quarantined": 9,
+      "restricted_review": 29,
+      "review_required": 32
     }
   }
 }

@@ -13,39 +13,55 @@ from kitchen_almanac.cultivar_catalog import (
 def test_reviewed_cultivar_snapshot_is_valid_and_deterministic() -> None:
     catalog = build_cultivar_catalog()
 
-    assert catalog.id == "cultivar-catalog-v1-105977e42590d82c"
+    assert catalog.id == "cultivar-catalog-v1-6a78051ee556cc0e"
     assert catalog.crop_dataset_id == "kitchen-almanac-v1-f76ca812f62c8c39"
     assert [item["slug"] for item in catalog.data["cultivars"]] == [
         "avalanche",
+        "blue-vantage",
         "brandywine-red",
         "bulls-blood",
+        "caraflex",
+        "champion-collards",
+        "cheddar-cauliflower",
         "cherokee-purple",
         "chioggia-guardsmark",
         "cobra",
         "corinto",
         "cylindra",
+        "dagan",
+        "de-cicco",
         "dunja",
         "early-wonder",
         "eight-ball",
         "eureka",
         "gentry",
+        "graffiti-cauliflower",
+        "green-magic-broccoli",
         "green-top-bunching",
         "green-zebra",
+        "gypsy-broccoli",
         "juliet",
+        "kolibri-kohlrabi",
+        "lacinato",
         "marketmore-76",
+        "marte",
         "maxibel",
         "merlin",
         "mountain-merit",
         "pablo",
         "picolino",
         "provider",
+        "quickstar-kohlrabi",
         "red-ace",
+        "red-russian-kale",
         "roma-ii",
         "san-marzano",
         "san-marzano-2",
+        "silvia-brussels-sprouts",
         "sun-gold",
         "sunburst",
         "tasty-green",
+        "vates-collards",
     ]
     assert catalog.data["commercial_listings"][0]["id"] == "reimer-bn11-50"
 

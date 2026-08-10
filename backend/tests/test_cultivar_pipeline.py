@@ -33,24 +33,31 @@ def test_staged_evidence_is_pinned_and_fully_reviewed() -> None:
     assert validate_staged_cultivars(staged) == []
     assert validate_review_decisions(staged, decisions) == []
     report = reconcile_candidates(base, staged, decisions)
-    assert len(report) == 33
+    assert len(report) == 49
     assert {item.decision for item in report} == {"create", "enrich"}
     assert all(not item.exact_matches for item in report)
 
 
-def test_expanded_snapshot_is_deterministic_and_covers_five_crops(tmp_path) -> None:
+def test_expanded_snapshot_is_deterministic_and_covers_twelve_crops(tmp_path) -> None:
     expanded = build_expanded_snapshot()
     committed = read_json(DEFAULT_SOURCE)
 
     assert expanded == committed
-    assert len(expanded["cultivars"]) == 30
+    assert len(expanded["cultivars"]) == 46
     crop_counts = {
         crop_slug: sum(item["crop_slug"] == crop_slug for item in expanded["cultivars"])
         for crop_slug in {item["crop_slug"] for item in expanded["cultivars"]}
     }
     assert crop_counts == {
         "beets": 9,
+        "broccoli": 3,
+        "brussels-sprouts": 3,
+        "cabbage": 2,
+        "cauliflower": 2,
+        "collards": 2,
         "cucumbers": 5,
+        "kale": 2,
+        "kohlrabi": 2,
         "string-beans": 4,
         "summer-squash": 4,
         "tomatoes": 8,

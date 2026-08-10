@@ -210,7 +210,7 @@ def test_cultivar_catalog_exposes_overrides_inheritance_and_distinct_listings(
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["dataset_id"] == "cultivar-catalog-v1-105977e42590d82c"
+    assert payload["dataset_id"] == "cultivar-catalog-v1-6a78051ee556cc0e"
     assert payload["crop_dataset_id"] == "kitchen-almanac-v1-f76ca812f62c8c39"
     assert [item["canonical_name"] for item in payload["cultivars"]] == [
         "San Marzano",
@@ -258,6 +258,8 @@ def test_cultivar_alias_and_type_queries_are_supported(catalog_client: TestClien
 @pytest.mark.parametrize(
     ("query", "expected_slugs"),
     [
+        ("broccoli", ["de-cicco", "green-magic-broccoli", "gypsy-broccoli"]),
+        ("brussel sprouts", ["dagan", "marte", "silvia-brussels-sprouts"]),
         ("cucumbers", ["marketmore-76", "eureka", "tasty-green"]),
         ("zucchini", ["eight-ball"]),
         ("Provider", ["provider"]),
@@ -471,6 +473,34 @@ def test_catalog_search_matches_misspelled_crop_and_commercial_identifier(
     assert listing_results["cultivars"][0]["match_method"] == "commercial_listing"
 
 
+def test_cole_crop_search_handles_crop_and_cultivar_misspellings(
+    catalog_client: TestClient,
+    garden_profile: dict[str, object],
+) -> None:
+    crop_response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": "brocoli", "garden_profile_id": garden_profile["id"]},
+    )
+    crop_results = crop_response.json()
+    assert crop_results["crop_choices"][0]["crop"]["slug"] == "broccoli"
+    assert crop_results["crop_choices"][0]["match_method"] == "fuzzy"
+    assert {item["cultivar"]["slug"] for item in crop_results["cultivars"]} == {
+        "de-cicco",
+        "green-magic-broccoli",
+        "gypsy-broccoli",
+    }
+
+    cultivar_response = catalog_client.get(
+        "/api/catalog/search",
+        params={"q": "lacinto kale", "garden_profile_id": garden_profile["id"]},
+    )
+    cultivar_results = cultivar_response.json()
+    assert [item["cultivar"]["slug"] for item in cultivar_results["cultivars"]] == [
+        "lacinato"
+    ]
+    assert cultivar_results["cultivars"][0]["match_method"] == "fuzzy"
+
+
 def test_catalog_search_requires_an_existing_garden_profile(
     catalog_client: TestClient,
 ) -> None:
@@ -501,7 +531,7 @@ def test_suitability_assessment_is_versioned_explainable_and_deterministic(
     assessment = first.json()
     assert second.json() == assessment
     assert assessment["algorithm_version"] == "suitability-v1.1.0"
-    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-105977e42590d82c"
+    assert assessment["cultivar_dataset_id"] == "cultivar-catalog-v1-6a78051ee556cc0e"
     assert assessment["input_fingerprint"].startswith("sha256:")
     assert assessment["status"] == "suitable"
     assert assessment["score"] == 80
@@ -1211,7 +1241,7 @@ def test_wishlist_builder_adds_confirmed_and_custom_entries_one_at_a_time(
     wishlist = created_response.json()
     assert wishlist["name"] == "Summer ideas"
     assert wishlist["entries"] == []
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-105977e42590d82c"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-6a78051ee556cc0e"
 
     selections = [
         {
@@ -1290,7 +1320,7 @@ def test_quick_import_preserves_cultivar_and_crop_type_intent(
 
     assert response.status_code == 201
     wishlist = response.json()
-    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-105977e42590d82c"
+    assert wishlist["cultivar_dataset_id"] == "cultivar-catalog-v1-6a78051ee556cc0e"
     san_marzano, san_marzano_2, paste, black_krim = wishlist["entries"]
 
     assert san_marzano["original_text"] == "San Marzano tomatoes"

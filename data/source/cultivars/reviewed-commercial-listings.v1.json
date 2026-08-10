@@ -210,6 +210,150 @@
       "retrieved_at": "2026-08-09T00:00:00Z",
       "license": null,
       "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-de-cicco-broccoli-br10-250",
+      "title": "De Cicco Broccoli Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/de-cicco-broccoli-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-green-magic-broccoli-br20-100",
+      "title": "Green Magic Broccoli Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/green-magic-broccoli-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-gypsy-broccoli-br34-100",
+      "title": "Gypsy Broccoli Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/gypsy-broccoli-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-dagan-brussels-sprouts-bs12-25",
+      "title": "Dagan Brussels Sprouts Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/dagan-brussels-sprouts-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-marte-brussels-sprouts-bs13-50",
+      "title": "Marte Brussels Sprouts Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/marte-brussels-sprouts-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-silvia-brussels-sprouts-bs16-50",
+      "title": "Silvia Brussels Sprouts Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/silvia-brussels-sprouts-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-blue-vantage-cabbage-cb63-100",
+      "title": "Blue Vantage Cabbage Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/blue-vantage-cabbage-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-caraflex-cabbage-cb54-50",
+      "title": "Caraflex Cabbage Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/caraflex-cabbage-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-cheddar-cauliflower-cf13-25",
+      "title": "Cheddar Cauliflower Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/cheddar-cauliflower-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-graffiti-cauliflower-cf16-25",
+      "title": "Graffiti Cauliflower Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/graffiti-cauliflower-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-champion-collards-cd2-250",
+      "title": "Champion Collards Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/champion-collards-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-vates-collards-cd3-250",
+      "title": "Vates Collards Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/vates-collards-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-lacinato-kale-kl11-750",
+      "title": "Lacinato Kale Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/lacinato-kale-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-red-russian-kale-kl2-750",
+      "title": "Red Russian Kale Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/red-russian-kale-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-kolibri-kohlrabi-ko8-50",
+      "title": "Kolibri Kohlrabi Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/kolibri-kohlrabi-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
+    },
+    {
+      "key": "reimer-quickstar-kohlrabi-ko13-100",
+      "title": "Quickstar Kohlrabi Seeds",
+      "publisher": "Reimer Seeds",
+      "url": "https://www.reimerseeds.com/quickstar-kohlrabi-seeds",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current commercial seed listing; availability is a timestamped observation, not horticultural evidence"
     }
   ],
   "listings": [
@@ -473,6 +617,198 @@
       "listing_name": "Mountain Merit Tomato Seeds",
       "source_identifier": "TM830-10",
       "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-br10-250",
+      "cultivar_slug": "de-cicco",
+      "source_key": "reimer-de-cicco-broccoli-br10-250",
+      "vendor": "Reimer Seeds",
+      "listing_name": "De Cicco Broccoli Seeds",
+      "source_identifier": "BR10-250",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "reviewed_alias",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-br20-100",
+      "cultivar_slug": "green-magic-broccoli",
+      "source_key": "reimer-green-magic-broccoli-br20-100",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Green Magic Broccoli Seeds",
+      "source_identifier": "BR20-100",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-br34-100",
+      "cultivar_slug": "gypsy-broccoli",
+      "source_key": "reimer-gypsy-broccoli-br34-100",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Gypsy Broccoli Seeds",
+      "source_identifier": "BR34-100",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-bs12-25",
+      "cultivar_slug": "dagan",
+      "source_key": "reimer-dagan-brussels-sprouts-bs12-25",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Dagan Brussels Sprouts Seeds",
+      "source_identifier": "BS12-25",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-bs13-50",
+      "cultivar_slug": "marte",
+      "source_key": "reimer-marte-brussels-sprouts-bs13-50",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Marte Brussels Sprouts Seeds",
+      "source_identifier": "BS13-50",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-bs16-50",
+      "cultivar_slug": "silvia-brussels-sprouts",
+      "source_key": "reimer-silvia-brussels-sprouts-bs16-50",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Silvia Brussels Sprouts Seeds",
+      "source_identifier": "BS16-50",
+      "availability_status": "out_of_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-cb63-100",
+      "cultivar_slug": "blue-vantage",
+      "source_key": "reimer-blue-vantage-cabbage-cb63-100",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Blue Vantage Cabbage Seeds",
+      "source_identifier": "CB63-100",
+      "availability_status": "out_of_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-cb54-50",
+      "cultivar_slug": "caraflex",
+      "source_key": "reimer-caraflex-cabbage-cb54-50",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Caraflex Cabbage Seeds",
+      "source_identifier": "CB54-50",
+      "availability_status": "out_of_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-cf13-25",
+      "cultivar_slug": "cheddar-cauliflower",
+      "source_key": "reimer-cheddar-cauliflower-cf13-25",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Cheddar Cauliflower Seeds",
+      "source_identifier": "CF13-25",
+      "availability_status": "out_of_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-cf16-25",
+      "cultivar_slug": "graffiti-cauliflower",
+      "source_key": "reimer-graffiti-cauliflower-cf16-25",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Graffiti Cauliflower Seeds",
+      "source_identifier": "CF16-25",
+      "availability_status": "out_of_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-cd2-250",
+      "cultivar_slug": "champion-collards",
+      "source_key": "reimer-champion-collards-cd2-250",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Champion Collards Seeds",
+      "source_identifier": "CD2-250",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-cd3-250",
+      "cultivar_slug": "vates-collards",
+      "source_key": "reimer-vates-collards-cd3-250",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Vates Collards Seeds",
+      "source_identifier": "CD3-250",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-kl11-750",
+      "cultivar_slug": "lacinato",
+      "source_key": "reimer-lacinato-kale-kl11-750",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Lacinato Kale Seeds",
+      "source_identifier": "KL11-750",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-kl2-750",
+      "cultivar_slug": "red-russian-kale",
+      "source_key": "reimer-red-russian-kale-kl2-750",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Red Russian Kale Seeds",
+      "source_identifier": "KL2-750",
+      "availability_status": "in_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-ko8-50",
+      "cultivar_slug": "kolibri-kohlrabi",
+      "source_key": "reimer-kolibri-kohlrabi-ko8-50",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Kolibri Kohlrabi Seeds",
+      "source_identifier": "KO8-50",
+      "availability_status": "out_of_stock",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "identity_match_method": "exact_name",
+      "review_status": "approved"
+    },
+    {
+      "id": "reimer-ko13-100",
+      "cultivar_slug": "quickstar-kohlrabi",
+      "source_key": "reimer-quickstar-kohlrabi-ko13-100",
+      "vendor": "Reimer Seeds",
+      "listing_name": "Quickstar Kohlrabi Seeds",
+      "source_identifier": "KO13-100",
+      "availability_status": "out_of_stock",
       "observed_at": "2026-08-09T00:00:00Z",
       "identity_match_method": "exact_name",
       "review_status": "approved"

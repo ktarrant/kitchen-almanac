@@ -24,7 +24,7 @@ def test_reviewed_commercial_listings_are_valid() -> None:
     source = json.loads(DEFAULT_LISTINGS.read_text())
 
     assert validate_commercial_listing_source(source) == []
-    assert len(source["listings"]) == 22
+    assert len(source["listings"]) == 38
     assert {listing["availability_status"] for listing in source["listings"]} == {
         "in_stock",
         "out_of_stock",

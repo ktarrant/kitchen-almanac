@@ -31,7 +31,7 @@ def test_manifest_and_committed_report_define_review_only_corpus() -> None:
         "toc_pdf_page": 12,
         "url": "https://njaes.rutgers.edu/pubs/download.php?strPubID=E001",
     }
-    assert len(manifest["documents"]) == 8
+    assert len(manifest["documents"]) == 9
     assert {document["section_kind"] for document in manifest["documents"]} == {
         "commodity",
         "general",
@@ -46,31 +46,38 @@ def test_manifest_and_committed_report_define_review_only_corpus() -> None:
     assert report["corpus_id"] == manifest["corpus_id"]
     assert report["summary"] == {
         "category_document_counts": {
-            "chemical_controls": 8,
-            "cultivar_recommendations": 4,
-            "disease_threats": 6,
+            "chemical_controls": 9,
+            "cultivar_recommendations": 5,
+            "disease_threats": 7,
             "food_safety": 2,
-            "harvest_and_storage": 6,
-            "insect_threats": 6,
+            "harvest_and_storage": 7,
+            "insect_threats": 7,
             "irrigation": 5,
-            "nutrient_management": 7,
-            "planting_and_spacing": 6,
-            "soil_ph": 5,
-            "weed_management": 6,
+            "nutrient_management": 8,
+            "planting_and_spacing": 7,
+            "soil_ph": 6,
+            "weed_management": 7,
         },
-        "crop_count": 5,
-        "document_count": 8,
-        "page_count": 184,
+        "crop_count": 12,
+        "document_count": 9,
+        "page_count": 205,
         "status_counts": {
-            "not_detected": 27,
-            "quarantined": 8,
-            "restricted_review": 25,
-            "review_required": 28,
+            "not_detected": 29,
+            "quarantined": 9,
+            "restricted_review": 29,
+            "review_required": 32,
         },
     }
     assert {item["crop_id"] for item in report["crop_coverage"]} == {
         "beets",
+        "broccoli",
+        "brussels-sprouts",
+        "cabbage",
+        "cauliflower",
+        "collards",
         "cucumbers",
+        "kale",
+        "kohlrabi",
         "string-beans",
         "summer-squash",
         "tomatoes",

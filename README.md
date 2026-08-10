@@ -75,9 +75,10 @@ approved checksums; copyrighted source binaries are intentionally not
 redistributed in the repository. `cultivars publish` verifies the local source
 snapshots and review coverage before building the artifact. `cultivars load`
 then activates that immutable catalog version idempotently. The catalog now
-contains 30 cultivars across tomatoes, cucumbers, string beans, summer squash,
-and beets. Twenty-two have a reviewed commercial listing and are eligible for
-user-facing search. A temporarily out-of-stock listing remains discoverable;
+contains 46 cultivars across 12 crop identities: tomatoes, cucumbers, string
+beans, summer squash, beets, broccoli, Brussels sprouts, cabbage, cauliflower,
+collards, kale, and kohlrabi. Thirty-eight have a reviewed commercial listing
+and are eligible for user-facing search. A temporarily out-of-stock listing remains discoverable;
 retired listings do not. Cultivars without an identity-reviewed listing remain
 in the evidence catalog but are withheld from search until a selected vendor
 confirms the exact cultivar. Its Mid-Atlantic source tables are commercial-production
@@ -88,7 +89,7 @@ results. The app keeps those evidence contexts distinct.
 
 Rutgers is the primary corpus for the next grow-guide evidence pass. Its
 manifest pins the complete 512-page manual plus general production, soil and
-nutrient, irrigation, and five initial commodity sections by URL and SHA-256
+nutrient, irrigation, and six initial commodity sections by URL and SHA-256
 digest. `rutgers fetch` restores
 the locally retained PDFs, `rutgers inventory` builds a deterministic page-level
 coverage report, and `rutgers extract` reproduces structured candidates from
@@ -103,9 +104,9 @@ squash, and tomatoes; it deliberately does not turn commercial daily rates into
 universal home-garden schedules.
 
 `rutgers taxonomy` verifies the full manual's table of contents and builds a
-deterministic registry of all 31 commodity sections and 46 individual crop
+deterministic registry of all 31 commodity sections and 47 individual crop
 concepts. The reviewed crosswalk currently finds 26 exact catalog identities,
-9 concepts attached to catalog groups that must be split, and 11 missing crop
+9 concepts attached to catalog groups that must be split, and 12 missing crop
 identities. Its minimum-useful coverage matrix reports published identity,
 cultivar, commercial availability, soil, water, spacing, container, planting,
 harvest, and threat evidence independently; detected PDF material remains a

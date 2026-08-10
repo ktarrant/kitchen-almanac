@@ -9,7 +9,7 @@ https://njaes.rutgers.edu/pubs/publication.php?pid=E001
 
 The checksum-pinned corpus includes the complete 512-page manual, general
 production, soil and nutrient management, irrigation management, beans, beets,
-cucumbers, summer squash, and tomatoes. The PDF binaries are excluded from
+cole crops, cucumbers, summer squash, and tomatoes. The PDF binaries are excluded from
 version control. Restore them and reproduce the inventories from the repository
 root with:
 
@@ -27,7 +27,7 @@ page-level map of potential evidence fields. It records where review should
 start; it does not extract facts into the application database.
 
 `commodity-crosswalk.v1.json` is the reviewed mapping from all 31 commodity
-sections in the full manual to 46 individual Rutgers crop concepts and the
+sections in the full manual to 47 individual Rutgers crop concepts and the
 current canonical crop catalog. `taxonomy-coverage-report.v1.json` verifies the
 table-of-contents page ranges, inventories potential evidence across the full
 commodity chapter, identifies exact, overly broad, and missing crop identities,
@@ -47,6 +47,14 @@ The current review publishes qualitative water-management guidance and critical
 watering stages for the four initial crops. Commercial field-capacity targets
 and peak daily rates remain staged as explicit holds, and the app does not infer
 a weekly watering quantity from them.
+
+The first bundled commodity cohort publishes 16 cultivar identities across
+broccoli, Brussels sprouts, cabbage, cauliflower, collards, kale, and kohlrabi.
+Each identity is an exact or explicitly reviewed vendor-name match to a Reimer
+Seeds listing, and each listing preserves its observation-dated stock status.
+The cultivar table also revealed Chinese cabbage, including Napa and pak choi
+types; it remains a separate missing crop identity rather than being folded
+into head cabbage.
 
 The publication states that its recommendations are for commercial vegetable
 growers rather than specifically for home gardeners. Kitchen Almanac retains

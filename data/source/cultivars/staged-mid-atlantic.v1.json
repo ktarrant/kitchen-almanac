@@ -39,6 +39,18 @@
       "scope": "Current regional commercial recommendation; not written specifically for home gardeners"
     },
     {
+      "key": "mid-atlantic-cole-crops-2026-2027",
+      "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Cole Crops",
+      "publisher": "Rutgers NJAES Cooperative Extension",
+      "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cole-crops.pdf",
+      "source_path": "data/source/cultivars/mid-atlantic-2026-2027/cole-crops.pdf",
+      "sha256": "b8dff99225911ffaf62dcc7060456d2a49c6161ffe502147e01aa5d9c474367d",
+      "media_type": "application/pdf",
+      "retrieved_at": "2026-08-09T00:00:00Z",
+      "license": null,
+      "scope": "Current regional commercial recommendation; not written specifically for home gardeners"
+    },
+    {
       "key": "mid-atlantic-summer-squash-2026-2027",
       "title": "2026/2027 Mid-Atlantic Commercial Vegetable Production Recommendations: Summer Squash",
       "publisher": "Rutgers NJAES Cooperative Extension",
@@ -945,6 +957,381 @@
         "fruit_shape": "globe",
         "hybrid": true,
         "uses": ["bunching", "roots"]
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-de-cicco-broccoli",
+      "crop_slug": "broccoli",
+      "proposed_slug": "de-cicco",
+      "name_in_source": "DeCicco",
+      "aliases": ["De Cicco", "DeCicco"],
+      "description": "An open-pollinated, midseason sprouting broccoli recommended by Rutgers for fall production.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=3;table=recommended-varieties;crop=Broccoli;row=DeCicco",
+      "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > DeCicco",
+      "attributes": {
+        "crop_type": "sprouting_broccoli",
+        "hybrid": false,
+        "season_class": "midseason"
+      },
+      "traits": [
+        {
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": ["fall"],
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The regional table recommends DeCicco for fall production."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-green-magic-broccoli",
+      "crop_slug": "broccoli",
+      "proposed_slug": "green-magic-broccoli",
+      "name_in_source": "Green Magic",
+      "aliases": ["Green Magic", "Green Magic Broccoli"],
+      "description": "An early hybrid heading broccoli recommended by Rutgers for spring and fall production.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=3;table=recommended-varieties;crop=Broccoli;row=Green-Magic",
+      "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Green Magic",
+      "attributes": {
+        "crop_type": "heading_broccoli",
+        "hybrid": true,
+        "season_class": "early"
+      },
+      "traits": [
+        {
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": ["spring", "fall"],
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The regional table recommends Green Magic for spring and fall production."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-gypsy-broccoli",
+      "crop_slug": "broccoli",
+      "proposed_slug": "gypsy-broccoli",
+      "name_in_source": "Gypsy",
+      "aliases": ["Gypsy", "Gypsy Broccoli"],
+      "description": "A midseason hybrid heading broccoli recommended by Rutgers for fall production.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=3;table=recommended-varieties;crop=Broccoli;row=Gypsy",
+      "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Broccoli > Gypsy",
+      "attributes": {
+        "crop_type": "heading_broccoli",
+        "hybrid": true,
+        "season_class": "midseason"
+      },
+      "traits": [
+        {
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": ["fall"],
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The regional table recommends Gypsy for fall production."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-dagan-brussels-sprouts",
+      "crop_slug": "brussels-sprouts",
+      "proposed_slug": "dagan",
+      "name_in_source": "Dagan",
+      "aliases": ["Dagan", "Dagan Brussels Sprouts"],
+      "description": "A midseason hybrid Brussels sprouts cultivar recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=3;table=recommended-varieties;crop=Brussels-Sprouts;row=Dagan",
+      "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Dagan",
+      "attributes": {
+        "crop_type": "brussels_sprouts",
+        "hybrid": true,
+        "season_class": "midseason"
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-marte-brussels-sprouts",
+      "crop_slug": "brussels-sprouts",
+      "proposed_slug": "marte",
+      "name_in_source": "Marte",
+      "aliases": ["Marte", "Marte Brussels Sprouts"],
+      "description": "An early hybrid Brussels sprouts cultivar recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=3;table=recommended-varieties;crop=Brussels-Sprouts;row=Marte",
+      "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Marte",
+      "attributes": {
+        "crop_type": "brussels_sprouts",
+        "hybrid": true,
+        "season_class": "early"
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-silvia-brussels-sprouts",
+      "crop_slug": "brussels-sprouts",
+      "proposed_slug": "silvia-brussels-sprouts",
+      "name_in_source": "Silvia",
+      "aliases": ["Silvia", "Silvia Brussels Sprouts"],
+      "description": "A midseason hybrid Brussels sprouts cultivar recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=3;table=recommended-varieties;crop=Brussels-Sprouts;row=Silvia",
+      "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Brussels Sprouts > Silvia",
+      "attributes": {
+        "crop_type": "brussels_sprouts",
+        "hybrid": true,
+        "season_class": "midseason"
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-blue-vantage-cabbage",
+      "crop_slug": "cabbage",
+      "proposed_slug": "blue-vantage",
+      "name_in_source": "Blue Vantage",
+      "aliases": ["Blue Vantage", "Blue Vantage Cabbage"],
+      "description": "A round, midseason hybrid green cabbage listed by Rutgers for fresh use.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=3;table=recommended-varieties;crop=Green-Cabbage;row=Blue-Vantage",
+      "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Blue Vantage",
+      "attributes": {
+        "crop_type": "green_cabbage",
+        "fruit_shape": "round",
+        "hybrid": true,
+        "season_class": "midseason",
+        "uses": ["fresh"]
+      },
+      "traits": [
+        {
+          "field_name": "head_weight",
+          "normalized_value": {"minimum": 4, "maximum": 4},
+          "unit": "pounds",
+          "confidence": "high",
+          "source_excerpt": "The table reports a four-pound head for Blue Vantage."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-caraflex-cabbage",
+      "crop_slug": "cabbage",
+      "proposed_slug": "caraflex",
+      "name_in_source": "Caraflex",
+      "aliases": ["Caraflex", "Caraflex Cabbage"],
+      "description": "An early hybrid green cabbage with pointed heads, listed by Rutgers for fresh use.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=3;table=recommended-varieties;crop=Green-Cabbage;row=Caraflex",
+      "source_locator": "PDF page 4 (publication page 206) > Recommended Varieties > Green Cabbage > Caraflex",
+      "attributes": {
+        "crop_type": "green_cabbage",
+        "fruit_shape": "pointed",
+        "hybrid": true,
+        "season_class": "early",
+        "uses": ["fresh"]
+      },
+      "traits": [
+        {
+          "field_name": "head_weight",
+          "normalized_value": {"minimum": 2, "maximum": 3},
+          "unit": "pounds",
+          "confidence": "high",
+          "source_excerpt": "The table reports a two- to three-pound head for Caraflex."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-cheddar-cauliflower",
+      "crop_slug": "cauliflower",
+      "proposed_slug": "cheddar-cauliflower",
+      "name_in_source": "Cheddar",
+      "aliases": ["Cheddar", "Cheddar Cauliflower"],
+      "description": "A late hybrid orange cauliflower recommended by Rutgers for fall production.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;crop=Cauliflower;row=Cheddar",
+      "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Cheddar",
+      "attributes": {
+        "crop_type": "orange_cauliflower",
+        "fruit_color": "orange",
+        "hybrid": true,
+        "season_class": "late"
+      },
+      "traits": [
+        {
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": ["fall"],
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The regional table recommends Cheddar for fall production."
+        },
+        {
+          "field_name": "self_wrapping",
+          "normalized_value": false,
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The table identifies Cheddar as not self-wrapping."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-graffiti-cauliflower",
+      "crop_slug": "cauliflower",
+      "proposed_slug": "graffiti-cauliflower",
+      "name_in_source": "Graffiti",
+      "aliases": ["Graffiti", "Graffiti Cauliflower"],
+      "description": "A late hybrid purple cauliflower recommended by Rutgers for fall production.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=4;table=recommended-varieties;crop=Cauliflower;row=Graffiti",
+      "source_locator": "PDF page 5 (publication page 207) > Recommended Varieties > Cauliflower > Graffiti",
+      "attributes": {
+        "crop_type": "purple_cauliflower",
+        "fruit_color": "purple",
+        "hybrid": true,
+        "season_class": "late"
+      },
+      "traits": [
+        {
+          "field_name": "recommended_planting_seasons",
+          "normalized_value": ["fall"],
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The regional table recommends Graffiti for fall production."
+        },
+        {
+          "field_name": "self_wrapping",
+          "normalized_value": false,
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The table identifies Graffiti as not self-wrapping."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-champion-collards",
+      "crop_slug": "collards",
+      "proposed_slug": "champion-collards",
+      "name_in_source": "Champion",
+      "aliases": ["Champion", "Champion Collards"],
+      "description": "An open-pollinated deep-green collard with flat to lightly waved leaves, recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=5;table=recommended-varieties;crop=Collards;row=Champion",
+      "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Champion",
+      "attributes": {
+        "crop_type": "collards",
+        "hybrid": false,
+        "leaf_type": "flat_to_lightly_waved"
+      },
+      "traits": [
+        {
+          "field_name": "leaf_color",
+          "normalized_value": "deep_green",
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The table describes Champion leaves as deep green."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-vates-collards",
+      "crop_slug": "collards",
+      "proposed_slug": "vates-collards",
+      "name_in_source": "Vates",
+      "aliases": ["Vates", "Vates Collards"],
+      "description": "An open-pollinated deep-green collard with flat to lightly waved leaves, recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=5;table=recommended-varieties;crop=Collards;row=Vates",
+      "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Collards > Vates",
+      "attributes": {
+        "crop_type": "collards",
+        "hybrid": false,
+        "leaf_type": "flat_to_lightly_waved"
+      },
+      "traits": [
+        {
+          "field_name": "leaf_color",
+          "normalized_value": "deep_green",
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The table describes Vates leaves as deep green."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-lacinato-kale",
+      "crop_slug": "kale",
+      "proposed_slug": "lacinato",
+      "name_in_source": "Lacinato",
+      "aliases": ["Lacinato", "Lacinato Kale"],
+      "description": "An open-pollinated blue-green kale with puckered, strap-like lance leaves, recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=5;table=recommended-varieties;crop=Kale;row=Lacinato",
+      "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Lacinato",
+      "attributes": {
+        "crop_type": "kale",
+        "hybrid": false,
+        "leaf_type": "puckered_strap_like_lance"
+      },
+      "traits": [
+        {
+          "field_name": "leaf_color",
+          "normalized_value": "blue_green",
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The table describes Lacinato leaves as blue green."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-red-russian-kale",
+      "crop_slug": "kale",
+      "proposed_slug": "red-russian-kale",
+      "name_in_source": "Red Russian",
+      "aliases": ["Red Russian", "Red Russian Kale"],
+      "description": "An open-pollinated kale with flat, toothed blue-green leaves and red midribs, recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=5;table=recommended-varieties;crop=Kale;row=Red-Russian",
+      "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kale > Red Russian",
+      "attributes": {
+        "crop_type": "kale",
+        "hybrid": false,
+        "leaf_type": "flat_toothed"
+      },
+      "traits": [
+        {
+          "field_name": "leaf_color",
+          "normalized_value": "blue_green_with_red_midrib",
+          "unit": null,
+          "confidence": "high",
+          "source_excerpt": "The table describes Red Russian leaves as blue green with red midribs."
+        }
+      ]
+    },
+    {
+      "id": "mid-atlantic-2026-kolibri-kohlrabi",
+      "crop_slug": "kohlrabi",
+      "proposed_slug": "kolibri-kohlrabi",
+      "name_in_source": "Kolibri",
+      "aliases": ["Kolibri", "Kolibri Kohlrabi"],
+      "description": "A deep-purple hybrid kohlrabi cultivar recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=5;table=recommended-varieties;crop=Kohlrabi;row=Kolibri",
+      "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Kolibri",
+      "attributes": {
+        "crop_type": "kohlrabi",
+        "fruit_color": "deep_purple",
+        "hybrid": true
+      }
+    },
+    {
+      "id": "mid-atlantic-2026-quickstar-kohlrabi",
+      "crop_slug": "kohlrabi",
+      "proposed_slug": "quickstar-kohlrabi",
+      "name_in_source": "Quickstar",
+      "aliases": ["Quickstar", "Quickstar Kohlrabi"],
+      "description": "A light-green hybrid kohlrabi cultivar recommended by Rutgers.",
+      "source_key": "mid-atlantic-cole-crops-2026-2027",
+      "source_identifier": "page=5;table=recommended-varieties;crop=Kohlrabi;row=Quickstar",
+      "source_locator": "PDF page 6 (publication page 208) > Recommended Varieties > Kohlrabi > Quickstar",
+      "attributes": {
+        "crop_type": "kohlrabi",
+        "fruit_color": "light_green",
+        "hybrid": true
       }
     }
   ]

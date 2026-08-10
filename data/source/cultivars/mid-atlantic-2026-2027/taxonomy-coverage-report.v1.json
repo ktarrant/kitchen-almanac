@@ -646,19 +646,25 @@
     {
       "catalog_crop_id": "broccoli",
       "catalog_crop_name": "Broccoli",
-      "commercial_vendors": [],
+      "commercial_vendors": [
+        "Reimer Seeds"
+      ],
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
-      "cultivar_count": 0,
-      "evidence_publishers": [],
+      "cultivar_count": 3,
+      "evidence_publishers": [
+        "Rutgers NJAES Cooperative Extension"
+      ],
       "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
-          "missing": [
-            "approved_nonretired_listing"
+          "missing": [],
+          "present": [
+            "de-cicco",
+            "green-magic-broccoli",
+            "gypsy-broccoli"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "containers": {
           "missing": [
@@ -669,11 +675,13 @@
           "status": "absent"
         },
         "cultivars": {
-          "missing": [
-            "reviewed_cultivar_records"
+          "missing": [],
+          "present": [
+            "de-cicco",
+            "green-magic-broccoli",
+            "gypsy-broccoli"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "harvest": {
           "missing": [
@@ -741,24 +749,30 @@
       "review_note": "Direct canonical crop match.",
       "rutgers_crop_id": "broccoli",
       "rutgers_crop_name": "Broccoli",
-      "searchable_cultivar_count": 0
+      "searchable_cultivar_count": 3
     },
     {
       "catalog_crop_id": "brussels-sprouts",
       "catalog_crop_name": "Brussels Sprouts",
-      "commercial_vendors": [],
+      "commercial_vendors": [
+        "Reimer Seeds"
+      ],
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
-      "cultivar_count": 0,
-      "evidence_publishers": [],
+      "cultivar_count": 3,
+      "evidence_publishers": [
+        "Rutgers NJAES Cooperative Extension"
+      ],
       "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
-          "missing": [
-            "approved_nonretired_listing"
+          "missing": [],
+          "present": [
+            "dagan",
+            "marte",
+            "silvia-brussels-sprouts"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "containers": {
           "missing": [
@@ -769,11 +783,13 @@
           "status": "absent"
         },
         "cultivars": {
-          "missing": [
-            "reviewed_cultivar_records"
+          "missing": [],
+          "present": [
+            "dagan",
+            "marte",
+            "silvia-brussels-sprouts"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "harvest": {
           "missing": [
@@ -841,24 +857,29 @@
       "review_note": "Direct canonical crop match.",
       "rutgers_crop_id": "brussels-sprouts",
       "rutgers_crop_name": "Brussels Sprouts",
-      "searchable_cultivar_count": 0
+      "searchable_cultivar_count": 3
     },
     {
       "catalog_crop_id": "cabbage",
       "catalog_crop_name": "Cabbage",
-      "commercial_vendors": [],
+      "commercial_vendors": [
+        "Reimer Seeds"
+      ],
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
-      "cultivar_count": 0,
-      "evidence_publishers": [],
+      "cultivar_count": 2,
+      "evidence_publishers": [
+        "Rutgers NJAES Cooperative Extension"
+      ],
       "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
-          "missing": [
-            "approved_nonretired_listing"
+          "missing": [],
+          "present": [
+            "blue-vantage",
+            "caraflex"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "containers": {
           "missing": [
@@ -869,11 +890,12 @@
           "status": "absent"
         },
         "cultivars": {
-          "missing": [
-            "reviewed_cultivar_records"
+          "missing": [],
+          "present": [
+            "blue-vantage",
+            "caraflex"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "harvest": {
           "missing": [
@@ -941,16 +963,16 @@
       "review_note": "Direct canonical crop match.",
       "rutgers_crop_id": "cabbage",
       "rutgers_crop_name": "Cabbage",
-      "searchable_cultivar_count": 0
+      "searchable_cultivar_count": 2
     },
     {
-      "catalog_crop_id": "cauliflower",
-      "catalog_crop_name": "Cauliflower",
+      "catalog_crop_id": null,
+      "catalog_crop_name": null,
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "exact",
+      "mapping_status": "missing_catalog_identity",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -974,6 +996,112 @@
           ],
           "present": [],
           "status": "absent"
+        },
+        "harvest": {
+          "missing": [
+            "harvest_guidance"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "identity": {
+          "missing": [
+            "chinese-cabbage"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "planting": {
+          "missing": [
+            "relative_planting_rule",
+            "starting_method"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "rutgers_source": {
+          "missing": [],
+          "present": [
+            "mid-atlantic-cole-crops-2026-2027"
+          ],
+          "status": "supported"
+        },
+        "soil": {
+          "missing": [
+            "soil_condition_guidance",
+            "soil_ph"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "spacing": {
+          "missing": [
+            "plant_spacing"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "threats": {
+          "missing": [
+            "disease_threats",
+            "insect_threats"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "water": {
+          "missing": [
+            "critical_watering_stages",
+            "water_amount",
+            "water_management_guidance"
+          ],
+          "present": [],
+          "status": "absent"
+        }
+      },
+      "published_crop_trait_fields": [],
+      "review_note": "The cultivar table includes Napa and pak choi types, which must not be attached to the current head-cabbage identity.",
+      "rutgers_crop_id": "chinese-cabbage",
+      "rutgers_crop_name": "Chinese Cabbage",
+      "searchable_cultivar_count": 0
+    },
+    {
+      "catalog_crop_id": "cauliflower",
+      "catalog_crop_name": "Cauliflower",
+      "commercial_vendors": [
+        "Reimer Seeds"
+      ],
+      "commodity_source": "mid-atlantic-cole-crops-2026-2027",
+      "cultivar_count": 2,
+      "evidence_publishers": [
+        "Rutgers NJAES Cooperative Extension"
+      ],
+      "mapping_status": "exact",
+      "minimum_useful": false,
+      "minimum_useful_coverage": {
+        "commercial_availability": {
+          "missing": [],
+          "present": [
+            "cheddar-cauliflower",
+            "graffiti-cauliflower"
+          ],
+          "status": "supported"
+        },
+        "containers": {
+          "missing": [
+            "container_suitability",
+            "minimum_container_volume"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "cultivars": {
+          "missing": [],
+          "present": [
+            "cheddar-cauliflower",
+            "graffiti-cauliflower"
+          ],
+          "status": "supported"
         },
         "harvest": {
           "missing": [
@@ -1041,24 +1169,29 @@
       "review_note": "Direct canonical crop match.",
       "rutgers_crop_id": "cauliflower",
       "rutgers_crop_name": "Cauliflower",
-      "searchable_cultivar_count": 0
+      "searchable_cultivar_count": 2
     },
     {
       "catalog_crop_id": "collards",
       "catalog_crop_name": "Collards",
-      "commercial_vendors": [],
+      "commercial_vendors": [
+        "Reimer Seeds"
+      ],
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
-      "cultivar_count": 0,
-      "evidence_publishers": [],
+      "cultivar_count": 2,
+      "evidence_publishers": [
+        "Rutgers NJAES Cooperative Extension"
+      ],
       "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
-          "missing": [
-            "approved_nonretired_listing"
+          "missing": [],
+          "present": [
+            "champion-collards",
+            "vates-collards"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "containers": {
           "missing": [
@@ -1069,11 +1202,12 @@
           "status": "absent"
         },
         "cultivars": {
-          "missing": [
-            "reviewed_cultivar_records"
+          "missing": [],
+          "present": [
+            "champion-collards",
+            "vates-collards"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "harvest": {
           "missing": [
@@ -1141,24 +1275,29 @@
       "review_note": "Direct canonical crop match.",
       "rutgers_crop_id": "collards",
       "rutgers_crop_name": "Collards",
-      "searchable_cultivar_count": 0
+      "searchable_cultivar_count": 2
     },
     {
       "catalog_crop_id": "kale",
       "catalog_crop_name": "Kale",
-      "commercial_vendors": [],
+      "commercial_vendors": [
+        "Reimer Seeds"
+      ],
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
-      "cultivar_count": 0,
-      "evidence_publishers": [],
+      "cultivar_count": 2,
+      "evidence_publishers": [
+        "Rutgers NJAES Cooperative Extension"
+      ],
       "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
-          "missing": [
-            "approved_nonretired_listing"
+          "missing": [],
+          "present": [
+            "lacinato",
+            "red-russian-kale"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "containers": {
           "missing": [
@@ -1169,11 +1308,12 @@
           "status": "absent"
         },
         "cultivars": {
-          "missing": [
-            "reviewed_cultivar_records"
+          "missing": [],
+          "present": [
+            "lacinato",
+            "red-russian-kale"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "harvest": {
           "missing": [
@@ -1241,24 +1381,29 @@
       "review_note": "Direct canonical crop match.",
       "rutgers_crop_id": "kale",
       "rutgers_crop_name": "Kale",
-      "searchable_cultivar_count": 0
+      "searchable_cultivar_count": 2
     },
     {
       "catalog_crop_id": "kohlrabi",
       "catalog_crop_name": "Kohlrabi",
-      "commercial_vendors": [],
+      "commercial_vendors": [
+        "Reimer Seeds"
+      ],
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
-      "cultivar_count": 0,
-      "evidence_publishers": [],
+      "cultivar_count": 2,
+      "evidence_publishers": [
+        "Rutgers NJAES Cooperative Extension"
+      ],
       "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
-          "missing": [
-            "approved_nonretired_listing"
+          "missing": [],
+          "present": [
+            "kolibri-kohlrabi",
+            "quickstar-kohlrabi"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "containers": {
           "missing": [
@@ -1269,11 +1414,12 @@
           "status": "absent"
         },
         "cultivars": {
-          "missing": [
-            "reviewed_cultivar_records"
+          "missing": [],
+          "present": [
+            "kolibri-kohlrabi",
+            "quickstar-kohlrabi"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "harvest": {
           "missing": [
@@ -1341,7 +1487,7 @@
       "review_note": "Direct canonical crop match.",
       "rutgers_crop_id": "kohlrabi",
       "rutgers_crop_name": "Kohlrabi",
-      "searchable_cultivar_count": 0
+      "searchable_cultivar_count": 2
     },
     {
       "catalog_crop_id": "cucumbers",
@@ -4787,13 +4933,14 @@
         "broccoli",
         "brussels-sprouts",
         "cabbage",
+        "chinese-cabbage",
         "cauliflower",
         "collards",
         "kale",
         "kohlrabi"
       ],
       "position": 6,
-      "readiness": "ready_for_evidence_cohort",
+      "readiness": "retained",
       "section_key": "mid-atlantic-cole-crops-2026-2027",
       "title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi"
     },
@@ -6148,6 +6295,7 @@
         "broccoli",
         "brussels-sprouts",
         "cabbage",
+        "chinese-cabbage",
         "cauliflower",
         "collards",
         "kale",
@@ -6383,7 +6531,7 @@
         "start": 220
       },
       "position": 6,
-      "section_pdf_retained": false,
+      "section_pdf_retained": true,
       "title": "Cole Crops: Broccoli, Brussels Sprouts, Cabbage, Cauliflower, Collards, Kale, and Kohlrabi",
       "url": "https://njaes.rutgers.edu/pubs/commercial-veg-rec/cole-crops.pdf"
     },
@@ -11843,61 +11991,61 @@
   ],
   "summary": {
     "catalog_crop_count": 37,
-    "catalog_cultivar_count": 30,
+    "catalog_cultivar_count": 46,
     "commodity_section_count": 31,
     "mapping_status_counts": {
       "broader_catalog_identity": 9,
       "exact": 26,
-      "missing_catalog_identity": 11
+      "missing_catalog_identity": 12
     },
     "minimum_field_status_counts": {
       "commercial_availability": {
-        "absent": 41,
-        "supported": 5
+        "absent": 35,
+        "supported": 12
       },
       "containers": {
-        "absent": 46
+        "absent": 47
       },
       "cultivars": {
-        "absent": 41,
-        "supported": 5
+        "absent": 35,
+        "supported": 12
       },
       "harvest": {
-        "absent": 42,
+        "absent": 43,
         "supported": 4
       },
       "identity": {
-        "absent": 11,
+        "absent": 12,
         "partial": 9,
         "supported": 26
       },
       "planting": {
-        "absent": 42,
+        "absent": 43,
         "partial": 4
       },
       "rutgers_source": {
-        "supported": 46
+        "supported": 47
       },
       "soil": {
-        "absent": 42,
+        "absent": 43,
         "partial": 4
       },
       "spacing": {
-        "absent": 43,
+        "absent": 44,
         "supported": 3
       },
       "threats": {
-        "absent": 46
+        "absent": 47
       },
       "water": {
-        "absent": 42,
+        "absent": 43,
         "partial": 4
       }
     },
     "minimum_useful_crop_count": 0,
-    "retained_section_pdf_count": 5,
-    "rutgers_crop_concept_count": 46,
-    "searchable_cultivar_count": 22
+    "retained_section_pdf_count": 6,
+    "rutgers_crop_concept_count": 47,
+    "searchable_cultivar_count": 38
   },
   "unrepresented_catalog_crop_ids": [
     "artichokes",

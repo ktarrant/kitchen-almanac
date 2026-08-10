@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "staging_sha256": "04cb9fc9028256f16bdbe74511901a14ead11b0bbc0fdbf51e8c53a5e2bac7f6",
+  "staging_sha256": "689c792b243bd45d4079ef9dae4fcbb56ebad912c21eb3eba6487913ae90b3fc",
   "reviewed_at": "2026-08-09T00:00:00Z",
   "reviewer": "Kitchen Almanac data review",
   "decisions": [
@@ -168,6 +168,86 @@
       "candidate_id": "mid-atlantic-2026-red-ace",
       "action": "create",
       "canonical_slug": "red-ace"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-de-cicco-broccoli",
+      "action": "create",
+      "canonical_slug": "de-cicco"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-green-magic-broccoli",
+      "action": "create",
+      "canonical_slug": "green-magic-broccoli"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-gypsy-broccoli",
+      "action": "create",
+      "canonical_slug": "gypsy-broccoli"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-dagan-brussels-sprouts",
+      "action": "create",
+      "canonical_slug": "dagan"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-marte-brussels-sprouts",
+      "action": "create",
+      "canonical_slug": "marte"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-silvia-brussels-sprouts",
+      "action": "create",
+      "canonical_slug": "silvia-brussels-sprouts"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-blue-vantage-cabbage",
+      "action": "create",
+      "canonical_slug": "blue-vantage"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-caraflex-cabbage",
+      "action": "create",
+      "canonical_slug": "caraflex"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-cheddar-cauliflower",
+      "action": "create",
+      "canonical_slug": "cheddar-cauliflower"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-graffiti-cauliflower",
+      "action": "create",
+      "canonical_slug": "graffiti-cauliflower"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-champion-collards",
+      "action": "create",
+      "canonical_slug": "champion-collards"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-vates-collards",
+      "action": "create",
+      "canonical_slug": "vates-collards"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-lacinato-kale",
+      "action": "create",
+      "canonical_slug": "lacinato"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-red-russian-kale",
+      "action": "create",
+      "canonical_slug": "red-russian-kale"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-kolibri-kohlrabi",
+      "action": "create",
+      "canonical_slug": "kolibri-kohlrabi"
+    },
+    {
+      "candidate_id": "mid-atlantic-2026-quickstar-kohlrabi",
+      "action": "create",
+      "canonical_slug": "quickstar-kohlrabi"
     }
   ]
 }

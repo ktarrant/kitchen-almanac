@@ -26,7 +26,7 @@ def test_full_manual_crosswalk_covers_every_commodity_section() -> None:
         == []
     )
     assert len(crosswalk["sections"]) == 31
-    assert sum(len(section["crops"]) for section in crosswalk["sections"]) == 46
+    assert sum(len(section["crops"]) for section in crosswalk["sections"]) == 47
     assert crosswalk["sections"][0]["manual_start_page"] == 161
     assert crosswalk["sections"][-1]["manual_start_page"] == 476
 
@@ -37,22 +37,24 @@ def test_taxonomy_report_exposes_mapping_and_minimum_evidence_gaps() -> None:
     assert report["summary"]["mapping_status_counts"] == {
         "broader_catalog_identity": 9,
         "exact": 26,
-        "missing_catalog_identity": 11,
+        "missing_catalog_identity": 12,
     }
-    assert report["summary"]["retained_section_pdf_count"] == 5
-    assert report["summary"]["catalog_cultivar_count"] == 30
-    assert report["summary"]["searchable_cultivar_count"] == 22
+    assert report["summary"]["retained_section_pdf_count"] == 6
+    assert report["summary"]["catalog_cultivar_count"] == 46
+    assert report["summary"]["searchable_cultivar_count"] == 38
     assert report["summary"]["minimum_useful_crop_count"] == 0
 
     crops = {crop["rutgers_crop_id"]: crop for crop in report["crops"]}
     assert crops["tomatoes"]["minimum_useful_coverage"]["soil"]["status"] == "partial"
     assert crops["tomatoes"]["minimum_useful_coverage"]["containers"]["status"] == ("absent")
     assert crops["beets"]["searchable_cultivar_count"] == 9
+    assert crops["broccoli"]["searchable_cultivar_count"] == 3
+    assert crops["chinese-cabbage"]["mapping_status"] == "missing_catalog_identity"
     assert crops["hot-peppers"]["mapping_status"] == "broader_catalog_identity"
     assert crops["watermelons"]["mapping_status"] == "missing_catalog_identity"
 
     queue = {item["section_key"]: item["readiness"] for item in report["expansion_queue"]}
-    assert queue["mid-atlantic-cole-crops-2026-2027"] == "ready_for_evidence_cohort"
+    assert queue["mid-atlantic-cole-crops-2026-2027"] == "retained"
     assert queue["mid-atlantic-peppers-2026-2027"] == "taxonomy_work_required"
 
 
