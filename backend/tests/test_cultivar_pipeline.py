@@ -58,7 +58,7 @@ def test_expanded_snapshot_is_deterministic_and_covers_twelve_crops(tmp_path) ->
         "cucumbers": 5,
         "kale": 2,
         "kohlrabi": 2,
-        "string-beans": 4,
+        "snap-beans": 4,
         "summer-squash": 4,
         "tomatoes": 8,
     }
@@ -67,7 +67,7 @@ def test_expanded_snapshot_is_deterministic_and_covers_twelve_crops(tmp_path) ->
     }
     assert baseline_counts == {
         "cucumbers": 7,
-        "string-beans": 6,
+        "snap-beans": 6,
         "summer-squash": 7,
         "tomatoes": 10,
     }

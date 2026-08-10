@@ -7,6 +7,7 @@ import pytest
 from kitchen_almanac.catalog import (
     DEFAULT_OUTPUT,
     DEFAULT_SOURCE,
+    DEFAULT_TAXONOMY_SOURCE,
     CatalogError,
     build_catalog,
     validate_catalog,
@@ -21,15 +22,15 @@ def crop_named(catalog: dict, name: str) -> dict:
 def test_reference_build_has_expected_shape() -> None:
     catalog = build_catalog(DEFAULT_SOURCE)
 
-    assert len(catalog["crops"]) == 37
-    assert sum(len(crop["appearances"]) for crop in catalog["crops"]) == 41
+    assert len(catalog["crops"]) == 47
+    assert sum(len(crop["appearances"]) for crop in catalog["crops"]) == 40
     assert len(catalog["corrections"]) == 10
-    assert validate_catalog(catalog, DEFAULT_SOURCE) == []
+    assert validate_catalog(catalog, DEFAULT_SOURCE, DEFAULT_TAXONOMY_SOURCE) == []
 
 
 def test_source_corrections_are_explicit_and_original_labels_survive() -> None:
     catalog = build_catalog(DEFAULT_SOURCE)
-    rutabaga = crop_named(catalog, "Rutabaga")
+    rutabaga = crop_named(catalog, "Rutabagas")
 
     assert rutabaga["source_names"] == ["Rutabage"]
     assert rutabaga["appearances"][0]["source_name"] == "Rutabage"
@@ -45,8 +46,8 @@ def test_categories_capture_nonstandard_planning_systems() -> None:
     catalog = build_catalog(DEFAULT_SOURCE)
 
     assert crop_named(catalog, "Asparagus")["planning_category"] == "perennial"
-    assert crop_named(catalog, "Onion Family")["planning_category"] == "crop_group"
-    assert crop_named(catalog, "Mushrooms")["planning_category"] == "specialty_system"
+    assert crop_named(catalog, "Strawberries")["planning_category"] == "perennial"
+    assert crop_named(catalog, "Specialty Melons")["planning_category"] == "crop_group"
     assert crop_named(catalog, "Tomatoes")["planning_category"] == "annual_crop"
 
 
@@ -55,7 +56,18 @@ def test_catalog_contains_reviewed_wishlist_aliases() -> None:
 
     assert "tomato" in crop_named(catalog, "Tomatoes")["aliases"]
     assert "zucchini" in crop_named(catalog, "Summer Squash")["aliases"]
-    assert "green beans" in crop_named(catalog, "String Beans")["aliases"]
+    assert "green beans" in crop_named(catalog, "Snap Beans")["aliases"]
+
+
+def test_catalog_identities_match_reviewed_rutgers_taxonomy() -> None:
+    catalog = build_catalog(DEFAULT_SOURCE)
+
+    assert crop_named(catalog, "Chinese Cabbage")["id"] == "chinese-cabbage"
+    assert crop_named(catalog, "Hot Peppers and Chiles")["id"] == "hot-peppers"
+    assert crop_named(catalog, "Watermelons")["id"] == "watermelons"
+    assert all(
+        crop["taxonomy"]["rutgers_crop_id"] == crop["id"] for crop in catalog["crops"]
+    )
 
 
 def test_seasonal_variants_merge_without_losing_appearances() -> None:
@@ -86,7 +98,7 @@ def test_validator_rejects_silent_label_change() -> None:
 
     errors = validate_catalog(tampered)
 
-    assert any("without a correction record" in error for error in errors)
+    assert any("Dataset ID" in error for error in errors)
 
 
 def test_parser_rejects_unknown_headings(tmp_path) -> None:

@@ -35,8 +35,11 @@ def load_catalog(session: Session, catalog: dict[str, Any]) -> bool:
             id=source_data["id"],
             title=source_data["title"],
             source_path=source_data["path"],
+            source_url=source_data.get("source_url"),
+            publisher=source_data.get("publisher"),
             sha256=source_data["sha256"],
             media_type=source_data["media_type"],
+            source_scope=source_data.get("source_scope"),
         )
         session.add(source)
 

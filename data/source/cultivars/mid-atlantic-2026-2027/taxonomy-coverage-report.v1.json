@@ -96,14 +96,14 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "asparagus",
       "rutgers_crop_name": "Asparagus",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "string-beans",
-      "catalog_crop_name": "String Beans",
+      "catalog_crop_id": "snap-beans",
+      "catalog_crop_name": "Snap Beans",
       "commercial_vendors": [
         "Reimer Seeds"
       ],
@@ -153,7 +153,7 @@
         "identity": {
           "missing": [],
           "present": [
-            "string-beans"
+            "snap-beans"
           ],
           "status": "supported"
         },
@@ -216,19 +216,19 @@
         "starting_method",
         "water_management_guidance"
       ],
-      "review_note": "Rutgers snap beans correspond to the catalog's String Beans identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "snap-beans",
       "rutgers_crop_name": "Snap Beans",
       "searchable_cultivar_count": 3
     },
     {
-      "catalog_crop_id": "shell-beans",
-      "catalog_crop_name": "Shell Beans",
+      "catalog_crop_id": "lima-beans",
+      "catalog_crop_name": "Lima Beans",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-beans-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -261,13 +261,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "lima-beans"
           ],
-          "present": [
-            "shell-beans"
-          ],
-          "status": "partial"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -318,7 +316,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Shell Beans is too broad to establish a canonical lima-bean identity without a split.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "lima-beans",
       "rutgers_crop_name": "Lima Beans",
       "searchable_cultivar_count": 0
@@ -438,7 +436,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "beets",
       "rutgers_crop_name": "Beets",
       "searchable_cultivar_count": 9
@@ -538,7 +536,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "carrots",
       "rutgers_crop_name": "Carrots",
       "searchable_cultivar_count": 0
@@ -638,7 +636,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match; celeriac remains a separate catalog crop.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "celery",
       "rutgers_crop_name": "Celery",
       "searchable_cultivar_count": 0
@@ -746,7 +744,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "broccoli",
       "rutgers_crop_name": "Broccoli",
       "searchable_cultivar_count": 3
@@ -854,7 +852,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "brussels-sprouts",
       "rutgers_crop_name": "Brussels Sprouts",
       "searchable_cultivar_count": 3
@@ -960,19 +958,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "cabbage",
       "rutgers_crop_name": "Cabbage",
       "searchable_cultivar_count": 2
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "chinese-cabbage",
+      "catalog_crop_name": "Chinese Cabbage",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-cole-crops-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -1005,11 +1003,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "chinese-cabbage"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -1060,7 +1058,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The cultivar table includes Napa and pak choi types, which must not be attached to the current head-cabbage identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "chinese-cabbage",
       "rutgers_crop_name": "Chinese Cabbage",
       "searchable_cultivar_count": 0
@@ -1166,7 +1164,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "cauliflower",
       "rutgers_crop_name": "Cauliflower",
       "searchable_cultivar_count": 2
@@ -1272,7 +1270,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "collards",
       "rutgers_crop_name": "Collards",
       "searchable_cultivar_count": 2
@@ -1378,7 +1376,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "kale",
       "rutgers_crop_name": "Kale",
       "searchable_cultivar_count": 2
@@ -1484,7 +1482,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "kohlrabi",
       "rutgers_crop_name": "Kohlrabi",
       "searchable_cultivar_count": 2
@@ -1606,19 +1604,19 @@
         "starting_method",
         "water_management_guidance"
       ],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "cucumbers",
       "rutgers_crop_name": "Cucumbers",
       "searchable_cultivar_count": 3
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "edamame",
+      "catalog_crop_name": "Edamame",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-edamame-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -1651,11 +1649,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "edamame"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -1706,7 +1704,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no vegetable-soybean identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "edamame",
       "rutgers_crop_name": "Edamame",
       "searchable_cultivar_count": 0
@@ -1806,19 +1804,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "eggplant",
       "rutgers_crop_name": "Eggplant",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "onion-family",
-      "catalog_crop_name": "Onion Family",
+      "catalog_crop_id": "garlic",
+      "catalog_crop_name": "Garlic",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-garlic-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -1851,13 +1849,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "garlic"
           ],
-          "present": [
-            "onion-family"
-          ],
-          "status": "partial"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -1908,116 +1904,14 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Onion Family is a crop group and must be split before garlic cultivars attach to it.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "garlic",
       "rutgers_crop_name": "Garlic",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "lettuces-and-early-greens",
-      "catalog_crop_name": "Lettuces and Early Greens",
-      "commercial_vendors": [],
-      "commodity_source": "mid-atlantic-greens-mustard-turnip-2026-2027",
-      "cultivar_count": 0,
-      "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
-      "minimum_useful": false,
-      "minimum_useful_coverage": {
-        "commercial_availability": {
-          "missing": [
-            "approved_nonretired_listing"
-          ],
-          "present": [],
-          "status": "absent"
-        },
-        "containers": {
-          "missing": [
-            "container_suitability",
-            "minimum_container_volume"
-          ],
-          "present": [],
-          "status": "absent"
-        },
-        "cultivars": {
-          "missing": [
-            "reviewed_cultivar_records"
-          ],
-          "present": [],
-          "status": "absent"
-        },
-        "harvest": {
-          "missing": [
-            "harvest_guidance"
-          ],
-          "present": [],
-          "status": "absent"
-        },
-        "identity": {
-          "missing": [
-            "mustard-greens"
-          ],
-          "present": [
-            "lettuces-and-early-greens"
-          ],
-          "status": "partial"
-        },
-        "planting": {
-          "missing": [
-            "relative_planting_rule",
-            "starting_method"
-          ],
-          "present": [],
-          "status": "absent"
-        },
-        "rutgers_source": {
-          "missing": [],
-          "present": [
-            "mid-atlantic-greens-mustard-turnip-2026-2027"
-          ],
-          "status": "supported"
-        },
-        "soil": {
-          "missing": [
-            "soil_condition_guidance",
-            "soil_ph"
-          ],
-          "present": [],
-          "status": "absent"
-        },
-        "spacing": {
-          "missing": [
-            "plant_spacing"
-          ],
-          "present": [],
-          "status": "absent"
-        },
-        "threats": {
-          "missing": [
-            "disease_threats",
-            "insect_threats"
-          ],
-          "present": [],
-          "status": "absent"
-        },
-        "water": {
-          "missing": [
-            "critical_watering_stages",
-            "water_amount",
-            "water_management_guidance"
-          ],
-          "present": [],
-          "status": "absent"
-        }
-      },
-      "published_crop_trait_fields": [],
-      "review_note": "The current greens group is too broad for cultivar identity.",
-      "rutgers_crop_id": "mustard-greens",
-      "rutgers_crop_name": "Mustard Greens",
-      "searchable_cultivar_count": 0
-    },
-    {
-      "catalog_crop_id": "turnips",
-      "catalog_crop_name": "Turnips",
+      "catalog_crop_id": "mustard-greens",
+      "catalog_crop_name": "Mustard Greens",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-greens-mustard-turnip-2026-2027",
       "cultivar_count": 0,
@@ -2057,7 +1951,7 @@
         "identity": {
           "missing": [],
           "present": [
-            "turnips"
+            "mustard-greens"
           ],
           "status": "supported"
         },
@@ -2110,19 +2004,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The Turnips identity can retain root and greens use as crop types.",
-      "rutgers_crop_id": "turnip-greens",
-      "rutgers_crop_name": "Turnip Greens",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
+      "rutgers_crop_id": "mustard-greens",
+      "rutgers_crop_name": "Mustard Greens",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "turnip-greens",
+      "catalog_crop_name": "Turnip Greens",
       "commercial_vendors": [],
-      "commodity_source": "mid-atlantic-horseradish-2026-2027",
+      "commodity_source": "mid-atlantic-greens-mustard-turnip-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -2155,11 +2049,111 @@
           "status": "absent"
         },
         "identity": {
+          "missing": [],
+          "present": [
+            "turnip-greens"
+          ],
+          "status": "supported"
+        },
+        "planting": {
           "missing": [
-            "horseradish"
+            "relative_planting_rule",
+            "starting_method"
           ],
           "present": [],
           "status": "absent"
+        },
+        "rutgers_source": {
+          "missing": [],
+          "present": [
+            "mid-atlantic-greens-mustard-turnip-2026-2027"
+          ],
+          "status": "supported"
+        },
+        "soil": {
+          "missing": [
+            "soil_condition_guidance",
+            "soil_ph"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "spacing": {
+          "missing": [
+            "plant_spacing"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "threats": {
+          "missing": [
+            "disease_threats",
+            "insect_threats"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "water": {
+          "missing": [
+            "critical_watering_stages",
+            "water_amount",
+            "water_management_guidance"
+          ],
+          "present": [],
+          "status": "absent"
+        }
+      },
+      "published_crop_trait_fields": [],
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
+      "rutgers_crop_id": "turnip-greens",
+      "rutgers_crop_name": "Turnip Greens",
+      "searchable_cultivar_count": 0
+    },
+    {
+      "catalog_crop_id": "horseradish",
+      "catalog_crop_name": "Horseradish",
+      "commercial_vendors": [],
+      "commodity_source": "mid-atlantic-horseradish-2026-2027",
+      "cultivar_count": 0,
+      "evidence_publishers": [],
+      "mapping_status": "exact",
+      "minimum_useful": false,
+      "minimum_useful_coverage": {
+        "commercial_availability": {
+          "missing": [
+            "approved_nonretired_listing"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "containers": {
+          "missing": [
+            "container_suitability",
+            "minimum_container_volume"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "cultivars": {
+          "missing": [
+            "reviewed_cultivar_records"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "harvest": {
+          "missing": [
+            "harvest_guidance"
+          ],
+          "present": [],
+          "status": "absent"
+        },
+        "identity": {
+          "missing": [],
+          "present": [
+            "horseradish"
+          ],
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -2210,19 +2204,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no horseradish identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "horseradish",
       "rutgers_crop_name": "Horseradish",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "onion-family",
-      "catalog_crop_name": "Onion Family",
+      "catalog_crop_id": "leeks",
+      "catalog_crop_name": "Leeks",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-leeks-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -2255,13 +2249,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "leeks"
           ],
-          "present": [
-            "onion-family"
-          ],
-          "status": "partial"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -2312,19 +2304,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Onion Family is a crop group and must be split before leek cultivars attach to it.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "leeks",
       "rutgers_crop_name": "Leeks",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "lettuces-and-early-greens",
-      "catalog_crop_name": "Lettuces and Early Greens",
+      "catalog_crop_id": "lettuce",
+      "catalog_crop_name": "Lettuce",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-lettuce-endive-escarole-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -2357,13 +2349,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "lettuce"
           ],
-          "present": [
-            "lettuces-and-early-greens"
-          ],
-          "status": "partial"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -2414,19 +2404,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current greens group must be split into a canonical lettuce identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "lettuce",
       "rutgers_crop_name": "Lettuce",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "lettuces-and-early-greens",
-      "catalog_crop_name": "Lettuces and Early Greens",
+      "catalog_crop_id": "endive",
+      "catalog_crop_name": "Endive",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-lettuce-endive-escarole-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -2459,13 +2449,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "endive"
           ],
-          "present": [
-            "lettuces-and-early-greens"
-          ],
-          "status": "partial"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -2516,19 +2504,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current greens group must be split into a canonical endive identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "endive",
       "rutgers_crop_name": "Endive",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "lettuces-and-early-greens",
-      "catalog_crop_name": "Lettuces and Early Greens",
+      "catalog_crop_id": "escarole",
+      "catalog_crop_name": "Escarole",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-lettuce-endive-escarole-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -2561,13 +2549,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "escarole"
           ],
-          "present": [
-            "lettuces-and-early-greens"
-          ],
-          "status": "partial"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -2618,19 +2604,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current greens group must be split into a canonical escarole identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "escarole",
       "rutgers_crop_name": "Escarole",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "muskmelons",
+      "catalog_crop_name": "Muskmelons",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-muskmelons-mixed-melons-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -2663,11 +2649,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "muskmelons"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -2718,19 +2704,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no muskmelon identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "muskmelons",
       "rutgers_crop_name": "Muskmelons",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "specialty-melons",
+      "catalog_crop_name": "Specialty Melons",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-muskmelons-mixed-melons-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -2763,11 +2749,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "specialty-melons"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -2818,19 +2804,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Canary, Galia, honeydew, and other mixed melons need an explicit taxonomy decision.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "specialty-melons",
       "rutgers_crop_name": "Specialty Melons",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "okra",
+      "catalog_crop_name": "Okra",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-okra-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -2863,11 +2849,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "okra"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -2918,7 +2904,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no okra identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "okra",
       "rutgers_crop_name": "Okra",
       "searchable_cultivar_count": 0
@@ -3018,19 +3004,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "onions",
       "rutgers_crop_name": "Onions",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "parsley",
+      "catalog_crop_name": "Parsley",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-parsley-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -3063,11 +3049,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "parsley"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -3118,7 +3104,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no parsley identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "parsley",
       "rutgers_crop_name": "Parsley",
       "searchable_cultivar_count": 0
@@ -3218,14 +3204,14 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "parsnips",
       "rutgers_crop_name": "Parsnips",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "english-peas",
-      "catalog_crop_name": "English Peas",
+      "catalog_crop_id": "succulent-peas",
+      "catalog_crop_name": "Succulent Peas",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-peas-2026-2027",
       "cultivar_count": 0,
@@ -3265,7 +3251,7 @@
         "identity": {
           "missing": [],
           "present": [
-            "english-peas"
+            "succulent-peas"
           ],
           "status": "supported"
         },
@@ -3318,19 +3304,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The Rutgers processing-pea table corresponds to shelled English or garden peas, not edible-pod peas.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "succulent-peas",
       "rutgers_crop_name": "Succulent Peas",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "sweet-peppers-and-chiles",
-      "catalog_crop_name": "Sweet Peppers and Chiles",
+      "catalog_crop_id": "sweet-peppers",
+      "catalog_crop_name": "Sweet Peppers",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-peppers-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -3363,13 +3349,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "sweet-peppers"
           ],
-          "present": [
-            "sweet-peppers-and-chiles"
-          ],
-          "status": "partial"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -3420,19 +3404,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current crop group combines sweet and hot pepper identities.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "sweet-peppers",
       "rutgers_crop_name": "Sweet Peppers",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "sweet-peppers-and-chiles",
-      "catalog_crop_name": "Sweet Peppers and Chiles",
+      "catalog_crop_id": "hot-peppers",
+      "catalog_crop_name": "Hot Peppers and Chiles",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-peppers-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "broader_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -3465,13 +3449,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "hot-peppers"
           ],
-          "present": [
-            "sweet-peppers-and-chiles"
-          ],
-          "status": "partial"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -3522,7 +3504,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current crop group combines sweet and hot pepper identities.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "hot-peppers",
       "rutgers_crop_name": "Hot Peppers and Chiles",
       "searchable_cultivar_count": 0
@@ -3622,19 +3604,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "potatoes",
       "rutgers_crop_name": "Potatoes",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "pumpkins",
+      "catalog_crop_name": "Pumpkins",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-pumpkins-winter-squash-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -3667,11 +3649,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "pumpkins"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -3722,7 +3704,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no distinct pumpkin identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "pumpkins",
       "rutgers_crop_name": "Pumpkins",
       "searchable_cultivar_count": 0
@@ -3822,7 +3804,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "winter-squash",
       "rutgers_crop_name": "Winter Squash",
       "searchable_cultivar_count": 0
@@ -3922,14 +3904,14 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "radishes",
       "rutgers_crop_name": "Radishes",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": "rutabaga",
-      "catalog_crop_name": "Rutabaga",
+      "catalog_crop_id": "rutabagas",
+      "catalog_crop_name": "Rutabagas",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-radishes-rutabagas-turnips-2026-2027",
       "cultivar_count": 0,
@@ -3969,7 +3951,7 @@
         "identity": {
           "missing": [],
           "present": [
-            "rutabaga"
+            "rutabagas"
           ],
           "status": "supported"
         },
@@ -4022,7 +4004,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match with singular catalog slug.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "rutabagas",
       "rutgers_crop_name": "Rutabagas",
       "searchable_cultivar_count": 0
@@ -4122,19 +4104,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "turnips",
       "rutgers_crop_name": "Turnips",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "spinach",
+      "catalog_crop_name": "Spinach",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-spinach-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -4167,11 +4149,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "spinach"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -4222,19 +4204,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no spinach identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "spinach",
       "rutgers_crop_name": "Spinach",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "strawberries",
+      "catalog_crop_name": "Strawberries",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-strawberries-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -4267,11 +4249,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "strawberries"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -4322,7 +4304,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no strawberry identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "strawberries",
       "rutgers_crop_name": "Strawberries",
       "searchable_cultivar_count": 0
@@ -4441,14 +4423,14 @@
         "starting_method",
         "water_management_guidance"
       ],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "summer-squash",
       "rutgers_crop_name": "Summer Squash",
       "searchable_cultivar_count": 1
     },
     {
-      "catalog_crop_id": "corn",
-      "catalog_crop_name": "Corn",
+      "catalog_crop_id": "sweet-corn",
+      "catalog_crop_name": "Sweet Corn",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-sweet-corn-2026-2027",
       "cultivar_count": 0,
@@ -4488,7 +4470,7 @@
         "identity": {
           "missing": [],
           "present": [
-            "corn"
+            "sweet-corn"
           ],
           "status": "supported"
         },
@@ -4541,19 +4523,19 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The catalog distinguishes fresh Corn from Dried Corn and Polenta.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "sweet-corn",
       "rutgers_crop_name": "Sweet Corn",
       "searchable_cultivar_count": 0
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "sweet-potatoes",
+      "catalog_crop_name": "Sweet Potatoes",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-sweet-potatoes-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -4586,11 +4568,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "sweet-potatoes"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -4641,7 +4623,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no sweet-potato identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "sweet-potatoes",
       "rutgers_crop_name": "Sweet Potatoes",
       "searchable_cultivar_count": 0
@@ -4775,19 +4757,19 @@
         "sun_hours",
         "water_management_guidance"
       ],
-      "review_note": "Direct canonical crop match.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "tomatoes",
       "rutgers_crop_name": "Tomatoes",
       "searchable_cultivar_count": 6
     },
     {
-      "catalog_crop_id": null,
-      "catalog_crop_name": null,
+      "catalog_crop_id": "watermelons",
+      "catalog_crop_name": "Watermelons",
       "commercial_vendors": [],
       "commodity_source": "mid-atlantic-watermelons-2026-2027",
       "cultivar_count": 0,
       "evidence_publishers": [],
-      "mapping_status": "missing_catalog_identity",
+      "mapping_status": "exact",
       "minimum_useful": false,
       "minimum_useful_coverage": {
         "commercial_availability": {
@@ -4820,11 +4802,11 @@
           "status": "absent"
         },
         "identity": {
-          "missing": [
+          "missing": [],
+          "present": [
             "watermelons"
           ],
-          "present": [],
-          "status": "absent"
+          "status": "supported"
         },
         "planting": {
           "missing": [
@@ -4875,7 +4857,7 @@
         }
       },
       "published_crop_trait_fields": [],
-      "review_note": "The current catalog has no watermelon identity.",
+      "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy.",
       "rutgers_crop_id": "watermelons",
       "rutgers_crop_name": "Watermelons",
       "searchable_cultivar_count": 0
@@ -4958,7 +4940,7 @@
         "edamame"
       ],
       "position": 8,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-edamame-2026-2027",
       "title": "Edamame"
     },
@@ -4976,7 +4958,7 @@
         "garlic"
       ],
       "position": 10,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-garlic-2026-2027",
       "title": "Garlic"
     },
@@ -4986,7 +4968,7 @@
         "turnip-greens"
       ],
       "position": 11,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-greens-mustard-turnip-2026-2027",
       "title": "Greens (Mustard, Turnip)"
     },
@@ -4995,7 +4977,7 @@
         "horseradish"
       ],
       "position": 12,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-horseradish-2026-2027",
       "title": "Horseradish"
     },
@@ -5004,7 +4986,7 @@
         "leeks"
       ],
       "position": 13,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-leeks-2026-2027",
       "title": "Leeks"
     },
@@ -5015,7 +4997,7 @@
         "escarole"
       ],
       "position": 14,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-lettuce-endive-escarole-2026-2027",
       "title": "Lettuce, Endive and Escarole"
     },
@@ -5025,7 +5007,7 @@
         "specialty-melons"
       ],
       "position": 15,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-muskmelons-mixed-melons-2026-2027",
       "title": "Muskmelons and Mixed Melons"
     },
@@ -5034,7 +5016,7 @@
         "okra"
       ],
       "position": 16,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-okra-2026-2027",
       "title": "Okra"
     },
@@ -5052,7 +5034,7 @@
         "parsley"
       ],
       "position": 18,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-parsley-2026-2027",
       "title": "Parsley"
     },
@@ -5080,7 +5062,7 @@
         "hot-peppers"
       ],
       "position": 21,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-peppers-2026-2027",
       "title": "Peppers"
     },
@@ -5099,7 +5081,7 @@
         "winter-squash"
       ],
       "position": 23,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-pumpkins-winter-squash-2026-2027",
       "title": "Pumpkins and Winter Squash"
     },
@@ -5119,7 +5101,7 @@
         "spinach"
       ],
       "position": 25,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-spinach-2026-2027",
       "title": "Spinach"
     },
@@ -5128,7 +5110,7 @@
         "strawberries"
       ],
       "position": 26,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-strawberries-2026-2027",
       "title": "Strawberries"
     },
@@ -5155,7 +5137,7 @@
         "sweet-potatoes"
       ],
       "position": 29,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-sweet-potatoes-2026-2027",
       "title": "Sweet Potatoes"
     },
@@ -5173,7 +5155,7 @@
         "watermelons"
       ],
       "position": 31,
-      "readiness": "taxonomy_work_required",
+      "readiness": "ready_for_evidence_cohort",
       "section_key": "mid-atlantic-watermelons-2026-2027",
       "title": "Watermelons"
     }
@@ -11990,13 +11972,11 @@
     }
   ],
   "summary": {
-    "catalog_crop_count": 37,
+    "catalog_crop_count": 47,
     "catalog_cultivar_count": 46,
     "commodity_section_count": 31,
     "mapping_status_counts": {
-      "broader_catalog_identity": 9,
-      "exact": 26,
-      "missing_catalog_identity": 12
+      "exact": 47
     },
     "minimum_field_status_counts": {
       "commercial_availability": {
@@ -12015,9 +11995,7 @@
         "supported": 4
       },
       "identity": {
-        "absent": 12,
-        "partial": 9,
-        "supported": 26
+        "supported": 47
       },
       "planting": {
         "absent": 43,
@@ -12047,14 +12025,5 @@
     "rutgers_crop_concept_count": 47,
     "searchable_cultivar_count": 38
   },
-  "unrepresented_catalog_crop_ids": [
-    "artichokes",
-    "celery-root",
-    "dried-corn-and-polenta",
-    "fava-beans",
-    "fennel",
-    "mushrooms",
-    "sugar-snap-peas",
-    "swiss-chard"
-  ]
+  "unrepresented_catalog_crop_ids": []
 }

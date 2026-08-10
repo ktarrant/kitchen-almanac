@@ -857,7 +857,7 @@
         "mid-atlantic-soil-nutrient-2026-2027",
         "mid-atlantic-irrigation-2026-2027"
       ],
-      "crop_id": "string-beans",
+      "crop_id": "snap-beans",
       "detected_fields": [
         {
           "field": "cultivar_recommendations",
@@ -1952,7 +1952,7 @@
         }
       ],
       "crop_ids": [
-        "string-beans"
+        "snap-beans"
       ],
       "extracted_text_sha256": "683e1fcd34862da9aebc10f4940d4ed00a435b5b762711bc61dcf27f6a902669",
       "key": "mid-atlantic-beans-2026-2027",

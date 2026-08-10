@@ -21,6 +21,7 @@ from kitchen_almanac import (
 from kitchen_almanac.catalog import (
     DEFAULT_OUTPUT,
     DEFAULT_SOURCE,
+    DEFAULT_TAXONOMY_SOURCE,
     CatalogError,
     build_catalog,
     read_catalog,
@@ -64,11 +65,14 @@ def catalog_build(
         Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
     ] = DEFAULT_SOURCE,
     output: Annotated[Path, typer.Option(file_okay=True, dir_okay=False)] = DEFAULT_OUTPUT,
+    taxonomy: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = DEFAULT_TAXONOMY_SOURCE,
 ) -> None:
-    """Build a deterministic catalog from the seasonal Markdown reference."""
+    """Build a Rutgers-aligned catalog with retained legacy season metadata."""
 
     try:
-        catalog = build_catalog(source)
+        catalog = build_catalog(source, taxonomy)
         write_catalog(catalog, output)
     except CatalogError as error:
         typer.echo(f"Catalog build failed: {error}", err=True)
@@ -85,12 +89,15 @@ def catalog_validate(
     source: Annotated[
         Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
     ] = DEFAULT_SOURCE,
+    taxonomy: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = DEFAULT_TAXONOMY_SOURCE,
 ) -> None:
     """Validate catalog structure, provenance, and current source digest."""
 
     try:
         catalog = read_catalog(catalog_path)
-        errors = validate_catalog(catalog, source)
+        errors = validate_catalog(catalog, source, taxonomy)
     except CatalogError as error:
         typer.echo(f"Catalog validation failed: {error}", err=True)
         raise typer.Exit(code=1) from error
@@ -109,12 +116,15 @@ def catalog_load(
     source: Annotated[
         Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
     ] = DEFAULT_SOURCE,
+    taxonomy: Annotated[
+        Path, typer.Option(exists=True, file_okay=True, dir_okay=False)
+    ] = DEFAULT_TAXONOMY_SOURCE,
     database_url: Annotated[str | None, typer.Option(envvar="KITCHEN_ALMANAC_DATABASE_URL")] = None,
 ) -> None:
     """Load a validated catalog into an already-migrated database."""
 
     catalog = read_catalog(catalog_path)
-    errors = validate_catalog(catalog, source)
+    errors = validate_catalog(catalog, source, taxonomy)
     if errors:
         for error in errors:
             typer.echo(f"- {error}", err=True)
@@ -464,8 +474,8 @@ def rutgers_build_taxonomy_coverage(
     )
     typer.echo(
         f"Exact: {summary['mapping_status_counts']['exact']}; "
-        f"needs split: {summary['mapping_status_counts']['broader_catalog_identity']}; "
-        f"missing: {summary['mapping_status_counts']['missing_catalog_identity']}."
+        f"needs split: {summary['mapping_status_counts'].get('broader_catalog_identity', 0)}; "
+        f"missing: {summary['mapping_status_counts'].get('missing_catalog_identity', 0)}."
     )
     typer.echo(f"Wrote taxonomy coverage report to {output}")
 

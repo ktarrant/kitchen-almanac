@@ -198,22 +198,21 @@ crop section. Commercial listings are a separate, observation-dated source: 38 c
 identity-reviewed Reimer listing and are eligible for user-facing search,
 including temporarily out-of-stock listings. Retired listings and cultivars
 without a reviewed listing remain hidden from search. The next catalog cohorts
-should repeat this intersection for additional Rutgers commodity tables and
-split broad lettuce/greens and pepper/chile crop groups into concrete crop
-identities before attaching cultivars. Additional home-garden and trial
+should repeat this intersection for additional Rutgers commodity tables using
+the now-canonical Rutgers crop identities. Additional home-garden and trial
 evidence should supplement regional commercial recommendations before
 suitability scoring treats them as directly equivalent.
 
 The complete 512-page Rutgers manual is now the reproducible corpus anchor. A
-reviewed taxonomy crosswalk covers all 31 commodity sections and separates them
-into 47 crop concepts: 26 map exactly to the current catalog, 9 expose catalog
-groups that must be split, and 12 require new canonical crop identities. A
+reviewed taxonomy crosswalk covers all 31 commodity sections and publishes all
+47 extracted crop concepts as canonical identities. The former 9 broad catalog
+groups and 12 missing identities have been resolved. A
 deterministic minimum-useful coverage matrix measures identity, cultivar,
 commercial listing, soil, water, spacing, container, planting, harvest, and
 threat coverage before each new crop cohort is published. The cole-crop chapter
 now validates this model with 16 reviewed cultivar identities across seven crop
-types. Its embedded Chinese cabbage and pak choi table is tracked as a separate
-taxonomy gap rather than being attached to head cabbage.
+types. Its embedded Chinese cabbage and pak choi table now maps to the separate
+Chinese Cabbage identity rather than being attached to head cabbage.
 
 - Add canonical cultivars beneath each crop and keep cultivar identity separate
   from commercial seed listings.

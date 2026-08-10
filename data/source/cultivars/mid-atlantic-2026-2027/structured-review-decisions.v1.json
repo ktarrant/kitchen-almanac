@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "staging_sha256": "14f1f8ae1573b8cf06414f197075921895ec814e43841da9fe4d1f0ca8f78a9e",
+  "staging_sha256": "13757f86934a6f16e2735247bf2a5568841acf20ee8afee03429fbafbf63deed",
   "reviewed_at": "2026-08-09T00:00:00Z",
   "reviewer": "Kitchen Almanac data review",
   "decisions": [
@@ -70,7 +70,7 @@
       "rationale": "Repeated picking at the desired pod size transfers directly to home gardens."
     },
     {
-      "candidate_id": "rutgers-2026-string-beans-lime-below-ph",
+      "candidate_id": "rutgers-2026-snap-beans-lime-below-ph",
       "action": "approve_create",
       "rationale": "The crop-specific table provides a clear soil-testing threshold."
     },
@@ -80,7 +80,7 @@
       "rationale": "Broad regional calendar dates require a location and climate adapter before publication."
     },
     {
-      "candidate_id": "rutgers-2026-string-beans-soil-ph",
+      "candidate_id": "rutgers-2026-snap-beans-soil-ph",
       "action": "approve_create",
       "rationale": "The crop-specific target pH is suitable for soil guidance."
     },

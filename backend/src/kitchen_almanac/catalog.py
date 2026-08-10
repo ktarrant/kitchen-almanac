@@ -7,11 +7,19 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-SCHEMA_VERSION = "1.1.0"
-PARSER_VERSION = "1.1.0"
+SCHEMA_VERSION = "2.0.0"
+PARSER_VERSION = "2.0.0"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_SOURCE = REPOSITORY_ROOT / "Six Seasons Reference.md"
-DEFAULT_OUTPUT = REPOSITORY_ROOT / "data" / "seed" / "kitchen-almanac-catalog.v1.json"
+DEFAULT_TAXONOMY_SOURCE = (
+    REPOSITORY_ROOT
+    / "data"
+    / "source"
+    / "cultivars"
+    / "mid-atlantic-2026-2027"
+    / "commodity-crosswalk.v1.json"
+)
+DEFAULT_OUTPUT = REPOSITORY_ROOT / "data" / "seed" / "kitchen-almanac-catalog.v2.json"
 
 SEASON_ORDER = (
     "Spring",
@@ -69,14 +77,9 @@ CORRECTION_RULES: dict[str, CorrectionRule] = {
     ),
 }
 
-CROP_GROUPS = {
-    "Dried Corn and Polenta",
-    "Lettuces and Early Greens",
-    "Onion Family",
-    "Sweet Peppers and Chiles",
-}
-PERENNIAL_CROPS = {"Artichokes", "Asparagus"}
-SPECIALTY_SYSTEMS = {"Mushrooms"}
+CROP_GROUPS = {"Specialty Melons"}
+PERENNIAL_CROPS = {"Asparagus", "Horseradish", "Strawberries"}
+SPECIALTY_SYSTEMS: set[str] = set()
 
 # These aliases are curated application data, not inferred corrections to the
 # source document. Keeping them here makes wishlist resolution reviewable and
@@ -126,6 +129,114 @@ COMMON_ALIASES: dict[str, tuple[str, ...]] = {
     "Winter Squash": ("pumpkin", "pumpkins"),
 }
 
+# The Rutgers taxonomy is canonical. This crosswalk only carries forward
+# seasonal appearances from the original reference where a reviewed mapping
+# exists; it is not used to decide which crops are published.
+LEGACY_CROP_IDS: dict[str, str] = {
+    "asparagus": "asparagus",
+    "snap-beans": "string-beans",
+    "lima-beans": "shell-beans",
+    "beets": "beets",
+    "carrots": "carrots",
+    "celery": "celery",
+    "broccoli": "broccoli",
+    "brussels-sprouts": "brussels-sprouts",
+    "cabbage": "cabbage",
+    "cauliflower": "cauliflower",
+    "collards": "collards",
+    "kale": "kale",
+    "kohlrabi": "kohlrabi",
+    "cucumbers": "cucumbers",
+    "eggplant": "eggplant",
+    "garlic": "onion-family",
+    "mustard-greens": "lettuces-and-early-greens",
+    "turnip-greens": "turnips",
+    "leeks": "onion-family",
+    "lettuce": "lettuces-and-early-greens",
+    "endive": "lettuces-and-early-greens",
+    "escarole": "lettuces-and-early-greens",
+    "onions": "onions",
+    "parsnips": "parsnips",
+    "succulent-peas": "english-peas",
+    "sweet-peppers": "sweet-peppers-and-chiles",
+    "hot-peppers": "sweet-peppers-and-chiles",
+    "potatoes": "potatoes",
+    "winter-squash": "winter-squash",
+    "radishes": "radishes",
+    "rutabagas": "rutabaga",
+    "turnips": "turnips",
+    "summer-squash": "summer-squash",
+    "sweet-corn": "corn",
+    "tomatoes": "tomatoes",
+}
+
+# Only one-to-one mappings inherit the old identity's aliases. Split concepts
+# use explicit Rutgers-aligned aliases so broad labels do not create ambiguous
+# exact matches.
+LEGACY_ALIAS_INHERITANCE = {
+    "asparagus",
+    "beets",
+    "broccoli",
+    "brussels-sprouts",
+    "cabbage",
+    "carrots",
+    "cauliflower",
+    "celery",
+    "collards",
+    "cucumbers",
+    "eggplant",
+    "kale",
+    "kohlrabi",
+    "onions",
+    "parsnips",
+    "potatoes",
+    "radishes",
+    "rutabagas",
+    "snap-beans",
+    "succulent-peas",
+    "summer-squash",
+    "sweet-corn",
+    "tomatoes",
+    "turnips",
+    "winter-squash",
+}
+
+RUTGERS_ALIASES: dict[str, tuple[str, ...]] = {
+    "snap-beans": ("green bean", "green beans", "snap bean", "string bean", "string beans"),
+    "lima-beans": ("butter bean", "butter beans", "lima bean"),
+    "beets": ("beet",),
+    "carrots": ("carrot",),
+    "brussels-sprouts": ("brussel sprouts", "brussels sprout"),
+    "cabbage": ("cabbages",),
+    "chinese-cabbage": ("bok choy", "napa cabbage", "pak choi"),
+    "collards": ("collard", "collard greens"),
+    "cucumbers": ("cucumber",),
+    "edamame": ("edamame soybeans", "vegetable soybeans"),
+    "eggplant": ("aubergine", "aubergines"),
+    "mustard-greens": ("mustard green",),
+    "turnip-greens": ("turnip green",),
+    "leeks": ("leek",),
+    "lettuce": ("lettuces",),
+    "muskmelons": ("cantaloupe", "cantaloupes", "muskmelon"),
+    "specialty-melons": ("specialty melon",),
+    "onions": ("onion",),
+    "parsnips": ("parsnip",),
+    "succulent-peas": ("english pea", "english peas", "garden pea", "garden peas", "shelling peas"),
+    "sweet-peppers": ("bell pepper", "bell peppers", "sweet pepper"),
+    "hot-peppers": ("chile", "chiles", "chili", "chilies", "hot pepper"),
+    "potatoes": ("potato",),
+    "pumpkins": ("pumpkin",),
+    "radishes": ("radish",),
+    "rutabagas": ("rutabaga", "swede", "swedes"),
+    "turnips": ("turnip",),
+    "strawberries": ("strawberry",),
+    "summer-squash": ("courgette", "courgettes", "zucchini"),
+    "sweet-corn": ("corn",),
+    "sweet-potatoes": ("sweet potato",),
+    "tomatoes": ("tomato",),
+    "watermelons": ("watermelon",),
+}
+
 
 def _sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -136,6 +247,13 @@ def _slugify(value: str) -> str:
     if not slug:
         raise CatalogError(f"Cannot create a slug from {value!r}.")
     return slug
+
+
+def _sorted_aliases(values: list[str]) -> list[str]:
+    unique: dict[str, str] = {}
+    for value in values:
+        unique.setdefault(value.casefold(), value)
+    return sorted(unique.values(), key=str.casefold)
 
 
 def _planning_category(canonical_name: str) -> str:
@@ -197,10 +315,13 @@ def _canonical_bytes(payload: dict[str, Any]) -> bytes:
 
 
 def _dataset_id(payload_without_id: dict[str, Any]) -> str:
-    return f"kitchen-almanac-v1-{_sha256(_canonical_bytes(payload_without_id))[:16]}"
+    return f"kitchen-almanac-v2-{_sha256(_canonical_bytes(payload_without_id))[:16]}"
 
 
-def build_catalog(source_path: Path = DEFAULT_SOURCE) -> dict[str, Any]:
+def build_catalog(
+    source_path: Path = DEFAULT_SOURCE,
+    taxonomy_path: Path = DEFAULT_TAXONOMY_SOURCE,
+) -> dict[str, Any]:
     source_bytes = source_path.read_bytes()
     source_text = source_bytes.decode("utf-8")
     appearances = _parse_source(source_text)
@@ -238,17 +359,17 @@ def build_catalog(source_path: Path = DEFAULT_SOURCE) -> dict[str, Any]:
         crop["source_names"].add(source_name)
         crop["appearances"].append(appearance)
 
-    crops = []
+    legacy_crops = []
     for crop in crops_by_name.values():
-        aliases = {
+        aliases = [
             crop["canonical_name"],
             *crop["source_names"],
             *COMMON_ALIASES.get(crop["canonical_name"], ()),
-        }
-        crops.append(
+        ]
+        legacy_crops.append(
             {
                 **crop,
-                "aliases": sorted(aliases, key=str.casefold),
+                "aliases": _sorted_aliases(aliases),
                 "source_names": sorted(crop["source_names"]),
                 "appearances": sorted(
                     crop["appearances"],
@@ -257,15 +378,72 @@ def build_catalog(source_path: Path = DEFAULT_SOURCE) -> dict[str, Any]:
             }
         )
 
+    try:
+        taxonomy_bytes = taxonomy_path.read_bytes()
+        taxonomy = json.loads(taxonomy_bytes)
+    except (OSError, json.JSONDecodeError) as error:
+        raise CatalogError(f"Cannot read Rutgers crop taxonomy {taxonomy_path}: {error}") from error
+    sections = taxonomy.get("sections") if isinstance(taxonomy, dict) else None
+    if not isinstance(sections, list) or not sections:
+        raise CatalogError("Rutgers crop taxonomy must contain commodity sections.")
+
+    legacy_by_id = {crop["id"]: crop for crop in legacy_crops}
+    crops: list[dict[str, Any]] = []
+    taxonomy_ids: list[str] = []
+    for section in sections:
+        for concept in section.get("crops", []):
+            crop_id = concept.get("id")
+            canonical_name = concept.get("name")
+            if not isinstance(crop_id, str) or not isinstance(canonical_name, str):
+                raise CatalogError("Every Rutgers crop concept needs an ID and name.")
+            taxonomy_ids.append(crop_id)
+            legacy_id = LEGACY_CROP_IDS.get(crop_id)
+            legacy = legacy_by_id.get(legacy_id) if legacy_id else None
+            aliases = [canonical_name, *RUTGERS_ALIASES.get(crop_id, ())]
+            if legacy and crop_id in LEGACY_ALIAS_INHERITANCE:
+                aliases.extend(legacy["aliases"])
+            crops.append(
+                {
+                    "id": crop_id,
+                    "canonical_name": canonical_name,
+                    "planning_category": _planning_category(canonical_name),
+                    "aliases": _sorted_aliases(aliases),
+                    "source_names": legacy["source_names"] if legacy else [],
+                    "appearances": legacy["appearances"] if legacy else [],
+                    "taxonomy": {
+                        "system": "rutgers_mid_atlantic_commodity",
+                        "commodity_key": section["key"],
+                        "rutgers_crop_id": crop_id,
+                        "legacy_catalog_crop_id": legacy_id,
+                        "legacy_catalog_name": legacy["canonical_name"] if legacy else None,
+                    },
+                }
+            )
+    if len(taxonomy_ids) != len(set(taxonomy_ids)):
+        raise CatalogError("Rutgers crop concept IDs must be unique.")
+
     payload: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
         "parser_version": PARSER_VERSION,
         "source": {
+            "id": f"sha256:{_sha256(taxonomy_bytes)}",
+            "title": "Rutgers Mid-Atlantic reviewed commodity crosswalk",
+            "path": taxonomy_path.relative_to(REPOSITORY_ROOT).as_posix(),
+            "media_type": "application/json",
+            "sha256": _sha256(taxonomy_bytes),
+            "publisher": "Rutgers NJAES Cooperative Extension",
+            "source_url": "https://njaes.rutgers.edu/pubs/publication.php?pid=e001",
+            "source_scope": "reviewed crop identity taxonomy",
+            "corpus_id": taxonomy["corpus_id"],
+            "full_manual_sha256": taxonomy["full_manual_sha256"],
+        },
+        "season_source": {
             "id": f"sha256:{_sha256(source_bytes)}",
             "title": "Six Seasons Reference",
             "path": source_path.name,
             "media_type": "text/markdown",
             "sha256": _sha256(source_bytes),
+            "source_scope": "legacy seasonal appearance metadata",
         },
         "corrections": sorted(corrections_by_source.values(), key=lambda item: item["source_name"]),
         "crops": sorted(crops, key=lambda item: item["id"]),
@@ -273,7 +451,11 @@ def build_catalog(source_path: Path = DEFAULT_SOURCE) -> dict[str, Any]:
     return {"dataset_id": _dataset_id(payload), **payload}
 
 
-def validate_catalog(catalog: dict[str, Any], source_path: Path | None = None) -> list[str]:
+def validate_catalog(
+    catalog: dict[str, Any],
+    source_path: Path | None = None,
+    taxonomy_path: Path | None = None,
+) -> list[str]:
     errors: list[str] = []
 
     required_keys = {
@@ -281,6 +463,7 @@ def validate_catalog(catalog: dict[str, Any], source_path: Path | None = None) -
         "schema_version",
         "parser_version",
         "source",
+        "season_source",
         "corrections",
         "crops",
     }
@@ -310,16 +493,20 @@ def validate_catalog(catalog: dict[str, Any], source_path: Path | None = None) -
             errors.append(f"Aliases for {canonical_name!r} must be unique and sorted.")
         if canonical_name not in aliases:
             errors.append(f"Aliases for {canonical_name!r} must include its canonical name.")
+        taxonomy = crop.get("taxonomy", {})
+        legacy_name = taxonomy.get("legacy_catalog_name")
+        if taxonomy.get("rutgers_crop_id") != crop.get("id"):
+            errors.append(f"Crop {canonical_name!r} is not aligned to its Rutgers crop ID.")
         for source_name in crop.get("source_names", []):
-            if source_name != canonical_name:
-                pair = (source_name, canonical_name)
+            correction_target = legacy_name or canonical_name
+            if source_name != correction_target:
+                pair = (source_name, correction_target)
                 referenced_corrections.add(pair)
                 if pair not in corrections:
                     errors.append(
-                        f"{source_name!r} becomes {canonical_name!r} without a correction record."
+                        f"{source_name!r} becomes {correction_target!r} without a "
+                        "correction record."
                     )
-        if not crop.get("appearances"):
-            errors.append(f"Crop {canonical_name!r} has no seasonal appearances.")
 
     unreferenced_corrections = corrections - referenced_corrections
     if unreferenced_corrections:
@@ -327,8 +514,19 @@ def validate_catalog(catalog: dict[str, Any], source_path: Path | None = None) -
 
     if source_path is not None:
         source_digest = _sha256(source_path.read_bytes())
-        if catalog["source"].get("sha256") != source_digest:
-            errors.append("Catalog source digest does not match the current source file.")
+        if catalog["season_source"].get("sha256") != source_digest:
+            errors.append("Catalog season-source digest does not match the legacy source file.")
+
+    if taxonomy_path is not None:
+        taxonomy_digest = _sha256(taxonomy_path.read_bytes())
+        if catalog["source"].get("sha256") != taxonomy_digest:
+            errors.append("Catalog taxonomy digest does not match the Rutgers crosswalk.")
+        taxonomy = json.loads(taxonomy_path.read_text(encoding="utf-8"))
+        expected_crop_ids = sorted(
+            crop["id"] for section in taxonomy["sections"] for crop in section["crops"]
+        )
+        if crop_ids != expected_crop_ids:
+            errors.append("Catalog crop IDs do not exactly match the Rutgers crop taxonomy.")
 
     return errors
 

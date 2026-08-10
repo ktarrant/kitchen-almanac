@@ -101,7 +101,7 @@ def _ph_specs(
 
 EXTRACTION_SPECS = (
     *_ph_specs(
-        crop_id="string-beans",
+        crop_id="snap-beans",
         source_label=r"Beans\s*-\s*lima,\s*snap",
         target=6.2,
         lime_below=6.0,
@@ -116,7 +116,7 @@ EXTRACTION_SPECS = (
     *_ph_specs(crop_id="tomatoes", source_label="Tomatoes", target=6.5, lime_below=6.0),
     ExtractionSpec(
         candidate_id="rutgers-2026-string-beans-starting-method",
-        crop_id="string-beans",
+        crop_id="snap-beans",
         source_key="mid-atlantic-beans-2026-2027",
         source_page=6,
         field_name="starting_method",
@@ -172,7 +172,7 @@ EXTRACTION_SPECS = (
     ),
     ExtractionSpec(
         candidate_id="rutgers-2026-string-beans-commercial-spacing",
-        crop_id="string-beans",
+        crop_id="snap-beans",
         source_key="mid-atlantic-beans-2026-2027",
         source_page=6,
         field_name="commercial_row_configuration",
@@ -239,7 +239,7 @@ EXTRACTION_SPECS = (
     ),
     ExtractionSpec(
         candidate_id="rutgers-2026-string-beans-harvest-guidance",
-        crop_id="string-beans",
+        crop_id="snap-beans",
         source_key="mid-atlantic-beans-2026-2027",
         source_page=7,
         field_name="harvest_guidance",
@@ -324,7 +324,7 @@ EXTRACTION_SPECS = (
     ),
     ExtractionSpec(
         candidate_id="rutgers-2026-string-beans-water-management-guidance",
-        crop_id="string-beans",
+        crop_id="snap-beans",
         source_key="mid-atlantic-beans-2026-2027",
         source_page=6,
         field_name="water_management_guidance",
@@ -348,7 +348,7 @@ EXTRACTION_SPECS = (
     ),
     ExtractionSpec(
         candidate_id="rutgers-2026-string-beans-critical-watering-stages",
-        crop_id="string-beans",
+        crop_id="snap-beans",
         source_key="mid-atlantic-beans-2026-2027",
         source_page=6,
         field_name="critical_watering_stages",
@@ -365,7 +365,7 @@ EXTRACTION_SPECS = (
     ),
     ExtractionSpec(
         candidate_id="rutgers-2026-string-beans-commercial-water-demand",
-        crop_id="string-beans",
+        crop_id="snap-beans",
         source_key="mid-atlantic-beans-2026-2027",
         source_page=6,
         field_name="commercial_water_demand",
@@ -526,7 +526,7 @@ EXTRACTION_SPECS = (
     ),
     ExtractionSpec(
         candidate_id="rutgers-2026-string-beans-regional-planting-window",
-        crop_id="string-beans",
+        crop_id="snap-beans",
         source_key="mid-atlantic-beans-2026-2027",
         source_page=6,
         field_name="regional_planting_window",

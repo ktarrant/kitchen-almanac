@@ -17,7 +17,7 @@ def test_catalog_load_is_idempotent() -> None:
     with Session(engine) as session:
         assert load_catalog(session, catalog) is True
         assert load_catalog(session, catalog) is False
-        assert session.scalar(select(func.count()).select_from(Crop)) == 37
+        assert session.scalar(select(func.count()).select_from(Crop)) == 47
         active = session.scalar(select(DatasetVersion).where(DatasetVersion.active.is_(True)))
         assert active is not None
         assert active.id == catalog["dataset_id"]

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "crop_dataset_id": "kitchen-almanac-v1-f76ca812f62c8c39",
+  "crop_dataset_id": "kitchen-almanac-v2-c1e82a4b00502686",
   "sources": [
     {
       "key": "mid-atlantic-beans-2026-2027",
@@ -102,7 +102,7 @@
   "candidates": [
     {
       "id": "mid-atlantic-2026-provider",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "proposed_slug": "provider",
       "name_in_source": "Provider",
       "aliases": ["Provider"],
@@ -121,7 +121,7 @@
     },
     {
       "id": "mid-atlantic-2026-maxibel",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "proposed_slug": "maxibel",
       "name_in_source": "Maxibel",
       "aliases": ["Maxibel"],
@@ -140,7 +140,7 @@
     },
     {
       "id": "mid-atlantic-2026-roma-ii",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "proposed_slug": "roma-ii",
       "name_in_source": "Roma II",
       "aliases": ["Roma 2", "Roma II"],
@@ -159,7 +159,7 @@
     },
     {
       "id": "mid-atlantic-2026-cobra",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "proposed_slug": "cobra",
       "name_in_source": "Cobra",
       "aliases": ["Cobra"],
@@ -531,7 +531,7 @@
     {
       "id": "vce-2025-provider-evidence",
       "record_kind": "enrichment",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "proposed_slug": "provider",
       "name_in_source": "Provider",
       "aliases": ["Provider"],

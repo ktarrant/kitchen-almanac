@@ -3,7 +3,7 @@
   "corpus_id": "rutgers-mid-atlantic-commercial-vegetables-2026-2027",
   "full_manual_sha256": "605dd9e8bc9cd1cf565372f0181941a28caf23ba6614f438c33845815a47991d",
   "reviewed_at": "2026-08-09T00:00:00Z",
-  "review_scope": "Reviewed crop-identity crosswalk from the full manual table of contents to the current Kitchen Almanac crop catalog. It does not publish cultivar or gardening claims.",
+  "review_scope": "Reviewed crop-identity taxonomy from the full Rutgers manual. Every concept is published as a canonical Kitchen Almanac crop identity; this crosswalk does not publish cultivar or gardening claims.",
   "minimum_useful_crop_fields": [
     {
       "field": "rutgers_source",
@@ -83,7 +83,7 @@
           "name": "Asparagus",
           "mapping_status": "exact",
           "catalog_crop_id": "asparagus",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -98,15 +98,15 @@
           "id": "snap-beans",
           "name": "Snap Beans",
           "mapping_status": "exact",
-          "catalog_crop_id": "string-beans",
-          "review_note": "Rutgers snap beans correspond to the catalog's String Beans identity."
+          "catalog_crop_id": "snap-beans",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "lima-beans",
           "name": "Lima Beans",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "shell-beans",
-          "review_note": "Shell Beans is too broad to establish a canonical lima-bean identity without a split."
+          "mapping_status": "exact",
+          "catalog_crop_id": "lima-beans",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -122,7 +122,7 @@
           "name": "Beets",
           "mapping_status": "exact",
           "catalog_crop_id": "beets",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -138,7 +138,7 @@
           "name": "Carrots",
           "mapping_status": "exact",
           "catalog_crop_id": "carrots",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -154,7 +154,7 @@
           "name": "Celery",
           "mapping_status": "exact",
           "catalog_crop_id": "celery",
-          "review_note": "Direct canonical crop match; celeriac remains a separate catalog crop."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -170,56 +170,56 @@
           "name": "Broccoli",
           "mapping_status": "exact",
           "catalog_crop_id": "broccoli",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "brussels-sprouts",
           "name": "Brussels Sprouts",
           "mapping_status": "exact",
           "catalog_crop_id": "brussels-sprouts",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "cabbage",
           "name": "Cabbage",
           "mapping_status": "exact",
           "catalog_crop_id": "cabbage",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "chinese-cabbage",
           "name": "Chinese Cabbage",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The cultivar table includes Napa and pak choi types, which must not be attached to the current head-cabbage identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "chinese-cabbage",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "cauliflower",
           "name": "Cauliflower",
           "mapping_status": "exact",
           "catalog_crop_id": "cauliflower",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "collards",
           "name": "Collards",
           "mapping_status": "exact",
           "catalog_crop_id": "collards",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "kale",
           "name": "Kale",
           "mapping_status": "exact",
           "catalog_crop_id": "kale",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "kohlrabi",
           "name": "Kohlrabi",
           "mapping_status": "exact",
           "catalog_crop_id": "kohlrabi",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -235,7 +235,7 @@
           "name": "Cucumbers",
           "mapping_status": "exact",
           "catalog_crop_id": "cucumbers",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -249,9 +249,9 @@
         {
           "id": "edamame",
           "name": "Edamame",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no vegetable-soybean identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "edamame",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -267,7 +267,7 @@
           "name": "Eggplant",
           "mapping_status": "exact",
           "catalog_crop_id": "eggplant",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -281,9 +281,9 @@
         {
           "id": "garlic",
           "name": "Garlic",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "onion-family",
-          "review_note": "Onion Family is a crop group and must be split before garlic cultivars attach to it."
+          "mapping_status": "exact",
+          "catalog_crop_id": "garlic",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -297,16 +297,16 @@
         {
           "id": "mustard-greens",
           "name": "Mustard Greens",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "lettuces-and-early-greens",
-          "review_note": "The current greens group is too broad for cultivar identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "mustard-greens",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "turnip-greens",
           "name": "Turnip Greens",
           "mapping_status": "exact",
-          "catalog_crop_id": "turnips",
-          "review_note": "The Turnips identity can retain root and greens use as crop types."
+          "catalog_crop_id": "turnip-greens",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -320,9 +320,9 @@
         {
           "id": "horseradish",
           "name": "Horseradish",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no horseradish identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "horseradish",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -336,9 +336,9 @@
         {
           "id": "leeks",
           "name": "Leeks",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "onion-family",
-          "review_note": "Onion Family is a crop group and must be split before leek cultivars attach to it."
+          "mapping_status": "exact",
+          "catalog_crop_id": "leeks",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -352,23 +352,23 @@
         {
           "id": "lettuce",
           "name": "Lettuce",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "lettuces-and-early-greens",
-          "review_note": "The current greens group must be split into a canonical lettuce identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "lettuce",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "endive",
           "name": "Endive",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "lettuces-and-early-greens",
-          "review_note": "The current greens group must be split into a canonical endive identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "endive",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "escarole",
           "name": "Escarole",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "lettuces-and-early-greens",
-          "review_note": "The current greens group must be split into a canonical escarole identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "escarole",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -382,16 +382,16 @@
         {
           "id": "muskmelons",
           "name": "Muskmelons",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no muskmelon identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "muskmelons",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "specialty-melons",
           "name": "Specialty Melons",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "Canary, Galia, honeydew, and other mixed melons need an explicit taxonomy decision."
+          "mapping_status": "exact",
+          "catalog_crop_id": "specialty-melons",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -405,9 +405,9 @@
         {
           "id": "okra",
           "name": "Okra",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no okra identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "okra",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -423,7 +423,7 @@
           "name": "Onions",
           "mapping_status": "exact",
           "catalog_crop_id": "onions",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -437,9 +437,9 @@
         {
           "id": "parsley",
           "name": "Parsley",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no parsley identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "parsley",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -455,7 +455,7 @@
           "name": "Parsnips",
           "mapping_status": "exact",
           "catalog_crop_id": "parsnips",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -470,8 +470,8 @@
           "id": "succulent-peas",
           "name": "Succulent Peas",
           "mapping_status": "exact",
-          "catalog_crop_id": "english-peas",
-          "review_note": "The Rutgers processing-pea table corresponds to shelled English or garden peas, not edible-pod peas."
+          "catalog_crop_id": "succulent-peas",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -485,16 +485,16 @@
         {
           "id": "sweet-peppers",
           "name": "Sweet Peppers",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "sweet-peppers-and-chiles",
-          "review_note": "The current crop group combines sweet and hot pepper identities."
+          "mapping_status": "exact",
+          "catalog_crop_id": "sweet-peppers",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "hot-peppers",
           "name": "Hot Peppers and Chiles",
-          "mapping_status": "broader_catalog_identity",
-          "catalog_crop_id": "sweet-peppers-and-chiles",
-          "review_note": "The current crop group combines sweet and hot pepper identities."
+          "mapping_status": "exact",
+          "catalog_crop_id": "hot-peppers",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -510,7 +510,7 @@
           "name": "Potatoes",
           "mapping_status": "exact",
           "catalog_crop_id": "potatoes",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -524,16 +524,16 @@
         {
           "id": "pumpkins",
           "name": "Pumpkins",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no distinct pumpkin identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "pumpkins",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "winter-squash",
           "name": "Winter Squash",
           "mapping_status": "exact",
           "catalog_crop_id": "winter-squash",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -549,21 +549,21 @@
           "name": "Radishes",
           "mapping_status": "exact",
           "catalog_crop_id": "radishes",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "rutabagas",
           "name": "Rutabagas",
           "mapping_status": "exact",
-          "catalog_crop_id": "rutabaga",
-          "review_note": "Direct canonical crop match with singular catalog slug."
+          "catalog_crop_id": "rutabagas",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         },
         {
           "id": "turnips",
           "name": "Turnips",
           "mapping_status": "exact",
           "catalog_crop_id": "turnips",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -577,9 +577,9 @@
         {
           "id": "spinach",
           "name": "Spinach",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no spinach identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "spinach",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -593,9 +593,9 @@
         {
           "id": "strawberries",
           "name": "Strawberries",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no strawberry identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "strawberries",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -611,7 +611,7 @@
           "name": "Summer Squash",
           "mapping_status": "exact",
           "catalog_crop_id": "summer-squash",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -626,8 +626,8 @@
           "id": "sweet-corn",
           "name": "Sweet Corn",
           "mapping_status": "exact",
-          "catalog_crop_id": "corn",
-          "review_note": "The catalog distinguishes fresh Corn from Dried Corn and Polenta."
+          "catalog_crop_id": "sweet-corn",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -641,9 +641,9 @@
         {
           "id": "sweet-potatoes",
           "name": "Sweet Potatoes",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no sweet-potato identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "sweet-potatoes",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -659,7 +659,7 @@
           "name": "Tomatoes",
           "mapping_status": "exact",
           "catalog_crop_id": "tomatoes",
-          "review_note": "Direct canonical crop match."
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     },
@@ -673,9 +673,9 @@
         {
           "id": "watermelons",
           "name": "Watermelons",
-          "mapping_status": "missing_catalog_identity",
-          "catalog_crop_id": null,
-          "review_note": "The current catalog has no watermelon identity."
+          "mapping_status": "exact",
+          "catalog_crop_id": "watermelons",
+          "review_note": "Published as a canonical crop identity aligned with the reviewed Rutgers commodity taxonomy."
         }
       ]
     }

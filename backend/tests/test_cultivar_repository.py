@@ -48,13 +48,12 @@ def test_cultivar_catalog_load_is_idempotent_and_keeps_listings_separate() -> No
         assert listing.availability_status == "in_stock"
         assert listing.identity_match_method == "reviewed_alias"
 
-        regional_source = session.scalar(
-            select(SourceDocument).where(
-                SourceDocument.source_path.like("data/source/cultivars/mid-atlantic-2026-2027/%")
-            )
-        )
-        assert regional_source is not None
-        assert regional_source.source_scope == (
+        expected_scope = (
             "Current regional commercial recommendation; not written specifically "
             "for home gardeners"
         )
+        regional_source = session.scalar(
+            select(SourceDocument).where(SourceDocument.source_scope == expected_scope)
+        )
+        assert regional_source is not None
+        assert regional_source.source_scope == expected_scope

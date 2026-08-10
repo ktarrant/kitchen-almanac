@@ -542,7 +542,7 @@
       ]
     },
     {
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "traits": [
         {
           "confidence": "high",
@@ -580,7 +580,7 @@
           "confidence": "high",
           "field_name": "soil_ph",
           "normalized_value": 6.2,
-          "source_excerpt": "The crop table gives string-beans a target soil pH of 6.2.",
+          "source_excerpt": "The crop table gives snap-beans a target soil pH of 6.2.",
           "source_key": "mid-atlantic-soil-nutrient-2026-2027",
           "source_locator": "PDF page 5, Table B-1: Target Soil pH Values for Vegetable Crops",
           "unit": null
@@ -809,7 +809,7 @@
       ]
     }
   ],
-  "crop_dataset_id": "kitchen-almanac-v1-f76ca812f62c8c39",
+  "crop_dataset_id": "kitchen-almanac-v2-c1e82a4b00502686",
   "cultivars": [
     {
       "aliases": [
@@ -1600,7 +1600,7 @@
         "Cobra"
       ],
       "canonical_name": "Cobra",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "crop_type": "pole_snap",
       "description": "A medium-green pole snap bean listed for fresh use and heat tolerance in the Mid-Atlantic region.",
       "review_status": "approved",
@@ -3322,7 +3322,7 @@
         "Maxibel"
       ],
       "canonical_name": "Maxibel",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "crop_type": "bush_snap",
       "description": "A long, medium-green, round-podded bush snap bean listed for fresh use in the Mid-Atlantic region.",
       "review_status": "approved",
@@ -3913,7 +3913,7 @@
         "Provider"
       ],
       "canonical_name": "Provider",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "crop_type": "bush_snap",
       "description": "A medium-green, round-podded bush snap bean listed for fresh use in the Mid-Atlantic region.",
       "review_status": "approved",
@@ -4302,7 +4302,7 @@
         "Roma II"
       ],
       "canonical_name": "Roma II",
-      "crop_slug": "string-beans",
+      "crop_slug": "snap-beans",
       "crop_type": "bush_flat_snap",
       "description": "A medium-green, flat-podded bush snap bean listed for fresh and processing use in the Mid-Atlantic region.",
       "review_status": "approved",

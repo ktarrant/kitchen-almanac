@@ -37,9 +37,9 @@ def test_approved_candidates_build_four_cited_crop_baselines() -> None:
     expanded = apply_reviewed_crop_baselines(base, staged, decisions)
     baselines = {item["crop_slug"]: item["traits"] for item in expanded["crop_baselines"]}
 
-    assert set(baselines) == {"cucumbers", "string-beans", "summer-squash", "tomatoes"}
+    assert set(baselines) == {"cucumbers", "snap-beans", "summer-squash", "tomatoes"}
     assert len(baselines["cucumbers"]) == 7
-    assert len(baselines["string-beans"]) == 6
+    assert len(baselines["snap-beans"]) == 6
     assert len(baselines["summer-squash"]) == 7
     assert len(baselines["tomatoes"]) == 10
     tomato_traits = {item["field_name"]: item for item in baselines["tomatoes"]}

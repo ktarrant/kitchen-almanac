@@ -1,0 +1,1310 @@
+{
+  "corrections": [
+    {
+      "canonical_name": "Beets",
+      "correction_type": "season_qualifier",
+      "reason": "Early Season is represented by the appearance season.",
+      "source_name": "Beets (Early Season)"
+    },
+    {
+      "canonical_name": "Carrots",
+      "correction_type": "season_qualifier",
+      "reason": "Early Season is represented by the appearance season.",
+      "source_name": "Carrots (Early Season)"
+    },
+    {
+      "canonical_name": "Carrots",
+      "correction_type": "season_qualifier",
+      "reason": "Late Season is represented by the appearance season.",
+      "source_name": "Carrots (Late Season)"
+    },
+    {
+      "canonical_name": "Onion Family",
+      "correction_type": "season_qualifier",
+      "reason": "Early Season is represented by the appearance season.",
+      "source_name": "Onion Family (Early Season)"
+    },
+    {
+      "canonical_name": "Onions",
+      "correction_type": "harvest_form",
+      "reason": "Storage is retained in the original source label.",
+      "source_name": "Onions (Storage)"
+    },
+    {
+      "canonical_name": "Potatoes",
+      "correction_type": "season_qualifier",
+      "reason": "Early Season is represented by the appearance season.",
+      "source_name": "Potatoes (Early Season)"
+    },
+    {
+      "canonical_name": "Potatoes",
+      "correction_type": "season_qualifier",
+      "reason": "Late Season is represented by the appearance season.",
+      "source_name": "Potatoes (Late Season)"
+    },
+    {
+      "canonical_name": "Rutabaga",
+      "correction_type": "spelling",
+      "reason": "Correct an apparent spelling error in the source reference.",
+      "source_name": "Rutabage"
+    },
+    {
+      "canonical_name": "Turnips",
+      "correction_type": "season_qualifier",
+      "reason": "Early Season is represented by the appearance season.",
+      "source_name": "Turnips (Early Season)"
+    },
+    {
+      "canonical_name": "Turnips",
+      "correction_type": "season_qualifier",
+      "reason": "Late Season is represented by the appearance season.",
+      "source_name": "Turnips (Late Season)"
+    }
+  ],
+  "crops": [
+    {
+      "aliases": [
+        "Asparagus"
+      ],
+      "appearances": [
+        {
+          "position": 2,
+          "season": "Spring",
+          "source_line": 4,
+          "source_name": "Asparagus"
+        }
+      ],
+      "canonical_name": "Asparagus",
+      "id": "asparagus",
+      "planning_category": "perennial",
+      "source_names": [
+        "Asparagus"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-asparagus-2026-2027",
+        "legacy_catalog_crop_id": "asparagus",
+        "legacy_catalog_name": "Asparagus",
+        "rutgers_crop_id": "asparagus",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "beet",
+        "Beets",
+        "Beets (Early Season)"
+      ],
+      "appearances": [
+        {
+          "position": 1,
+          "season": "Early Summer",
+          "source_line": 13,
+          "source_name": "Beets (Early Season)"
+        },
+        {
+          "position": 1,
+          "season": "Fall",
+          "source_line": 35,
+          "source_name": "Beets"
+        }
+      ],
+      "canonical_name": "Beets",
+      "id": "beets",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Beets",
+        "Beets (Early Season)"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-beets-2026-2027",
+        "legacy_catalog_crop_id": "beets",
+        "legacy_catalog_name": "Beets",
+        "rutgers_crop_id": "beets",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Broccoli"
+      ],
+      "appearances": [
+        {
+          "position": 1,
+          "season": "Midsummer",
+          "source_line": 21,
+          "source_name": "Broccoli"
+        }
+      ],
+      "canonical_name": "Broccoli",
+      "id": "broccoli",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Broccoli"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "legacy_catalog_crop_id": "broccoli",
+        "legacy_catalog_name": "Broccoli",
+        "rutgers_crop_id": "broccoli",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "brussel sprouts",
+        "brussels sprout",
+        "Brussels Sprouts"
+      ],
+      "appearances": [
+        {
+          "position": 2,
+          "season": "Fall",
+          "source_line": 36,
+          "source_name": "Brussels Sprouts"
+        }
+      ],
+      "canonical_name": "Brussels Sprouts",
+      "id": "brussels-sprouts",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Brussels Sprouts"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "legacy_catalog_crop_id": "brussels-sprouts",
+        "legacy_catalog_name": "Brussels Sprouts",
+        "rutgers_crop_id": "brussels-sprouts",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Cabbage",
+        "cabbages"
+      ],
+      "appearances": [
+        {
+          "position": 1,
+          "season": "Winter",
+          "source_line": 44,
+          "source_name": "Cabbage"
+        }
+      ],
+      "canonical_name": "Cabbage",
+      "id": "cabbage",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Cabbage"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "legacy_catalog_crop_id": "cabbage",
+        "legacy_catalog_name": "Cabbage",
+        "rutgers_crop_id": "cabbage",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "carrot",
+        "Carrots",
+        "Carrots (Early Season)",
+        "Carrots (Late Season)"
+      ],
+      "appearances": [
+        {
+          "position": 2,
+          "season": "Early Summer",
+          "source_line": 14,
+          "source_name": "Carrots (Early Season)"
+        },
+        {
+          "position": 3,
+          "season": "Fall",
+          "source_line": 37,
+          "source_name": "Carrots (Late Season)"
+        }
+      ],
+      "canonical_name": "Carrots",
+      "id": "carrots",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Carrots (Early Season)",
+        "Carrots (Late Season)"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-carrots-2026-2027",
+        "legacy_catalog_crop_id": "carrots",
+        "legacy_catalog_name": "Carrots",
+        "rutgers_crop_id": "carrots",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Cauliflower"
+      ],
+      "appearances": [
+        {
+          "position": 2,
+          "season": "Midsummer",
+          "source_line": 22,
+          "source_name": "Cauliflower"
+        }
+      ],
+      "canonical_name": "Cauliflower",
+      "id": "cauliflower",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Cauliflower"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "legacy_catalog_crop_id": "cauliflower",
+        "legacy_catalog_name": "Cauliflower",
+        "rutgers_crop_id": "cauliflower",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Celery"
+      ],
+      "appearances": [
+        {
+          "position": 3,
+          "season": "Early Summer",
+          "source_line": 15,
+          "source_name": "Celery"
+        }
+      ],
+      "canonical_name": "Celery",
+      "id": "celery",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Celery"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-celery-2026-2027",
+        "legacy_catalog_crop_id": "celery",
+        "legacy_catalog_name": "Celery",
+        "rutgers_crop_id": "celery",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "bok choy",
+        "Chinese Cabbage",
+        "napa cabbage",
+        "pak choi"
+      ],
+      "appearances": [],
+      "canonical_name": "Chinese Cabbage",
+      "id": "chinese-cabbage",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "chinese-cabbage",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "collard",
+        "collard greens",
+        "Collards"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Fall",
+          "source_line": 39,
+          "source_name": "Collards"
+        }
+      ],
+      "canonical_name": "Collards",
+      "id": "collards",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Collards"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "legacy_catalog_crop_id": "collards",
+        "legacy_catalog_name": "Collards",
+        "rutgers_crop_id": "collards",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "cucumber",
+        "Cucumbers"
+      ],
+      "appearances": [
+        {
+          "position": 3,
+          "season": "Midsummer",
+          "source_line": 23,
+          "source_name": "Cucumbers"
+        }
+      ],
+      "canonical_name": "Cucumbers",
+      "id": "cucumbers",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Cucumbers"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cucumbers-2026-2027",
+        "legacy_catalog_crop_id": "cucumbers",
+        "legacy_catalog_name": "Cucumbers",
+        "rutgers_crop_id": "cucumbers",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Edamame",
+        "edamame soybeans",
+        "vegetable soybeans"
+      ],
+      "appearances": [],
+      "canonical_name": "Edamame",
+      "id": "edamame",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-edamame-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "edamame",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "aubergine",
+        "aubergines",
+        "Eggplant"
+      ],
+      "appearances": [
+        {
+          "position": 2,
+          "season": "Late Summer",
+          "source_line": 29,
+          "source_name": "Eggplant"
+        }
+      ],
+      "canonical_name": "Eggplant",
+      "id": "eggplant",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Eggplant"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-eggplant-2026-2027",
+        "legacy_catalog_crop_id": "eggplant",
+        "legacy_catalog_name": "Eggplant",
+        "rutgers_crop_id": "eggplant",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Endive"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Spring",
+          "source_line": 7,
+          "source_name": "Lettuces and Early Greens"
+        }
+      ],
+      "canonical_name": "Endive",
+      "id": "endive",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Lettuces and Early Greens"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-lettuce-endive-escarole-2026-2027",
+        "legacy_catalog_crop_id": "lettuces-and-early-greens",
+        "legacy_catalog_name": "Lettuces and Early Greens",
+        "rutgers_crop_id": "endive",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Escarole"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Spring",
+          "source_line": 7,
+          "source_name": "Lettuces and Early Greens"
+        }
+      ],
+      "canonical_name": "Escarole",
+      "id": "escarole",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Lettuces and Early Greens"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-lettuce-endive-escarole-2026-2027",
+        "legacy_catalog_crop_id": "lettuces-and-early-greens",
+        "legacy_catalog_name": "Lettuces and Early Greens",
+        "rutgers_crop_id": "escarole",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Garlic"
+      ],
+      "appearances": [
+        {
+          "position": 6,
+          "season": "Spring",
+          "source_line": 8,
+          "source_name": "Onion Family (Early Season)"
+        }
+      ],
+      "canonical_name": "Garlic",
+      "id": "garlic",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Onion Family (Early Season)"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-garlic-2026-2027",
+        "legacy_catalog_crop_id": "onion-family",
+        "legacy_catalog_name": "Onion Family",
+        "rutgers_crop_id": "garlic",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Horseradish"
+      ],
+      "appearances": [],
+      "canonical_name": "Horseradish",
+      "id": "horseradish",
+      "planning_category": "perennial",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-horseradish-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "horseradish",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "chile",
+        "chiles",
+        "chili",
+        "chilies",
+        "hot pepper",
+        "Hot Peppers and Chiles"
+      ],
+      "appearances": [
+        {
+          "position": 3,
+          "season": "Late Summer",
+          "source_line": 30,
+          "source_name": "Sweet Peppers and Chiles"
+        }
+      ],
+      "canonical_name": "Hot Peppers and Chiles",
+      "id": "hot-peppers",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Sweet Peppers and Chiles"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-peppers-2026-2027",
+        "legacy_catalog_crop_id": "sweet-peppers-and-chiles",
+        "legacy_catalog_name": "Sweet Peppers and Chiles",
+        "rutgers_crop_id": "hot-peppers",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Kale"
+      ],
+      "appearances": [
+        {
+          "position": 6,
+          "season": "Fall",
+          "source_line": 40,
+          "source_name": "Kale"
+        }
+      ],
+      "canonical_name": "Kale",
+      "id": "kale",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Kale"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "legacy_catalog_crop_id": "kale",
+        "legacy_catalog_name": "Kale",
+        "rutgers_crop_id": "kale",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Kohlrabi"
+      ],
+      "appearances": [
+        {
+          "position": 4,
+          "season": "Winter",
+          "source_line": 47,
+          "source_name": "Kohlrabi"
+        }
+      ],
+      "canonical_name": "Kohlrabi",
+      "id": "kohlrabi",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Kohlrabi"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-cole-crops-2026-2027",
+        "legacy_catalog_crop_id": "kohlrabi",
+        "legacy_catalog_name": "Kohlrabi",
+        "rutgers_crop_id": "kohlrabi",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "leek",
+        "Leeks"
+      ],
+      "appearances": [
+        {
+          "position": 6,
+          "season": "Spring",
+          "source_line": 8,
+          "source_name": "Onion Family (Early Season)"
+        }
+      ],
+      "canonical_name": "Leeks",
+      "id": "leeks",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Onion Family (Early Season)"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-leeks-2026-2027",
+        "legacy_catalog_crop_id": "onion-family",
+        "legacy_catalog_name": "Onion Family",
+        "rutgers_crop_id": "leeks",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Lettuce",
+        "lettuces"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Spring",
+          "source_line": 7,
+          "source_name": "Lettuces and Early Greens"
+        }
+      ],
+      "canonical_name": "Lettuce",
+      "id": "lettuce",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Lettuces and Early Greens"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-lettuce-endive-escarole-2026-2027",
+        "legacy_catalog_crop_id": "lettuces-and-early-greens",
+        "legacy_catalog_name": "Lettuces and Early Greens",
+        "rutgers_crop_id": "lettuce",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "butter bean",
+        "butter beans",
+        "lima bean",
+        "Lima Beans"
+      ],
+      "appearances": [
+        {
+          "position": 4,
+          "season": "Late Summer",
+          "source_line": 31,
+          "source_name": "Shell Beans"
+        }
+      ],
+      "canonical_name": "Lima Beans",
+      "id": "lima-beans",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Shell Beans"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-beans-2026-2027",
+        "legacy_catalog_crop_id": "shell-beans",
+        "legacy_catalog_name": "Shell Beans",
+        "rutgers_crop_id": "lima-beans",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "cantaloupe",
+        "cantaloupes",
+        "muskmelon",
+        "Muskmelons"
+      ],
+      "appearances": [],
+      "canonical_name": "Muskmelons",
+      "id": "muskmelons",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-muskmelons-mixed-melons-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "muskmelons",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "mustard green",
+        "Mustard Greens"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Spring",
+          "source_line": 7,
+          "source_name": "Lettuces and Early Greens"
+        }
+      ],
+      "canonical_name": "Mustard Greens",
+      "id": "mustard-greens",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Lettuces and Early Greens"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-greens-mustard-turnip-2026-2027",
+        "legacy_catalog_crop_id": "lettuces-and-early-greens",
+        "legacy_catalog_name": "Lettuces and Early Greens",
+        "rutgers_crop_id": "mustard-greens",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Okra"
+      ],
+      "appearances": [],
+      "canonical_name": "Okra",
+      "id": "okra",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-okra-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "okra",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "onion",
+        "Onions",
+        "Onions (Storage)"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Winter",
+          "source_line": 48,
+          "source_name": "Onions (Storage)"
+        }
+      ],
+      "canonical_name": "Onions",
+      "id": "onions",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Onions (Storage)"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-onions-2026-2027",
+        "legacy_catalog_crop_id": "onions",
+        "legacy_catalog_name": "Onions",
+        "rutgers_crop_id": "onions",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Parsley"
+      ],
+      "appearances": [],
+      "canonical_name": "Parsley",
+      "id": "parsley",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-parsley-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "parsley",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "parsnip",
+        "Parsnips"
+      ],
+      "appearances": [
+        {
+          "position": 6,
+          "season": "Winter",
+          "source_line": 49,
+          "source_name": "Parsnips"
+        }
+      ],
+      "canonical_name": "Parsnips",
+      "id": "parsnips",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Parsnips"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-parsnips-2026-2027",
+        "legacy_catalog_crop_id": "parsnips",
+        "legacy_catalog_name": "Parsnips",
+        "rutgers_crop_id": "parsnips",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "potato",
+        "Potatoes",
+        "Potatoes (Early Season)",
+        "Potatoes (Late Season)"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Early Summer",
+          "source_line": 17,
+          "source_name": "Potatoes (Early Season)"
+        },
+        {
+          "position": 7,
+          "season": "Winter",
+          "source_line": 50,
+          "source_name": "Potatoes (Late Season)"
+        }
+      ],
+      "canonical_name": "Potatoes",
+      "id": "potatoes",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Potatoes (Early Season)",
+        "Potatoes (Late Season)"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-potatoes-2026-2027",
+        "legacy_catalog_crop_id": "potatoes",
+        "legacy_catalog_name": "Potatoes",
+        "rutgers_crop_id": "potatoes",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "pumpkin",
+        "Pumpkins"
+      ],
+      "appearances": [],
+      "canonical_name": "Pumpkins",
+      "id": "pumpkins",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-pumpkins-winter-squash-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "pumpkins",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "radish",
+        "Radishes"
+      ],
+      "appearances": [
+        {
+          "position": 7,
+          "season": "Spring",
+          "source_line": 9,
+          "source_name": "Radishes"
+        }
+      ],
+      "canonical_name": "Radishes",
+      "id": "radishes",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Radishes"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-radishes-rutabagas-turnips-2026-2027",
+        "legacy_catalog_crop_id": "radishes",
+        "legacy_catalog_name": "Radishes",
+        "rutgers_crop_id": "radishes",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "rutabaga",
+        "Rutabagas",
+        "Rutabage",
+        "swede",
+        "swedes"
+      ],
+      "appearances": [
+        {
+          "position": 8,
+          "season": "Winter",
+          "source_line": 51,
+          "source_name": "Rutabage"
+        }
+      ],
+      "canonical_name": "Rutabagas",
+      "id": "rutabagas",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Rutabage"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-radishes-rutabagas-turnips-2026-2027",
+        "legacy_catalog_crop_id": "rutabaga",
+        "legacy_catalog_name": "Rutabaga",
+        "rutgers_crop_id": "rutabagas",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "green bean",
+        "green beans",
+        "snap bean",
+        "Snap Beans",
+        "string bean",
+        "string beans"
+      ],
+      "appearances": [
+        {
+          "position": 4,
+          "season": "Midsummer",
+          "source_line": 24,
+          "source_name": "String Beans"
+        }
+      ],
+      "canonical_name": "Snap Beans",
+      "id": "snap-beans",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "String Beans"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-beans-2026-2027",
+        "legacy_catalog_crop_id": "string-beans",
+        "legacy_catalog_name": "String Beans",
+        "rutgers_crop_id": "snap-beans",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "specialty melon",
+        "Specialty Melons"
+      ],
+      "appearances": [],
+      "canonical_name": "Specialty Melons",
+      "id": "specialty-melons",
+      "planning_category": "crop_group",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-muskmelons-mixed-melons-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "specialty-melons",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Spinach"
+      ],
+      "appearances": [],
+      "canonical_name": "Spinach",
+      "id": "spinach",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-spinach-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "spinach",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "Strawberries",
+        "strawberry"
+      ],
+      "appearances": [],
+      "canonical_name": "Strawberries",
+      "id": "strawberries",
+      "planning_category": "perennial",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-strawberries-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "strawberries",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "english pea",
+        "english peas",
+        "garden pea",
+        "garden peas",
+        "shelling peas",
+        "Succulent Peas"
+      ],
+      "appearances": [
+        {
+          "position": 3,
+          "season": "Spring",
+          "source_line": 5,
+          "source_name": "English Peas"
+        }
+      ],
+      "canonical_name": "Succulent Peas",
+      "id": "succulent-peas",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "English Peas"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-peas-2026-2027",
+        "legacy_catalog_crop_id": "english-peas",
+        "legacy_catalog_name": "English Peas",
+        "rutgers_crop_id": "succulent-peas",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "courgette",
+        "courgettes",
+        "Summer Squash",
+        "zucchini"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Midsummer",
+          "source_line": 25,
+          "source_name": "Summer Squash"
+        }
+      ],
+      "canonical_name": "Summer Squash",
+      "id": "summer-squash",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Summer Squash"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-summer-squash-2026-2027",
+        "legacy_catalog_crop_id": "summer-squash",
+        "legacy_catalog_name": "Summer Squash",
+        "rutgers_crop_id": "summer-squash",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "corn",
+        "Sweet Corn"
+      ],
+      "appearances": [
+        {
+          "position": 1,
+          "season": "Late Summer",
+          "source_line": 28,
+          "source_name": "Corn"
+        }
+      ],
+      "canonical_name": "Sweet Corn",
+      "id": "sweet-corn",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Corn"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-sweet-corn-2026-2027",
+        "legacy_catalog_crop_id": "corn",
+        "legacy_catalog_name": "Corn",
+        "rutgers_crop_id": "sweet-corn",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "bell pepper",
+        "bell peppers",
+        "sweet pepper",
+        "Sweet Peppers"
+      ],
+      "appearances": [
+        {
+          "position": 3,
+          "season": "Late Summer",
+          "source_line": 30,
+          "source_name": "Sweet Peppers and Chiles"
+        }
+      ],
+      "canonical_name": "Sweet Peppers",
+      "id": "sweet-peppers",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Sweet Peppers and Chiles"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-peppers-2026-2027",
+        "legacy_catalog_crop_id": "sweet-peppers-and-chiles",
+        "legacy_catalog_name": "Sweet Peppers and Chiles",
+        "rutgers_crop_id": "sweet-peppers",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "sweet potato",
+        "Sweet Potatoes"
+      ],
+      "appearances": [],
+      "canonical_name": "Sweet Potatoes",
+      "id": "sweet-potatoes",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-sweet-potatoes-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "sweet-potatoes",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "tomato",
+        "Tomatoes"
+      ],
+      "appearances": [
+        {
+          "position": 5,
+          "season": "Late Summer",
+          "source_line": 32,
+          "source_name": "Tomatoes"
+        }
+      ],
+      "canonical_name": "Tomatoes",
+      "id": "tomatoes",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Tomatoes"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-tomatoes-2026-2027",
+        "legacy_catalog_crop_id": "tomatoes",
+        "legacy_catalog_name": "Tomatoes",
+        "rutgers_crop_id": "tomatoes",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "turnip green",
+        "Turnip Greens"
+      ],
+      "appearances": [
+        {
+          "position": 6,
+          "season": "Early Summer",
+          "source_line": 18,
+          "source_name": "Turnips (Early Season)"
+        },
+        {
+          "position": 9,
+          "season": "Winter",
+          "source_line": 52,
+          "source_name": "Turnips (Late Season)"
+        }
+      ],
+      "canonical_name": "Turnip Greens",
+      "id": "turnip-greens",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Turnips (Early Season)",
+        "Turnips (Late Season)"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-greens-mustard-turnip-2026-2027",
+        "legacy_catalog_crop_id": "turnips",
+        "legacy_catalog_name": "Turnips",
+        "rutgers_crop_id": "turnip-greens",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "turnip",
+        "Turnips",
+        "Turnips (Early Season)",
+        "Turnips (Late Season)"
+      ],
+      "appearances": [
+        {
+          "position": 6,
+          "season": "Early Summer",
+          "source_line": 18,
+          "source_name": "Turnips (Early Season)"
+        },
+        {
+          "position": 9,
+          "season": "Winter",
+          "source_line": 52,
+          "source_name": "Turnips (Late Season)"
+        }
+      ],
+      "canonical_name": "Turnips",
+      "id": "turnips",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Turnips (Early Season)",
+        "Turnips (Late Season)"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-radishes-rutabagas-turnips-2026-2027",
+        "legacy_catalog_crop_id": "turnips",
+        "legacy_catalog_name": "Turnips",
+        "rutgers_crop_id": "turnips",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "watermelon",
+        "Watermelons"
+      ],
+      "appearances": [],
+      "canonical_name": "Watermelons",
+      "id": "watermelons",
+      "planning_category": "annual_crop",
+      "source_names": [],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-watermelons-2026-2027",
+        "legacy_catalog_crop_id": null,
+        "legacy_catalog_name": null,
+        "rutgers_crop_id": "watermelons",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    },
+    {
+      "aliases": [
+        "pumpkin",
+        "pumpkins",
+        "Winter Squash"
+      ],
+      "appearances": [
+        {
+          "position": 10,
+          "season": "Winter",
+          "source_line": 53,
+          "source_name": "Winter Squash"
+        }
+      ],
+      "canonical_name": "Winter Squash",
+      "id": "winter-squash",
+      "planning_category": "annual_crop",
+      "source_names": [
+        "Winter Squash"
+      ],
+      "taxonomy": {
+        "commodity_key": "mid-atlantic-pumpkins-winter-squash-2026-2027",
+        "legacy_catalog_crop_id": "winter-squash",
+        "legacy_catalog_name": "Winter Squash",
+        "rutgers_crop_id": "winter-squash",
+        "system": "rutgers_mid_atlantic_commodity"
+      }
+    }
+  ],
+  "dataset_id": "kitchen-almanac-v2-c1e82a4b00502686",
+  "parser_version": "2.0.0",
+  "schema_version": "2.0.0",
+  "season_source": {
+    "id": "sha256:6981390899702cdf71f8420963270bbfb9900be6ff091b297f997e0b18fab16e",
+    "media_type": "text/markdown",
+    "path": "Six Seasons Reference.md",
+    "sha256": "6981390899702cdf71f8420963270bbfb9900be6ff091b297f997e0b18fab16e",
+    "source_scope": "legacy seasonal appearance metadata",
+    "title": "Six Seasons Reference"
+  },
+  "source": {
+    "corpus_id": "rutgers-mid-atlantic-commercial-vegetables-2026-2027",
+    "full_manual_sha256": "605dd9e8bc9cd1cf565372f0181941a28caf23ba6614f438c33845815a47991d",
+    "id": "sha256:97e0583429940c854729fd1166d094f141a4f4f937c7f2a6cee0fb4693c6d855",
+    "media_type": "application/json",
+    "path": "data/source/cultivars/mid-atlantic-2026-2027/commodity-crosswalk.v1.json",
+    "publisher": "Rutgers NJAES Cooperative Extension",
+    "sha256": "97e0583429940c854729fd1166d094f141a4f4f937c7f2a6cee0fb4693c6d855",
+    "source_scope": "reviewed crop identity taxonomy",
+    "source_url": "https://njaes.rutgers.edu/pubs/publication.php?pid=e001",
+    "title": "Rutgers Mid-Atlantic reviewed commodity crosswalk"
+  }
+}

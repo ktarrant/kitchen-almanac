@@ -78,7 +78,7 @@ def test_manifest_and_committed_report_define_review_only_corpus() -> None:
         "cucumbers",
         "kale",
         "kohlrabi",
-        "string-beans",
+        "snap-beans",
         "summer-squash",
         "tomatoes",
     }

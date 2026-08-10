@@ -9,7 +9,7 @@ the architecture and delivery roadmap.
 - `frontend/`: React and TypeScript application.
 - `data/seed/`: reproducibly generated, reviewed seed datasets.
 - `data/source/`: immutable snapshots of public source data.
-- `Six Seasons Reference.md`: the original seasonal crop reference.
+- `Six Seasons Reference.md`: retained legacy seasonal metadata.
 
 ## Seed catalog quick start
 
@@ -26,9 +26,11 @@ Unless `KITCHEN_ALMANAC_DATABASE_URL` is set, every command uses
 `kitchen-almanac.db` in the repository root. This is independent of the current
 working directory, so backend commands and the API share one local database.
 
-The catalog builder reads `Six Seasons Reference.md` and writes
-`data/seed/kitchen-almanac-catalog.v1.json`. The output is deterministic and records
-all changes made to source labels.
+The catalog builder publishes the 47 reviewed Rutgers commodity crop concepts
+from `commodity-crosswalk.v1.json` and writes
+`data/seed/kitchen-almanac-catalog.v2.json`. Where a reviewed mapping exists, it
+retains seasonal appearances from `Six Seasons Reference.md` as legacy metadata.
+The output is deterministic and records both source digests.
 
 ## API
 
@@ -75,7 +77,7 @@ approved checksums; copyrighted source binaries are intentionally not
 redistributed in the repository. `cultivars publish` verifies the local source
 snapshots and review coverage before building the artifact. `cultivars load`
 then activates that immutable catalog version idempotently. The catalog now
-contains 46 cultivars across 12 crop identities: tomatoes, cucumbers, string
+contains 46 cultivars across 12 crop identities: tomatoes, cucumbers, snap
 beans, summer squash, beets, broccoli, Brussels sprouts, cabbage, cauliflower,
 collards, kale, and kohlrabi. Thirty-eight have a reviewed commercial listing
 and are eligible for user-facing search. A temporarily out-of-stock listing remains discoverable;
@@ -105,9 +107,9 @@ universal home-garden schedules.
 
 `rutgers taxonomy` verifies the full manual's table of contents and builds a
 deterministic registry of all 31 commodity sections and 47 individual crop
-concepts. The reviewed crosswalk currently finds 26 exact catalog identities,
-9 concepts attached to catalog groups that must be split, and 12 missing crop
-identities. Its minimum-useful coverage matrix reports published identity,
+concepts. All 47 concepts are now canonical catalog identities; the former 9
+overly broad mappings and 12 missing identities have been resolved. Its
+minimum-useful coverage matrix reports published identity,
 cultivar, commercial availability, soil, water, spacing, container, planting,
 harvest, and threat evidence independently; detected PDF material remains a
 review candidate rather than automatically becoming gardening guidance.

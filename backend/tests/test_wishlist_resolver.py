@@ -36,7 +36,7 @@ class Cultivar:
 CROPS = [
     Crop("1", "fava-beans", "Fava Beans", [Alias("broad beans")]),
     Crop("2", "shell-beans", "Shell Beans", [Alias("shelling beans")]),
-    Crop("3", "string-beans", "String Beans", [Alias("green beans")]),
+    Crop("3", "snap-beans", "Snap Beans", [Alias("green beans")]),
     Crop("4", "tomatoes", "Tomatoes", [Alias("tomato")]),
 ]
 
@@ -90,7 +90,7 @@ def test_broad_term_returns_stable_ambiguous_candidates() -> None:
     assert [candidate.crop.slug for candidate in resolution.candidates] == [
         "fava-beans",
         "shell-beans",
-        "string-beans",
+        "snap-beans",
     ]
 
 
